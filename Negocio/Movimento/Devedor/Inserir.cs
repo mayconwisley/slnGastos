@@ -19,13 +19,12 @@ namespace Negocio.Movimento.Devedor
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("INSERT INTO MovimentoDevedores(DataMovimento, DevedoresId, DataParcela, Parcela, Valor, Pago, Login, DataCadastro, DataPagamento) ");
-            SQL.Append("VALUES(@DataMovimento, @DevedoresId, @DataParcela, @Parcela, @Valor, @Pago, @Login, @DataCadastro, @DataPagamento)");
+            SQL.Append("INSERT INTO MovimentoDevedores( DevedoresId, DataParcela, Parcela, Valor, Pago, Login, DataCadastro, DataPagamento) ");
+            SQL.Append("VALUES( @DevedoresId, @DataParcela, @Parcela, @Valor, @Pago, @Login, @DataCadastro, @DataPagamento)");
 
             try
             {
                 crud.LimparParametro();
-                crud.AdicionarParametro("DataMovimento", movimentoDevedores.DataMovimento);
                 crud.AdicionarParametro("DevedoresId", movimentoDevedores.Devedores.Id);
                 crud.AdicionarParametro("DataParcela", movimentoDevedores.DataParcela);
                 crud.AdicionarParametro("Parcela", movimentoDevedores.Parcela);

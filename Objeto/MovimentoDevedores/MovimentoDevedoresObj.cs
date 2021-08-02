@@ -8,7 +8,6 @@ namespace Objeto.MovimentoDevedores
     {
 
         public int Id { get; set; }
-        public DateTime DataMovimento { get; set; }
         public DevedoresObj Devedores { get; set; }
         public DateTime DataParcela { get; set; }
         public int Parcela { get; set; }
