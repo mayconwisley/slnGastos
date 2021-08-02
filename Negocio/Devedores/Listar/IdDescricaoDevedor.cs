@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Negocio.Devedores.Listar
 {
-   public class CadastroDevedoresCliente
+   public class IdDescricaoDevedor
     {
-        /*Listar cadastro dos emprestimos por cliente*/
         Crud crud;
         StringBuilder SQL = null;
 
@@ -19,10 +18,10 @@ namespace Negocio.Devedores.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, DataInicio, Nome, Valor, Parcelas, Valor * Parcelas AS ValorTotal,  Parcelado, Ativo, Login, ClienteId, DataCadastro ");
+            SQL.Append("SELECT Id, Id || ' - ' || Nome  AS Nome ");
             SQL.Append("FROM Devedores ");
             SQL.Append("WHERE ClienteId = @ClienteId ");
-            SQL.Append("ORDER BY DataInicio DESC, UPPER(Nome) ASC");
+            SQL.Append("ORDER BY UPPER(Nome) ASC");
 
             try
             {
@@ -36,6 +35,7 @@ namespace Negocio.Devedores.Listar
 
                 throw new Exception(ex.Message);
             }
+
         }
     }
 }

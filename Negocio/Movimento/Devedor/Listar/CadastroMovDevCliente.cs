@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Movimento.Devedor.Listar
 {
-    class CadastroMovDevCliente
+    public class CadastroMovDevCliente
     {
         /*Listar Devedore por codigo de devedores*/
         Crud crud;

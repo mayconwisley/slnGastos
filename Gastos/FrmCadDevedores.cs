@@ -124,6 +124,7 @@ namespace Gastos
                     return;
                 }
 
+                movimentoDevedores.DataMovimento = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
                 movimentoDevedores.Devedores = new DevedoresObj();
                 movimentoDevedores.Devedores.Id = idDevedores;
                 movimentoDevedores.Valor = decimal.Parse(TxtValorParcela.Text);

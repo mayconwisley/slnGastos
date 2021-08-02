@@ -214,6 +214,7 @@ namespace Gastos
         {
             ValidarNumero validarNumero = new ValidarNumero();
             TxtValor.Text = validarNumero.Validar(TxtValor.Text);
+            TxtValor.Select(TxtValor.Text.Length, 0);
         }
 
         private void TxtValor_Leave(object sender, EventArgs e)

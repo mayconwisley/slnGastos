@@ -29,8 +29,8 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LblValorPagar = new System.Windows.Forms.Label();
             this.LblValorPago = new System.Windows.Forms.Label();
@@ -38,7 +38,7 @@ namespace Gastos
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DgvListarMovimentoDev = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmprestimosId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DevedoresId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,7 +139,7 @@ namespace Gastos
             this.DgvListarMovimentoDev.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListarMovimentoDev.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.EmprestimosId,
+            this.DevedoresId,
             this.DataParcela,
             this.Parcela,
             this.Valor,
@@ -153,6 +153,7 @@ namespace Gastos
             this.DgvListarMovimentoDev.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListarMovimentoDev.Size = new System.Drawing.Size(526, 231);
             this.DgvListarMovimentoDev.TabIndex = 0;
+            this.DgvListarMovimentoDev.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListarMovimentoDev_CellDoubleClick);
             // 
             // Id
             // 
@@ -163,13 +164,14 @@ namespace Gastos
             this.Id.Visible = false;
             this.Id.Width = 41;
             // 
-            // EmprestimosId
+            // DevedoresId
             // 
-            this.EmprestimosId.DataPropertyName = "EmprestimosId";
-            this.EmprestimosId.HeaderText = "EmprestimosId";
-            this.EmprestimosId.Name = "EmprestimosId";
-            this.EmprestimosId.ReadOnly = true;
-            this.EmprestimosId.Visible = false;
+            this.DevedoresId.DataPropertyName = "DevedoresId";
+            this.DevedoresId.HeaderText = "DevedoresId";
+            this.DevedoresId.Name = "DevedoresId";
+            this.DevedoresId.ReadOnly = true;
+            this.DevedoresId.Visible = false;
+            this.DevedoresId.Width = 93;
             // 
             // DataParcela
             // 
@@ -182,9 +184,9 @@ namespace Gastos
             // Parcela
             // 
             this.Parcela.DataPropertyName = "Parcela";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            this.Parcela.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            this.Parcela.DefaultCellStyle = dataGridViewCellStyle1;
             this.Parcela.HeaderText = "Parcela";
             this.Parcela.Name = "Parcela";
             this.Parcela.ReadOnly = true;
@@ -193,9 +195,9 @@ namespace Gastos
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -244,6 +246,7 @@ namespace Gastos
             this.BtnExcluir.TabIndex = 0;
             this.BtnExcluir.Text = "&Excluir";
             this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // BtnAlterar
             // 
@@ -253,6 +256,7 @@ namespace Gastos
             this.BtnAlterar.TabIndex = 0;
             this.BtnAlterar.Text = "&Alterar";
             this.BtnAlterar.UseVisualStyleBackColor = true;
+            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
             // 
             // BtnSalvar
             // 
@@ -262,6 +266,7 @@ namespace Gastos
             this.BtnSalvar.TabIndex = 0;
             this.BtnSalvar.Text = "&Salvar";
             this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // groupBox2
             // 
@@ -332,6 +337,7 @@ namespace Gastos
             this.CbxPago.Name = "CbxPago";
             this.CbxPago.Size = new System.Drawing.Size(72, 21);
             this.CbxPago.TabIndex = 6;
+            this.CbxPago.SelectedIndexChanged += new System.EventHandler(this.CbxPago_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -350,6 +356,9 @@ namespace Gastos
             this.TxtValor.TabIndex = 4;
             this.TxtValor.Text = "0,00";
             this.TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
+            this.TxtValor.Enter += new System.EventHandler(this.TxtValor_Enter);
+            this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
             // 
             // label5
             // 
@@ -368,6 +377,9 @@ namespace Gastos
             this.TxtParcela.TabIndex = 2;
             this.TxtParcela.Text = "1";
             this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
+            this.TxtParcela.Enter += new System.EventHandler(this.TxtParcela_Enter);
+            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
             // 
             // MktDataParcela
             // 
@@ -407,6 +419,7 @@ namespace Gastos
             this.CbxNome.Size = new System.Drawing.Size(327, 21);
             this.CbxNome.TabIndex = 1;
             this.CbxNome.ValueMember = "Id";
+            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -437,15 +450,16 @@ namespace Gastos
             this.CbxDescricao.Size = new System.Drawing.Size(327, 21);
             this.CbxDescricao.TabIndex = 1;
             this.CbxDescricao.ValueMember = "Id";
+            this.CbxDescricao.SelectedIndexChanged += new System.EventHandler(this.CbxDescricao_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Descrição";
+            this.label1.Text = "Nome";
             // 
             // FrmCadMovimentoDevedores
             // 
@@ -490,14 +504,6 @@ namespace Gastos
         private System.Windows.Forms.Label LblValorTotal;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView DgvListarMovimentoDev;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmprestimosId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataParcela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Parcela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataPagamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Button BtnAlterar;
@@ -520,5 +526,13 @@ namespace Gastos
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox CbxDescricao;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DevedoresId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataParcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Parcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataPagamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
     }
 }

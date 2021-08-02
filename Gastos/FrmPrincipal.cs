@@ -68,7 +68,7 @@ namespace Gastos
 
         private void SubMenuDevMovimentacao_Click(object sender, EventArgs e)
         {
-            FrmCadMovimentoDevedores frmCadMovimentoDevedores = new FrmCadMovimentoDevedores();
+            FrmCadMovimentoDevedores frmCadMovimentoDevedores = new FrmCadMovimentoDevedores(strLogin);
             frmCadMovimentoDevedores.ShowDialog();
         }
 

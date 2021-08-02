@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Negocio</RootNamespace>
     <AssemblyName>Negocio</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,7 @@
     <Compile Include="Devedores\Excluir.cs" />
     <Compile Include="Devedores\Inserir.cs" />
     <Compile Include="Devedores\Listar\CadastroDevedoresCliente.cs" />
+    <Compile Include="Devedores\Listar\IdDescricaoDevedor.cs" />
     <Compile Include="Emprestimos\Alterar.cs" />
     <Compile Include="Emprestimos\Excluir.cs" />
     <Compile Include="Emprestimos\Inserir.cs" />

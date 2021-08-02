@@ -19,7 +19,7 @@ namespace Negocio.Movimento.Devedor
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("UPDATE MovimentoEmprestimos ");
+            SQL.Append("UPDATE MovimentoDevedores ");
             SQL.Append("SET DevedoresId = @DevedoresId, DataParcela = @DataParcela, Parcela = @Parcela, Valor = @Valor, " +
                        "Pago = @Pago, DataPagamento = @DataPagamento ");
             SQL.Append("WHERE Id = @Id");
