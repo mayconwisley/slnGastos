@@ -29,7 +29,7 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.CbxCliente = new System.Windows.Forms.ComboBox();
@@ -44,10 +44,6 @@ namespace Gastos
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvListarFixos = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.BtnAlterar = new System.Windows.Forms.Button();
-            this.BtnSalvar = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,10 +53,14 @@ namespace Gastos
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnAlterar = new System.Windows.Forms.Button();
+            this.BtnSalvar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.LblTotalAtivo = new System.Windows.Forms.Label();
-            this.LblTotalNAtivo = new System.Windows.Forms.Label();
             this.LblTotalGeral = new System.Windows.Forms.Label();
+            this.LblTotalNAtivo = new System.Windows.Forms.Label();
+            this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarFixos)).BeginInit();
@@ -229,49 +229,6 @@ namespace Gastos
             this.DgvListarFixos.TabIndex = 0;
             this.DgvListarFixos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListarFixos_CellDoubleClick);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.BtnExcluir);
-            this.groupBox3.Controls.Add(this.BtnAlterar);
-            this.groupBox3.Controls.Add(this.BtnSalvar);
-            this.groupBox3.Location = new System.Drawing.Point(524, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(90, 96);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            // 
-            // BtnExcluir
-            // 
-            this.BtnExcluir.Enabled = false;
-            this.BtnExcluir.Location = new System.Drawing.Point(6, 69);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 2;
-            this.BtnExcluir.Text = "&Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // BtnAlterar
-            // 
-            this.BtnAlterar.Enabled = false;
-            this.BtnAlterar.Location = new System.Drawing.Point(6, 40);
-            this.BtnAlterar.Name = "BtnAlterar";
-            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAlterar.TabIndex = 1;
-            this.BtnAlterar.Text = "&Alterar";
-            this.BtnAlterar.UseVisualStyleBackColor = true;
-            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
-            // 
-            // BtnSalvar
-            // 
-            this.BtnSalvar.Location = new System.Drawing.Point(6, 11);
-            this.BtnSalvar.Name = "BtnSalvar";
-            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalvar.TabIndex = 0;
-            this.BtnSalvar.Text = "&Salvar";
-            this.BtnSalvar.UseVisualStyleBackColor = true;
-            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -299,9 +256,9 @@ namespace Gastos
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle1;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -346,27 +303,70 @@ namespace Gastos
             this.ClienteId.ReadOnly = true;
             this.ClienteId.Visible = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.BtnExcluir);
+            this.groupBox3.Controls.Add(this.BtnAlterar);
+            this.groupBox3.Controls.Add(this.BtnSalvar);
+            this.groupBox3.Location = new System.Drawing.Point(524, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(90, 96);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            // 
+            // BtnExcluir
+            // 
+            this.BtnExcluir.Enabled = false;
+            this.BtnExcluir.Location = new System.Drawing.Point(6, 69);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.BtnExcluir.TabIndex = 2;
+            this.BtnExcluir.Text = "&Excluir";
+            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            // 
+            // BtnAlterar
+            // 
+            this.BtnAlterar.Enabled = false;
+            this.BtnAlterar.Location = new System.Drawing.Point(6, 40);
+            this.BtnAlterar.Name = "BtnAlterar";
+            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.BtnAlterar.TabIndex = 1;
+            this.BtnAlterar.Text = "&Alterar";
+            this.BtnAlterar.UseVisualStyleBackColor = true;
+            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            // 
+            // BtnSalvar
+            // 
+            this.BtnSalvar.Location = new System.Drawing.Point(6, 11);
+            this.BtnSalvar.Name = "BtnSalvar";
+            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.BtnSalvar.TabIndex = 0;
+            this.BtnSalvar.Text = "&Salvar";
+            this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.LblTotalGeral);
             this.groupBox4.Controls.Add(this.LblTotalNAtivo);
             this.groupBox4.Controls.Add(this.LblTotalAtivo);
-            this.groupBox4.Location = new System.Drawing.Point(381, 136);
+            this.groupBox4.Location = new System.Drawing.Point(381, 161);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(233, 100);
+            this.groupBox4.Size = new System.Drawing.Size(233, 75);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Informação";
+            this.groupBox4.Text = "Informações";
             // 
-            // LblTotalAtivo
+            // LblTotalGeral
             // 
-            this.LblTotalAtivo.AutoSize = true;
-            this.LblTotalAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotalAtivo.Location = new System.Drawing.Point(6, 19);
-            this.LblTotalAtivo.Name = "LblTotalAtivo";
-            this.LblTotalAtivo.Size = new System.Drawing.Size(126, 14);
-            this.LblTotalAtivo.TabIndex = 0;
-            this.LblTotalAtivo.Text = "Total Ativo: 0,00";
+            this.LblTotalGeral.AutoSize = true;
+            this.LblTotalGeral.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTotalGeral.Location = new System.Drawing.Point(6, 52);
+            this.LblTotalGeral.Name = "LblTotalGeral";
+            this.LblTotalGeral.Size = new System.Drawing.Size(126, 14);
+            this.LblTotalGeral.TabIndex = 2;
+            this.LblTotalGeral.Text = "Total Geral: 0,00";
             // 
             // LblTotalNAtivo
             // 
@@ -378,15 +378,15 @@ namespace Gastos
             this.LblTotalNAtivo.TabIndex = 1;
             this.LblTotalNAtivo.Text = "Total Ñ Ativo.: 0,00";
             // 
-            // LblTotalGeral
+            // LblTotalAtivo
             // 
-            this.LblTotalGeral.AutoSize = true;
-            this.LblTotalGeral.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotalGeral.Location = new System.Drawing.Point(6, 52);
-            this.LblTotalGeral.Name = "LblTotalGeral";
-            this.LblTotalGeral.Size = new System.Drawing.Size(126, 14);
-            this.LblTotalGeral.TabIndex = 2;
-            this.LblTotalGeral.Text = "Total Geral: 0,00";
+            this.LblTotalAtivo.AutoSize = true;
+            this.LblTotalAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTotalAtivo.Location = new System.Drawing.Point(6, 19);
+            this.LblTotalAtivo.Name = "LblTotalAtivo";
+            this.LblTotalAtivo.Size = new System.Drawing.Size(126, 14);
+            this.LblTotalAtivo.TabIndex = 0;
+            this.LblTotalAtivo.Text = "Total Ativo: 0,00";
             // 
             // FrmCadFixos
             // 

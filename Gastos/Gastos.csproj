@@ -121,6 +121,30 @@
     <Compile Include="FrmCadUsuario.Designer.cs">
       <DependentUpon>FrmCadUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmConDevedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConDevedores.Designer.cs">
+      <DependentUpon>FrmConDevedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConEmprestimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConEmprestimo.Designer.cs">
+      <DependentUpon>FrmConEmprestimo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConFixos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConFixos.Designer.cs">
+      <DependentUpon>FrmConFixos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConMovimentacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConMovimentacao.Designer.cs">
+      <DependentUpon>FrmConMovimentacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +185,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCadUsuario.resx">
       <DependentUpon>FrmCadUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConDevedores.resx">
+      <DependentUpon>FrmConDevedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConEmprestimo.resx">
+      <DependentUpon>FrmConEmprestimo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConFixos.resx">
+      <DependentUpon>FrmConFixos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConMovimentacao.resx">
+      <DependentUpon>FrmConMovimentacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

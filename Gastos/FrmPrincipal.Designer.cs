@@ -65,8 +65,8 @@ namespace Gastos
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.TsLblDataHora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.TimeAtual = new System.Windows.Forms.Timer(this.components);
             this.TsLblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TimeAtual = new System.Windows.Forms.Timer(this.components);
             this.MenuPrincipal.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -166,6 +166,7 @@ namespace Gastos
             this.SubMenuFixConsulta.Name = "SubMenuFixConsulta";
             this.SubMenuFixConsulta.Size = new System.Drawing.Size(121, 22);
             this.SubMenuFixConsulta.Text = "Consulta";
+            this.SubMenuFixConsulta.Click += new System.EventHandler(this.SubMenuFixConsulta_Click);
             // 
             // SubMenuFixSeparador1
             // 
@@ -209,6 +210,7 @@ namespace Gastos
             this.SubMenuEmpConsulta.Name = "SubMenuEmpConsulta";
             this.SubMenuEmpConsulta.Size = new System.Drawing.Size(154, 22);
             this.SubMenuEmpConsulta.Text = "Consulta";
+            this.SubMenuEmpConsulta.Click += new System.EventHandler(this.SubMenuEmpConsulta_Click);
             // 
             // toolStripSeparator5
             // 
@@ -252,6 +254,7 @@ namespace Gastos
             this.SubMenuDevConsulta.Name = "SubMenuDevConsulta";
             this.SubMenuDevConsulta.Size = new System.Drawing.Size(154, 22);
             this.SubMenuDevConsulta.Text = "Consulta";
+            this.SubMenuDevConsulta.Click += new System.EventHandler(this.SubMenuDevConsulta_Click);
             // 
             // toolStripSeparator6
             // 
@@ -278,25 +281,26 @@ namespace Gastos
             // SubMenuMovCadastro
             // 
             this.SubMenuMovCadastro.Name = "SubMenuMovCadastro";
-            this.SubMenuMovCadastro.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovCadastro.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovCadastro.Text = "Cadastro";
             this.SubMenuMovCadastro.Click += new System.EventHandler(this.SubMenuMovCadastro_Click);
             // 
             // SubMenuMovConsulta
             // 
             this.SubMenuMovConsulta.Name = "SubMenuMovConsulta";
-            this.SubMenuMovConsulta.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovConsulta.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovConsulta.Text = "Consulta";
+            this.SubMenuMovConsulta.Click += new System.EventHandler(this.SubMenuMovConsulta_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuMovRelatorio
             // 
             this.SubMenuMovRelatorio.Name = "SubMenuMovRelatorio";
-            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovRelatorio.Text = "Relatório";
             // 
             // MenuSair
@@ -330,17 +334,17 @@ namespace Gastos
             this.TsLblDataHora.Size = new System.Drawing.Size(63, 17);
             this.TsLblDataHora.Text = "Data Hora:";
             // 
-            // TimeAtual
-            // 
-            this.TimeAtual.Enabled = true;
-            this.TimeAtual.Interval = 1000;
-            this.TimeAtual.Tick += new System.EventHandler(this.TimeAtual_Tick);
-            // 
             // TsLblUsuario
             // 
             this.TsLblUsuario.Name = "TsLblUsuario";
             this.TsLblUsuario.Size = new System.Drawing.Size(50, 17);
             this.TsLblUsuario.Text = "Usuário:";
+            // 
+            // TimeAtual
+            // 
+            this.TimeAtual.Enabled = true;
+            this.TimeAtual.Interval = 1000;
+            this.TimeAtual.Tick += new System.EventHandler(this.TimeAtual_Tick);
             // 
             // FrmPrincipal
             // 

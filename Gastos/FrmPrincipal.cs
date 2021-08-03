@@ -74,7 +74,7 @@ namespace Gastos
 
         private void SubMenuMovCadastro_Click(object sender, EventArgs e)
         {
-            FrmCadMovimentacao frmCadMovimentacao = new FrmCadMovimentacao();
+            FrmCadMovimentacao frmCadMovimentacao = new FrmCadMovimentacao(strLogin);
             frmCadMovimentacao.ShowDialog();
         }
 
@@ -87,6 +87,30 @@ namespace Gastos
         {
             TsLblDataHora.Text = "Data: " + DateTime.Now.ToString("dd/mm/yyyy") + " Hora: " + DateTime.Now.ToString("HH:mm");
             TsLblUsuario.Text = "Usuário: " + strLogin;
+        }
+
+        private void SubMenuFixConsulta_Click(object sender, EventArgs e)
+        {
+            FrmConFixos frmConFixos = new FrmConFixos();
+            frmConFixos.ShowDialog();
+        }
+
+        private void SubMenuEmpConsulta_Click(object sender, EventArgs e)
+        {
+            FrmConEmprestimo frmConEmprestimo = new FrmConEmprestimo();
+            frmConEmprestimo.ShowDialog();
+        }
+
+        private void SubMenuDevConsulta_Click(object sender, EventArgs e)
+        {
+            FrmConDevedores frmConDevedores = new FrmConDevedores();
+            frmConDevedores.ShowDialog();
+        }
+
+        private void SubMenuMovConsulta_Click(object sender, EventArgs e)
+        {
+            FrmConMovimentacao frmConMovimentacao = new FrmConMovimentacao();
+            frmConMovimentacao.ShowDialog();
         }
     }
 }

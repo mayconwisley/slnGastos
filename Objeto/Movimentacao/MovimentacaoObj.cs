@@ -1,4 +1,5 @@
 ﻿using Objeto.Cliente;
+using Objeto.Competencia;
 using Objeto.Usuario;
 using System;
 
@@ -10,9 +11,10 @@ namespace Objeto.Movimentacao
         public DateTime Data { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
-        public char TipoLancamento { get; set; }
-        public char TipoMonetario { get; set; }
-        public char TipoPagoRecebido { get; set; }
+        public string TipoLancamento { get; set; }
+        public string TipoMonetario { get; set; }
+        public string TipoPagoRecebido { get; set; }
+        public CompetenciaObj Competencia { get; set; }
         public UsuarioObj Usuario { get; set; }
         public ClienteObj Cliente { get; set; }
         public DateTime DataCadastro { get; set; }
