@@ -29,7 +29,7 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.LblCompetencia = new System.Windows.Forms.Label();
@@ -37,6 +37,7 @@ namespace Gastos
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CbCheque = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.CbxTipo0 = new System.Windows.Forms.ComboBox();
             this.CbxTipo = new System.Windows.Forms.ComboBox();
@@ -52,16 +53,6 @@ namespace Gastos
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DgvListaMovimentacao = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.LblSaldo0 = new System.Windows.Forms.Label();
-            this.LblValorPago = new System.Windows.Forms.Label();
-            this.LblValorRecebido = new System.Windows.Forms.Label();
-            this.LblSaldo = new System.Windows.Forms.Label();
-            this.LblValorSaida = new System.Windows.Forms.Label();
-            this.LblValorEntrada = new System.Windows.Forms.Label();
-            this.LblValPenEnt = new System.Windows.Forms.Label();
-            this.LblValPenSai = new System.Windows.Forms.Label();
-            this.LblSalPen = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataMovimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,11 +64,22 @@ namespace Gastos
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompetenciaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.LblSalPen = new System.Windows.Forms.Label();
+            this.LblValPenSai = new System.Windows.Forms.Label();
+            this.LblValPenEnt = new System.Windows.Forms.Label();
+            this.LblSaldo0 = new System.Windows.Forms.Label();
+            this.LblValorPago = new System.Windows.Forms.Label();
+            this.LblValorRecebido = new System.Windows.Forms.Label();
+            this.LblSaldo = new System.Windows.Forms.Label();
+            this.LblValorSaida = new System.Windows.Forms.Label();
+            this.LblValorEntrada = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.LblSalES = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.LblSalPR = new System.Windows.Forms.Label();
             this.LblSalPend = new System.Windows.Forms.Label();
+            this.LblSalPR = new System.Windows.Forms.Label();
+            this.LblSalES = new System.Windows.Forms.Label();
+            this.BtnInteEmprestimo = new System.Windows.Forms.Button();
+            this.BtnInteDevedores = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -140,6 +142,8 @@ namespace Gastos
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BtnInteDevedores);
+            this.groupBox2.Controls.Add(this.BtnInteEmprestimo);
             this.groupBox2.Controls.Add(this.CbCheque);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label7);
@@ -167,6 +171,15 @@ namespace Gastos
             this.CbCheque.TabIndex = 8;
             this.CbCheque.Text = "Cheque";
             this.CbCheque.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(496, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Pago/Receb.";
             // 
             // label7
             // 
@@ -343,114 +356,6 @@ namespace Gastos
             this.DgvListaMovimentacao.TabIndex = 0;
             this.DgvListaMovimentacao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaMovimentacao_CellDoubleClick);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.LblSalPen);
-            this.groupBox5.Controls.Add(this.LblValPenSai);
-            this.groupBox5.Controls.Add(this.LblValPenEnt);
-            this.groupBox5.Controls.Add(this.LblSaldo0);
-            this.groupBox5.Controls.Add(this.LblValorPago);
-            this.groupBox5.Controls.Add(this.LblValorRecebido);
-            this.groupBox5.Controls.Add(this.LblSaldo);
-            this.groupBox5.Controls.Add(this.LblValorSaida);
-            this.groupBox5.Controls.Add(this.LblValorEntrada);
-            this.groupBox5.Location = new System.Drawing.Point(11, 482);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(581, 122);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Informações";
-            // 
-            // LblSaldo0
-            // 
-            this.LblSaldo0.AutoSize = true;
-            this.LblSaldo0.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSaldo0.Location = new System.Drawing.Point(292, 42);
-            this.LblSaldo0.Name = "LblSaldo0";
-            this.LblSaldo0.Size = new System.Drawing.Size(84, 14);
-            this.LblSaldo0.TabIndex = 3;
-            this.LblSaldo0.Text = "Saldo: 0,00";
-            // 
-            // LblValorPago
-            // 
-            this.LblValorPago.AutoSize = true;
-            this.LblValorPago.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorPago.Location = new System.Drawing.Point(292, 27);
-            this.LblValorPago.Name = "LblValorPago";
-            this.LblValorPago.Size = new System.Drawing.Size(119, 14);
-            this.LblValorPago.TabIndex = 3;
-            this.LblValorPago.Text = "Valor Pago: 0,00";
-            // 
-            // LblValorRecebido
-            // 
-            this.LblValorRecebido.AutoSize = true;
-            this.LblValorRecebido.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorRecebido.Location = new System.Drawing.Point(292, 12);
-            this.LblValorRecebido.Name = "LblValorRecebido";
-            this.LblValorRecebido.Size = new System.Drawing.Size(147, 14);
-            this.LblValorRecebido.TabIndex = 3;
-            this.LblValorRecebido.Text = "Valor Recebido: 0,00";
-            // 
-            // LblSaldo
-            // 
-            this.LblSaldo.AutoSize = true;
-            this.LblSaldo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSaldo.Location = new System.Drawing.Point(6, 42);
-            this.LblSaldo.Name = "LblSaldo";
-            this.LblSaldo.Size = new System.Drawing.Size(84, 14);
-            this.LblSaldo.TabIndex = 2;
-            this.LblSaldo.Text = "Saldo: 0,00";
-            // 
-            // LblValorSaida
-            // 
-            this.LblValorSaida.AutoSize = true;
-            this.LblValorSaida.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorSaida.Location = new System.Drawing.Point(6, 27);
-            this.LblValorSaida.Name = "LblValorSaida";
-            this.LblValorSaida.Size = new System.Drawing.Size(126, 14);
-            this.LblValorSaida.TabIndex = 1;
-            this.LblValorSaida.Text = "Valor Saída: 0,00";
-            // 
-            // LblValorEntrada
-            // 
-            this.LblValorEntrada.AutoSize = true;
-            this.LblValorEntrada.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorEntrada.Location = new System.Drawing.Point(6, 12);
-            this.LblValorEntrada.Name = "LblValorEntrada";
-            this.LblValorEntrada.Size = new System.Drawing.Size(140, 14);
-            this.LblValorEntrada.TabIndex = 0;
-            this.LblValorEntrada.Text = "Valor Entrada: 0,00";
-            // 
-            // LblValPenEnt
-            // 
-            this.LblValPenEnt.AutoSize = true;
-            this.LblValPenEnt.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValPenEnt.Location = new System.Drawing.Point(6, 71);
-            this.LblValPenEnt.Name = "LblValPenEnt";
-            this.LblValPenEnt.Size = new System.Drawing.Size(203, 14);
-            this.LblValPenEnt.TabIndex = 4;
-            this.LblValPenEnt.Text = "Valor Pendente Entrada: 0,00";
-            // 
-            // LblValPenSai
-            // 
-            this.LblValPenSai.AutoSize = true;
-            this.LblValPenSai.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValPenSai.Location = new System.Drawing.Point(6, 85);
-            this.LblValPenSai.Name = "LblValPenSai";
-            this.LblValPenSai.Size = new System.Drawing.Size(189, 14);
-            this.LblValPenSai.TabIndex = 4;
-            this.LblValPenSai.Text = "Valor Pendente Saída: 0,00";
-            // 
-            // LblSalPen
-            // 
-            this.LblSalPen.AutoSize = true;
-            this.LblSalPen.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSalPen.Location = new System.Drawing.Point(6, 101);
-            this.LblSalPen.Name = "LblSalPen";
-            this.LblSalPen.Size = new System.Drawing.Size(126, 14);
-            this.LblSalPen.TabIndex = 4;
-            this.LblSalPen.Text = "Valor Saldo: 0,00";
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -479,9 +384,9 @@ namespace Gastos
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -546,6 +451,114 @@ namespace Gastos
             this.DataCadastro.ReadOnly = true;
             this.DataCadastro.Width = 92;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.LblSalPen);
+            this.groupBox5.Controls.Add(this.LblValPenSai);
+            this.groupBox5.Controls.Add(this.LblValPenEnt);
+            this.groupBox5.Controls.Add(this.LblSaldo0);
+            this.groupBox5.Controls.Add(this.LblValorPago);
+            this.groupBox5.Controls.Add(this.LblValorRecebido);
+            this.groupBox5.Controls.Add(this.LblSaldo);
+            this.groupBox5.Controls.Add(this.LblValorSaida);
+            this.groupBox5.Controls.Add(this.LblValorEntrada);
+            this.groupBox5.Location = new System.Drawing.Point(11, 482);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(581, 122);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Informações";
+            // 
+            // LblSalPen
+            // 
+            this.LblSalPen.AutoSize = true;
+            this.LblSalPen.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSalPen.Location = new System.Drawing.Point(6, 101);
+            this.LblSalPen.Name = "LblSalPen";
+            this.LblSalPen.Size = new System.Drawing.Size(126, 14);
+            this.LblSalPen.TabIndex = 4;
+            this.LblSalPen.Text = "Valor Saldo: 0,00";
+            // 
+            // LblValPenSai
+            // 
+            this.LblValPenSai.AutoSize = true;
+            this.LblValPenSai.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblValPenSai.Location = new System.Drawing.Point(6, 85);
+            this.LblValPenSai.Name = "LblValPenSai";
+            this.LblValPenSai.Size = new System.Drawing.Size(189, 14);
+            this.LblValPenSai.TabIndex = 4;
+            this.LblValPenSai.Text = "Valor Pendente Saída: 0,00";
+            // 
+            // LblValPenEnt
+            // 
+            this.LblValPenEnt.AutoSize = true;
+            this.LblValPenEnt.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblValPenEnt.Location = new System.Drawing.Point(6, 71);
+            this.LblValPenEnt.Name = "LblValPenEnt";
+            this.LblValPenEnt.Size = new System.Drawing.Size(203, 14);
+            this.LblValPenEnt.TabIndex = 4;
+            this.LblValPenEnt.Text = "Valor Pendente Entrada: 0,00";
+            // 
+            // LblSaldo0
+            // 
+            this.LblSaldo0.AutoSize = true;
+            this.LblSaldo0.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSaldo0.Location = new System.Drawing.Point(292, 42);
+            this.LblSaldo0.Name = "LblSaldo0";
+            this.LblSaldo0.Size = new System.Drawing.Size(84, 14);
+            this.LblSaldo0.TabIndex = 3;
+            this.LblSaldo0.Text = "Saldo: 0,00";
+            // 
+            // LblValorPago
+            // 
+            this.LblValorPago.AutoSize = true;
+            this.LblValorPago.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblValorPago.Location = new System.Drawing.Point(292, 27);
+            this.LblValorPago.Name = "LblValorPago";
+            this.LblValorPago.Size = new System.Drawing.Size(119, 14);
+            this.LblValorPago.TabIndex = 3;
+            this.LblValorPago.Text = "Valor Pago: 0,00";
+            // 
+            // LblValorRecebido
+            // 
+            this.LblValorRecebido.AutoSize = true;
+            this.LblValorRecebido.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblValorRecebido.Location = new System.Drawing.Point(292, 12);
+            this.LblValorRecebido.Name = "LblValorRecebido";
+            this.LblValorRecebido.Size = new System.Drawing.Size(147, 14);
+            this.LblValorRecebido.TabIndex = 3;
+            this.LblValorRecebido.Text = "Valor Recebido: 0,00";
+            // 
+            // LblSaldo
+            // 
+            this.LblSaldo.AutoSize = true;
+            this.LblSaldo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSaldo.Location = new System.Drawing.Point(6, 42);
+            this.LblSaldo.Name = "LblSaldo";
+            this.LblSaldo.Size = new System.Drawing.Size(84, 14);
+            this.LblSaldo.TabIndex = 2;
+            this.LblSaldo.Text = "Saldo: 0,00";
+            // 
+            // LblValorSaida
+            // 
+            this.LblValorSaida.AutoSize = true;
+            this.LblValorSaida.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblValorSaida.Location = new System.Drawing.Point(6, 27);
+            this.LblValorSaida.Name = "LblValorSaida";
+            this.LblValorSaida.Size = new System.Drawing.Size(126, 14);
+            this.LblValorSaida.TabIndex = 1;
+            this.LblValorSaida.Text = "Valor Saída: 0,00";
+            // 
+            // LblValorEntrada
+            // 
+            this.LblValorEntrada.AutoSize = true;
+            this.LblValorEntrada.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblValorEntrada.Location = new System.Drawing.Point(6, 12);
+            this.LblValorEntrada.Name = "LblValorEntrada";
+            this.LblValorEntrada.Size = new System.Drawing.Size(140, 14);
+            this.LblValorEntrada.TabIndex = 0;
+            this.LblValorEntrada.Text = "Valor Entrada: 0,00";
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.LblSalPend);
@@ -558,24 +571,15 @@ namespace Gastos
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Saldo mês Anterior";
             // 
-            // LblSalES
+            // LblSalPend
             // 
-            this.LblSalES.AutoSize = true;
-            this.LblSalES.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSalES.Location = new System.Drawing.Point(7, 16);
-            this.LblSalES.Name = "LblSalES";
-            this.LblSalES.Size = new System.Drawing.Size(119, 14);
-            this.LblSalES.TabIndex = 0;
-            this.LblSalES.Text = "Sal. E. S.: 0,00";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(496, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Pago/Receb.";
+            this.LblSalPend.AutoSize = true;
+            this.LblSalPend.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSalPend.Location = new System.Drawing.Point(7, 46);
+            this.LblSalPend.Name = "LblSalPend";
+            this.LblSalPend.Size = new System.Drawing.Size(119, 14);
+            this.LblSalPend.TabIndex = 0;
+            this.LblSalPend.Text = "Sal. Pend.: 0,00";
             // 
             // LblSalPR
             // 
@@ -587,15 +591,34 @@ namespace Gastos
             this.LblSalPR.TabIndex = 0;
             this.LblSalPR.Text = "Sal. P. R.: 0,00";
             // 
-            // LblSalPend
+            // LblSalES
             // 
-            this.LblSalPend.AutoSize = true;
-            this.LblSalPend.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSalPend.Location = new System.Drawing.Point(7, 46);
-            this.LblSalPend.Name = "LblSalPend";
-            this.LblSalPend.Size = new System.Drawing.Size(119, 14);
-            this.LblSalPend.TabIndex = 0;
-            this.LblSalPend.Text = "Sal. Pend.: 0,00";
+            this.LblSalES.AutoSize = true;
+            this.LblSalES.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSalES.Location = new System.Drawing.Point(7, 16);
+            this.LblSalES.Name = "LblSalES";
+            this.LblSalES.Size = new System.Drawing.Size(119, 14);
+            this.LblSalES.TabIndex = 0;
+            this.LblSalES.Text = "Sal. E. S.: 0,00";
+            // 
+            // BtnInteEmprestimo
+            // 
+            this.BtnInteEmprestimo.Location = new System.Drawing.Point(86, 54);
+            this.BtnInteEmprestimo.Name = "BtnInteEmprestimo";
+            this.BtnInteEmprestimo.Size = new System.Drawing.Size(75, 39);
+            this.BtnInteEmprestimo.TabIndex = 9;
+            this.BtnInteEmprestimo.Text = "Integrar Empréstimo";
+            this.BtnInteEmprestimo.UseVisualStyleBackColor = true;
+            this.BtnInteEmprestimo.Click += new System.EventHandler(this.BtnInteEmprestimo_Click);
+            // 
+            // BtnInteDevedores
+            // 
+            this.BtnInteDevedores.Location = new System.Drawing.Point(161, 54);
+            this.BtnInteDevedores.Name = "BtnInteDevedores";
+            this.BtnInteDevedores.Size = new System.Drawing.Size(75, 39);
+            this.BtnInteDevedores.TabIndex = 9;
+            this.BtnInteDevedores.Text = "Integrar Devedores";
+            this.BtnInteDevedores.UseVisualStyleBackColor = true;
             // 
             // FrmCadMovimentacao
             // 
@@ -682,5 +705,7 @@ namespace Gastos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblSalPend;
         private System.Windows.Forms.Label LblSalPR;
+        private System.Windows.Forms.Button BtnInteEmprestimo;
+        private System.Windows.Forms.Button BtnInteDevedores;
     }
 }

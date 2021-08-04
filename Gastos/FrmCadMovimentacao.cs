@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio.Validador;
+using Negocio.Movimento.Emprestimo.Listar;
 
 namespace Gastos
 {
@@ -23,7 +24,7 @@ namespace Gastos
 
         int idCliente, idMovimentacao, idCompetencia, idComeptenciaAnterior;
         decimal valSalEntSaiAnt = 0, valSalPagRecAnt = 0, valSalPendAnte = 0;
-
+        DateTime date;
         public FrmCadMovimentacao(string login)
         {
             InitializeComponent();
@@ -42,8 +43,6 @@ namespace Gastos
             CompetenciaIdCliente competenciaIdCliente = new CompetenciaIdCliente();
             CompetenciaIdData competenciaIdData = new CompetenciaIdData();
 
-            DateTime date;
-
             try
             {
                 idCompetencia = competenciaIdCliente.CompetenciaId(idCliente);
@@ -61,6 +60,32 @@ namespace Gastos
             {
                 MessageBox.Show("Competência não cadastrada!! \n\n" + ex.Message);
                 LblCompetencia.Text = "Competencia: 00/0000";
+            }
+        }
+
+        private void IntegrarEmprestimo(DateTime dataPagamento)
+        {
+            CadastroMovEmpDatPagamento cadastroMovEmpDatPagamento = new CadastroMovEmpDatPagamento();
+            MovimentacaoObj movimentacao = new MovimentacaoObj();
+            Inserir inserir = new Inserir();
+
+            movimentacao.Data = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+            movimentacao.TipoLancamento = "Saída";
+            movimentacao.TipoPagoRecebido = "Pendente";
+            movimentacao.TipoMonetario = "Dinheiro";
+            movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
+            movimentacao.Competencia.Id = idCompetencia;
+            movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
+            movimentacao.Usuario.Login = strLogin;
+            movimentacao.Cliente = new Objeto.Cliente.ClienteObj();
+            movimentacao.Cliente.Id = idCliente;
+            movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(dataPagamento).Rows)
+            {
+                movimentacao.Descricao = row["Descricao"].ToString();
+                movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
+                inserir.Cadastro(movimentacao);
             }
         }
 
@@ -356,6 +381,11 @@ namespace Gastos
             BtnAlterar.Enabled = true;
             BtnExcluir.Enabled = true;
             BtnSalvar.Enabled = false;
+        }
+
+        private void BtnInteEmprestimo_Click(object sender, EventArgs e)
+        {
+            IntegrarEmprestimo(date);
         }
 
         private void TxtValor_TextChanged(object sender, EventArgs e)
