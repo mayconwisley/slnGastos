@@ -7,13 +7,6 @@ using Negocio.Validador;
 using Objeto.Emprestimos;
 using Objeto.MovimentoEmprestimos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos
@@ -78,7 +71,6 @@ namespace Gastos
                     movimentoEmprestimo.DataPagameno = dataPagamento;
                 }
 
-
                 switch (opcaoCadastro)
                 {
                     case OpcaoCadastro.Salvar:
@@ -104,7 +96,23 @@ namespace Gastos
             {
                 MessageBox.Show(ex.Message);
             }
+        }
 
+        private void ExcluirTudoEmprestimo(int idEmprestimo)
+        {
+            ExcluirTudoClienteEmprestimo excluirTudoClienteEmprestimo = new ExcluirTudoClienteEmprestimo();
+            try
+            {
+                if (MessageBox.Show("Deseja excluir todos os lançamentos?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    excluirTudoClienteEmprestimo.Cadastro(idEmprestimo);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void LimparCampos()
@@ -195,6 +203,8 @@ namespace Gastos
             if (CbxPago.SelectedIndex == 0)
             {
                 MktDataPagamento.Enabled = true;
+                MktDataPagamento.Text = MktDataParcela.Text;
+                MktDataPagamento.Focus();
             }
             else
             {
@@ -245,6 +255,16 @@ namespace Gastos
             {
                 TxtValor.Text = "";
             }
+        }
+
+        private void CmsExcluirTudo_Click(object sender, EventArgs e)
+        {
+            ExcluirTudoEmprestimo(idEmprestimo);
+            ListarEmprestimo(idCliente);
+            LimparCampos();
+            BtnAlterar.Enabled = false;
+            BtnExcluir.Enabled = false;
+            BtnSalvar.Enabled = true;
         }
 
         private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,13 +1,6 @@
 ﻿using Negocio.Cliente.Listar;
 using Negocio.Devedores.Listar;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos
@@ -29,7 +22,7 @@ namespace Gastos
             CadastroDevedoresCliente cadastroDevedoresCliente = new CadastroDevedoresCliente();
             DgvListaDevedores.DataSource = cadastroDevedoresCliente.Consulta(idCliente);
             Informacao();
-            
+
         }
         private void Informacao()
         {

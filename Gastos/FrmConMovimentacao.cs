@@ -2,13 +2,7 @@
 using Negocio.Competencia.Listar;
 using Negocio.Movimento.Geral.Listar;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos
@@ -24,6 +18,7 @@ namespace Gastos
         }
 
         private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+
         {
             idCliente = int.Parse(CbxNome.SelectedValue.ToString());
 
@@ -33,8 +28,8 @@ namespace Gastos
             {
                 ListarIdCompetencia(idCliente, data);
             }
-            ListarMovimentacao(idCliente, idCompetencia);
             InformacaoSaldoAnterior(idCliente, idComeptenciaAnterior);
+            ListarMovimentacao(idCliente, idCompetencia);
         }
 
         private void ListarIdCompetencia(int idCliente, DateTime data)
@@ -117,8 +112,6 @@ namespace Gastos
             {
                 LblSalPend.ForeColor = Color.Green;
             }
-
-
 
             LblSalES.Text = "Sal. E. S.: " + valSalEntSaiAnt.ToString("#,##0.00");
             LblSalPR.Text = "Sal. P. R.: " + valSalPagRecAnt.ToString("#,##0.00");

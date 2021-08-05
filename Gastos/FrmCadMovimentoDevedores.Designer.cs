@@ -29,6 +29,7 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -48,6 +49,8 @@ namespace Gastos
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnExcluir = new System.Windows.Forms.Button();
+            this.CmsBtnExcluir = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CmsExcluirTudo = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnAlterar = new System.Windows.Forms.Button();
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -72,6 +75,7 @@ namespace Gastos
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoDev)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.CmsBtnExcluir.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -250,6 +254,8 @@ namespace Gastos
             // 
             // BtnExcluir
             // 
+            this.BtnExcluir.ContextMenuStrip = this.CmsBtnExcluir;
+            this.BtnExcluir.Enabled = false;
             this.BtnExcluir.Location = new System.Drawing.Point(6, 70);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
@@ -258,8 +264,23 @@ namespace Gastos
             this.BtnExcluir.UseVisualStyleBackColor = true;
             this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
+            // CmsBtnExcluir
+            // 
+            this.CmsBtnExcluir.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CmsExcluirTudo});
+            this.CmsBtnExcluir.Name = "CmsBtnExcluir";
+            this.CmsBtnExcluir.Size = new System.Drawing.Size(229, 48);
+            // 
+            // CmsExcluirTudo
+            // 
+            this.CmsExcluirTudo.Name = "CmsExcluirTudo";
+            this.CmsExcluirTudo.Size = new System.Drawing.Size(228, 22);
+            this.CmsExcluirTudo.Text = "Excluir Todos os Movimentos";
+            this.CmsExcluirTudo.Click += new System.EventHandler(this.CmsExcluirTudo_Click);
+            // 
             // BtnAlterar
             // 
+            this.BtnAlterar.Enabled = false;
             this.BtnAlterar.Location = new System.Drawing.Point(6, 41);
             this.BtnAlterar.Name = "BtnAlterar";
             this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
@@ -496,6 +517,7 @@ namespace Gastos
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoDev)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.CmsBtnExcluir.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -545,5 +567,7 @@ namespace Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn Recebido;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataRecebido;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
+        private System.Windows.Forms.ContextMenuStrip CmsBtnExcluir;
+        private System.Windows.Forms.ToolStripMenuItem CmsExcluirTudo;
     }
 }

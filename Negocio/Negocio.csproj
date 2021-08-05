@@ -73,12 +73,14 @@
     <Compile Include="ListarConsulta\Listar.cs" />
     <Compile Include="Movimento\Devedor\Alterar.cs" />
     <Compile Include="Movimento\Devedor\Excluir.cs" />
+    <Compile Include="Movimento\Devedor\ExcluirTudoClienteDevedor.cs" />
     <Compile Include="Movimento\Devedor\Inserir.cs" />
     <Compile Include="Movimento\Devedor\Listar\CadastroMovDevCliente.cs" />
     <Compile Include="Movimento\Devedor\Listar\CadastroMovDevDatRecebido.cs" />
     <Compile Include="Movimento\Devedor\Listar\DevedoresIdMovimento.cs" />
     <Compile Include="Movimento\Emprestimo\Alterar.cs" />
     <Compile Include="Movimento\Emprestimo\Excluir.cs" />
+    <Compile Include="Movimento\Emprestimo\ExcluirTudoClienteEmprestimo.cs" />
     <Compile Include="Movimento\Emprestimo\Inserir.cs" />
     <Compile Include="Movimento\Emprestimo\Listar\CadastroMovEmpDatPagamento.cs" />
     <Compile Include="Movimento\Emprestimo\Listar\CadastroMovEmprCliente.cs" />

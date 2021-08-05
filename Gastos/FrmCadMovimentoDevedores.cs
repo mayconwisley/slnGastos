@@ -1,25 +1,17 @@
 ﻿using Negocio.Cliente.Listar;
-using Negocio.Movimento.Devedor;
 using Negocio.Devedores.Listar;
+using Negocio.Movimento.Devedor;
 using Negocio.Movimento.Devedor.Listar;
 using Negocio.Utilitario;
+using Negocio.Validador;
 using Objeto.MovimentoDevedores;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Negocio.Validador;
 
 namespace Gastos
 {
     public partial class FrmCadMovimentoDevedores : Form
     {
-
         string strLogin;
         int idCliente, idDevedor, idMovimentoDev;
 
@@ -28,11 +20,13 @@ namespace Gastos
             InitializeComponent();
             strLogin = login;
         }
+
         private void ListarCliente()
         {
             IdNomeCliente idNomeCliente = new IdNomeCliente();
             CbxNome.DataSource = idNomeCliente.Consulta();
         }
+
         private void ListarDevedores(int idCliente)
         {
             CbxDescricao.Text = "";
@@ -104,6 +98,7 @@ namespace Gastos
             }
 
         }
+
         private void Informacoes()
         {
             decimal valGeral = 0, valPago = 0, valPagar = 0;
@@ -124,6 +119,32 @@ namespace Gastos
             LblValorTotal.Text = "Valor Total......: " + valGeral.ToString("#,##0.00");
             LblValorPago.Text = "Valor Recebido...: " + valPago.ToString("#,##0.00");
             LblValorPagar.Text = "Valor a Receber..: " + valPagar.ToString("#,##0.00");
+
+        }
+
+        private void ExcluirTudoDevedor(int idDevedor)
+        {
+            ExcluirTudoClienteDevedor excluirTudoClienteDevedor = new ExcluirTudoClienteDevedor();
+            try
+            {
+                if (MessageBox.Show("Deseja excluir todos os lançamentos?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    excluirTudoClienteDevedor.Cadastro(idDevedor);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void LimparCampos()
+        {
+            TxtParcela.Text = "1";
+            TxtValor.Text = "0,00";
+            MktDataRecebido.Clear();
+            MktDataParcela.Clear();
 
         }
 
@@ -174,6 +195,8 @@ namespace Gastos
             if (CbxRecebido.SelectedIndex == 0)
             {
                 MktDataRecebido.Enabled = true;
+                MktDataRecebido.Text = MktDataParcela.Text;
+                MktDataRecebido.Focus();
             }
             else
             {
@@ -238,19 +261,16 @@ namespace Gastos
             }
         }
 
-        private void DgvListarMovimentoDev_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CmsExcluirTudo_Click(object sender, EventArgs e)
         {
-
+            ExcluirTudoDevedor(idDevedor);
+            ListarDevedores(idCliente);
+            LimparCampos();
+            BtnAlterar.Enabled = false;
+            BtnExcluir.Enabled = false;
+            BtnSalvar.Enabled = true;
         }
 
-        private void LimparCampos()
-        {
-            TxtParcela.Text = "1";
-            TxtValor.Text = "0,00";
-            MktDataRecebido.Clear();
-            MktDataParcela.Clear();
-
-        }
         private void FrmCadMovimentoDevedores_Load(object sender, EventArgs e)
         {
             LblDataCadastro.Text = "Data Cadastro:" + DateTime.Now.ToString("dd/MM/yyyy");

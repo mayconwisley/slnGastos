@@ -1,14 +1,11 @@
 ﻿using Banco;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Emprestimos.Listar
 {
-  public  class IdDescricaoEmprestimo
+    public class IdDescricaoEmprestimo
     {
 
         Crud crud;

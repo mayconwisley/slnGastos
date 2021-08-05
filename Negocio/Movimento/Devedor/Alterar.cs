@@ -1,15 +1,12 @@
 ﻿using Banco;
 using Objeto.MovimentoDevedores;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Movimento.Devedor
 {
-   public class Alterar
+    public class Alterar
     {
         Crud crud;
         StringBuilder SQL = null;

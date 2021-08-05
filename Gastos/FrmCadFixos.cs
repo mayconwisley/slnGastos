@@ -5,13 +5,6 @@ using Negocio.Utilitario;
 using Negocio.Validador;
 using Objeto.Fixos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos
@@ -207,7 +200,7 @@ namespace Gastos
             TxtValor.Text = valor.ToString("#,##0.00");
             MktDataInicio.Text = DgvListarFixos.Rows[e.RowIndex].Cells["DataInicio"].Value.ToString();
             MktDataFim.Text = DgvListarFixos.Rows[e.RowIndex].Cells["DataFim"].Value.ToString();
-           
+
             string integrar = DgvListarFixos.Rows[e.RowIndex].Cells["Integrar"].Value.ToString();
             if (integrar == "Sim")
             {
@@ -217,7 +210,7 @@ namespace Gastos
             {
                 CbIntegrar.Checked = false;
             }
-           
+
             if (MktDataFim.Text == "01/01/0001")
             {
                 MktDataFim.Clear();

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos
@@ -21,7 +18,7 @@ namespace Gastos
 
             if (frmTelaLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FrmPrincipal(frmTelaLogin.Login)); 
+                Application.Run(new FrmPrincipal(frmTelaLogin.Login));
             }
         }
     }

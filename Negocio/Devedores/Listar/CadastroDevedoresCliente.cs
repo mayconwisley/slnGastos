@@ -1,14 +1,11 @@
 ﻿using Banco;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Devedores.Listar
 {
-   public class CadastroDevedoresCliente
+    public class CadastroDevedoresCliente
     {
         /*Listar cadastro dos emprestimos por cliente*/
         Crud crud;
