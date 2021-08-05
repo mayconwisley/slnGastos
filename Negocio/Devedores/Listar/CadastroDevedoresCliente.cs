@@ -19,7 +19,7 @@ namespace Negocio.Devedores.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, DataInicio, Nome, Valor, Parcelas, Valor * Parcelas AS ValorTotal,  Parcelado, Ativo, Login, ClienteId, DataCadastro ");
+            SQL.Append("SELECT Id, DataInicio, Nome, Descricao, Valor, Parcelas, Valor * Parcelas AS ValorTotal,  Parcelado, Ativo, Login, ClienteId, DataCadastro ");
             SQL.Append("FROM Devedores ");
             SQL.Append("WHERE ClienteId = @ClienteId ");
             SQL.Append("ORDER BY DataInicio DESC, UPPER(Nome) ASC");

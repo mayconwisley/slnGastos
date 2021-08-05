@@ -18,19 +18,20 @@ namespace Negocio.Movimento.Geral
 
             SQL.Append("UPDATE Movimentacao ");
             SQL.Append("SET DataMovimento = @DataMovimento, Descricao = @Descricao, Valor = @Valor, TipoLancamento = @TipoLancamento, " +
-                       "TipoMonetario = @TipoMonetario, TipoPagoRecebido = @TipoPagoRecebido ");
+                       "TipoMonetario = @TipoMonetario, TipoPagoRecebido = @TipoPagoRecebido, Integrado = @Integrado ");
             SQL.Append("WHERE Id = @Id");
 
             try
             {
                 crud.LimparParametro();
 
-                crud.AdicionarParametro("DataMovimento", movimentacao.Data);
+                crud.AdicionarParametro("DataMovimento", movimentacao.DataMovimento);
                 crud.AdicionarParametro("Descricao", movimentacao.Descricao);
                 crud.AdicionarParametro("Valor", movimentacao.Valor);
                 crud.AdicionarParametro("TipoLancamento", movimentacao.TipoLancamento);
                 crud.AdicionarParametro("TipoMonetario", movimentacao.TipoMonetario);
                 crud.AdicionarParametro("TipoPagoRecebido", movimentacao.TipoPagoRecebido);
+                crud.AdicionarParametro("Integrado", movimentacao.Integracao);
                 crud.AdicionarParametro("Id", movimentacao.Id);
                 crud.Executar(CommandType.Text, SQL.ToString());
                 return true;

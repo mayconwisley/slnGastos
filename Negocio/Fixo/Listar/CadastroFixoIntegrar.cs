@@ -1,30 +1,31 @@
 ﻿using Banco;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Negocio.Movimento.Emprestimo.Listar
+namespace Negocio.Fixo.Listar
 {
-    public class CadastroMovEmpDatPagamento
+    public class CadastroFixoIntegrar
     {
         /*Listar emprestimos por emprestimos*/
         Crud crud;
         StringBuilder SQL = null;
 
-        public DataTable Consulta(DateTime dataPagamento)
+        public DataTable Consulta()
         {
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT MovEmp.Valor, MovEmp.DataPagamento, Emp.Descricao ");
-            SQL.Append("FROM MovimentoEmprestimos MovEmp ");
-            SQL.Append("INNER JOIN Emprestimos Emp ON Emp.Id = MovEmp.EmprestimosId ");
-            SQL.Append("WHERE STRFTIME('%Y-%m-01', DataPagamento) = STRFTIME('%Y-%m-01', @DataPagamento) AND Pago = 'Sim'");
+            SQL.Append("SELECT Valor, Descricao ");
+            SQL.Append("FROM Fixos ");
+            SQL.Append("WHERE Integrar = 'Sim' AND DataFim = NULL AND Ativo = 'Sim'");
 
             try
             {
                 crud.LimparParametro();
-                crud.AdicionarParametro("DataPagamento", dataPagamento);
                 DataTable dataTable = crud.Consulta(CommandType.Text, SQL.ToString());
                 return dataTable;
             }

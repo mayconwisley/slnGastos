@@ -9,6 +9,7 @@ namespace Objeto.Devedores
         public int Id { get; set; }
         public DateTime DataInicio { get; set; }
         public string Nome { get; set; }
+        public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public string Parcelado { get; set; }
         public int Parcelas { get; set; }

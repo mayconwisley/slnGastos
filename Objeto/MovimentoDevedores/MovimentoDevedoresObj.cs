@@ -12,9 +12,9 @@ namespace Objeto.MovimentoDevedores
         public DateTime DataParcela { get; set; }
         public int Parcela { get; set; }
         public decimal Valor { get; set; }
-        public string Pago { get; set; }
+        public string Recebido { get; set; }
         public UsuarioObj Usuario { get; set; }
         public DateTime DataCadastro { get; set; }
-        public DateTime DataPagameno { get; set; }
+        public DateTime DataRecebido { get; set; }
     }
 }

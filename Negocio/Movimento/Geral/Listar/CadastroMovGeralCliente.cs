@@ -18,7 +18,7 @@ namespace Negocio.Movimento.Geral.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, DataMovimento, Descricao, Valor, TipoLancamento, TipoMonetario, TipoPagoRecebido, Login, ClienteId, CompetenciaId, DataCadastro ");
+            SQL.Append("SELECT Id, DataMovimento, Descricao, Valor, TipoLancamento, TipoMonetario, TipoPagoRecebido, Integrado, Login, ClienteId, CompetenciaId, DataCadastro ");
             SQL.Append("FROM Movimentacao ");
             SQL.Append("WHERE ClienteId = @ClienteId AND CompetenciaId = @CompetenciaId ");
             SQL.Append("ORDER BY DataMovimento DESC, UPPER(Descricao) ASC");

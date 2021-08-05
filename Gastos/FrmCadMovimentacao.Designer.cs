@@ -36,6 +36,9 @@ namespace Gastos
             this.CbxNome = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnInteDevedores = new System.Windows.Forms.Button();
+            this.BtnInteFixos = new System.Windows.Forms.Button();
+            this.BtnInteEmprestimo = new System.Windows.Forms.Button();
             this.CbCheque = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,17 +56,6 @@ namespace Gastos
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DgvListaMovimentacao = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataMovimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoMonetario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoPagoRecebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompetenciaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LblSalPen = new System.Windows.Forms.Label();
             this.LblValPenSai = new System.Windows.Forms.Label();
@@ -78,8 +70,18 @@ namespace Gastos
             this.LblSalPend = new System.Windows.Forms.Label();
             this.LblSalPR = new System.Windows.Forms.Label();
             this.LblSalES = new System.Windows.Forms.Label();
-            this.BtnInteEmprestimo = new System.Windows.Forms.Button();
-            this.BtnInteDevedores = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataMovimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoMonetario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPagoRecebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Integrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompetenciaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -143,6 +145,7 @@ namespace Gastos
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.BtnInteDevedores);
+            this.groupBox2.Controls.Add(this.BtnInteFixos);
             this.groupBox2.Controls.Add(this.BtnInteEmprestimo);
             this.groupBox2.Controls.Add(this.CbCheque);
             this.groupBox2.Controls.Add(this.label2);
@@ -161,6 +164,36 @@ namespace Gastos
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cadastro Movimentação";
+            // 
+            // BtnInteDevedores
+            // 
+            this.BtnInteDevedores.Location = new System.Drawing.Point(236, 53);
+            this.BtnInteDevedores.Name = "BtnInteDevedores";
+            this.BtnInteDevedores.Size = new System.Drawing.Size(75, 39);
+            this.BtnInteDevedores.TabIndex = 9;
+            this.BtnInteDevedores.Text = "Integrar Devedores";
+            this.BtnInteDevedores.UseVisualStyleBackColor = true;
+            this.BtnInteDevedores.Click += new System.EventHandler(this.BtnInteDevedores_Click);
+            // 
+            // BtnInteFixos
+            // 
+            this.BtnInteFixos.Location = new System.Drawing.Point(86, 53);
+            this.BtnInteFixos.Name = "BtnInteFixos";
+            this.BtnInteFixos.Size = new System.Drawing.Size(75, 39);
+            this.BtnInteFixos.TabIndex = 9;
+            this.BtnInteFixos.Text = "Integrar Fixos";
+            this.BtnInteFixos.UseVisualStyleBackColor = true;
+            this.BtnInteFixos.Click += new System.EventHandler(this.BtnInteFixos_Click);
+            // 
+            // BtnInteEmprestimo
+            // 
+            this.BtnInteEmprestimo.Location = new System.Drawing.Point(161, 53);
+            this.BtnInteEmprestimo.Name = "BtnInteEmprestimo";
+            this.BtnInteEmprestimo.Size = new System.Drawing.Size(75, 39);
+            this.BtnInteEmprestimo.TabIndex = 9;
+            this.BtnInteEmprestimo.Text = "Integrar Empréstimo";
+            this.BtnInteEmprestimo.UseVisualStyleBackColor = true;
+            this.BtnInteEmprestimo.Click += new System.EventHandler(this.BtnInteEmprestimo_Click);
             // 
             // CbCheque
             // 
@@ -343,6 +376,7 @@ namespace Gastos
             this.TipoLancamento,
             this.TipoMonetario,
             this.TipoPagoRecebido,
+            this.Integrado,
             this.Login,
             this.ClienteId,
             this.CompetenciaId,
@@ -355,101 +389,6 @@ namespace Gastos
             this.DgvListaMovimentacao.Size = new System.Drawing.Size(569, 231);
             this.DgvListaMovimentacao.TabIndex = 0;
             this.DgvListaMovimentacao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaMovimentacao_CellDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
-            // 
-            // DataMovimento
-            // 
-            this.DataMovimento.DataPropertyName = "DataMovimento";
-            this.DataMovimento.HeaderText = "Data Movimento";
-            this.DataMovimento.Name = "DataMovimento";
-            this.DataMovimento.ReadOnly = true;
-            this.DataMovimento.Width = 101;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            this.Descricao.Width = 80;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 56;
-            // 
-            // TipoLancamento
-            // 
-            this.TipoLancamento.DataPropertyName = "TipoLancamento";
-            this.TipoLancamento.HeaderText = "Tipo Lançamento";
-            this.TipoLancamento.Name = "TipoLancamento";
-            this.TipoLancamento.ReadOnly = true;
-            this.TipoLancamento.Width = 105;
-            // 
-            // TipoMonetario
-            // 
-            this.TipoMonetario.DataPropertyName = "TipoMonetario";
-            this.TipoMonetario.HeaderText = "Tipo Monetario";
-            this.TipoMonetario.Name = "TipoMonetario";
-            this.TipoMonetario.ReadOnly = true;
-            this.TipoMonetario.Width = 95;
-            // 
-            // TipoPagoRecebido
-            // 
-            this.TipoPagoRecebido.DataPropertyName = "TipoPagoRecebido";
-            this.TipoPagoRecebido.HeaderText = "Tipo Pago Recebido";
-            this.TipoPagoRecebido.Name = "TipoPagoRecebido";
-            this.TipoPagoRecebido.ReadOnly = true;
-            this.TipoPagoRecebido.Width = 119;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            this.Login.Width = 58;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
-            this.ClienteId.Width = 73;
-            // 
-            // CompetenciaId
-            // 
-            this.CompetenciaId.DataPropertyName = "CompetenciaId";
-            this.CompetenciaId.HeaderText = "CompetenciaId";
-            this.CompetenciaId.Name = "CompetenciaId";
-            this.CompetenciaId.ReadOnly = true;
-            this.CompetenciaId.Visible = false;
-            this.CompetenciaId.Width = 103;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Width = 92;
             // 
             // groupBox5
             // 
@@ -601,24 +540,108 @@ namespace Gastos
             this.LblSalES.TabIndex = 0;
             this.LblSalES.Text = "Sal. E. S.: 0,00";
             // 
-            // BtnInteEmprestimo
+            // Id
             // 
-            this.BtnInteEmprestimo.Location = new System.Drawing.Point(86, 54);
-            this.BtnInteEmprestimo.Name = "BtnInteEmprestimo";
-            this.BtnInteEmprestimo.Size = new System.Drawing.Size(75, 39);
-            this.BtnInteEmprestimo.TabIndex = 9;
-            this.BtnInteEmprestimo.Text = "Integrar Empréstimo";
-            this.BtnInteEmprestimo.UseVisualStyleBackColor = true;
-            this.BtnInteEmprestimo.Click += new System.EventHandler(this.BtnInteEmprestimo_Click);
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 41;
             // 
-            // BtnInteDevedores
+            // DataMovimento
             // 
-            this.BtnInteDevedores.Location = new System.Drawing.Point(161, 54);
-            this.BtnInteDevedores.Name = "BtnInteDevedores";
-            this.BtnInteDevedores.Size = new System.Drawing.Size(75, 39);
-            this.BtnInteDevedores.TabIndex = 9;
-            this.BtnInteDevedores.Text = "Integrar Devedores";
-            this.BtnInteDevedores.UseVisualStyleBackColor = true;
+            this.DataMovimento.DataPropertyName = "DataMovimento";
+            this.DataMovimento.HeaderText = "Data Movimento";
+            this.DataMovimento.Name = "DataMovimento";
+            this.DataMovimento.ReadOnly = true;
+            this.DataMovimento.Width = 101;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 80;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 56;
+            // 
+            // TipoLancamento
+            // 
+            this.TipoLancamento.DataPropertyName = "TipoLancamento";
+            this.TipoLancamento.HeaderText = "Tipo Lançamento";
+            this.TipoLancamento.Name = "TipoLancamento";
+            this.TipoLancamento.ReadOnly = true;
+            this.TipoLancamento.Width = 105;
+            // 
+            // TipoMonetario
+            // 
+            this.TipoMonetario.DataPropertyName = "TipoMonetario";
+            this.TipoMonetario.HeaderText = "Tipo Monetario";
+            this.TipoMonetario.Name = "TipoMonetario";
+            this.TipoMonetario.ReadOnly = true;
+            this.TipoMonetario.Width = 95;
+            // 
+            // TipoPagoRecebido
+            // 
+            this.TipoPagoRecebido.DataPropertyName = "TipoPagoRecebido";
+            this.TipoPagoRecebido.HeaderText = "Tipo Pago Recebido";
+            this.TipoPagoRecebido.Name = "TipoPagoRecebido";
+            this.TipoPagoRecebido.ReadOnly = true;
+            this.TipoPagoRecebido.Width = 119;
+            // 
+            // Integrado
+            // 
+            this.Integrado.DataPropertyName = "Integrado";
+            this.Integrado.HeaderText = "Integrado";
+            this.Integrado.Name = "Integrado";
+            this.Integrado.ReadOnly = true;
+            this.Integrado.Width = 77;
+            // 
+            // Login
+            // 
+            this.Login.DataPropertyName = "Login";
+            this.Login.HeaderText = "Login";
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
+            this.Login.Visible = false;
+            this.Login.Width = 58;
+            // 
+            // ClienteId
+            // 
+            this.ClienteId.DataPropertyName = "ClienteId";
+            this.ClienteId.HeaderText = "ClienteId";
+            this.ClienteId.Name = "ClienteId";
+            this.ClienteId.ReadOnly = true;
+            this.ClienteId.Visible = false;
+            this.ClienteId.Width = 73;
+            // 
+            // CompetenciaId
+            // 
+            this.CompetenciaId.DataPropertyName = "CompetenciaId";
+            this.CompetenciaId.HeaderText = "CompetenciaId";
+            this.CompetenciaId.Name = "CompetenciaId";
+            this.CompetenciaId.ReadOnly = true;
+            this.CompetenciaId.Visible = false;
+            this.CompetenciaId.Width = 103;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.DataPropertyName = "DataCadastro";
+            this.DataCadastro.HeaderText = "Data Cadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
+            this.DataCadastro.Width = 92;
             // 
             // FrmCadMovimentacao
             // 
@@ -689,17 +712,6 @@ namespace Gastos
         private System.Windows.Forms.Label LblValPenEnt;
         private System.Windows.Forms.Label LblValPenSai;
         private System.Windows.Forms.Label LblSalPen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataMovimento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoLancamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoMonetario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoPagoRecebido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CompetenciaId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label LblSalES;
         private System.Windows.Forms.Label label2;
@@ -707,5 +719,18 @@ namespace Gastos
         private System.Windows.Forms.Label LblSalPR;
         private System.Windows.Forms.Button BtnInteEmprestimo;
         private System.Windows.Forms.Button BtnInteDevedores;
+        private System.Windows.Forms.Button BtnInteFixos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataMovimento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoLancamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoMonetario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoPagoRecebido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Integrado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompetenciaId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
     }
 }

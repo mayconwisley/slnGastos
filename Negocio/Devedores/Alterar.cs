@@ -17,7 +17,7 @@ namespace Negocio.Devedores
             SQL = new StringBuilder();
 
             SQL.Append("UPDATE Devedores ");
-            SQL.Append("SET DataInicio = @DataInicio, Nome = @Nome, Valor = @Valor, Parcelado = @Parcelado, Parcelas = @Parcelas, " +
+            SQL.Append("SET DataInicio = @DataInicio, Nome = @Nome, Descricao = @Descricao, Valor = @Valor, Parcelado = @Parcelado, Parcelas = @Parcelas, " +
                        "Ativo = @Ativo, Login = @Login, ClienteId = @ClienteId ");
             SQL.Append("WHERE Id = @Id");
 
@@ -26,6 +26,7 @@ namespace Negocio.Devedores
                 crud.LimparParametro();
                 crud.AdicionarParametro("DataInicio", devedores.DataInicio);
                 crud.AdicionarParametro("Nome", devedores.Nome);
+                crud.AdicionarParametro("Descricao", devedores.Descricao);
                 crud.AdicionarParametro("Valor", devedores.Valor);
                 crud.AdicionarParametro("Parcelado", devedores.Parcelado);
                 crud.AdicionarParametro("Parcelas", devedores.Parcelas);

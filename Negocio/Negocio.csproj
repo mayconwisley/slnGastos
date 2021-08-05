@@ -68,14 +68,15 @@
     <Compile Include="Fixo\Alterar.cs" />
     <Compile Include="Fixo\Excluir.cs" />
     <Compile Include="Fixo\Inserir.cs" />
+    <Compile Include="Fixo\Listar\CadastroFixoIntegrar.cs" />
     <Compile Include="Fixo\Listar\CadastroFixosCliente.cs" />
     <Compile Include="ListarConsulta\Listar.cs" />
     <Compile Include="Movimento\Devedor\Alterar.cs" />
     <Compile Include="Movimento\Devedor\Excluir.cs" />
     <Compile Include="Movimento\Devedor\Inserir.cs" />
     <Compile Include="Movimento\Devedor\Listar\CadastroMovDevCliente.cs" />
+    <Compile Include="Movimento\Devedor\Listar\CadastroMovDevDatRecebido.cs" />
     <Compile Include="Movimento\Devedor\Listar\DevedoresIdMovimento.cs" />
-    <Compile Include="Movimento\Devedor\Listar\IdMovimentoDevedor.cs" />
     <Compile Include="Movimento\Emprestimo\Alterar.cs" />
     <Compile Include="Movimento\Emprestimo\Excluir.cs" />
     <Compile Include="Movimento\Emprestimo\Inserir.cs" />

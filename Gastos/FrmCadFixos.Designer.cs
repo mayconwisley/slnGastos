@@ -29,7 +29,7 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.CbxCliente = new System.Windows.Forms.ComboBox();
@@ -44,15 +44,6 @@ namespace Gastos
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvListarFixos = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
@@ -61,6 +52,17 @@ namespace Gastos
             this.LblTotalGeral = new System.Windows.Forms.Label();
             this.LblTotalNAtivo = new System.Windows.Forms.Label();
             this.LblTotalAtivo = new System.Windows.Forms.Label();
+            this.CbIntegrar = new System.Windows.Forms.CheckBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Integrar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarFixos)).BeginInit();
@@ -70,6 +72,7 @@ namespace Gastos
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CbIntegrar);
             this.groupBox1.Controls.Add(this.LblDataCadastro);
             this.groupBox1.Controls.Add(this.CbxCliente);
             this.groupBox1.Controls.Add(this.label5);
@@ -215,6 +218,7 @@ namespace Gastos
             this.DataInicio,
             this.Descricao,
             this.Valor,
+            this.Integrar,
             this.DataFim,
             this.Ativo,
             this.DataCadastro,
@@ -228,80 +232,6 @@ namespace Gastos
             this.DgvListarFixos.Size = new System.Drawing.Size(587, 260);
             this.DgvListarFixos.TabIndex = 0;
             this.DgvListarFixos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListarFixos_CellDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DataInicio
-            // 
-            this.DataInicio.DataPropertyName = "DataInicio";
-            this.DataInicio.HeaderText = "Data Inicio";
-            this.DataInicio.Name = "DataInicio";
-            this.DataInicio.ReadOnly = true;
-            this.DataInicio.Width = 83;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            this.Descricao.Width = 80;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 56;
-            // 
-            // DataFim
-            // 
-            this.DataFim.DataPropertyName = "DataFim";
-            this.DataFim.HeaderText = "Data Fim";
-            this.DataFim.Name = "DataFim";
-            this.DataFim.ReadOnly = true;
-            this.DataFim.Width = 74;
-            // 
-            // Ativo
-            // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
             // 
             // groupBox3
             // 
@@ -388,6 +318,101 @@ namespace Gastos
             this.LblTotalAtivo.TabIndex = 0;
             this.LblTotalAtivo.Text = "Total Ativo: 0,00";
             // 
+            // CbIntegrar
+            // 
+            this.CbIntegrar.AutoSize = true;
+            this.CbIntegrar.Location = new System.Drawing.Point(120, 152);
+            this.CbIntegrar.Name = "CbIntegrar";
+            this.CbIntegrar.Size = new System.Drawing.Size(62, 17);
+            this.CbIntegrar.TabIndex = 11;
+            this.CbIntegrar.Text = "Integrar";
+            this.CbIntegrar.UseVisualStyleBackColor = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 41;
+            // 
+            // DataInicio
+            // 
+            this.DataInicio.DataPropertyName = "DataInicio";
+            this.DataInicio.HeaderText = "Data Inicio";
+            this.DataInicio.Name = "DataInicio";
+            this.DataInicio.ReadOnly = true;
+            this.DataInicio.Width = 83;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 80;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 56;
+            // 
+            // Integrar
+            // 
+            this.Integrar.DataPropertyName = "Integrar";
+            this.Integrar.HeaderText = "Integrar";
+            this.Integrar.Name = "Integrar";
+            this.Integrar.ReadOnly = true;
+            this.Integrar.Width = 68;
+            // 
+            // DataFim
+            // 
+            this.DataFim.DataPropertyName = "DataFim";
+            this.DataFim.HeaderText = "Data Fim";
+            this.DataFim.Name = "DataFim";
+            this.DataFim.ReadOnly = true;
+            this.DataFim.Width = 74;
+            // 
+            // Ativo
+            // 
+            this.Ativo.DataPropertyName = "Ativo";
+            this.Ativo.HeaderText = "Ativo";
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ReadOnly = true;
+            this.Ativo.Width = 56;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.DataPropertyName = "DataCadastro";
+            this.DataCadastro.HeaderText = "Data Cadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
+            // 
+            // Login
+            // 
+            this.Login.DataPropertyName = "Login";
+            this.Login.HeaderText = "Login";
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
+            this.Login.Visible = false;
+            this.Login.Width = 58;
+            // 
+            // ClienteId
+            // 
+            this.ClienteId.DataPropertyName = "ClienteId";
+            this.ClienteId.HeaderText = "ClienteId";
+            this.ClienteId.Name = "ClienteId";
+            this.ClienteId.ReadOnly = true;
+            this.ClienteId.Visible = false;
+            this.ClienteId.Width = 73;
+            // 
             // FrmCadFixos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,18 +462,20 @@ namespace Gastos
         private System.Windows.Forms.Button BtnSalvar;
         private System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Button BtnAlterar;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label LblTotalGeral;
+        private System.Windows.Forms.Label LblTotalNAtivo;
+        private System.Windows.Forms.Label LblTotalAtivo;
+        private System.Windows.Forms.CheckBox CbIntegrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Integrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataFim;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label LblTotalGeral;
-        private System.Windows.Forms.Label LblTotalNAtivo;
-        private System.Windows.Forms.Label LblTotalAtivo;
     }
 }

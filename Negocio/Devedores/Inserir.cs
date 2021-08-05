@@ -17,14 +17,15 @@ namespace Negocio.Devedores
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("INSERT INTO Devedores(DataInicio, Nome,  Valor, Parcelas, Parcelado, Ativo, Login, ClienteId, DataCadastro) ");
-            SQL.Append("VALUES(@DataInicio, @Nome,  @Valor, @Parcelas, @Parcelado, @Ativo, @Login, @ClienteId, @DataCadastro)");
+            SQL.Append("INSERT INTO Devedores(DataInicio, Nome, Descricao,  Valor, Parcelas, Parcelado, Ativo, Login, ClienteId, DataCadastro) ");
+            SQL.Append("VALUES(@DataInicio, @Nome, @Descricao,  @Valor, @Parcelas, @Parcelado, @Ativo, @Login, @ClienteId, @DataCadastro)");
 
             try
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("DataInicio", devedores.DataInicio);
                 crud.AdicionarParametro("Nome", devedores.Nome);
+                crud.AdicionarParametro("Descricao", devedores.Descricao);
                 crud.AdicionarParametro("Valor", devedores.Valor);
                 crud.AdicionarParametro("Parcelas", devedores.Parcelas);
                 crud.AdicionarParametro("Parcelado", devedores.Parcelado);

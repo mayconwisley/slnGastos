@@ -16,7 +16,7 @@ namespace Negocio.Fixo.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, DataInicio, Descricao, Valor, DataFim, Ativo, Login, ClienteId, DataCadastro ");
+            SQL.Append("SELECT Id, DataInicio, Descricao, Valor, Integrar, DataFim, Ativo, Login, ClienteId, DataCadastro ");
             SQL.Append("FROM Fixos ");
             SQL.Append("WHERE ClienteId = @ClienteId ");
             SQL.Append("ORDER BY DataInicio DESC, UPPER(Descricao) ASC ");

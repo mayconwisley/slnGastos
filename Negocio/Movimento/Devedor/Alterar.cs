@@ -21,7 +21,7 @@ namespace Negocio.Movimento.Devedor
 
             SQL.Append("UPDATE MovimentoDevedores ");
             SQL.Append("SET DevedoresId = @DevedoresId, DataParcela = @DataParcela, Parcela = @Parcela, Valor = @Valor, " +
-                       "Pago = @Pago, DataPagamento = @DataPagamento ");
+                       "Recebido = @Recebido, DataRecebido = @DataRecebido ");
             SQL.Append("WHERE Id = @Id");
 
             try
@@ -32,8 +32,8 @@ namespace Negocio.Movimento.Devedor
                 crud.AdicionarParametro("DataParcela", movimentoDevedores.DataParcela);
                 crud.AdicionarParametro("Parcela", movimentoDevedores.Parcela);
                 crud.AdicionarParametro("Valor", movimentoDevedores.Valor);
-                crud.AdicionarParametro("Pago", movimentoDevedores.Pago);
-                crud.AdicionarParametro("DataPagamento", movimentoDevedores.DataPagameno);
+                crud.AdicionarParametro("Recebido", movimentoDevedores.Recebido);
+                crud.AdicionarParametro("DataRecebido", movimentoDevedores.DataRecebido);
                 crud.AdicionarParametro("Id", movimentoDevedores.Id);
                 crud.Executar(CommandType.Text, SQL.ToString());
                 return true;

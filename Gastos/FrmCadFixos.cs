@@ -58,6 +58,15 @@ namespace Gastos
                     fixo.Ativo = "Não";
                 }
 
+                if (CbIntegrar.Checked)
+                {
+                    fixo.Integrar = "Sim";
+                }
+                else
+                {
+                    fixo.Integrar = "Não";
+                }
+
                 fixo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
                 fixo.Usuario = new Objeto.Usuario.UsuarioObj();
                 fixo.Usuario.Login = strLogin;
@@ -198,12 +207,21 @@ namespace Gastos
             TxtValor.Text = valor.ToString("#,##0.00");
             MktDataInicio.Text = DgvListarFixos.Rows[e.RowIndex].Cells["DataInicio"].Value.ToString();
             MktDataFim.Text = DgvListarFixos.Rows[e.RowIndex].Cells["DataFim"].Value.ToString();
-
+           
+            string integrar = DgvListarFixos.Rows[e.RowIndex].Cells["Integrar"].Value.ToString();
+            if (integrar == "Sim")
+            {
+                CbIntegrar.Checked = true;
+            }
+            else
+            {
+                CbIntegrar.Checked = false;
+            }
+           
             if (MktDataFim.Text == "01/01/0001")
             {
                 MktDataFim.Clear();
             }
-
 
             BtnAlterar.Enabled = true;
             BtnExcluir.Enabled = true;

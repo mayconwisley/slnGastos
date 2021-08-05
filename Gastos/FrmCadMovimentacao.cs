@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio.Validador;
 using Negocio.Movimento.Emprestimo.Listar;
+using Negocio.Movimento.Devedor.Listar;
+using Objeto.Devedores;
+using Negocio.Fixo.Listar;
 
 namespace Gastos
 {
@@ -69,10 +72,11 @@ namespace Gastos
             MovimentacaoObj movimentacao = new MovimentacaoObj();
             Inserir inserir = new Inserir();
 
-            movimentacao.Data = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+
             movimentacao.TipoLancamento = "Saída";
-            movimentacao.TipoPagoRecebido = "Pendente";
+            movimentacao.TipoPagoRecebido = "Pago";
             movimentacao.TipoMonetario = "Dinheiro";
+            movimentacao.Integracao = "Integrado Emprestimos";
             movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
             movimentacao.Competencia.Id = idCompetencia;
             movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
@@ -81,13 +85,72 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(dataPagamento).Rows)
+            foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(dataPagamento.AddMonths(1)).Rows)
             {
+                movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
                 movimentacao.Descricao = row["Descricao"].ToString();
                 movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
                 inserir.Cadastro(movimentacao);
             }
         }
+
+        private void IntegrarDevedores(DateTime dataPagamento)
+        {
+            CadastroMovDevDatRecebido cadastroMovDevDatPagamento = new CadastroMovDevDatRecebido();
+            MovimentacaoObj movimentacao = new MovimentacaoObj();
+            Inserir inserir = new Inserir();
+
+
+            movimentacao.TipoLancamento = "Entrada";
+            movimentacao.TipoPagoRecebido = "Recebido";
+            movimentacao.TipoMonetario = "Dinheiro";
+            movimentacao.Integracao = "Integrado Devedores";
+            movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
+            movimentacao.Competencia.Id = idCompetencia;
+            movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
+            movimentacao.Usuario.Login = strLogin;
+            movimentacao.Cliente = new Objeto.Cliente.ClienteObj();
+            movimentacao.Cliente.Id = idCliente;
+            movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(dataPagamento.AddMonths(1)).Rows)
+            {
+                movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
+                movimentacao.Descricao = row["Descricao"].ToString();
+                movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
+                inserir.Cadastro(movimentacao);
+            }
+        }
+
+
+        private void IntegrarFixos()
+        {
+            CadastroFixoIntegrar cadastroFixoIntegrar = new CadastroFixoIntegrar();
+            MovimentacaoObj movimentacao = new MovimentacaoObj();
+            Inserir inserir = new Inserir();
+
+            movimentacao.DataMovimento = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+            movimentacao.TipoLancamento = "Saída";
+            movimentacao.TipoPagoRecebido = "Pago";
+            movimentacao.TipoMonetario = "Dinheiro";
+            movimentacao.Integracao = "Integrado Fixos";
+            movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
+            movimentacao.Competencia.Id = idCompetencia;
+            movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
+            movimentacao.Usuario.Login = strLogin;
+            movimentacao.Cliente = new Objeto.Cliente.ClienteObj();
+            movimentacao.Cliente.Id = idCliente;
+            movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            foreach (DataRow row in cadastroFixoIntegrar.Consulta().Rows)
+            {
+
+                movimentacao.Descricao = row["Descricao"].ToString();
+                movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
+                inserir.Cadastro(movimentacao);
+            }
+        }
+
 
         private void InformacaoSaldoAnterior(int idCliente, int idCompetencia)
         {
@@ -138,8 +201,6 @@ namespace Gastos
                 LblSalPend.ForeColor = Color.Green;
             }
 
-
-
             LblSalES.Text = "Sal. E. S.: " + valSalEntSaiAnt.ToString("#,##0.00");
             LblSalPR.Text = "Sal. P. R.: " + valSalPagRecAnt.ToString("#,##0.00");
             LblSalPend.Text = "Sal. Pend.: " + valSalPendAnte.ToString("#,##0.00");
@@ -155,7 +216,7 @@ namespace Gastos
             try
             {
                 movimentacao.Id = idMovimentacao;
-                movimentacao.Data = DateTime.Parse(MktDataMovimento.Text);
+                movimentacao.DataMovimento = DateTime.Parse(MktDataMovimento.Text);
                 movimentacao.Descricao = TxtDescricao.Text.Trim();
                 movimentacao.Valor = decimal.Parse(TxtValor.Text.Trim());
                 movimentacao.TipoLancamento = CbxTipo.Text;
@@ -169,6 +230,7 @@ namespace Gastos
                 {
                     movimentacao.TipoMonetario = "Dinheiro";
                 }
+                movimentacao.Integracao = "Manual";
                 movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
                 movimentacao.Competencia.Id = idCompetencia;
                 movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
@@ -337,6 +399,12 @@ namespace Gastos
             CadastrarMovimentacao(OpcaoCadastro.Excluir);
         }
 
+        private void BtnInteDevedores_Click(object sender, EventArgs e)
+        {
+            IntegrarDevedores(date);
+            ListarMovimentacao(idCliente, idCompetencia);
+        }
+
         private void DgvListaMovimentacao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             idMovimentacao = int.Parse(DgvListaMovimentacao.Rows[e.RowIndex].Cells["Id"].Value.ToString());
@@ -386,6 +454,13 @@ namespace Gastos
         private void BtnInteEmprestimo_Click(object sender, EventArgs e)
         {
             IntegrarEmprestimo(date);
+            ListarMovimentacao(idCliente, idCompetencia);
+        }
+
+        private void BtnInteFixos_Click(object sender, EventArgs e)
+        {
+            IntegrarFixos();
+            ListarMovimentacao(idCliente, idCompetencia);
         }
 
         private void TxtValor_TextChanged(object sender, EventArgs e)

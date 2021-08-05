@@ -60,7 +60,7 @@ namespace Gastos
                 movimentoDevedores.Devedores = new Objeto.Devedores.DevedoresObj();
                 movimentoDevedores.Devedores.Id = idDevedor;
                 movimentoDevedores.Valor = decimal.Parse(TxtValor.Text);
-                movimentoDevedores.Pago = CbxPago.Text;
+                movimentoDevedores.Recebido = CbxRecebido.Text;
                 movimentoDevedores.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoDevedores.Usuario.Login = strLogin;
                 movimentoDevedores.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
@@ -68,12 +68,12 @@ namespace Gastos
                 movimentoDevedores.Parcela = int.Parse(TxtParcela.Text);
                 movimentoDevedores.DataParcela = dataParcela;
 
-                DateTime dataPagamento;
-                bool sucesso = DateTime.TryParse(MktDataPagamento.Text, out dataPagamento);
+                DateTime dataRecebido;
+                bool sucesso = DateTime.TryParse(MktDataRecebido.Text, out dataRecebido);
 
                 if (sucesso)
                 {
-                    movimentoDevedores.DataPagameno = dataPagamento;
+                    movimentoDevedores.DataRecebido = dataRecebido;
                 }
 
 
@@ -110,7 +110,7 @@ namespace Gastos
 
             foreach (DataGridViewRow row in DgvListarMovimentoDev.Rows)
             {
-                if (row.Cells["Pago"].Value.ToString() == "Sim")
+                if (row.Cells["Recebido"].Value.ToString() == "Sim")
                 {
                     valPago += decimal.Parse(row.Cells["Valor"].Value.ToString());
                 }
@@ -121,9 +121,9 @@ namespace Gastos
                 valGeral += decimal.Parse(row.Cells["Valor"].Value.ToString());
             }
 
-            LblValorTotal.Text = "Valor Total..: " + valGeral.ToString("#,##0.00");
-            LblValorPago.Text = "Valor Pago...: " + valPago.ToString("#,##0.00");
-            LblValorPagar.Text = "Valor a Pagar: " + valPagar.ToString("#,##0.00");
+            LblValorTotal.Text = "Valor Total......: " + valGeral.ToString("#,##0.00");
+            LblValorPago.Text = "Valor Recebido...: " + valPago.ToString("#,##0.00");
+            LblValorPagar.Text = "Valor a Receber..: " + valPagar.ToString("#,##0.00");
 
         }
 
@@ -134,19 +134,19 @@ namespace Gastos
             TxtParcela.Text = DgvListarMovimentoDev.Rows[e.RowIndex].Cells["Parcela"].Value.ToString();
             decimal valor = decimal.Parse(DgvListarMovimentoDev.Rows[e.RowIndex].Cells["Valor"].Value.ToString());
             TxtValor.Text = valor.ToString("#,##0.00");
-            if (DgvListarMovimentoDev.Rows[e.RowIndex].Cells["Pago"].Value.ToString() == "Sim")
+            if (DgvListarMovimentoDev.Rows[e.RowIndex].Cells["Recebido"].Value.ToString() == "Sim")
             {
-                CbxPago.SelectedIndex = 0;
+                CbxRecebido.SelectedIndex = 0;
             }
             else
             {
-                CbxPago.SelectedIndex = 1;
+                CbxRecebido.SelectedIndex = 1;
             }
 
-            MktDataPagamento.Text = DgvListarMovimentoDev.Rows[e.RowIndex].Cells["DataPagamento"].Value.ToString();
-            if (MktDataPagamento.Text == "01/01/0001")
+            MktDataRecebido.Text = DgvListarMovimentoDev.Rows[e.RowIndex].Cells["DataRecebido"].Value.ToString();
+            if (MktDataRecebido.Text == "01/01/0001")
             {
-                MktDataPagamento.Clear();
+                MktDataRecebido.Clear();
             }
 
             BtnAlterar.Enabled = true;
@@ -171,14 +171,14 @@ namespace Gastos
 
         private void CbxPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CbxPago.SelectedIndex == 0)
+            if (CbxRecebido.SelectedIndex == 0)
             {
-                MktDataPagamento.Enabled = true;
+                MktDataRecebido.Enabled = true;
             }
             else
             {
-                MktDataPagamento.Enabled = false;
-                MktDataPagamento.Clear();
+                MktDataRecebido.Enabled = false;
+                MktDataRecebido.Clear();
             }
         }
 
@@ -247,7 +247,7 @@ namespace Gastos
         {
             TxtParcela.Text = "1";
             TxtValor.Text = "0,00";
-            MktDataPagamento.Clear();
+            MktDataRecebido.Clear();
             MktDataParcela.Clear();
 
         }
@@ -255,7 +255,7 @@ namespace Gastos
         {
             LblDataCadastro.Text = "Data Cadastro:" + DateTime.Now.ToString("dd/MM/yyyy");
             ListarCliente();
-            CbxPago.SelectedIndex = 1;
+            CbxRecebido.SelectedIndex = 1;
         }
     }
 }

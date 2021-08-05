@@ -29,25 +29,26 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.LblTotalGeral = new System.Windows.Forms.Label();
             this.LblTotalNAtivo = new System.Windows.Forms.Label();
             this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvListarFixos = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CbxCliente = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Integrar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxCliente = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarFixos)).BeginInit();
@@ -121,6 +122,7 @@ namespace Gastos
             this.Descricao,
             this.Valor,
             this.DataFim,
+            this.Integrar,
             this.Ativo,
             this.DataCadastro,
             this.Login,
@@ -132,80 +134,6 @@ namespace Gastos
             this.DgvListarFixos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListarFixos.Size = new System.Drawing.Size(587, 260);
             this.DgvListarFixos.TabIndex = 0;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DataInicio
-            // 
-            this.DataInicio.DataPropertyName = "DataInicio";
-            this.DataInicio.HeaderText = "Data Inicio";
-            this.DataInicio.Name = "DataInicio";
-            this.DataInicio.ReadOnly = true;
-            this.DataInicio.Width = 83;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            this.Descricao.Width = 80;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 56;
-            // 
-            // DataFim
-            // 
-            this.DataFim.DataPropertyName = "DataFim";
-            this.DataFim.HeaderText = "Data Fim";
-            this.DataFim.Name = "DataFim";
-            this.DataFim.ReadOnly = true;
-            this.DataFim.Width = 74;
-            // 
-            // Ativo
-            // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
             // 
             // groupBox1
             // 
@@ -237,6 +165,91 @@ namespace Gastos
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Cliente";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 41;
+            // 
+            // DataInicio
+            // 
+            this.DataInicio.DataPropertyName = "DataInicio";
+            this.DataInicio.HeaderText = "Data Inicio";
+            this.DataInicio.Name = "DataInicio";
+            this.DataInicio.ReadOnly = true;
+            this.DataInicio.Width = 83;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 80;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 56;
+            // 
+            // DataFim
+            // 
+            this.DataFim.DataPropertyName = "DataFim";
+            this.DataFim.HeaderText = "Data Fim";
+            this.DataFim.Name = "DataFim";
+            this.DataFim.ReadOnly = true;
+            this.DataFim.Width = 74;
+            // 
+            // Integrar
+            // 
+            this.Integrar.DataPropertyName = "Integrar";
+            this.Integrar.HeaderText = "Integrar";
+            this.Integrar.Name = "Integrar";
+            this.Integrar.ReadOnly = true;
+            this.Integrar.Width = 68;
+            // 
+            // Ativo
+            // 
+            this.Ativo.DataPropertyName = "Ativo";
+            this.Ativo.HeaderText = "Ativo";
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ReadOnly = true;
+            this.Ativo.Width = 56;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.DataPropertyName = "DataCadastro";
+            this.DataCadastro.HeaderText = "Data Cadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
+            // 
+            // Login
+            // 
+            this.Login.DataPropertyName = "Login";
+            this.Login.HeaderText = "Login";
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
+            this.Login.Visible = false;
+            this.Login.Width = 58;
+            // 
+            // ClienteId
+            // 
+            this.ClienteId.DataPropertyName = "ClienteId";
+            this.ClienteId.HeaderText = "ClienteId";
+            this.ClienteId.Name = "ClienteId";
+            this.ClienteId.ReadOnly = true;
+            this.ClienteId.Visible = false;
+            this.ClienteId.Width = 73;
             // 
             // FrmConFixos
             // 
@@ -273,17 +286,18 @@ namespace Gastos
         private System.Windows.Forms.Label LblTotalAtivo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView DgvListarFixos;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox CbxCliente;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataFim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Integrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox CbxCliente;
-        private System.Windows.Forms.Label label5;
     }
 }

@@ -54,6 +54,7 @@ namespace Gastos
                 devedores.Id = idDevedores;
                 devedores.DataInicio = DateTime.Parse(MktDataInicio.Text.Trim());
                 devedores.Nome = TxtNome.Text.Trim();
+                devedores.Descricao = TxtDescricao.Text.Trim();
                 devedores.Valor = decimal.Parse(TxtValorParcela.Text.Trim());
                 int parcelas = int.Parse(TxtParcela.Text.Trim());
                 devedores.Parcelas = parcelas;
@@ -109,6 +110,7 @@ namespace Gastos
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void GerarMovimentacao(int idDevedores)
         {
             MovimentoDevedoresObj movimentoDevedores = new MovimentoDevedoresObj();
@@ -123,11 +125,10 @@ namespace Gastos
                     MessageBox.Show("Empréstimos já foi gerado!");
                     return;
                 }
-
                 movimentoDevedores.Devedores = new DevedoresObj();
                 movimentoDevedores.Devedores.Id = idDevedores;
                 movimentoDevedores.Valor = decimal.Parse(TxtValorParcela.Text);
-                movimentoDevedores.Pago = "Não";
+                movimentoDevedores.Recebido = "Não";
                 movimentoDevedores.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoDevedores.Usuario.Login = strLogin;
                 movimentoDevedores.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
@@ -155,6 +156,7 @@ namespace Gastos
             TxtNome.Clear();
             TxtValorParcela.Text = "0,00";
             TxtParcela.Text = "1";
+            TxtDescricao.Clear();
             MktDataInicio.Clear();
         }
 
@@ -164,6 +166,7 @@ namespace Gastos
 
             idDevedores = int.Parse(DgvListaDevedores.Rows[e.RowIndex].Cells["Id"].Value.ToString());
             TxtNome.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["Nome"].Value.ToString();
+            TxtDescricao.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["Descricao"].Value.ToString();
             iParcelas = int.Parse(DgvListaDevedores.Rows[e.RowIndex].Cells["Parcelas"].Value.ToString());
             TxtParcela.Text = iParcelas.ToString();
             decimal valor = decimal.Parse(DgvListaDevedores.Rows[e.RowIndex].Cells["Valor"].Value.ToString());

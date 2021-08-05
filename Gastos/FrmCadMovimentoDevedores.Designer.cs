@@ -37,14 +37,6 @@ namespace Gastos
             this.LblValorTotal = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DgvListarMovimentoDev = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DevedoresId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataPagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
@@ -52,9 +44,9 @@ namespace Gastos
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.MktDataPagamento = new System.Windows.Forms.MaskedTextBox();
+            this.MktDataRecebido = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.CbxPago = new System.Windows.Forms.ComboBox();
+            this.CbxRecebido = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.TxtValor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,6 +59,15 @@ namespace Gastos
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CbxDescricao = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DevedoresId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataRecebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoDev)).BeginInit();
@@ -94,9 +95,9 @@ namespace Gastos
             this.LblValorPagar.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblValorPagar.Location = new System.Drawing.Point(6, 60);
             this.LblValorPagar.Name = "LblValorPagar";
-            this.LblValorPagar.Size = new System.Drawing.Size(140, 14);
+            this.LblValorPagar.Size = new System.Drawing.Size(168, 14);
             this.LblValorPagar.TabIndex = 2;
-            this.LblValorPagar.Text = "Valor a pagar: 0,00";
+            this.LblValorPagar.Text = "Valor a Receber..: 0,00";
             // 
             // LblValorPago
             // 
@@ -104,9 +105,9 @@ namespace Gastos
             this.LblValorPago.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblValorPago.Location = new System.Drawing.Point(6, 38);
             this.LblValorPago.Name = "LblValorPago";
-            this.LblValorPago.Size = new System.Drawing.Size(140, 14);
+            this.LblValorPago.Size = new System.Drawing.Size(168, 14);
             this.LblValorPago.TabIndex = 1;
-            this.LblValorPago.Text = "Valor Pago...: 0,00";
+            this.LblValorPago.Text = "Valor Recebido...: 0,00";
             // 
             // LblValorTotal
             // 
@@ -114,9 +115,9 @@ namespace Gastos
             this.LblValorTotal.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblValorTotal.Location = new System.Drawing.Point(6, 16);
             this.LblValorTotal.Name = "LblValorTotal";
-            this.LblValorTotal.Size = new System.Drawing.Size(140, 14);
+            this.LblValorTotal.Size = new System.Drawing.Size(168, 14);
             this.LblValorTotal.TabIndex = 0;
-            this.LblValorTotal.Text = "Valor Total..: 0,00";
+            this.LblValorTotal.Text = "Valor Total......: 0,00";
             // 
             // groupBox4
             // 
@@ -141,10 +142,11 @@ namespace Gastos
             this.Id,
             this.DevedoresId,
             this.DataParcela,
+            this.Descricao,
             this.Parcela,
             this.Valor,
-            this.Pago,
-            this.DataPagamento,
+            this.Recebido,
+            this.DataRecebido,
             this.DataCadastro});
             this.DgvListarMovimentoDev.Location = new System.Drawing.Point(6, 19);
             this.DgvListarMovimentoDev.MultiSelect = false;
@@ -154,78 +156,6 @@ namespace Gastos
             this.DgvListarMovimentoDev.Size = new System.Drawing.Size(526, 231);
             this.DgvListarMovimentoDev.TabIndex = 0;
             this.DgvListarMovimentoDev.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListarMovimentoDev_CellDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
-            // 
-            // DevedoresId
-            // 
-            this.DevedoresId.DataPropertyName = "DevedoresId";
-            this.DevedoresId.HeaderText = "DevedoresId";
-            this.DevedoresId.Name = "DevedoresId";
-            this.DevedoresId.ReadOnly = true;
-            this.DevedoresId.Visible = false;
-            this.DevedoresId.Width = 93;
-            // 
-            // DataParcela
-            // 
-            this.DataParcela.DataPropertyName = "DataParcela";
-            this.DataParcela.HeaderText = "Data Parcela";
-            this.DataParcela.Name = "DataParcela";
-            this.DataParcela.ReadOnly = true;
-            this.DataParcela.Width = 87;
-            // 
-            // Parcela
-            // 
-            this.Parcela.DataPropertyName = "Parcela";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            this.Parcela.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Parcela.HeaderText = "Parcela";
-            this.Parcela.Name = "Parcela";
-            this.Parcela.ReadOnly = true;
-            this.Parcela.Width = 68;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 56;
-            // 
-            // Pago
-            // 
-            this.Pago.DataPropertyName = "Pago";
-            this.Pago.HeaderText = "Pago";
-            this.Pago.Name = "Pago";
-            this.Pago.ReadOnly = true;
-            this.Pago.Width = 57;
-            // 
-            // DataPagamento
-            // 
-            this.DataPagamento.DataPropertyName = "DataPagamento";
-            this.DataPagamento.HeaderText = "Data Pagamento";
-            this.DataPagamento.Name = "DataPagamento";
-            this.DataPagamento.ReadOnly = true;
-            this.DataPagamento.Width = 103;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Width = 92;
             // 
             // groupBox3
             // 
@@ -272,9 +202,9 @@ namespace Gastos
             // 
             this.groupBox2.Controls.Add(this.LblDataCadastro);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.MktDataPagamento);
+            this.groupBox2.Controls.Add(this.MktDataRecebido);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.CbxPago);
+            this.groupBox2.Controls.Add(this.CbxRecebido);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.TxtValor);
             this.groupBox2.Controls.Add(this.label5);
@@ -302,42 +232,42 @@ namespace Gastos
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(307, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 13);
+            this.label11.Size = new System.Drawing.Size(96, 13);
             this.label11.TabIndex = 9;
-            this.label11.Text = "Data Pagamento";
+            this.label11.Text = "Data Recebimento";
             // 
-            // MktDataPagamento
+            // MktDataRecebido
             // 
-            this.MktDataPagamento.Enabled = false;
-            this.MktDataPagamento.Location = new System.Drawing.Point(304, 36);
-            this.MktDataPagamento.Mask = "00/00/0000";
-            this.MktDataPagamento.Name = "MktDataPagamento";
-            this.MktDataPagamento.Size = new System.Drawing.Size(100, 20);
-            this.MktDataPagamento.TabIndex = 8;
-            this.MktDataPagamento.ValidatingType = typeof(System.DateTime);
+            this.MktDataRecebido.Enabled = false;
+            this.MktDataRecebido.Location = new System.Drawing.Point(304, 36);
+            this.MktDataRecebido.Mask = "00/00/0000";
+            this.MktDataRecebido.Name = "MktDataRecebido";
+            this.MktDataRecebido.Size = new System.Drawing.Size(100, 20);
+            this.MktDataRecebido.TabIndex = 8;
+            this.MktDataRecebido.ValidatingType = typeof(System.DateTime);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(229, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Pago";
+            this.label7.Text = "Recebido";
             // 
-            // CbxPago
+            // CbxRecebido
             // 
-            this.CbxPago.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CbxPago.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CbxPago.FormattingEnabled = true;
-            this.CbxPago.Items.AddRange(new object[] {
+            this.CbxRecebido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbxRecebido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbxRecebido.FormattingEnabled = true;
+            this.CbxRecebido.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.CbxPago.Location = new System.Drawing.Point(226, 36);
-            this.CbxPago.Name = "CbxPago";
-            this.CbxPago.Size = new System.Drawing.Size(72, 21);
-            this.CbxPago.TabIndex = 6;
-            this.CbxPago.SelectedIndexChanged += new System.EventHandler(this.CbxPago_SelectedIndexChanged);
+            this.CbxRecebido.Location = new System.Drawing.Point(226, 36);
+            this.CbxRecebido.Name = "CbxRecebido";
+            this.CbxRecebido.Size = new System.Drawing.Size(72, 21);
+            this.CbxRecebido.TabIndex = 6;
+            this.CbxRecebido.SelectedIndexChanged += new System.EventHandler(this.CbxPago_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -461,6 +391,86 @@ namespace Gastos
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 41;
+            // 
+            // DevedoresId
+            // 
+            this.DevedoresId.DataPropertyName = "DevedoresId";
+            this.DevedoresId.HeaderText = "DevedoresId";
+            this.DevedoresId.Name = "DevedoresId";
+            this.DevedoresId.ReadOnly = true;
+            this.DevedoresId.Visible = false;
+            this.DevedoresId.Width = 93;
+            // 
+            // DataParcela
+            // 
+            this.DataParcela.DataPropertyName = "DataParcela";
+            this.DataParcela.HeaderText = "Data Parcela";
+            this.DataParcela.Name = "DataParcela";
+            this.DataParcela.ReadOnly = true;
+            this.DataParcela.Width = 94;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 80;
+            // 
+            // Parcela
+            // 
+            this.Parcela.DataPropertyName = "Parcela";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            this.Parcela.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Parcela.HeaderText = "Parcela";
+            this.Parcela.Name = "Parcela";
+            this.Parcela.ReadOnly = true;
+            this.Parcela.Width = 68;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 56;
+            // 
+            // Recebido
+            // 
+            this.Recebido.DataPropertyName = "Recebido";
+            this.Recebido.HeaderText = "Recebido";
+            this.Recebido.Name = "Recebido";
+            this.Recebido.ReadOnly = true;
+            this.Recebido.Width = 78;
+            // 
+            // DataRecebido
+            // 
+            this.DataRecebido.DataPropertyName = "DataRecebido";
+            this.DataRecebido.HeaderText = "Data Recebido";
+            this.DataRecebido.Name = "DataRecebido";
+            this.DataRecebido.ReadOnly = true;
+            this.DataRecebido.Width = 96;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.DataPropertyName = "DataCadastro";
+            this.DataCadastro.HeaderText = "Data Cadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
+            this.DataCadastro.Width = 92;
+            // 
             // FrmCadMovimentoDevedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,9 +521,9 @@ namespace Gastos
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label LblDataCadastro;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.MaskedTextBox MktDataPagamento;
+        private System.Windows.Forms.MaskedTextBox MktDataRecebido;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox CbxPago;
+        private System.Windows.Forms.ComboBox CbxRecebido;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtValor;
         private System.Windows.Forms.Label label5;
@@ -529,10 +539,11 @@ namespace Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DevedoresId;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataParcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Parcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataPagamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recebido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataRecebido;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
     }
 }

@@ -20,7 +20,7 @@ namespace Negocio.Fixo
             SQL = new StringBuilder();
 
             SQL.Append("UPDATE Fixos ");
-            SQL.Append("SET DataInicio = @DataInicio, Descricao = @Descricao, Valor = @Valor, DataFim = @DataFim, " +
+            SQL.Append("SET DataInicio = @DataInicio, Descricao = @Descricao, Valor = @Valor, Integrar = @Integrar, DataFim = @DataFim, " +
                        "Ativo = @Ativo, Login = @Login, ClienteId = @ClienteId ");
             SQL.Append("WHERE Id = @Id");
 
@@ -30,6 +30,7 @@ namespace Negocio.Fixo
                 crud.AdicionarParametro("DataInicio", fixo.DataInicio);
                 crud.AdicionarParametro("Descricao", fixo.Descricao);
                 crud.AdicionarParametro("Valor", fixo.Valor);
+                crud.AdicionarParametro("Integrar", fixo.Integrar);
                 crud.AdicionarParametro("DataFim", fixo.DataFim);
                 crud.AdicionarParametro("Ativo", fixo.Ativo);
                 crud.AdicionarParametro("Login", fixo.Usuario.Login);
