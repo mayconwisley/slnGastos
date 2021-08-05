@@ -29,10 +29,10 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.CbxNome = new System.Windows.Forms.ComboBox();
@@ -51,14 +51,6 @@ namespace Gastos
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DgvListaEmprestimos = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.BtnAlterar = new System.Windows.Forms.Button();
-            this.BtnSalvar = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.LblTotalGeral = new System.Windows.Forms.Label();
-            this.LblTotalNAtivo = new System.Windows.Forms.Label();
-            this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +62,14 @@ namespace Gastos
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnAlterar = new System.Windows.Forms.Button();
+            this.BtnSalvar = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.LblTotalGeral = new System.Windows.Forms.Label();
+            this.LblTotalNAtivo = new System.Windows.Forms.Label();
+            this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.BtnGerar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -156,7 +156,7 @@ namespace Gastos
             // 
             // TxtParcela
             // 
-            this.TxtParcela.Location = new System.Drawing.Point(180, 119);
+            this.TxtParcela.Location = new System.Drawing.Point(180, 120);
             this.TxtParcela.Name = "TxtParcela";
             this.TxtParcela.Size = new System.Drawing.Size(66, 20);
             this.TxtParcela.TabIndex = 4;
@@ -291,6 +291,110 @@ namespace Gastos
             this.DgvListaEmprestimos.TabIndex = 0;
             this.DgvListaEmprestimos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaEmprestimos_CellDoubleClick);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 41;
+            // 
+            // DataInicio
+            // 
+            this.DataInicio.DataPropertyName = "DataInicio";
+            this.DataInicio.HeaderText = "Data Inicio";
+            this.DataInicio.Name = "DataInicio";
+            this.DataInicio.ReadOnly = true;
+            this.DataInicio.Width = 77;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 80;
+            // 
+            // ValorEmprestado
+            // 
+            this.ValorEmprestado.DataPropertyName = "ValorEmprestado";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            this.ValorEmprestado.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ValorEmprestado.HeaderText = "Valor Emprestado";
+            this.ValorEmprestado.Name = "ValorEmprestado";
+            this.ValorEmprestado.ReadOnly = true;
+            this.ValorEmprestado.Width = 105;
+            // 
+            // ValorParcela
+            // 
+            this.ValorParcela.DataPropertyName = "ValorParcela";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.ValorParcela.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ValorParcela.HeaderText = "Valor Parcela";
+            this.ValorParcela.Name = "ValorParcela";
+            this.ValorParcela.ReadOnly = true;
+            this.ValorParcela.Width = 87;
+            // 
+            // Parcelas
+            // 
+            this.Parcelas.DataPropertyName = "Parcelas";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Parcelas.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Parcelas.HeaderText = "Parcelas";
+            this.Parcelas.Name = "Parcelas";
+            this.Parcelas.ReadOnly = true;
+            this.Parcelas.Width = 73;
+            // 
+            // ValorAPagar
+            // 
+            this.ValorAPagar.DataPropertyName = "ValorAPagar";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            this.ValorAPagar.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ValorAPagar.HeaderText = "Valor a Pagar";
+            this.ValorAPagar.Name = "ValorAPagar";
+            this.ValorAPagar.ReadOnly = true;
+            this.ValorAPagar.Width = 88;
+            // 
+            // Ativo
+            // 
+            this.Ativo.DataPropertyName = "Ativo";
+            this.Ativo.HeaderText = "Ativo";
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ReadOnly = true;
+            this.Ativo.Width = 56;
+            // 
+            // Login
+            // 
+            this.Login.DataPropertyName = "Login";
+            this.Login.HeaderText = "Login";
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
+            this.Login.Visible = false;
+            this.Login.Width = 58;
+            // 
+            // ClienteId
+            // 
+            this.ClienteId.DataPropertyName = "ClienteId";
+            this.ClienteId.HeaderText = "ClienteId";
+            this.ClienteId.Name = "ClienteId";
+            this.ClienteId.ReadOnly = true;
+            this.ClienteId.Visible = false;
+            this.ClienteId.Width = 73;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.DataPropertyName = "DataCadastro";
+            this.DataCadastro.HeaderText = "Data Cadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
+            this.DataCadastro.Width = 92;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.BtnExcluir);
@@ -375,110 +479,6 @@ namespace Gastos
             this.LblTotalAtivo.Size = new System.Drawing.Size(140, 14);
             this.LblTotalAtivo.TabIndex = 0;
             this.LblTotalAtivo.Text = "Total Ativo..: 0,00";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
-            // 
-            // DataInicio
-            // 
-            this.DataInicio.DataPropertyName = "DataInicio";
-            this.DataInicio.HeaderText = "Data Inicio";
-            this.DataInicio.Name = "DataInicio";
-            this.DataInicio.ReadOnly = true;
-            this.DataInicio.Width = 83;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            this.Descricao.Width = 80;
-            // 
-            // ValorEmprestado
-            // 
-            this.ValorEmprestado.DataPropertyName = "ValorEmprestado";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "N2";
-            this.ValorEmprestado.DefaultCellStyle = dataGridViewCellStyle33;
-            this.ValorEmprestado.HeaderText = "Valor Emprestado";
-            this.ValorEmprestado.Name = "ValorEmprestado";
-            this.ValorEmprestado.ReadOnly = true;
-            this.ValorEmprestado.Width = 105;
-            // 
-            // ValorParcela
-            // 
-            this.ValorParcela.DataPropertyName = "ValorParcela";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "N2";
-            this.ValorParcela.DefaultCellStyle = dataGridViewCellStyle34;
-            this.ValorParcela.HeaderText = "Valor Parcela";
-            this.ValorParcela.Name = "ValorParcela";
-            this.ValorParcela.ReadOnly = true;
-            this.ValorParcela.Width = 87;
-            // 
-            // Parcelas
-            // 
-            this.Parcelas.DataPropertyName = "Parcelas";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "N0";
-            dataGridViewCellStyle35.NullValue = null;
-            this.Parcelas.DefaultCellStyle = dataGridViewCellStyle35;
-            this.Parcelas.HeaderText = "Parcelas";
-            this.Parcelas.Name = "Parcelas";
-            this.Parcelas.ReadOnly = true;
-            this.Parcelas.Width = 73;
-            // 
-            // ValorAPagar
-            // 
-            this.ValorAPagar.DataPropertyName = "ValorAPagar";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "N2";
-            this.ValorAPagar.DefaultCellStyle = dataGridViewCellStyle36;
-            this.ValorAPagar.HeaderText = "Valor a Pagar";
-            this.ValorAPagar.Name = "ValorAPagar";
-            this.ValorAPagar.ReadOnly = true;
-            this.ValorAPagar.Width = 88;
-            // 
-            // Ativo
-            // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            this.Login.Width = 58;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
-            this.ClienteId.Width = 73;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Width = 92;
             // 
             // groupBox6
             // 

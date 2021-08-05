@@ -133,6 +133,12 @@ namespace Gastos
                 }
 
                 MessageBox.Show("Movimentação Gerada com Sucesso!");
+
+                LimparCampo();
+                BtnAlterar.Enabled = false;
+                BtnExcluir.Enabled = false;
+                BtnGerar.Enabled = false;
+                BtnSalvar.Enabled = true;
             }
             catch (Exception ex)
             {

@@ -61,7 +61,7 @@ namespace Gastos
             this.TxtSenha.MaxLength = 20;
             this.TxtSenha.Name = "TxtSenha";
             this.TxtSenha.Size = new System.Drawing.Size(154, 20);
-            this.TxtSenha.TabIndex = 3;
+            this.TxtSenha.TabIndex = 1;
             this.TxtSenha.UseSystemPasswordChar = true;
             this.TxtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSenha_KeyDown);
             // 
@@ -80,7 +80,7 @@ namespace Gastos
             this.TxtLogin.MaxLength = 20;
             this.TxtLogin.Name = "TxtLogin";
             this.TxtLogin.Size = new System.Drawing.Size(154, 20);
-            this.TxtLogin.TabIndex = 1;
+            this.TxtLogin.TabIndex = 0;
             // 
             // label1
             // 
@@ -97,7 +97,7 @@ namespace Gastos
             this.LkLblLembreSenha.Location = new System.Drawing.Point(16, 147);
             this.LkLblLembreSenha.Name = "LkLblLembreSenha";
             this.LkLblLembreSenha.Size = new System.Drawing.Size(85, 13);
-            this.LkLblLembreSenha.TabIndex = 1;
+            this.LkLblLembreSenha.TabIndex = 2;
             this.LkLblLembreSenha.TabStop = true;
             this.LkLblLembreSenha.Text = "Lembrete Senha";
             this.LkLblLembreSenha.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LkLblLembreSenha_LinkClicked);
@@ -109,7 +109,7 @@ namespace Gastos
             this.groupBox2.Location = new System.Drawing.Point(199, 10);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(132, 123);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // BtnCancelar

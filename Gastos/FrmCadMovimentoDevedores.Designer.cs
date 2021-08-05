@@ -37,6 +37,15 @@ namespace Gastos
             this.LblValorTotal = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DgvListarMovimentoDev = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DevedoresId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataRecebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
@@ -59,15 +68,6 @@ namespace Gastos
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CbxDescricao = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DevedoresId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataRecebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoDev)).BeginInit();
@@ -125,7 +125,7 @@ namespace Gastos
             this.groupBox4.Location = new System.Drawing.Point(12, 241);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(541, 256);
-            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Movimentacões cadastradas";
             // 
@@ -157,240 +157,6 @@ namespace Gastos
             this.DgvListarMovimentoDev.TabIndex = 0;
             this.DgvListarMovimentoDev.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListarMovimentoDev_CellDoubleClick);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.BtnExcluir);
-            this.groupBox3.Controls.Add(this.BtnAlterar);
-            this.groupBox3.Controls.Add(this.BtnSalvar);
-            this.groupBox3.Location = new System.Drawing.Point(465, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(88, 100);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            // 
-            // BtnExcluir
-            // 
-            this.BtnExcluir.Location = new System.Drawing.Point(6, 70);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 0;
-            this.BtnExcluir.Text = "&Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // BtnAlterar
-            // 
-            this.BtnAlterar.Location = new System.Drawing.Point(6, 41);
-            this.BtnAlterar.Name = "BtnAlterar";
-            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAlterar.TabIndex = 0;
-            this.BtnAlterar.Text = "&Alterar";
-            this.BtnAlterar.UseVisualStyleBackColor = true;
-            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
-            // 
-            // BtnSalvar
-            // 
-            this.BtnSalvar.Location = new System.Drawing.Point(6, 12);
-            this.BtnSalvar.Name = "BtnSalvar";
-            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalvar.TabIndex = 0;
-            this.BtnSalvar.Text = "&Salvar";
-            this.BtnSalvar.UseVisualStyleBackColor = true;
-            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.LblDataCadastro);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.MktDataRecebido);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.CbxRecebido);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.TxtValor);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.TxtParcela);
-            this.groupBox2.Controls.Add(this.MktDataParcela);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 153);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(412, 82);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cadastro Movimentação";
-            // 
-            // LblDataCadastro
-            // 
-            this.LblDataCadastro.AutoSize = true;
-            this.LblDataCadastro.Location = new System.Drawing.Point(5, 59);
-            this.LblDataCadastro.Name = "LblDataCadastro";
-            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
-            this.LblDataCadastro.TabIndex = 3;
-            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(307, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(96, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Data Recebimento";
-            // 
-            // MktDataRecebido
-            // 
-            this.MktDataRecebido.Enabled = false;
-            this.MktDataRecebido.Location = new System.Drawing.Point(304, 36);
-            this.MktDataRecebido.Mask = "00/00/0000";
-            this.MktDataRecebido.Name = "MktDataRecebido";
-            this.MktDataRecebido.Size = new System.Drawing.Size(100, 20);
-            this.MktDataRecebido.TabIndex = 8;
-            this.MktDataRecebido.ValidatingType = typeof(System.DateTime);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(229, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Recebido";
-            // 
-            // CbxRecebido
-            // 
-            this.CbxRecebido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CbxRecebido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CbxRecebido.FormattingEnabled = true;
-            this.CbxRecebido.Items.AddRange(new object[] {
-            "Sim",
-            "Não"});
-            this.CbxRecebido.Location = new System.Drawing.Point(226, 36);
-            this.CbxRecebido.Name = "CbxRecebido";
-            this.CbxRecebido.Size = new System.Drawing.Size(72, 21);
-            this.CbxRecebido.TabIndex = 6;
-            this.CbxRecebido.SelectedIndexChanged += new System.EventHandler(this.CbxPago_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(161, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Valor";
-            // 
-            // TxtValor
-            // 
-            this.TxtValor.Location = new System.Drawing.Point(158, 36);
-            this.TxtValor.Name = "TxtValor";
-            this.TxtValor.Size = new System.Drawing.Size(62, 20);
-            this.TxtValor.TabIndex = 4;
-            this.TxtValor.Text = "0,00";
-            this.TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
-            this.TxtValor.Enter += new System.EventHandler(this.TxtValor_Enter);
-            this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(89, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Parcela";
-            // 
-            // TxtParcela
-            // 
-            this.TxtParcela.Location = new System.Drawing.Point(86, 36);
-            this.TxtParcela.Name = "TxtParcela";
-            this.TxtParcela.Size = new System.Drawing.Size(66, 20);
-            this.TxtParcela.TabIndex = 2;
-            this.TxtParcela.Text = "1";
-            this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
-            this.TxtParcela.Enter += new System.EventHandler(this.TxtParcela_Enter);
-            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
-            // 
-            // MktDataParcela
-            // 
-            this.MktDataParcela.Location = new System.Drawing.Point(6, 36);
-            this.MktDataParcela.Mask = "00/00/0000";
-            this.MktDataParcela.Name = "MktDataParcela";
-            this.MktDataParcela.Size = new System.Drawing.Size(74, 20);
-            this.MktDataParcela.TabIndex = 1;
-            this.MktDataParcela.ValidatingType = typeof(System.DateTime);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Data Parcela";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.CbxNome);
-            this.groupBox6.Controls.Add(this.label12);
-            this.groupBox6.Location = new System.Drawing.Point(12, 12);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(343, 64);
-            this.groupBox6.TabIndex = 10;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Cliente";
-            // 
-            // CbxNome
-            // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(8, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(327, 21);
-            this.CbxNome.TabIndex = 1;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Nome";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.CbxDescricao);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 82);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(343, 65);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Empréstimo";
-            // 
-            // CbxDescricao
-            // 
-            this.CbxDescricao.DisplayMember = "Nome";
-            this.CbxDescricao.FormattingEnabled = true;
-            this.CbxDescricao.Location = new System.Drawing.Point(8, 34);
-            this.CbxDescricao.Name = "CbxDescricao";
-            this.CbxDescricao.Size = new System.Drawing.Size(327, 21);
-            this.CbxDescricao.TabIndex = 1;
-            this.CbxDescricao.ValueMember = "Id";
-            this.CbxDescricao.SelectedIndexChanged += new System.EventHandler(this.CbxDescricao_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -415,7 +181,7 @@ namespace Gastos
             this.DataParcela.HeaderText = "Data Parcela";
             this.DataParcela.Name = "DataParcela";
             this.DataParcela.ReadOnly = true;
-            this.DataParcela.Width = 94;
+            this.DataParcela.Width = 87;
             // 
             // Descricao
             // 
@@ -470,6 +236,240 @@ namespace Gastos
             this.DataCadastro.Name = "DataCadastro";
             this.DataCadastro.ReadOnly = true;
             this.DataCadastro.Width = 92;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.BtnExcluir);
+            this.groupBox3.Controls.Add(this.BtnAlterar);
+            this.groupBox3.Controls.Add(this.BtnSalvar);
+            this.groupBox3.Location = new System.Drawing.Point(465, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(88, 100);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            // 
+            // BtnExcluir
+            // 
+            this.BtnExcluir.Location = new System.Drawing.Point(6, 70);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.BtnExcluir.TabIndex = 2;
+            this.BtnExcluir.Text = "&Excluir";
+            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            // 
+            // BtnAlterar
+            // 
+            this.BtnAlterar.Location = new System.Drawing.Point(6, 41);
+            this.BtnAlterar.Name = "BtnAlterar";
+            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.BtnAlterar.TabIndex = 1;
+            this.BtnAlterar.Text = "&Alterar";
+            this.BtnAlterar.UseVisualStyleBackColor = true;
+            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            // 
+            // BtnSalvar
+            // 
+            this.BtnSalvar.Location = new System.Drawing.Point(6, 12);
+            this.BtnSalvar.Name = "BtnSalvar";
+            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.BtnSalvar.TabIndex = 0;
+            this.BtnSalvar.Text = "&Salvar";
+            this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.LblDataCadastro);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.MktDataRecebido);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.CbxRecebido);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.TxtValor);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.TxtParcela);
+            this.groupBox2.Controls.Add(this.MktDataParcela);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 153);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(412, 82);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cadastro Movimentação";
+            // 
+            // LblDataCadastro
+            // 
+            this.LblDataCadastro.AutoSize = true;
+            this.LblDataCadastro.Location = new System.Drawing.Point(5, 59);
+            this.LblDataCadastro.Name = "LblDataCadastro";
+            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
+            this.LblDataCadastro.TabIndex = 3;
+            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(307, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(96, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Data Recebimento";
+            // 
+            // MktDataRecebido
+            // 
+            this.MktDataRecebido.Enabled = false;
+            this.MktDataRecebido.Location = new System.Drawing.Point(304, 36);
+            this.MktDataRecebido.Mask = "00/00/0000";
+            this.MktDataRecebido.Name = "MktDataRecebido";
+            this.MktDataRecebido.Size = new System.Drawing.Size(100, 20);
+            this.MktDataRecebido.TabIndex = 4;
+            this.MktDataRecebido.ValidatingType = typeof(System.DateTime);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(229, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Recebido";
+            // 
+            // CbxRecebido
+            // 
+            this.CbxRecebido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbxRecebido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbxRecebido.FormattingEnabled = true;
+            this.CbxRecebido.Items.AddRange(new object[] {
+            "Sim",
+            "Não"});
+            this.CbxRecebido.Location = new System.Drawing.Point(226, 36);
+            this.CbxRecebido.Name = "CbxRecebido";
+            this.CbxRecebido.Size = new System.Drawing.Size(72, 21);
+            this.CbxRecebido.TabIndex = 3;
+            this.CbxRecebido.SelectedIndexChanged += new System.EventHandler(this.CbxPago_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(161, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Valor";
+            // 
+            // TxtValor
+            // 
+            this.TxtValor.Location = new System.Drawing.Point(158, 36);
+            this.TxtValor.Name = "TxtValor";
+            this.TxtValor.Size = new System.Drawing.Size(62, 20);
+            this.TxtValor.TabIndex = 2;
+            this.TxtValor.Text = "0,00";
+            this.TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
+            this.TxtValor.Enter += new System.EventHandler(this.TxtValor_Enter);
+            this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(89, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Parcela";
+            // 
+            // TxtParcela
+            // 
+            this.TxtParcela.Location = new System.Drawing.Point(86, 36);
+            this.TxtParcela.Name = "TxtParcela";
+            this.TxtParcela.Size = new System.Drawing.Size(66, 20);
+            this.TxtParcela.TabIndex = 1;
+            this.TxtParcela.Text = "1";
+            this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
+            this.TxtParcela.Enter += new System.EventHandler(this.TxtParcela_Enter);
+            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
+            // 
+            // MktDataParcela
+            // 
+            this.MktDataParcela.Location = new System.Drawing.Point(6, 36);
+            this.MktDataParcela.Mask = "00/00/0000";
+            this.MktDataParcela.Name = "MktDataParcela";
+            this.MktDataParcela.Size = new System.Drawing.Size(74, 20);
+            this.MktDataParcela.TabIndex = 0;
+            this.MktDataParcela.ValidatingType = typeof(System.DateTime);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Data Parcela";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.CbxNome);
+            this.groupBox6.Controls.Add(this.label12);
+            this.groupBox6.Location = new System.Drawing.Point(12, 12);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(343, 64);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Cliente";
+            // 
+            // CbxNome
+            // 
+            this.CbxNome.DisplayMember = "Nome";
+            this.CbxNome.FormattingEnabled = true;
+            this.CbxNome.Location = new System.Drawing.Point(8, 32);
+            this.CbxNome.Name = "CbxNome";
+            this.CbxNome.Size = new System.Drawing.Size(327, 21);
+            this.CbxNome.TabIndex = 0;
+            this.CbxNome.ValueMember = "Id";
+            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(35, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Nome";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CbxDescricao);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 82);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(343, 65);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Empréstimo";
+            // 
+            // CbxDescricao
+            // 
+            this.CbxDescricao.DisplayMember = "Nome";
+            this.CbxDescricao.FormattingEnabled = true;
+            this.CbxDescricao.Location = new System.Drawing.Point(8, 34);
+            this.CbxDescricao.Name = "CbxDescricao";
+            this.CbxDescricao.Size = new System.Drawing.Size(327, 21);
+            this.CbxDescricao.TabIndex = 0;
+            this.CbxDescricao.ValueMember = "Id";
+            this.CbxDescricao.SelectedIndexChanged += new System.EventHandler(this.CbxDescricao_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome";
             // 
             // FrmCadMovimentoDevedores
             // 

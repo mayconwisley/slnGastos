@@ -29,7 +29,7 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.LblSalPend = new System.Windows.Forms.Label();
             this.LblSalPR = new System.Windows.Forms.Label();
@@ -58,10 +58,10 @@ namespace Gastos
             this.CompetenciaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.MktCompetencia = new System.Windows.Forms.MaskedTextBox();
+            this.CbxNome = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -77,7 +77,7 @@ namespace Gastos
             this.groupBox6.Location = new System.Drawing.Point(347, 12);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(245, 71);
-            this.groupBox6.TabIndex = 11;
+            this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Saldo mês Anterior";
             // 
@@ -125,7 +125,7 @@ namespace Gastos
             this.groupBox5.Location = new System.Drawing.Point(11, 351);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(581, 122);
-            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Informações";
             // 
@@ -225,7 +225,7 @@ namespace Gastos
             this.groupBox4.Location = new System.Drawing.Point(11, 89);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(581, 256);
-            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Movimentacões cadastradas";
             // 
@@ -286,9 +286,9 @@ namespace Gastos
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle1;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -362,9 +362,20 @@ namespace Gastos
             this.groupBox1.Location = new System.Drawing.Point(11, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(330, 71);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cliente";
+            // 
+            // MktCompetencia
+            // 
+            this.MktCompetencia.Location = new System.Drawing.Point(6, 28);
+            this.MktCompetencia.Mask = "00/0000";
+            this.MktCompetencia.Name = "MktCompetencia";
+            this.MktCompetencia.Size = new System.Drawing.Size(69, 20);
+            this.MktCompetencia.TabIndex = 0;
+            this.MktCompetencia.ValidatingType = typeof(System.DateTime);
+            this.MktCompetencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MktCompetencia_KeyDown);
+            this.MktCompetencia.Leave += new System.EventHandler(this.MktCompetencia_Leave);
             // 
             // CbxNome
             // 
@@ -377,26 +388,6 @@ namespace Gastos
             this.CbxNome.ValueMember = "Id";
             this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
-            // 
-            // MktCompetencia
-            // 
-            this.MktCompetencia.Location = new System.Drawing.Point(6, 28);
-            this.MktCompetencia.Mask = "00/0000";
-            this.MktCompetencia.Name = "MktCompetencia";
-            this.MktCompetencia.Size = new System.Drawing.Size(69, 20);
-            this.MktCompetencia.TabIndex = 4;
-            this.MktCompetencia.ValidatingType = typeof(System.DateTime);
-            this.MktCompetencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MktCompetencia_KeyDown);
-            this.MktCompetencia.Leave += new System.EventHandler(this.MktCompetencia_Leave);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -405,6 +396,15 @@ namespace Gastos
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Competência";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(81, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome";
             // 
             // FrmConMovimentacao
             // 

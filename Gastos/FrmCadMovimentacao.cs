@@ -1,23 +1,17 @@
 ﻿using Negocio.Cliente.Listar;
 using Negocio.Competencia.Listar;
-using Negocio.Utilitario;
-using Negocio.Movimento.Geral.Listar;
+using Negocio.Fixo.Listar;
+using Negocio.Movimento.Devedor.Listar;
+using Negocio.Movimento.Emprestimo.Listar;
 using Negocio.Movimento.Geral;
+using Negocio.Movimento.Geral.Listar;
+using Negocio.Utilitario;
+using Negocio.Validador;
 using Objeto.Movimentacao;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Negocio.Validador;
-using Negocio.Movimento.Emprestimo.Listar;
-using Negocio.Movimento.Devedor.Listar;
-using Objeto.Devedores;
-using Negocio.Fixo.Listar;
 
 namespace Gastos
 {
@@ -72,7 +66,6 @@ namespace Gastos
             MovimentacaoObj movimentacao = new MovimentacaoObj();
             Inserir inserir = new Inserir();
 
-
             movimentacao.TipoLancamento = "Saída";
             movimentacao.TipoPagoRecebido = "Pago";
             movimentacao.TipoMonetario = "Dinheiro";
@@ -100,7 +93,6 @@ namespace Gastos
             MovimentacaoObj movimentacao = new MovimentacaoObj();
             Inserir inserir = new Inserir();
 
-
             movimentacao.TipoLancamento = "Entrada";
             movimentacao.TipoPagoRecebido = "Recebido";
             movimentacao.TipoMonetario = "Dinheiro";
@@ -115,13 +107,12 @@ namespace Gastos
 
             foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(dataPagamento.AddMonths(1)).Rows)
             {
-                movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
+                movimentacao.DataMovimento = DateTime.Parse(row["DataRecebido"].ToString());
                 movimentacao.Descricao = row["Descricao"].ToString();
                 movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
                 inserir.Cadastro(movimentacao);
             }
         }
-
 
         private void IntegrarFixos()
         {
@@ -382,6 +373,57 @@ namespace Gastos
             CadastroMovGeralCliente cadastroMovGeralCliente = new CadastroMovGeralCliente();
             DgvListaMovimentacao.DataSource = cadastroMovGeralCliente.Consulta(idCliente, idCompetencia);
             Informacoes();
+            VerificaIntegracao();
+        }
+
+        private void VerificaIntegracao()
+        {
+            int iInteEmprestimo = 0, iInteDevedores = 0, iInteFixos = 0;
+            string strIntegrado;
+            foreach (DataGridViewRow row in DgvListaMovimentacao.Rows)
+            {
+                strIntegrado = row.Cells["Integrado"].Value.ToString();
+
+                if (strIntegrado == "Integrado Emprestimos")
+                {
+                    iInteEmprestimo++;
+                }
+
+                if (strIntegrado == "Integrado Devedores")
+                {
+                    iInteDevedores++;
+                }
+
+                if (strIntegrado == "Integrado Fixos")
+                {
+                    iInteFixos++;
+                }
+            }
+
+            if (iInteEmprestimo > 0)
+            {
+                BtnInteEmprestimo.Enabled = false;
+            }
+            else
+            {
+                BtnInteEmprestimo.Enabled = true;
+            }
+            if (iInteDevedores > 0)
+            {
+                BtnInteDevedores.Enabled = false;
+            }
+            else
+            {
+                BtnInteDevedores.Enabled = true;
+            }
+            if (iInteFixos > 0)
+            {
+                BtnInteFixos.Enabled = false;
+            }
+            else
+            {
+                BtnInteFixos.Enabled = true;
+            }
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)

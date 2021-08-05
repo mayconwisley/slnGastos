@@ -38,9 +38,6 @@ namespace Gastos
             this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DgvListaDevedores = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +50,9 @@ namespace Gastos
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CbxNome = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaDevedores)).BeginInit();
@@ -107,7 +107,7 @@ namespace Gastos
             this.groupBox3.Location = new System.Drawing.Point(12, 90);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(575, 279);
-            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Devedores cadastrados";
             // 
@@ -140,37 +140,6 @@ namespace Gastos
             this.DgvListaDevedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaDevedores.Size = new System.Drawing.Size(562, 254);
             this.DgvListaDevedores.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.CbxNome);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 72);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
-            // 
-            // CbxNome
-            // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(6, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(316, 21);
-            this.CbxNome.TabIndex = 0;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
             // 
             // Id
             // 
@@ -279,6 +248,37 @@ namespace Gastos
             this.DataCadastro.HeaderText = "Data Cadastro";
             this.DataCadastro.Name = "DataCadastro";
             this.DataCadastro.ReadOnly = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CbxNome);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 72);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cliente";
+            // 
+            // CbxNome
+            // 
+            this.CbxNome.DisplayMember = "Nome";
+            this.CbxNome.FormattingEnabled = true;
+            this.CbxNome.Location = new System.Drawing.Point(6, 32);
+            this.CbxNome.Name = "CbxNome";
+            this.CbxNome.Size = new System.Drawing.Size(316, 21);
+            this.CbxNome.TabIndex = 0;
+            this.CbxNome.ValueMember = "Id";
+            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome";
             // 
             // FrmConDevedores
             // 

@@ -36,9 +36,6 @@ namespace Gastos
             this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvListarFixos = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxCliente = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,9 @@ namespace Gastos
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CbxCliente = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarFixos)).BeginInit();
@@ -103,7 +103,7 @@ namespace Gastos
             this.groupBox2.Location = new System.Drawing.Point(12, 93);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(602, 285);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fixos cadastrados";
             // 
@@ -134,37 +134,6 @@ namespace Gastos
             this.DgvListarFixos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListarFixos.Size = new System.Drawing.Size(587, 260);
             this.DgvListarFixos.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.CbxCliente);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(363, 75);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Consulta Fixo";
-            // 
-            // CbxCliente
-            // 
-            this.CbxCliente.DisplayMember = "Nome";
-            this.CbxCliente.FormattingEnabled = true;
-            this.CbxCliente.Location = new System.Drawing.Point(9, 32);
-            this.CbxCliente.Name = "CbxCliente";
-            this.CbxCliente.Size = new System.Drawing.Size(346, 21);
-            this.CbxCliente.TabIndex = 0;
-            this.CbxCliente.ValueMember = "Id";
-            this.CbxCliente.SelectedIndexChanged += new System.EventHandler(this.CbxCliente_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Cliente";
             // 
             // Id
             // 
@@ -250,6 +219,37 @@ namespace Gastos
             this.ClienteId.ReadOnly = true;
             this.ClienteId.Visible = false;
             this.ClienteId.Width = 73;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CbxCliente);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(363, 75);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Consulta Fixo";
+            // 
+            // CbxCliente
+            // 
+            this.CbxCliente.DisplayMember = "Nome";
+            this.CbxCliente.FormattingEnabled = true;
+            this.CbxCliente.Location = new System.Drawing.Point(9, 32);
+            this.CbxCliente.Name = "CbxCliente";
+            this.CbxCliente.Size = new System.Drawing.Size(346, 21);
+            this.CbxCliente.TabIndex = 0;
+            this.CbxCliente.ValueMember = "Id";
+            this.CbxCliente.SelectedIndexChanged += new System.EventHandler(this.CbxCliente_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Cliente";
             // 
             // FrmConFixos
             // 

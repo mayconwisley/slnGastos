@@ -36,6 +36,10 @@ namespace Gastos
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvListaCompetencia = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
@@ -43,10 +47,6 @@ namespace Gastos
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaCompetencia)).BeginInit();
@@ -62,7 +62,7 @@ namespace Gastos
             this.groupBox1.Location = new System.Drawing.Point(12, 84);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(291, 66);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro Competência";
             // 
@@ -74,7 +74,7 @@ namespace Gastos
             this.CbAtivo.Location = new System.Drawing.Point(94, 34);
             this.CbAtivo.Name = "CbAtivo";
             this.CbAtivo.Size = new System.Drawing.Size(50, 17);
-            this.CbAtivo.TabIndex = 2;
+            this.CbAtivo.TabIndex = 1;
             this.CbAtivo.Text = "Ativo";
             this.CbAtivo.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +84,7 @@ namespace Gastos
             this.MktCompetencia.Mask = "00/0000";
             this.MktCompetencia.Name = "MktCompetencia";
             this.MktCompetencia.Size = new System.Drawing.Size(79, 20);
-            this.MktCompetencia.TabIndex = 1;
+            this.MktCompetencia.TabIndex = 0;
             this.MktCompetencia.ValidatingType = typeof(System.DateTime);
             // 
             // label1
@@ -102,7 +102,7 @@ namespace Gastos
             this.groupBox2.Location = new System.Drawing.Point(12, 156);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(386, 145);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Competências cadastradas";
             // 
@@ -128,6 +128,44 @@ namespace Gastos
             this.DgvListaCompetencia.Size = new System.Drawing.Size(369, 120);
             this.DgvListaCompetencia.TabIndex = 0;
             this.DgvListaCompetencia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaCompetencia_CellDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 41;
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "Data";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "MM/yyyy";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Data.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            this.Data.Width = 55;
+            // 
+            // Ativo
+            // 
+            this.Ativo.DataPropertyName = "Ativo";
+            this.Ativo.HeaderText = "Ativo";
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ReadOnly = true;
+            this.Ativo.Width = 56;
+            // 
+            // ClienteId
+            // 
+            this.ClienteId.DataPropertyName = "ClienteId";
+            this.ClienteId.HeaderText = "ClienteId";
+            this.ClienteId.Name = "ClienteId";
+            this.ClienteId.ReadOnly = true;
+            this.ClienteId.Visible = false;
+            this.ClienteId.Width = 73;
             // 
             // groupBox3
             // 
@@ -179,7 +217,7 @@ namespace Gastos
             this.groupBox4.Location = new System.Drawing.Point(12, 10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(291, 68);
-            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cliente";
             // 
@@ -202,44 +240,6 @@ namespace Gastos
             this.CbxNome.TabIndex = 0;
             this.CbxNome.ValueMember = "Id";
             this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
-            // 
-            // Data
-            // 
-            this.Data.DataPropertyName = "Data";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "MM/yyyy";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Data.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            this.Data.Width = 55;
-            // 
-            // Ativo
-            // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
-            this.ClienteId.Width = 73;
             // 
             // FrmCadCompetencia
             // 

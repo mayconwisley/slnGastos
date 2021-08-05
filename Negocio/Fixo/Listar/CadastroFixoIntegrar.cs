@@ -21,7 +21,7 @@ namespace Negocio.Fixo.Listar
 
             SQL.Append("SELECT Valor, Descricao ");
             SQL.Append("FROM Fixos ");
-            SQL.Append("WHERE Integrar = 'Sim' AND DataFim = NULL AND Ativo = 'Sim'");
+            SQL.Append("WHERE Integrar = 'Sim' AND Ativo = 'Sim'");
 
             try
             {

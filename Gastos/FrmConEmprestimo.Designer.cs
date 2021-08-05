@@ -29,10 +29,10 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LblTotalGeral = new System.Windows.Forms.Label();
             this.LblTotalNAtivo = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@ namespace Gastos
             this.groupBox3.Location = new System.Drawing.Point(12, 92);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(575, 287);
-            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Empréstimos cadastrados";
             // 
@@ -168,9 +168,9 @@ namespace Gastos
             // ValorEmprestado
             // 
             this.ValorEmprestado.DataPropertyName = "ValorEmprestado";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "N2";
-            this.ValorEmprestado.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            this.ValorEmprestado.DefaultCellStyle = dataGridViewCellStyle1;
             this.ValorEmprestado.HeaderText = "Valor Emprestado";
             this.ValorEmprestado.Name = "ValorEmprestado";
             this.ValorEmprestado.ReadOnly = true;
@@ -179,9 +179,9 @@ namespace Gastos
             // ValorParcela
             // 
             this.ValorParcela.DataPropertyName = "ValorParcela";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "N2";
-            this.ValorParcela.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.ValorParcela.DefaultCellStyle = dataGridViewCellStyle2;
             this.ValorParcela.HeaderText = "Valor Parcela";
             this.ValorParcela.Name = "ValorParcela";
             this.ValorParcela.ReadOnly = true;
@@ -190,10 +190,10 @@ namespace Gastos
             // Parcelas
             // 
             this.Parcelas.DataPropertyName = "Parcelas";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "N0";
-            dataGridViewCellStyle35.NullValue = null;
-            this.Parcelas.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Parcelas.DefaultCellStyle = dataGridViewCellStyle3;
             this.Parcelas.HeaderText = "Parcelas";
             this.Parcelas.Name = "Parcelas";
             this.Parcelas.ReadOnly = true;
@@ -202,9 +202,9 @@ namespace Gastos
             // ValorAPagar
             // 
             this.ValorAPagar.DataPropertyName = "ValorAPagar";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "N2";
-            this.ValorAPagar.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            this.ValorAPagar.DefaultCellStyle = dataGridViewCellStyle4;
             this.ValorAPagar.HeaderText = "Valor a Pagar";
             this.ValorAPagar.Name = "ValorAPagar";
             this.ValorAPagar.ReadOnly = true;
@@ -251,7 +251,7 @@ namespace Gastos
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(328, 74);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cliente";
             // 

@@ -125,6 +125,7 @@ namespace Gastos
                     MessageBox.Show("Empréstimos já foi gerado!");
                     return;
                 }
+
                 movimentoDevedores.Devedores = new DevedoresObj();
                 movimentoDevedores.Devedores.Id = idDevedores;
                 movimentoDevedores.Valor = decimal.Parse(TxtValorParcela.Text);
@@ -142,13 +143,17 @@ namespace Gastos
                 }
 
                 MessageBox.Show("Movimentação Gerada com Sucesso!");
+
+                LimparCampo();
+                BtnAlterar.Enabled = false;
+                BtnExcluir.Enabled = false;
+                BtnGerar.Enabled = false;
+                BtnSalvar.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
 
         private void LimparCampo()

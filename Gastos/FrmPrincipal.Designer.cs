@@ -281,26 +281,26 @@ namespace Gastos
             // SubMenuMovCadastro
             // 
             this.SubMenuMovCadastro.Name = "SubMenuMovCadastro";
-            this.SubMenuMovCadastro.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuMovCadastro.Size = new System.Drawing.Size(121, 22);
             this.SubMenuMovCadastro.Text = "Cadastro";
             this.SubMenuMovCadastro.Click += new System.EventHandler(this.SubMenuMovCadastro_Click);
             // 
             // SubMenuMovConsulta
             // 
             this.SubMenuMovConsulta.Name = "SubMenuMovConsulta";
-            this.SubMenuMovConsulta.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuMovConsulta.Size = new System.Drawing.Size(121, 22);
             this.SubMenuMovConsulta.Text = "Consulta";
             this.SubMenuMovConsulta.Click += new System.EventHandler(this.SubMenuMovConsulta_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
             // 
             // SubMenuMovRelatorio
             // 
             this.SubMenuMovRelatorio.Name = "SubMenuMovRelatorio";
-            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(121, 22);
             this.SubMenuMovRelatorio.Text = "Relatório";
             // 
             // MenuSair

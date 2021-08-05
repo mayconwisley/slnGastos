@@ -16,7 +16,7 @@ namespace Negocio.Movimento.Emprestimo.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT MovEmp.Valor, MovEmp.DataPagamento, Emp.Descricao ");
+            SQL.Append("SELECT MovEmp.Valor, MovEmp.DataPagamento, Emp.Descricao || ' - ' || MovEmp.Parcela || 'ª Parcela' AS Descricao ");
             SQL.Append("FROM MovimentoEmprestimos MovEmp ");
             SQL.Append("INNER JOIN Emprestimos Emp ON Emp.Id = MovEmp.EmprestimosId ");
             SQL.Append("WHERE STRFTIME('%Y-%m-01', DataPagamento) = STRFTIME('%Y-%m-01', @DataPagamento) AND Pago = 'Sim'");

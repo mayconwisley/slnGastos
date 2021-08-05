@@ -44,7 +44,21 @@ namespace Gastos
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DgvListaDevedores = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Parcelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtDescricao = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.CbAtivo = new System.Windows.Forms.CheckBox();
             this.TxtParcela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,20 +72,6 @@ namespace Gastos
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.CbxNome = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.TxtDescricao = new System.Windows.Forms.TextBox();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -87,7 +87,7 @@ namespace Gastos
             this.groupBox6.Location = new System.Drawing.Point(492, 118);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(95, 44);
-            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Movimentação";
             // 
@@ -152,7 +152,7 @@ namespace Gastos
             this.groupBox4.Location = new System.Drawing.Point(499, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(88, 100);
-            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             // 
             // BtnExcluir
@@ -193,7 +193,7 @@ namespace Gastos
             this.groupBox3.Location = new System.Drawing.Point(12, 270);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(575, 210);
-            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Devedores cadastrados";
             // 
@@ -227,173 +227,6 @@ namespace Gastos
             this.DgvListaDevedores.Size = new System.Drawing.Size(562, 185);
             this.DgvListaDevedores.TabIndex = 0;
             this.DgvListaDevedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaDevedores_CellDoubleClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.TxtDescricao);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.CbAtivo);
-            this.groupBox2.Controls.Add(this.TxtParcela);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.TxtValorParcela);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.TxtNome);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.MktDataInicio);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 110);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(328, 154);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cadastro Empréstimo";
-            // 
-            // CbAtivo
-            // 
-            this.CbAtivo.AutoSize = true;
-            this.CbAtivo.Checked = true;
-            this.CbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbAtivo.Location = new System.Drawing.Point(165, 117);
-            this.CbAtivo.Name = "CbAtivo";
-            this.CbAtivo.Size = new System.Drawing.Size(50, 17);
-            this.CbAtivo.TabIndex = 5;
-            this.CbAtivo.Text = "Ativo";
-            this.CbAtivo.UseVisualStyleBackColor = true;
-            // 
-            // TxtParcela
-            // 
-            this.TxtParcela.Location = new System.Drawing.Point(93, 115);
-            this.TxtParcela.Name = "TxtParcela";
-            this.TxtParcela.Size = new System.Drawing.Size(66, 20);
-            this.TxtParcela.TabIndex = 4;
-            this.TxtParcela.Text = "1";
-            this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
-            this.TxtParcela.Enter += new System.EventHandler(this.TxtParcela_Enter);
-            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(96, 99);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Parcelas";
-            // 
-            // TxtValorParcela
-            // 
-            this.TxtValorParcela.Location = new System.Drawing.Point(6, 115);
-            this.TxtValorParcela.Name = "TxtValorParcela";
-            this.TxtValorParcela.Size = new System.Drawing.Size(81, 20);
-            this.TxtValorParcela.TabIndex = 3;
-            this.TxtValorParcela.Text = "0,00";
-            this.TxtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValorParcela.TextChanged += new System.EventHandler(this.TxtValorParcela_TextChanged);
-            this.TxtValorParcela.Enter += new System.EventHandler(this.TxtValorParcela_Enter);
-            this.TxtValorParcela.Leave += new System.EventHandler(this.TxtValorParcela_Leave);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Valor Parcela";
-            // 
-            // TxtNome
-            // 
-            this.TxtNome.Location = new System.Drawing.Point(93, 32);
-            this.TxtNome.MaxLength = 200;
-            this.TxtNome.Name = "TxtNome";
-            this.TxtNome.Size = new System.Drawing.Size(229, 20);
-            this.TxtNome.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Nome";
-            // 
-            // MktDataInicio
-            // 
-            this.MktDataInicio.Location = new System.Drawing.Point(6, 32);
-            this.MktDataInicio.Mask = "00/00/0000";
-            this.MktDataInicio.Name = "MktDataInicio";
-            this.MktDataInicio.Size = new System.Drawing.Size(81, 20);
-            this.MktDataInicio.TabIndex = 0;
-            this.MktDataInicio.ValidatingType = typeof(System.DateTime);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Data Inicio";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.LblDataCadastro);
-            this.groupBox1.Controls.Add(this.CbxNome);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 92);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
-            // 
-            // LblDataCadastro
-            // 
-            this.LblDataCadastro.AutoSize = true;
-            this.LblDataCadastro.Location = new System.Drawing.Point(3, 66);
-            this.LblDataCadastro.Name = "LblDataCadastro";
-            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
-            this.LblDataCadastro.TabIndex = 2;
-            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
-            // 
-            // CbxNome
-            // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(6, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(316, 21);
-            this.CbxNome.TabIndex = 0;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Descrição";
-            // 
-            // TxtDescricao
-            // 
-            this.TxtDescricao.Location = new System.Drawing.Point(6, 71);
-            this.TxtDescricao.MaxLength = 200;
-            this.TxtDescricao.Name = "TxtDescricao";
-            this.TxtDescricao.Size = new System.Drawing.Size(316, 20);
-            this.TxtDescricao.TabIndex = 7;
             // 
             // Id
             // 
@@ -502,6 +335,173 @@ namespace Gastos
             this.DataCadastro.HeaderText = "Data Cadastro";
             this.DataCadastro.Name = "DataCadastro";
             this.DataCadastro.ReadOnly = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.TxtDescricao);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.CbAtivo);
+            this.groupBox2.Controls.Add(this.TxtParcela);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.TxtValorParcela);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.TxtNome);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.MktDataInicio);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(12, 110);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(328, 154);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cadastro Empréstimo";
+            // 
+            // TxtDescricao
+            // 
+            this.TxtDescricao.Location = new System.Drawing.Point(6, 71);
+            this.TxtDescricao.MaxLength = 200;
+            this.TxtDescricao.Name = "TxtDescricao";
+            this.TxtDescricao.Size = new System.Drawing.Size(316, 20);
+            this.TxtDescricao.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 55);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Descrição";
+            // 
+            // CbAtivo
+            // 
+            this.CbAtivo.AutoSize = true;
+            this.CbAtivo.Checked = true;
+            this.CbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbAtivo.Location = new System.Drawing.Point(165, 117);
+            this.CbAtivo.Name = "CbAtivo";
+            this.CbAtivo.Size = new System.Drawing.Size(50, 17);
+            this.CbAtivo.TabIndex = 5;
+            this.CbAtivo.Text = "Ativo";
+            this.CbAtivo.UseVisualStyleBackColor = true;
+            // 
+            // TxtParcela
+            // 
+            this.TxtParcela.Location = new System.Drawing.Point(93, 115);
+            this.TxtParcela.Name = "TxtParcela";
+            this.TxtParcela.Size = new System.Drawing.Size(66, 20);
+            this.TxtParcela.TabIndex = 4;
+            this.TxtParcela.Text = "1";
+            this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
+            this.TxtParcela.Enter += new System.EventHandler(this.TxtParcela_Enter);
+            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(96, 99);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Parcelas";
+            // 
+            // TxtValorParcela
+            // 
+            this.TxtValorParcela.Location = new System.Drawing.Point(6, 115);
+            this.TxtValorParcela.Name = "TxtValorParcela";
+            this.TxtValorParcela.Size = new System.Drawing.Size(81, 20);
+            this.TxtValorParcela.TabIndex = 3;
+            this.TxtValorParcela.Text = "0,00";
+            this.TxtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtValorParcela.TextChanged += new System.EventHandler(this.TxtValorParcela_TextChanged);
+            this.TxtValorParcela.Enter += new System.EventHandler(this.TxtValorParcela_Enter);
+            this.TxtValorParcela.Leave += new System.EventHandler(this.TxtValorParcela_Leave);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Valor Parcela";
+            // 
+            // TxtNome
+            // 
+            this.TxtNome.Location = new System.Drawing.Point(93, 32);
+            this.TxtNome.MaxLength = 200;
+            this.TxtNome.Name = "TxtNome";
+            this.TxtNome.Size = new System.Drawing.Size(229, 20);
+            this.TxtNome.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(96, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Nome";
+            // 
+            // MktDataInicio
+            // 
+            this.MktDataInicio.Location = new System.Drawing.Point(6, 32);
+            this.MktDataInicio.Mask = "00/00/0000";
+            this.MktDataInicio.Name = "MktDataInicio";
+            this.MktDataInicio.Size = new System.Drawing.Size(81, 20);
+            this.MktDataInicio.TabIndex = 0;
+            this.MktDataInicio.ValidatingType = typeof(System.DateTime);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Data Inicio";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.LblDataCadastro);
+            this.groupBox1.Controls.Add(this.CbxNome);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 92);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cliente";
+            // 
+            // LblDataCadastro
+            // 
+            this.LblDataCadastro.AutoSize = true;
+            this.LblDataCadastro.Location = new System.Drawing.Point(3, 66);
+            this.LblDataCadastro.Name = "LblDataCadastro";
+            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
+            this.LblDataCadastro.TabIndex = 2;
+            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
+            // 
+            // CbxNome
+            // 
+            this.CbxNome.DisplayMember = "Nome";
+            this.CbxNome.FormattingEnabled = true;
+            this.CbxNome.Location = new System.Drawing.Point(6, 32);
+            this.CbxNome.Name = "CbxNome";
+            this.CbxNome.Size = new System.Drawing.Size(316, 21);
+            this.CbxNome.TabIndex = 0;
+            this.CbxNome.ValueMember = "Id";
+            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome";
             // 
             // FrmCadDevedores
             // 
