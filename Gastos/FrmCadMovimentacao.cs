@@ -60,7 +60,7 @@ namespace Gastos
             }
         }
 
-        private void IntegrarEmprestimo(DateTime dataPagamento)
+        private void IntegrarEmprestimo(int idCliente, DateTime dataPagamento)
         {
             CadastroMovEmpDatPagamento cadastroMovEmpDatPagamento = new CadastroMovEmpDatPagamento();
             MovimentacaoObj movimentacao = new MovimentacaoObj();
@@ -78,16 +78,23 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(dataPagamento.AddMonths(1)).Rows)
+            if (cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(-1)).Rows.Count > 0)
             {
-                movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
-                movimentacao.Descricao = row["Descricao"].ToString();
-                movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
-                inserir.Cadastro(movimentacao);
+                foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(1)).Rows)
+                {
+                    movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
+                    movimentacao.Descricao = row["Descricao"].ToString();
+                    movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
+                    inserir.Cadastro(movimentacao);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cliente não tem Empréstimos para Integrar!");
             }
         }
 
-        private void IntegrarDevedores(DateTime dataPagamento)
+        private void IntegrarDevedores(int idCliente, DateTime dataRecebimento)
         {
             CadastroMovDevDatRecebido cadastroMovDevDatPagamento = new CadastroMovDevDatRecebido();
             MovimentacaoObj movimentacao = new MovimentacaoObj();
@@ -105,16 +112,23 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(dataPagamento.AddMonths(1)).Rows)
+            if (cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(-1)).Rows.Count > 0)
             {
-                movimentacao.DataMovimento = DateTime.Parse(row["DataRecebido"].ToString());
-                movimentacao.Descricao = row["Descricao"].ToString();
-                movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
-                inserir.Cadastro(movimentacao);
+                foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(1)).Rows)
+                {
+                    movimentacao.DataMovimento = DateTime.Parse(row["DataRecebido"].ToString());
+                    movimentacao.Descricao = row["Descricao"].ToString();
+                    movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
+                    inserir.Cadastro(movimentacao);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cliente não tem Devedores para Integrar!");
             }
         }
 
-        private void IntegrarFixos()
+        private void IntegrarFixos(int idCliente)
         {
             CadastroFixoIntegrar cadastroFixoIntegrar = new CadastroFixoIntegrar();
             MovimentacaoObj movimentacao = new MovimentacaoObj();
@@ -133,12 +147,19 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            foreach (DataRow row in cadastroFixoIntegrar.Consulta().Rows)
+            if (cadastroFixoIntegrar.Consulta(idCliente).Rows.Count > 0)
             {
+                foreach (DataRow row in cadastroFixoIntegrar.Consulta(idCliente).Rows)
+                {
 
-                movimentacao.Descricao = row["Descricao"].ToString();
-                movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
-                inserir.Cadastro(movimentacao);
+                    movimentacao.Descricao = row["Descricao"].ToString();
+                    movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
+                    inserir.Cadastro(movimentacao);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cliente não tem Fixos para Integrar!");
             }
         }
 
@@ -372,6 +393,7 @@ namespace Gastos
         {
             CadastroMovGeralCliente cadastroMovGeralCliente = new CadastroMovGeralCliente();
             DgvListaMovimentacao.DataSource = cadastroMovGeralCliente.Consulta(idCliente, idCompetencia);
+            InformacaoSaldoAnterior(idCliente, idComeptenciaAnterior);
             Informacoes();
             VerificaIntegracao();
         }
@@ -443,7 +465,7 @@ namespace Gastos
 
         private void BtnInteDevedores_Click(object sender, EventArgs e)
         {
-            IntegrarDevedores(date);
+            IntegrarDevedores(idCliente, date);
             ListarMovimentacao(idCliente, idCompetencia);
         }
 
@@ -495,13 +517,13 @@ namespace Gastos
 
         private void BtnInteEmprestimo_Click(object sender, EventArgs e)
         {
-            IntegrarEmprestimo(date);
+            IntegrarEmprestimo(idCliente, date);
             ListarMovimentacao(idCliente, idCompetencia);
         }
 
         private void BtnInteFixos_Click(object sender, EventArgs e)
         {
-            IntegrarFixos();
+            IntegrarFixos(idCliente);
             ListarMovimentacao(idCliente, idCompetencia);
         }
 
@@ -530,15 +552,18 @@ namespace Gastos
         private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
         {
             idCliente = int.Parse(CbxNome.SelectedValue.ToString());
+
             ListarCompetencia(idCliente);
             ListarMovimentacao(idCliente, idCompetencia);
-            InformacaoSaldoAnterior(idCliente, idComeptenciaAnterior);
         }
 
         private void FrmCadMovimentacao_Load(object sender, EventArgs e)
         {
             LblDataCadastro.Text = "Data Cadastro: " + DateTime.Now.ToString("dd/MM/yyyy");
+
             ListarCliente();
+
+            InformacaoSaldoAnterior(idCliente, idComeptenciaAnterior);
             Informacoes();
         }
     }

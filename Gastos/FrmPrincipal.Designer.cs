@@ -30,6 +30,36 @@ namespace Gastos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 30D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 80D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 30D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint16 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 80D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint19 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint20 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuCadastro = new System.Windows.Forms.ToolStripMenuItem();
             this.SubMenuCadCliente = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,8 +97,36 @@ namespace Gastos
             this.TsLblDataHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.TsLblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeAtual = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MktCompetencia = new System.Windows.Forms.MaskedTextBox();
+            this.CbxCliente = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PnlFixos = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PnlDevedores = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PnlEmprestimos = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.PnlGraficoMovimentacao = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.PnlSaldoMes = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label8 = new System.Windows.Forms.Label();
             this.MenuPrincipal.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.PnlFixos.SuspendLayout();
+            this.PnlDevedores.SuspendLayout();
+            this.PnlEmprestimos.SuspendLayout();
+            this.PnlGraficoMovimentacao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.PnlSaldoMes.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuPrincipal
@@ -346,11 +404,253 @@ namespace Gastos
             this.TimeAtual.Interval = 1000;
             this.TimeAtual.Tick += new System.EventHandler(this.TimeAtual_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.CbxCliente);
+            this.panel1.Controls.Add(this.MktCompetencia);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(317, 52);
+            this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Competência";
+            // 
+            // MktCompetencia
+            // 
+            this.MktCompetencia.Location = new System.Drawing.Point(9, 22);
+            this.MktCompetencia.Mask = "00/0000";
+            this.MktCompetencia.Name = "MktCompetencia";
+            this.MktCompetencia.Size = new System.Drawing.Size(66, 20);
+            this.MktCompetencia.TabIndex = 1;
+            // 
+            // CbxCliente
+            // 
+            this.CbxCliente.FormattingEnabled = true;
+            this.CbxCliente.Location = new System.Drawing.Point(81, 22);
+            this.CbxCliente.Name = "CbxCliente";
+            this.CbxCliente.Size = new System.Drawing.Size(223, 21);
+            this.CbxCliente.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(78, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Cliente";
+            // 
+            // PnlFixos
+            // 
+            this.PnlFixos.Controls.Add(this.label3);
+            this.PnlFixos.Location = new System.Drawing.Point(12, 98);
+            this.PnlFixos.Name = "PnlFixos";
+            this.PnlFixos.Size = new System.Drawing.Size(508, 32);
+            this.PnlFixos.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(337, 25);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Despesa Fixos......: 0,00";
+            // 
+            // PnlDevedores
+            // 
+            this.PnlDevedores.Controls.Add(this.label4);
+            this.PnlDevedores.Location = new System.Drawing.Point(12, 174);
+            this.PnlDevedores.Name = "PnlDevedores";
+            this.PnlDevedores.Size = new System.Drawing.Size(508, 32);
+            this.PnlDevedores.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(337, 25);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Crédito Devedores..: 0,00";
+            // 
+            // PnlEmprestimos
+            // 
+            this.PnlEmprestimos.Controls.Add(this.label5);
+            this.PnlEmprestimos.Location = new System.Drawing.Point(12, 136);
+            this.PnlEmprestimos.Name = "PnlEmprestimos";
+            this.PnlEmprestimos.Size = new System.Drawing.Size(508, 32);
+            this.PnlEmprestimos.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(4, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(337, 25);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Despesa Emprestimos: 0,00";
+            // 
+            // PnlGraficoMovimentacao
+            // 
+            this.PnlGraficoMovimentacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PnlGraficoMovimentacao.Controls.Add(this.chart1);
+            this.PnlGraficoMovimentacao.Controls.Add(this.label6);
+            this.PnlGraficoMovimentacao.Location = new System.Drawing.Point(526, 368);
+            this.PnlGraficoMovimentacao.Name = "PnlGraficoMovimentacao";
+            this.PnlGraficoMovimentacao.Size = new System.Drawing.Size(675, 319);
+            this.PnlGraficoMovimentacao.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(4, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(354, 20);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Gráfico dos ultimos 5 meses das movimentações";
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 27);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series1.ChartArea = "ChartArea1";
+            series1.LabelFormat = "#,##0.00";
+            series1.Legend = "Legend1";
+            series1.Name = "Entradas";
+            dataPoint1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.None;
+            dataPoint1.LabelFormat = "N2";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series1.Points.Add(dataPoint4);
+            series1.Points.Add(dataPoint5);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Saidas";
+            series2.Points.Add(dataPoint6);
+            series2.Points.Add(dataPoint7);
+            series2.Points.Add(dataPoint8);
+            series2.Points.Add(dataPoint9);
+            series2.Points.Add(dataPoint10);
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(669, 289);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title1.Name = "Teste";
+            title1.Text = "Movimentações";
+            this.chart1.Titles.Add(title1);
+            // 
+            // PnlSaldoMes
+            // 
+            this.PnlSaldoMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PnlSaldoMes.Controls.Add(this.label7);
+            this.PnlSaldoMes.Location = new System.Drawing.Point(12, 542);
+            this.PnlSaldoMes.Name = "PnlSaldoMes";
+            this.PnlSaldoMes.Size = new System.Drawing.Size(508, 145);
+            this.PnlSaldoMes.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Courier New", 26F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(3, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(248, 40);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Saldo: 0,00";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.chart2);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Location = new System.Drawing.Point(526, 67);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(675, 295);
+            this.panel2.TabIndex = 4;
+            // 
+            // chart2
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
+            this.chart2.Location = new System.Drawing.Point(3, 27);
+            this.chart2.Name = "chart2";
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series3.ChartArea = "ChartArea1";
+            series3.LabelFormat = "#,##0.00";
+            series3.Legend = "Legend1";
+            series3.Name = "Recebido";
+            dataPoint11.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.None;
+            dataPoint11.LabelFormat = "N2";
+            series3.Points.Add(dataPoint11);
+            series3.Points.Add(dataPoint12);
+            series3.Points.Add(dataPoint13);
+            series3.Points.Add(dataPoint14);
+            series3.Points.Add(dataPoint15);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Pagos";
+            series4.Points.Add(dataPoint16);
+            series4.Points.Add(dataPoint17);
+            series4.Points.Add(dataPoint18);
+            series4.Points.Add(dataPoint19);
+            series4.Points.Add(dataPoint20);
+            this.chart2.Series.Add(series3);
+            this.chart2.Series.Add(series4);
+            this.chart2.Size = new System.Drawing.Size(669, 265);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart1";
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title2.Name = "Teste";
+            title2.Text = "Movimentações";
+            this.chart2.Titles.Add(title2);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(4, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(354, 20);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Gráfico dos ultimos 5 meses das movimentações";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 712);
+            this.Controls.Add(this.PnlSaldoMes);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.PnlGraficoMovimentacao);
+            this.Controls.Add(this.PnlDevedores);
+            this.Controls.Add(this.PnlEmprestimos);
+            this.Controls.Add(this.PnlFixos);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuPrincipal);
             this.MainMenuStrip = this.MenuPrincipal;
@@ -361,6 +661,22 @@ namespace Gastos
             this.MenuPrincipal.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.PnlFixos.ResumeLayout(false);
+            this.PnlFixos.PerformLayout();
+            this.PnlDevedores.ResumeLayout(false);
+            this.PnlDevedores.PerformLayout();
+            this.PnlEmprestimos.ResumeLayout(false);
+            this.PnlEmprestimos.PerformLayout();
+            this.PnlGraficoMovimentacao.ResumeLayout(false);
+            this.PnlGraficoMovimentacao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.PnlSaldoMes.ResumeLayout(false);
+            this.PnlSaldoMes.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,6 +721,25 @@ namespace Gastos
         private System.Windows.Forms.ToolStripStatusLabel TsLblDataHora;
         private System.Windows.Forms.Timer TimeAtual;
         private System.Windows.Forms.ToolStripStatusLabel TsLblUsuario;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox MktCompetencia;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox CbxCliente;
+        private System.Windows.Forms.Panel PnlFixos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel PnlDevedores;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel PnlEmprestimos;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel PnlGraficoMovimentacao;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Panel PnlSaldoMes;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.Label label8;
     }
 }
 

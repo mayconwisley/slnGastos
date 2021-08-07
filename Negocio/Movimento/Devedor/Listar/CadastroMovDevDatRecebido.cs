@@ -11,7 +11,7 @@ namespace Negocio.Movimento.Devedor.Listar
         Crud crud;
         StringBuilder SQL = null;
 
-        public DataTable Consulta(DateTime dataRecebido)
+        public DataTable Consulta(int idCliente, DateTime dataRecebido)
         {
             crud = new Crud();
             SQL = new StringBuilder();
@@ -19,12 +19,13 @@ namespace Negocio.Movimento.Devedor.Listar
             SQL.Append("SELECT MovDev.Valor, MovDev.DataRecebido, Dev.Nome || ' - ' || Dev.Descricao || ' - ' || MovDev.Parcela || 'ª Parcela' AS Descricao  ");
             SQL.Append("FROM MovimentoDevedores MovDev ");
             SQL.Append("INNER JOIN Devedores Dev ON Dev.Id = MovDev.DevedoresId ");
-            SQL.Append("WHERE STRFTIME('%Y-%m-01', MovDev.DataRecebido) = STRFTIME('%Y-%m-01', @DataRecebido) AND Recebido = 'Sim'");
+            SQL.Append("WHERE STRFTIME('%Y-%m-01', MovDev.DataRecebido) = STRFTIME('%Y-%m-01', @DataRecebido) AND Recebido = 'Sim' AND ClienteId = @ClienteId");
 
             try
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("DataRecebido", dataRecebido);
+                crud.AdicionarParametro("ClienteId", idCliente);
                 DataTable dataTable = crud.Consulta(CommandType.Text, SQL.ToString());
                 return dataTable;
             }
