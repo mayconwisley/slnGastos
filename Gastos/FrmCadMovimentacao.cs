@@ -78,7 +78,7 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            if (cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(-1)).Rows.Count > 0)
+            if (cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(+1)).Rows.Count > 0)
             {
                 foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(1)).Rows)
                 {
@@ -112,7 +112,7 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            if (cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(-1)).Rows.Count > 0)
+            if (cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(+1)).Rows.Count > 0)
             {
                 foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(1)).Rows)
                 {

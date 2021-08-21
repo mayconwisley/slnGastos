@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Negocio.Cliente.Listar;
+using Negocio.Competencia.Listar;
+using Negocio.Devedores.Listar;
+using Negocio.Emprestimos.Listar;
+using Negocio.Fixo.Listar;
+using Negocio.Movimento.Geral.Listar;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Gastos
@@ -7,6 +14,8 @@ namespace Gastos
     {
 
         string strLogin;
+        int idCliente, idCompetencia;
+        DateTime competencia;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -15,6 +24,58 @@ namespace Gastos
         {
             InitializeComponent();
             strLogin = login;
+        }
+
+
+        private void ListarCliente()
+        {
+            IdNomeCliente idNomeCliente = new IdNomeCliente();
+            CbxCliente.DataSource = idNomeCliente.Consulta();
+        }
+
+
+        private void CompetenciaAtivaCliente(int idCliente)
+        {
+            CompetenciaCliente competenciaCliente = new CompetenciaCliente();
+            CompetenciaIdCliente competenciaIdCliente = new CompetenciaIdCliente();
+
+
+            idCompetencia = competenciaIdCliente.CompetenciaId(idCliente);
+
+            competencia = competenciaCliente.CompetenciaAtiva(idCliente);
+            MktCompetencia.Text = competencia.ToString("MM/yyyy");
+        }
+
+        private void Informacao(int idCliente, int idCompetencia)
+        {
+
+            CadastroFixosAtivoCliente cadastroFixosAtivoCliente = new CadastroFixosAtivoCliente();
+            CadastroEmprestimoAtivoCliente cadastroEmprestimoAtivoCliente = new CadastroEmprestimoAtivoCliente();
+            CadastroDevedorAtivoCliente cadastroDevedorAtivoCliente = new CadastroDevedorAtivoCliente();
+            SaldoPagRecClienteComp saldoPagRecClienteComp = new SaldoPagRecClienteComp();
+
+            LblDespesaFixo.Text = "Despesa Fixos......: " + cadastroFixosAtivoCliente.ValorFixo(idCliente).ToString("#,##0.00");
+            LblDespesaEmprestimo.Text = "Despesa Emprestimos: " + cadastroEmprestimoAtivoCliente.ValorEmprestimo(idCliente).ToString("#,##0.00");
+            LblCreditoDevedores.Text = "Crédito Devedores..: " + cadastroDevedorAtivoCliente.ValorDevedor(idCliente).ToString("#,##0.00");
+
+            decimal saldo = saldoPagRecClienteComp.Saldo(idCliente, idCompetencia);
+
+            if (saldo == 0)
+            {
+                LblSaldo.ForeColor = Color.Black;
+            }
+            else if (saldo > 0)
+            {
+                LblSaldo.ForeColor = Color.Green;
+            }
+            else
+            {
+                LblSaldo.ForeColor = Color.Red;
+            }
+
+            LblSaldo.Text = "Saldo: " + saldo.ToString("#,##0.00");
+
+
         }
 
         private void SubMenuCadCliente_Click(object sender, EventArgs e)
@@ -104,6 +165,20 @@ namespace Gastos
         {
             FrmConMovimentacao frmConMovimentacao = new FrmConMovimentacao();
             frmConMovimentacao.ShowDialog();
+        }
+
+        private void CbxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idCliente = int.Parse(CbxCliente.SelectedValue.ToString());
+            CompetenciaAtivaCliente(idCliente);
+            Informacao(idCliente, idCompetencia);
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            MktCompetencia.Text = DateTime.Now.ToString("MM/yyyy");
+            ListarCliente();
+
         }
     }
 }

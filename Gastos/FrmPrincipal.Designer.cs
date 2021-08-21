@@ -98,21 +98,21 @@ namespace Gastos
             this.TsLblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeAtual = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.MktCompetencia = new System.Windows.Forms.MaskedTextBox();
-            this.CbxCliente = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.CbxCliente = new System.Windows.Forms.ComboBox();
+            this.MktCompetencia = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.PnlFixos = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblDespesaFixo = new System.Windows.Forms.Label();
             this.PnlDevedores = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblCreditoDevedores = new System.Windows.Forms.Label();
             this.PnlEmprestimos = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblDespesaEmprestimo = new System.Windows.Forms.Label();
             this.PnlGraficoMovimentacao = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label6 = new System.Windows.Forms.Label();
             this.PnlSaldoMes = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.LblSaldo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label8 = new System.Windows.Forms.Label();
@@ -415,31 +415,6 @@ namespace Gastos
             this.panel1.Size = new System.Drawing.Size(317, 52);
             this.panel1.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Competência";
-            // 
-            // MktCompetencia
-            // 
-            this.MktCompetencia.Location = new System.Drawing.Point(9, 22);
-            this.MktCompetencia.Mask = "00/0000";
-            this.MktCompetencia.Name = "MktCompetencia";
-            this.MktCompetencia.Size = new System.Drawing.Size(66, 20);
-            this.MktCompetencia.TabIndex = 1;
-            // 
-            // CbxCliente
-            // 
-            this.CbxCliente.FormattingEnabled = true;
-            this.CbxCliente.Location = new System.Drawing.Point(81, 22);
-            this.CbxCliente.Name = "CbxCliente";
-            this.CbxCliente.Size = new System.Drawing.Size(223, 21);
-            this.CbxCliente.TabIndex = 2;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -449,59 +424,87 @@ namespace Gastos
             this.label2.TabIndex = 3;
             this.label2.Text = "Cliente";
             // 
+            // CbxCliente
+            // 
+            this.CbxCliente.DisplayMember = "Nome";
+            this.CbxCliente.FormattingEnabled = true;
+            this.CbxCliente.Location = new System.Drawing.Point(81, 22);
+            this.CbxCliente.Name = "CbxCliente";
+            this.CbxCliente.Size = new System.Drawing.Size(223, 21);
+            this.CbxCliente.TabIndex = 2;
+            this.CbxCliente.ValueMember = "Id";
+            this.CbxCliente.SelectedIndexChanged += new System.EventHandler(this.CbxCliente_SelectedIndexChanged);
+            // 
+            // MktCompetencia
+            // 
+            this.MktCompetencia.Location = new System.Drawing.Point(9, 22);
+            this.MktCompetencia.Mask = "00/0000";
+            this.MktCompetencia.Name = "MktCompetencia";
+            this.MktCompetencia.Size = new System.Drawing.Size(66, 20);
+            this.MktCompetencia.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Competência";
+            // 
             // PnlFixos
             // 
-            this.PnlFixos.Controls.Add(this.label3);
+            this.PnlFixos.Controls.Add(this.LblDespesaFixo);
             this.PnlFixos.Location = new System.Drawing.Point(12, 98);
             this.PnlFixos.Name = "PnlFixos";
             this.PnlFixos.Size = new System.Drawing.Size(508, 32);
             this.PnlFixos.TabIndex = 3;
             // 
-            // label3
+            // LblDespesaFixo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(337, 25);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Despesa Fixos......: 0,00";
+            this.LblDespesaFixo.AutoSize = true;
+            this.LblDespesaFixo.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDespesaFixo.Location = new System.Drawing.Point(4, 4);
+            this.LblDespesaFixo.Name = "LblDespesaFixo";
+            this.LblDespesaFixo.Size = new System.Drawing.Size(337, 25);
+            this.LblDespesaFixo.TabIndex = 0;
+            this.LblDespesaFixo.Text = "Despesa Fixos......: 0,00";
             // 
             // PnlDevedores
             // 
-            this.PnlDevedores.Controls.Add(this.label4);
+            this.PnlDevedores.Controls.Add(this.LblCreditoDevedores);
             this.PnlDevedores.Location = new System.Drawing.Point(12, 174);
             this.PnlDevedores.Name = "PnlDevedores";
             this.PnlDevedores.Size = new System.Drawing.Size(508, 32);
             this.PnlDevedores.TabIndex = 3;
             // 
-            // label4
+            // LblCreditoDevedores
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(337, 25);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Crédito Devedores..: 0,00";
+            this.LblCreditoDevedores.AutoSize = true;
+            this.LblCreditoDevedores.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCreditoDevedores.Location = new System.Drawing.Point(3, 5);
+            this.LblCreditoDevedores.Name = "LblCreditoDevedores";
+            this.LblCreditoDevedores.Size = new System.Drawing.Size(337, 25);
+            this.LblCreditoDevedores.TabIndex = 0;
+            this.LblCreditoDevedores.Text = "Crédito Devedores..: 0,00";
             // 
             // PnlEmprestimos
             // 
-            this.PnlEmprestimos.Controls.Add(this.label5);
+            this.PnlEmprestimos.Controls.Add(this.LblDespesaEmprestimo);
             this.PnlEmprestimos.Location = new System.Drawing.Point(12, 136);
             this.PnlEmprestimos.Name = "PnlEmprestimos";
             this.PnlEmprestimos.Size = new System.Drawing.Size(508, 32);
             this.PnlEmprestimos.TabIndex = 3;
             // 
-            // label5
+            // LblDespesaEmprestimo
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(337, 25);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Despesa Emprestimos: 0,00";
+            this.LblDespesaEmprestimo.AutoSize = true;
+            this.LblDespesaEmprestimo.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDespesaEmprestimo.Location = new System.Drawing.Point(4, 4);
+            this.LblDespesaEmprestimo.Name = "LblDespesaEmprestimo";
+            this.LblDespesaEmprestimo.Size = new System.Drawing.Size(337, 25);
+            this.LblDespesaEmprestimo.TabIndex = 0;
+            this.LblDespesaEmprestimo.Text = "Despesa Emprestimos: 0,00";
             // 
             // PnlGraficoMovimentacao
             // 
@@ -512,16 +515,6 @@ namespace Gastos
             this.PnlGraficoMovimentacao.Name = "PnlGraficoMovimentacao";
             this.PnlGraficoMovimentacao.Size = new System.Drawing.Size(675, 319);
             this.PnlGraficoMovimentacao.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 4);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(354, 20);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Gráfico dos ultimos 5 meses das movimentações";
             // 
             // chart1
             // 
@@ -561,25 +554,35 @@ namespace Gastos
             title1.Text = "Movimentações";
             this.chart1.Titles.Add(title1);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(4, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(354, 20);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Gráfico dos ultimos 5 meses das movimentações";
+            // 
             // PnlSaldoMes
             // 
             this.PnlSaldoMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PnlSaldoMes.Controls.Add(this.label7);
+            this.PnlSaldoMes.Controls.Add(this.LblSaldo);
             this.PnlSaldoMes.Location = new System.Drawing.Point(12, 542);
             this.PnlSaldoMes.Name = "PnlSaldoMes";
             this.PnlSaldoMes.Size = new System.Drawing.Size(508, 145);
             this.PnlSaldoMes.TabIndex = 5;
             // 
-            // label7
+            // LblSaldo
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Courier New", 26F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(3, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(248, 40);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Saldo: 0,00";
+            this.LblSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LblSaldo.AutoSize = true;
+            this.LblSaldo.Font = new System.Drawing.Font("Courier New", 26F, System.Drawing.FontStyle.Bold);
+            this.LblSaldo.Location = new System.Drawing.Point(3, 52);
+            this.LblSaldo.Name = "LblSaldo";
+            this.LblSaldo.Size = new System.Drawing.Size(248, 40);
+            this.LblSaldo.TabIndex = 0;
+            this.LblSaldo.Text = "Saldo: 0,00";
             // 
             // panel2
             // 
@@ -657,6 +660,7 @@ namespace Gastos
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gastos";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.MenuPrincipal.ResumeLayout(false);
             this.MenuPrincipal.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -727,16 +731,16 @@ namespace Gastos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox CbxCliente;
         private System.Windows.Forms.Panel PnlFixos;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblDespesaFixo;
         private System.Windows.Forms.Panel PnlDevedores;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblCreditoDevedores;
         private System.Windows.Forms.Panel PnlEmprestimos;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblDespesaEmprestimo;
         private System.Windows.Forms.Panel PnlGraficoMovimentacao;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Panel PnlSaldoMes;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LblSaldo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Label label8;
