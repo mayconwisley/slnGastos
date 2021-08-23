@@ -662,6 +662,7 @@ namespace Gastos
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Movimentação";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadMovimentacao_FormClosing);
             this.Load += new System.EventHandler(this.FrmCadMovimentacao_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

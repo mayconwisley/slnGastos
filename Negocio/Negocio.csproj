@@ -93,9 +93,13 @@
     <Compile Include="Movimento\Geral\Excluir.cs" />
     <Compile Include="Movimento\Geral\Inserir.cs" />
     <Compile Include="Movimento\Geral\Listar\CadastroMovGeralCliente.cs" />
+    <Compile Include="Movimento\Geral\Listar\SaldoEntradaPorComp.cs" />
     <Compile Include="Movimento\Geral\Listar\SaldoEntSaiClienteComp.cs" />
+    <Compile Include="Movimento\Geral\Listar\SaldoPagoPorComp.cs" />
     <Compile Include="Movimento\Geral\Listar\SaldoPagRecClienteComp.cs" />
     <Compile Include="Movimento\Geral\Listar\SaldoPendClienteComp.cs" />
+    <Compile Include="Movimento\Geral\Listar\SaldoRecebidoPorComp.cs" />
+    <Compile Include="Movimento\Geral\Listar\SaldoSaidaPorComp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Alterar.cs" />
     <Compile Include="Usuario\Excluir.cs" />

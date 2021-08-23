@@ -30,36 +30,17 @@ namespace Gastos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 30D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 80D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 30D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint16 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 80D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint19 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 70D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint20 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuCadastro = new System.Windows.Forms.ToolStripMenuItem();
             this.SubMenuCadCliente = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,12 +90,12 @@ namespace Gastos
             this.PnlEmprestimos = new System.Windows.Forms.Panel();
             this.LblDespesaEmprestimo = new System.Windows.Forms.Label();
             this.PnlGraficoMovimentacao = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.GraEntradaSaida = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.PnlSaldoMes = new System.Windows.Forms.Panel();
             this.LblSaldo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.GraRecebidoPago = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label8 = new System.Windows.Forms.Label();
             this.MenuPrincipal.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -123,10 +104,10 @@ namespace Gastos
             this.PnlDevedores.SuspendLayout();
             this.PnlEmprestimos.SuspendLayout();
             this.PnlGraficoMovimentacao.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GraEntradaSaida)).BeginInit();
             this.PnlSaldoMes.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GraRecebidoPago)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuPrincipal
@@ -339,26 +320,26 @@ namespace Gastos
             // SubMenuMovCadastro
             // 
             this.SubMenuMovCadastro.Name = "SubMenuMovCadastro";
-            this.SubMenuMovCadastro.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovCadastro.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovCadastro.Text = "Cadastro";
             this.SubMenuMovCadastro.Click += new System.EventHandler(this.SubMenuMovCadastro_Click);
             // 
             // SubMenuMovConsulta
             // 
             this.SubMenuMovConsulta.Name = "SubMenuMovConsulta";
-            this.SubMenuMovConsulta.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovConsulta.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovConsulta.Text = "Consulta";
             this.SubMenuMovConsulta.Click += new System.EventHandler(this.SubMenuMovConsulta_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuMovRelatorio
             // 
             this.SubMenuMovRelatorio.Name = "SubMenuMovRelatorio";
-            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovRelatorio.Text = "Relatório";
             // 
             // MenuSair
@@ -468,7 +449,7 @@ namespace Gastos
             this.LblDespesaFixo.Name = "LblDespesaFixo";
             this.LblDespesaFixo.Size = new System.Drawing.Size(337, 25);
             this.LblDespesaFixo.TabIndex = 0;
-            this.LblDespesaFixo.Text = "Despesa Fixos......: 0,00";
+            this.LblDespesaFixo.Text = "Despesa Fixas......: 0,00";
             // 
             // PnlDevedores
             // 
@@ -509,50 +490,44 @@ namespace Gastos
             // PnlGraficoMovimentacao
             // 
             this.PnlGraficoMovimentacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PnlGraficoMovimentacao.Controls.Add(this.chart1);
+            this.PnlGraficoMovimentacao.Controls.Add(this.GraEntradaSaida);
             this.PnlGraficoMovimentacao.Controls.Add(this.label6);
             this.PnlGraficoMovimentacao.Location = new System.Drawing.Point(526, 368);
             this.PnlGraficoMovimentacao.Name = "PnlGraficoMovimentacao";
             this.PnlGraficoMovimentacao.Size = new System.Drawing.Size(675, 319);
             this.PnlGraficoMovimentacao.TabIndex = 4;
             // 
-            // chart1
+            // GraEntradaSaida
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 27);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series1.ChartArea = "ChartArea1";
-            series1.LabelFormat = "#,##0.00";
-            series1.Legend = "Legend1";
-            series1.Name = "Entradas";
-            dataPoint1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.None;
-            dataPoint1.LabelFormat = "N2";
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            series1.Points.Add(dataPoint3);
-            series1.Points.Add(dataPoint4);
-            series1.Points.Add(dataPoint5);
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Saidas";
-            series2.Points.Add(dataPoint6);
-            series2.Points.Add(dataPoint7);
-            series2.Points.Add(dataPoint8);
-            series2.Points.Add(dataPoint9);
-            series2.Points.Add(dataPoint10);
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(669, 289);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            title1.Name = "Teste";
-            title1.Text = "Movimentações";
-            this.chart1.Titles.Add(title1);
+            this.GraEntradaSaida.BackColor = System.Drawing.Color.WhiteSmoke;
+            chartArea3.AxisX.LabelStyle.Format = "00/0000";
+            chartArea3.AxisY.LabelStyle.Format = "#,##0.00";
+            chartArea3.Name = "ChartArea1";
+            this.GraEntradaSaida.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.GraEntradaSaida.Legends.Add(legend3);
+            this.GraEntradaSaida.Location = new System.Drawing.Point(3, 27);
+            this.GraEntradaSaida.Name = "GraEntradaSaida";
+            this.GraEntradaSaida.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series5.ChartArea = "ChartArea1";
+            series5.IsValueShownAsLabel = true;
+            series5.LabelFormat = "#,##0.00";
+            series5.Legend = "Legend1";
+            series5.Name = "Entradas";
+            series6.ChartArea = "ChartArea1";
+            series6.IsValueShownAsLabel = true;
+            series6.LabelFormat = "#,##0.00";
+            series6.Legend = "Legend1";
+            series6.Name = "Saidas";
+            this.GraEntradaSaida.Series.Add(series5);
+            this.GraEntradaSaida.Series.Add(series6);
+            this.GraEntradaSaida.Size = new System.Drawing.Size(669, 289);
+            this.GraEntradaSaida.TabIndex = 1;
+            this.GraEntradaSaida.Text = "chart1";
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title3.Name = "Teste";
+            title3.Text = "Movimentações";
+            this.GraEntradaSaida.Titles.Add(title3);
             // 
             // label6
             // 
@@ -587,50 +562,48 @@ namespace Gastos
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.chart2);
+            this.panel2.Controls.Add(this.GraRecebidoPago);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(526, 67);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(675, 295);
             this.panel2.TabIndex = 4;
             // 
-            // chart2
+            // GraRecebidoPago
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(3, 27);
-            this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series3.ChartArea = "ChartArea1";
-            series3.LabelFormat = "#,##0.00";
-            series3.Legend = "Legend1";
-            series3.Name = "Recebido";
-            dataPoint11.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.None;
-            dataPoint11.LabelFormat = "N2";
-            series3.Points.Add(dataPoint11);
-            series3.Points.Add(dataPoint12);
-            series3.Points.Add(dataPoint13);
-            series3.Points.Add(dataPoint14);
-            series3.Points.Add(dataPoint15);
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Pagos";
-            series4.Points.Add(dataPoint16);
-            series4.Points.Add(dataPoint17);
-            series4.Points.Add(dataPoint18);
-            series4.Points.Add(dataPoint19);
-            series4.Points.Add(dataPoint20);
-            this.chart2.Series.Add(series3);
-            this.chart2.Series.Add(series4);
-            this.chart2.Size = new System.Drawing.Size(669, 265);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart1";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            title2.Name = "Teste";
-            title2.Text = "Movimentações";
-            this.chart2.Titles.Add(title2);
+            this.GraRecebidoPago.BackColor = System.Drawing.Color.WhiteSmoke;
+            chartArea4.AxisX.LabelStyle.Format = "00/0000";
+            chartArea4.AxisX2.LabelStyle.Format = "#,##0.00";
+            chartArea4.AxisY.LabelStyle.Format = "#,##0.00";
+            chartArea4.BackColor = System.Drawing.Color.White;
+            chartArea4.BorderColor = System.Drawing.Color.Empty;
+            chartArea4.Name = "ChartArea1";
+            chartArea4.ShadowColor = System.Drawing.Color.Gray;
+            this.GraRecebidoPago.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.GraRecebidoPago.Legends.Add(legend4);
+            this.GraRecebidoPago.Location = new System.Drawing.Point(3, 27);
+            this.GraRecebidoPago.Name = "GraRecebidoPago";
+            this.GraRecebidoPago.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series7.ChartArea = "ChartArea1";
+            series7.IsValueShownAsLabel = true;
+            series7.LabelFormat = "#,##0.00";
+            series7.Legend = "Legend1";
+            series7.Name = "Recebido";
+            series8.ChartArea = "ChartArea1";
+            series8.IsValueShownAsLabel = true;
+            series8.LabelFormat = "#,##0.00";
+            series8.Legend = "Legend1";
+            series8.Name = "Pagos";
+            this.GraRecebidoPago.Series.Add(series7);
+            this.GraRecebidoPago.Series.Add(series8);
+            this.GraRecebidoPago.Size = new System.Drawing.Size(669, 265);
+            this.GraRecebidoPago.TabIndex = 1;
+            this.GraRecebidoPago.Text = "chart1";
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title4.Name = "Teste";
+            title4.Text = "Movimentações";
+            this.GraRecebidoPago.Titles.Add(title4);
             // 
             // label8
             // 
@@ -656,6 +629,7 @@ namespace Gastos
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuPrincipal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuPrincipal;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -675,12 +649,12 @@ namespace Gastos
             this.PnlEmprestimos.PerformLayout();
             this.PnlGraficoMovimentacao.ResumeLayout(false);
             this.PnlGraficoMovimentacao.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GraEntradaSaida)).EndInit();
             this.PnlSaldoMes.ResumeLayout(false);
             this.PnlSaldoMes.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GraRecebidoPago)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -738,11 +712,11 @@ namespace Gastos
         private System.Windows.Forms.Label LblDespesaEmprestimo;
         private System.Windows.Forms.Panel PnlGraficoMovimentacao;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart GraEntradaSaida;
         private System.Windows.Forms.Panel PnlSaldoMes;
         private System.Windows.Forms.Label LblSaldo;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart GraRecebidoPago;
         private System.Windows.Forms.Label label8;
     }
 }

@@ -22,9 +22,19 @@ namespace Gastos
         int idCliente, idMovimentacao, idCompetencia, idComeptenciaAnterior;
         decimal valSalEntSaiAnt = 0, valSalPagRecAnt = 0, valSalPendAnte = 0;
         DateTime date;
+        private FrmPrincipal frmForm;
+
+
         public FrmCadMovimentacao(string login)
         {
             InitializeComponent();
+            strLogin = login;
+        }
+
+        public FrmCadMovimentacao(FrmPrincipal form, string login)
+        {
+            InitializeComponent();
+            frmForm = form;
             strLogin = login;
         }
 
@@ -525,6 +535,13 @@ namespace Gastos
         {
             IntegrarFixos(idCliente);
             ListarMovimentacao(idCliente, idCompetencia);
+        }
+
+        private void FrmCadMovimentacao_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmForm.AtualizarFrmPrincipal();
+            frmForm.GraficoEntradaSaida();
+            frmForm.GraficoPagoRecebido();
         }
 
         private void TxtValor_TextChanged(object sender, EventArgs e)

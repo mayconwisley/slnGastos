@@ -5,6 +5,7 @@ using Negocio.Emprestimos.Listar;
 using Negocio.Fixo.Listar;
 using Negocio.Movimento.Geral.Listar;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -54,7 +55,7 @@ namespace Gastos
             CadastroDevedorAtivoCliente cadastroDevedorAtivoCliente = new CadastroDevedorAtivoCliente();
             SaldoPagRecClienteComp saldoPagRecClienteComp = new SaldoPagRecClienteComp();
 
-            LblDespesaFixo.Text = "Despesa Fixos......: " + cadastroFixosAtivoCliente.ValorFixo(idCliente).ToString("#,##0.00");
+            LblDespesaFixo.Text = "Despesa Fixas......: " + cadastroFixosAtivoCliente.ValorFixo(idCliente).ToString("#,##0.00");
             LblDespesaEmprestimo.Text = "Despesa Emprestimos: " + cadastroEmprestimoAtivoCliente.ValorEmprestimo(idCliente).ToString("#,##0.00");
             LblCreditoDevedores.Text = "Crédito Devedores..: " + cadastroDevedorAtivoCliente.ValorDevedor(idCliente).ToString("#,##0.00");
 
@@ -75,6 +76,86 @@ namespace Gastos
 
             LblSaldo.Text = "Saldo: " + saldo.ToString("#,##0.00");
 
+
+        }
+
+        public void GraficoEntradaSaida()
+        {
+            SaldoSaidaPorComp saldoSaidaPorComp = new SaldoSaidaPorComp();
+            SaldoEntradaPorComp saldoEntradaPorComp = new SaldoEntradaPorComp();
+
+            GraEntradaSaida.Series[0].Points.Clear();
+            GraEntradaSaida.Series[1].Points.Clear();
+
+            //Entrada
+
+            foreach (DataRow item in saldoEntradaPorComp.ValorEntrada(idCliente, idCompetencia).Rows)
+            {
+                GraEntradaSaida.Series[0].Points.AddXY(item["Data"], item["Entrada"]);
+            }
+            if (GraEntradaSaida.Series[0].Points.Count > 5)
+            {
+                GraEntradaSaida.Series[0].Points.RemoveAt(0);
+                GraEntradaSaida.Update();
+            }
+
+
+            //Saida
+          
+            foreach (DataRow item in saldoSaidaPorComp.ValorSaida(idCliente, idCompetencia).Rows)
+            {
+                GraEntradaSaida.Series[1].Points.AddXY(item["Data"], item["Saida"]);
+            }
+            if (GraEntradaSaida.Series[1].Points.Count > 5)
+            {
+                GraEntradaSaida.Series[1].Points.RemoveAt(0);
+                GraEntradaSaida.Update();
+            }
+
+
+
+
+        }
+
+        public void GraficoPagoRecebido()
+        {
+            SaldoRecebidoPorComp saldoRecebidoPorComp = new SaldoRecebidoPorComp();
+            SaldoPagoPorComp saldoPagoPorComp = new SaldoPagoPorComp();
+            GraRecebidoPago.Series[0].Points.Clear();
+            GraRecebidoPago.Series[1].Points.Clear();
+
+            //Entrada
+            foreach (DataRow item in saldoRecebidoPorComp.ValorRecebido(idCliente, idCompetencia).Rows)
+            {
+                GraRecebidoPago.Series[0].Points.AddXY(item["Data"], item["Recebido"]);
+            }
+
+            if (GraRecebidoPago.Series[0].Points.Count > 5)
+            {
+                GraRecebidoPago.Series[0].Points.RemoveAt(0);
+                GraRecebidoPago.Update();
+            }
+            //Saida
+
+
+            foreach (DataRow item in saldoPagoPorComp.ValorPago(idCliente, idCompetencia).Rows)
+            {
+                GraRecebidoPago.Series[1].Points.AddXY(item["Data"], item["Pago"]);
+            }
+
+            if (GraRecebidoPago.Series[1].Points.Count > 5)
+            {
+                GraRecebidoPago.Series[1].Points.RemoveAt(0);
+                GraRecebidoPago.Update();
+            }
+
+
+        }
+
+        public void AtualizarFrmPrincipal()
+        {
+            CompetenciaAtivaCliente(idCliente);
+            Informacao(idCliente, idCompetencia);
 
         }
 
@@ -128,7 +209,7 @@ namespace Gastos
 
         private void SubMenuMovCadastro_Click(object sender, EventArgs e)
         {
-            FrmCadMovimentacao frmCadMovimentacao = new FrmCadMovimentacao(strLogin);
+            FrmCadMovimentacao frmCadMovimentacao = new FrmCadMovimentacao(this, strLogin);
             frmCadMovimentacao.ShowDialog();
         }
 
@@ -172,13 +253,16 @@ namespace Gastos
             idCliente = int.Parse(CbxCliente.SelectedValue.ToString());
             CompetenciaAtivaCliente(idCliente);
             Informacao(idCliente, idCompetencia);
+            GraficoEntradaSaida();
+            GraficoPagoRecebido();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             MktCompetencia.Text = DateTime.Now.ToString("MM/yyyy");
             ListarCliente();
-
+            GraficoEntradaSaida();
+            GraficoPagoRecebido();
         }
     }
 }
