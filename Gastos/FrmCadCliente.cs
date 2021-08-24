@@ -14,7 +14,7 @@ namespace Gastos
         #region Variaveis
         string strUsuario = string.Empty;
         int idCliente = 0;
-
+        FrmPrincipal frmPrincipal;
 
 
         #endregion
@@ -30,6 +30,13 @@ namespace Gastos
             InitializeComponent();
             strUsuario = usuario;
         }
+        public FrmCadCliente(FrmPrincipal frm, string usuario)
+        {
+            InitializeComponent();
+            strUsuario = usuario;
+            frmPrincipal = frm;
+        }
+
 
         #region Funções
         private void Cadastro(OpcaoCadastro opcaoCadastro)
@@ -135,6 +142,18 @@ namespace Gastos
             BtnAlterar.Enabled = true;
             BtnExcluir.Enabled = true;
             BtnSalvar.Enabled = false;
+        }
+
+        private void FrmCadCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                frmPrincipal.ListarCliente();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

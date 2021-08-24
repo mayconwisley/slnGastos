@@ -236,6 +236,7 @@ namespace Gastos
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Cliente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadCliente_FormClosing);
             this.Load += new System.EventHandler(this.FrmCadCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

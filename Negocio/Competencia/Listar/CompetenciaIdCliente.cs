@@ -23,9 +23,16 @@ namespace Negocio.Competencia.Listar
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("ClienteId", idCliente);
-
-                int id = int.Parse(crud.Executar(CommandType.Text, SQL.ToString()).ToString());
-                return id;
+                                
+                object sucesso = crud.Executar(CommandType.Text, SQL.ToString());
+                if (sucesso != null)
+                {
+                    return int.Parse(crud.Executar(CommandType.Text, SQL.ToString()).ToString());
+                }
+                else
+                {
+                    return 0;
+                }
             }
             catch (Exception ex)
             {

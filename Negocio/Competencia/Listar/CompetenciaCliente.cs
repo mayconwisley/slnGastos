@@ -26,14 +26,16 @@ namespace Negocio.Competencia.Listar
 
                 DateTime date;
 
-                bool sucesso = DateTime.TryParse(crud.Executar(CommandType.Text, SQL.ToString()).ToString(), out date);
-                if (sucesso)
+                object sucesso = crud.Executar(CommandType.Text, SQL.ToString());
+
+                
+                if (sucesso != null)
                 {
-                    return date;
+                    return DateTime.Parse(crud.Executar(CommandType.Text, SQL.ToString()).ToString());
                 }
                 else
                 {
-                    return date;
+                    return DateTime.Parse("01/01/1900");
                 }
             }
             catch (Exception ex)

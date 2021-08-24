@@ -577,7 +577,7 @@ namespace Gastos
         private void FrmCadMovimentacao_Load(object sender, EventArgs e)
         {
             LblDataCadastro.Text = "Data Cadastro: " + DateTime.Now.ToString("dd/MM/yyyy");
-
+            MktDataMovimento.Text = DateTime.Now.ToString("dd/MM/yyyy");
             ListarCliente();
 
             InformacaoSaldoAnterior(idCliente, idComeptenciaAnterior);

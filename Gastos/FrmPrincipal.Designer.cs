@@ -30,16 +30,16 @@ namespace Gastos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuCadastro = new System.Windows.Forms.ToolStripMenuItem();
@@ -320,26 +320,26 @@ namespace Gastos
             // SubMenuMovCadastro
             // 
             this.SubMenuMovCadastro.Name = "SubMenuMovCadastro";
-            this.SubMenuMovCadastro.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuMovCadastro.Size = new System.Drawing.Size(121, 22);
             this.SubMenuMovCadastro.Text = "Cadastro";
             this.SubMenuMovCadastro.Click += new System.EventHandler(this.SubMenuMovCadastro_Click);
             // 
             // SubMenuMovConsulta
             // 
             this.SubMenuMovConsulta.Name = "SubMenuMovConsulta";
-            this.SubMenuMovConsulta.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuMovConsulta.Size = new System.Drawing.Size(121, 22);
             this.SubMenuMovConsulta.Text = "Consulta";
             this.SubMenuMovConsulta.Click += new System.EventHandler(this.SubMenuMovConsulta_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
             // 
             // SubMenuMovRelatorio
             // 
             this.SubMenuMovRelatorio.Name = "SubMenuMovRelatorio";
-            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(121, 22);
             this.SubMenuMovRelatorio.Text = "Relatório";
             // 
             // MenuSair
@@ -500,34 +500,34 @@ namespace Gastos
             // GraEntradaSaida
             // 
             this.GraEntradaSaida.BackColor = System.Drawing.Color.WhiteSmoke;
-            chartArea3.AxisX.LabelStyle.Format = "00/0000";
-            chartArea3.AxisY.LabelStyle.Format = "#,##0.00";
-            chartArea3.Name = "ChartArea1";
-            this.GraEntradaSaida.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.GraEntradaSaida.Legends.Add(legend3);
+            chartArea1.AxisX.LabelStyle.Format = "00/0000";
+            chartArea1.AxisY.LabelStyle.Format = "#,##0.00";
+            chartArea1.Name = "ChartArea1";
+            this.GraEntradaSaida.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.GraEntradaSaida.Legends.Add(legend1);
             this.GraEntradaSaida.Location = new System.Drawing.Point(3, 27);
             this.GraEntradaSaida.Name = "GraEntradaSaida";
             this.GraEntradaSaida.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series5.ChartArea = "ChartArea1";
-            series5.IsValueShownAsLabel = true;
-            series5.LabelFormat = "#,##0.00";
-            series5.Legend = "Legend1";
-            series5.Name = "Entradas";
-            series6.ChartArea = "ChartArea1";
-            series6.IsValueShownAsLabel = true;
-            series6.LabelFormat = "#,##0.00";
-            series6.Legend = "Legend1";
-            series6.Name = "Saidas";
-            this.GraEntradaSaida.Series.Add(series5);
-            this.GraEntradaSaida.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.IsValueShownAsLabel = true;
+            series1.LabelFormat = "#,##0.00";
+            series1.Legend = "Legend1";
+            series1.Name = "Entradas";
+            series2.ChartArea = "ChartArea1";
+            series2.IsValueShownAsLabel = true;
+            series2.LabelFormat = "#,##0.00";
+            series2.Legend = "Legend1";
+            series2.Name = "Saidas";
+            this.GraEntradaSaida.Series.Add(series1);
+            this.GraEntradaSaida.Series.Add(series2);
             this.GraEntradaSaida.Size = new System.Drawing.Size(669, 289);
             this.GraEntradaSaida.TabIndex = 1;
             this.GraEntradaSaida.Text = "chart1";
-            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            title3.Name = "Teste";
-            title3.Text = "Movimentações";
-            this.GraEntradaSaida.Titles.Add(title3);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title1.Name = "Teste";
+            title1.Text = "Movimentações";
+            this.GraEntradaSaida.Titles.Add(title1);
             // 
             // label6
             // 
@@ -572,38 +572,38 @@ namespace Gastos
             // GraRecebidoPago
             // 
             this.GraRecebidoPago.BackColor = System.Drawing.Color.WhiteSmoke;
-            chartArea4.AxisX.LabelStyle.Format = "00/0000";
-            chartArea4.AxisX2.LabelStyle.Format = "#,##0.00";
-            chartArea4.AxisY.LabelStyle.Format = "#,##0.00";
-            chartArea4.BackColor = System.Drawing.Color.White;
-            chartArea4.BorderColor = System.Drawing.Color.Empty;
-            chartArea4.Name = "ChartArea1";
-            chartArea4.ShadowColor = System.Drawing.Color.Gray;
-            this.GraRecebidoPago.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.GraRecebidoPago.Legends.Add(legend4);
+            chartArea2.AxisX.LabelStyle.Format = "00/0000";
+            chartArea2.AxisX2.LabelStyle.Format = "#,##0.00";
+            chartArea2.AxisY.LabelStyle.Format = "#,##0.00";
+            chartArea2.BackColor = System.Drawing.Color.White;
+            chartArea2.BorderColor = System.Drawing.Color.Empty;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.ShadowColor = System.Drawing.Color.Gray;
+            this.GraRecebidoPago.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.GraRecebidoPago.Legends.Add(legend2);
             this.GraRecebidoPago.Location = new System.Drawing.Point(3, 27);
             this.GraRecebidoPago.Name = "GraRecebidoPago";
             this.GraRecebidoPago.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series7.ChartArea = "ChartArea1";
-            series7.IsValueShownAsLabel = true;
-            series7.LabelFormat = "#,##0.00";
-            series7.Legend = "Legend1";
-            series7.Name = "Recebido";
-            series8.ChartArea = "ChartArea1";
-            series8.IsValueShownAsLabel = true;
-            series8.LabelFormat = "#,##0.00";
-            series8.Legend = "Legend1";
-            series8.Name = "Pagos";
-            this.GraRecebidoPago.Series.Add(series7);
-            this.GraRecebidoPago.Series.Add(series8);
+            series3.ChartArea = "ChartArea1";
+            series3.IsValueShownAsLabel = true;
+            series3.LabelFormat = "#,##0.00";
+            series3.Legend = "Legend1";
+            series3.Name = "Recebido";
+            series4.ChartArea = "ChartArea1";
+            series4.IsValueShownAsLabel = true;
+            series4.LabelFormat = "#,##0.00";
+            series4.Legend = "Legend1";
+            series4.Name = "Pagos";
+            this.GraRecebidoPago.Series.Add(series3);
+            this.GraRecebidoPago.Series.Add(series4);
             this.GraRecebidoPago.Size = new System.Drawing.Size(669, 265);
             this.GraRecebidoPago.TabIndex = 1;
             this.GraRecebidoPago.Text = "chart1";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            title4.Name = "Teste";
-            title4.Text = "Movimentações";
-            this.GraRecebidoPago.Titles.Add(title4);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title2.Name = "Teste";
+            title2.Text = "Movimentações";
+            this.GraRecebidoPago.Titles.Add(title2);
             // 
             // label8
             // 
