@@ -485,7 +485,7 @@ namespace Gastos
             this.LblDespesaEmprestimo.Name = "LblDespesaEmprestimo";
             this.LblDespesaEmprestimo.Size = new System.Drawing.Size(337, 25);
             this.LblDespesaEmprestimo.TabIndex = 0;
-            this.LblDespesaEmprestimo.Text = "Despesa Emprestimos: 0,00";
+            this.LblDespesaEmprestimo.Text = "Despesa Empréstimos: 0,00";
             // 
             // PnlGraficoMovimentacao
             // 
