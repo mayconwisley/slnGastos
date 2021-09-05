@@ -143,44 +143,45 @@ namespace Gastos
             // SubMenuCadCliente
             // 
             this.SubMenuCadCliente.Name = "SubMenuCadCliente";
-            this.SubMenuCadCliente.Size = new System.Drawing.Size(145, 22);
+            this.SubMenuCadCliente.Size = new System.Drawing.Size(180, 22);
             this.SubMenuCadCliente.Text = "Cliente";
             this.SubMenuCadCliente.Click += new System.EventHandler(this.SubMenuCadCliente_Click);
             // 
             // SubMenuCadSeparador1
             // 
             this.SubMenuCadSeparador1.Name = "SubMenuCadSeparador1";
-            this.SubMenuCadSeparador1.Size = new System.Drawing.Size(142, 6);
+            this.SubMenuCadSeparador1.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuCadCompetencia
             // 
             this.SubMenuCadCompetencia.Name = "SubMenuCadCompetencia";
-            this.SubMenuCadCompetencia.Size = new System.Drawing.Size(145, 22);
+            this.SubMenuCadCompetencia.Size = new System.Drawing.Size(180, 22);
             this.SubMenuCadCompetencia.Text = "Competência";
             this.SubMenuCadCompetencia.Click += new System.EventHandler(this.SubMenuCadCompetencia_Click);
             // 
             // SubMenuCadSeparador2
             // 
             this.SubMenuCadSeparador2.Name = "SubMenuCadSeparador2";
-            this.SubMenuCadSeparador2.Size = new System.Drawing.Size(142, 6);
+            this.SubMenuCadSeparador2.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuCadUsuario
             // 
             this.SubMenuCadUsuario.Name = "SubMenuCadUsuario";
-            this.SubMenuCadUsuario.Size = new System.Drawing.Size(145, 22);
+            this.SubMenuCadUsuario.Size = new System.Drawing.Size(180, 22);
             this.SubMenuCadUsuario.Text = "Usuário";
             this.SubMenuCadUsuario.Click += new System.EventHandler(this.SubMenuCadUsuario_Click);
             // 
             // SubMenuCadSeparador3
             // 
             this.SubMenuCadSeparador3.Name = "SubMenuCadSeparador3";
-            this.SubMenuCadSeparador3.Size = new System.Drawing.Size(142, 6);
+            this.SubMenuCadSeparador3.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuCadRelatorio
             // 
             this.SubMenuCadRelatorio.Name = "SubMenuCadRelatorio";
-            this.SubMenuCadRelatorio.Size = new System.Drawing.Size(145, 22);
+            this.SubMenuCadRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuCadRelatorio.Text = "Relatório";
+            this.SubMenuCadRelatorio.Visible = false;
             // 
             // MenuFixo
             // 
@@ -196,27 +197,28 @@ namespace Gastos
             // SubMenuFixCadastro
             // 
             this.SubMenuFixCadastro.Name = "SubMenuFixCadastro";
-            this.SubMenuFixCadastro.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuFixCadastro.Size = new System.Drawing.Size(180, 22);
             this.SubMenuFixCadastro.Text = "Cadastro";
             this.SubMenuFixCadastro.Click += new System.EventHandler(this.SubMenuFixCadastro_Click);
             // 
             // SubMenuFixConsulta
             // 
             this.SubMenuFixConsulta.Name = "SubMenuFixConsulta";
-            this.SubMenuFixConsulta.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuFixConsulta.Size = new System.Drawing.Size(180, 22);
             this.SubMenuFixConsulta.Text = "Consulta";
             this.SubMenuFixConsulta.Click += new System.EventHandler(this.SubMenuFixConsulta_Click);
             // 
             // SubMenuFixSeparador1
             // 
             this.SubMenuFixSeparador1.Name = "SubMenuFixSeparador1";
-            this.SubMenuFixSeparador1.Size = new System.Drawing.Size(118, 6);
+            this.SubMenuFixSeparador1.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuFixRelatorio
             // 
             this.SubMenuFixRelatorio.Name = "SubMenuFixRelatorio";
-            this.SubMenuFixRelatorio.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuFixRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuFixRelatorio.Text = "Relatório";
+            this.SubMenuFixRelatorio.Visible = false;
             // 
             // MenuEmprestimo
             // 
@@ -233,34 +235,35 @@ namespace Gastos
             // SubMenuEmpCadastro
             // 
             this.SubMenuEmpCadastro.Name = "SubMenuEmpCadastro";
-            this.SubMenuEmpCadastro.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuEmpCadastro.Size = new System.Drawing.Size(180, 22);
             this.SubMenuEmpCadastro.Text = "Cadastro";
             this.SubMenuEmpCadastro.Click += new System.EventHandler(this.SubMenuEmpCadastro_Click);
             // 
             // SubMenuEmpMovimentacao
             // 
             this.SubMenuEmpMovimentacao.Name = "SubMenuEmpMovimentacao";
-            this.SubMenuEmpMovimentacao.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuEmpMovimentacao.Size = new System.Drawing.Size(180, 22);
             this.SubMenuEmpMovimentacao.Text = "Movimentação";
             this.SubMenuEmpMovimentacao.Click += new System.EventHandler(this.SubMenuEmpMovimentacao_Click);
             // 
             // SubMenuEmpConsulta
             // 
             this.SubMenuEmpConsulta.Name = "SubMenuEmpConsulta";
-            this.SubMenuEmpConsulta.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuEmpConsulta.Size = new System.Drawing.Size(180, 22);
             this.SubMenuEmpConsulta.Text = "Consulta";
             this.SubMenuEmpConsulta.Click += new System.EventHandler(this.SubMenuEmpConsulta_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(151, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuEmpRelatorio
             // 
             this.SubMenuEmpRelatorio.Name = "SubMenuEmpRelatorio";
-            this.SubMenuEmpRelatorio.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuEmpRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuEmpRelatorio.Text = "Relatório";
+            this.SubMenuEmpRelatorio.Visible = false;
             // 
             // MenuDevedores
             // 
@@ -277,34 +280,35 @@ namespace Gastos
             // SubMenuDevCadastro
             // 
             this.SubMenuDevCadastro.Name = "SubMenuDevCadastro";
-            this.SubMenuDevCadastro.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuDevCadastro.Size = new System.Drawing.Size(180, 22);
             this.SubMenuDevCadastro.Text = "Cadastro";
             this.SubMenuDevCadastro.Click += new System.EventHandler(this.SubMenuDevCadastro_Click);
             // 
             // SubMenuDevMovimentacao
             // 
             this.SubMenuDevMovimentacao.Name = "SubMenuDevMovimentacao";
-            this.SubMenuDevMovimentacao.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuDevMovimentacao.Size = new System.Drawing.Size(180, 22);
             this.SubMenuDevMovimentacao.Text = "Movimentação";
             this.SubMenuDevMovimentacao.Click += new System.EventHandler(this.SubMenuDevMovimentacao_Click);
             // 
             // SubMenuDevConsulta
             // 
             this.SubMenuDevConsulta.Name = "SubMenuDevConsulta";
-            this.SubMenuDevConsulta.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuDevConsulta.Size = new System.Drawing.Size(180, 22);
             this.SubMenuDevConsulta.Text = "Consulta";
             this.SubMenuDevConsulta.Click += new System.EventHandler(this.SubMenuDevConsulta_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(151, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuDevRelatorio
             // 
             this.SubMenuDevRelatorio.Name = "SubMenuDevRelatorio";
-            this.SubMenuDevRelatorio.Size = new System.Drawing.Size(154, 22);
+            this.SubMenuDevRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuDevRelatorio.Text = "Relatório";
+            this.SubMenuDevRelatorio.Visible = false;
             // 
             // MenuMovimentacao
             // 
@@ -320,27 +324,28 @@ namespace Gastos
             // SubMenuMovCadastro
             // 
             this.SubMenuMovCadastro.Name = "SubMenuMovCadastro";
-            this.SubMenuMovCadastro.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovCadastro.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovCadastro.Text = "Cadastro";
             this.SubMenuMovCadastro.Click += new System.EventHandler(this.SubMenuMovCadastro_Click);
             // 
             // SubMenuMovConsulta
             // 
             this.SubMenuMovConsulta.Name = "SubMenuMovConsulta";
-            this.SubMenuMovConsulta.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovConsulta.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovConsulta.Text = "Consulta";
             this.SubMenuMovConsulta.Click += new System.EventHandler(this.SubMenuMovConsulta_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // SubMenuMovRelatorio
             // 
             this.SubMenuMovRelatorio.Name = "SubMenuMovRelatorio";
-            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(121, 22);
+            this.SubMenuMovRelatorio.Size = new System.Drawing.Size(180, 22);
             this.SubMenuMovRelatorio.Text = "Relatório";
+            this.SubMenuMovRelatorio.Visible = false;
             // 
             // MenuSair
             // 
@@ -500,8 +505,19 @@ namespace Gastos
             // GraEntradaSaida
             // 
             this.GraEntradaSaida.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GraEntradaSaida.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.AxisX.LabelStyle.Format = "00/0000";
+            chartArea1.AxisX.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX2.LineColor = System.Drawing.Color.Gainsboro;
             chartArea1.AxisY.LabelStyle.Format = "#,##0.00";
+            chartArea1.AxisY.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY2.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY2.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
             chartArea1.Name = "ChartArea1";
             this.GraEntradaSaida.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -572,9 +588,19 @@ namespace Gastos
             // GraRecebidoPago
             // 
             this.GraRecebidoPago.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GraRecebidoPago.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.GraRecebidoPago.BorderSkin.BackColor = System.Drawing.Color.LightGray;
+            this.GraRecebidoPago.BorderSkin.BorderColor = System.Drawing.Color.Gainsboro;
             chartArea2.AxisX.LabelStyle.Format = "00/0000";
+            chartArea2.AxisX.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
             chartArea2.AxisX2.LabelStyle.Format = "#,##0.00";
+            chartArea2.AxisX2.LineColor = System.Drawing.Color.Gainsboro;
             chartArea2.AxisY.LabelStyle.Format = "#,##0.00";
+            chartArea2.AxisY.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisY2.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.LightGray;
             chartArea2.BackColor = System.Drawing.Color.White;
             chartArea2.BorderColor = System.Drawing.Color.Empty;
             chartArea2.Name = "ChartArea1";
@@ -590,6 +616,7 @@ namespace Gastos
             series3.LabelFormat = "#,##0.00";
             series3.Legend = "Legend1";
             series3.Name = "Recebido";
+            series3.SmartLabelStyle.CalloutLineColor = System.Drawing.Color.Empty;
             series4.ChartArea = "ChartArea1";
             series4.IsValueShownAsLabel = true;
             series4.LabelFormat = "#,##0.00";
@@ -633,7 +660,7 @@ namespace Gastos
             this.MainMenuStrip = this.MenuPrincipal;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gastos";
+            this.Text = "Gastos - Versão de Teste - Sujeito a bugs";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.MenuPrincipal.ResumeLayout(false);
             this.MenuPrincipal.PerformLayout();

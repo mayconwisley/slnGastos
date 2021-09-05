@@ -93,10 +93,9 @@ namespace Gastos
         {
             QuantidadeUsuario quantidadeUsuario = new QuantidadeUsuario();
 
-            int qtdUsuario = quantidadeUsuario.QtdUsuario();
-
             try
             {
+                int qtdUsuario = quantidadeUsuario.QtdUsuario();
                 if (qtdUsuario <= 0)
                 {
                     FrmCadUsuario frmCadUsuario = new FrmCadUsuario();

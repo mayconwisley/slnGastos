@@ -64,10 +64,16 @@ namespace Gastos
                     switch (opcaoCadastro)
                     {
                         case OpcaoCadastro.Salvar:
-                            inserir.Cadastro(usuario);
+                            if (VerificarCampos() == false)
+                            {
+                                inserir.Cadastro(usuario);
+                            }
                             break;
                         case OpcaoCadastro.Alterar:
-                            alterar.Cadastro(usuario);
+                            if (VerificarCampos() == false)
+                            {
+                                alterar.Cadastro(usuario);
+                            }
                             break;
                         case OpcaoCadastro.Excluir:
                             excluir.Cadastro(usuario);
@@ -95,6 +101,20 @@ namespace Gastos
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private bool VerificarCampos()
+        {
+            if (TxtNome.Text == "" || TxtLogin.Text == "" || TxtSenha.Text == "")
+            {
+                MessageBox.Show("Campos: Nome, Login ou Senha estão em branco");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
         /*Listar os cadastro do usuário*/
         private void ListarUsuario()

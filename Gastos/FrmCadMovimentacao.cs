@@ -22,6 +22,7 @@ namespace Gastos
         int idCliente, idMovimentacao, idCompetencia, idComeptenciaAnterior;
         decimal valSalEntSaiAnt = 0, valSalPagRecAnt = 0, valSalPendAnte = 0;
         DateTime date;
+
         private FrmPrincipal frmForm;
 
 
