@@ -23,8 +23,7 @@ namespace Negocio.Competencia.Listar
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("ClienteId", idCliente);
-
-                DateTime date;
+                               
 
                 object sucesso = crud.Executar(CommandType.Text, SQL.ToString());
 

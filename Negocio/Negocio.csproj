@@ -89,6 +89,7 @@
     <Compile Include="Movimento\Emprestimo\Listar\CadastroMovEmprCliente.cs" />
     <Compile Include="Movimento\Emprestimo\Listar\EmprestimoIdMovimento.cs" />
     <Compile Include="Movimento\Emprestimo\Listar\IdMovimentoEmprestimo.cs" />
+    <Compile Include="Movimento\Emprestimo\Listar\QuantidadeIntegrarEmprestimo.cs" />
     <Compile Include="Movimento\Geral\Alterar.cs" />
     <Compile Include="Movimento\Geral\Excluir.cs" />
     <Compile Include="Movimento\Geral\Inserir.cs" />

@@ -30,8 +30,8 @@ namespace Gastos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LblValorPagar = new System.Windows.Forms.Label();
             this.LblValorPago = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@ namespace Gastos
             this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Integrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataPagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -70,6 +71,8 @@ namespace Gastos
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.CbxNome = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.BtnQuitar = new System.Windows.Forms.Button();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoEmp)).BeginInit();
@@ -78,6 +81,7 @@ namespace Gastos
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox5
@@ -148,6 +152,7 @@ namespace Gastos
             this.Parcela,
             this.Valor,
             this.Pago,
+            this.Integrado,
             this.DataPagamento,
             this.DataCadastro});
             this.DgvListarMovimentoEmp.Location = new System.Drawing.Point(6, 19);
@@ -187,9 +192,9 @@ namespace Gastos
             // Parcela
             // 
             this.Parcela.DataPropertyName = "Parcela";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            this.Parcela.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            this.Parcela.DefaultCellStyle = dataGridViewCellStyle5;
             this.Parcela.HeaderText = "Parcela";
             this.Parcela.Name = "Parcela";
             this.Parcela.ReadOnly = true;
@@ -198,9 +203,9 @@ namespace Gastos
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle6;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -213,6 +218,14 @@ namespace Gastos
             this.Pago.Name = "Pago";
             this.Pago.ReadOnly = true;
             this.Pago.Width = 57;
+            // 
+            // Integrado
+            // 
+            this.Integrado.DataPropertyName = "Integrado";
+            this.Integrado.HeaderText = "Integrado";
+            this.Integrado.Name = "Integrado";
+            this.Integrado.ReadOnly = true;
+            this.Integrado.Width = 77;
             // 
             // DataPagamento
             // 
@@ -258,7 +271,7 @@ namespace Gastos
             this.CmsBtnExcluir.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmsExcluirTudo});
             this.CmsBtnExcluir.Name = "CmsBtnExcluir";
-            this.CmsBtnExcluir.Size = new System.Drawing.Size(229, 48);
+            this.CmsBtnExcluir.Size = new System.Drawing.Size(229, 26);
             // 
             // CmsExcluirTudo
             // 
@@ -328,7 +341,6 @@ namespace Gastos
             // 
             // MktDataPagamento
             // 
-            this.MktDataPagamento.Enabled = false;
             this.MktDataPagamento.Location = new System.Drawing.Point(304, 36);
             this.MktDataPagamento.Mask = "00/00/0000";
             this.MktDataPagamento.Name = "MktDataPagamento";
@@ -481,11 +493,31 @@ namespace Gastos
             this.label12.TabIndex = 0;
             this.label12.Text = "Nome";
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.BtnQuitar);
+            this.groupBox7.Location = new System.Drawing.Point(463, 116);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(88, 52);
+            this.groupBox7.TabIndex = 10;
+            this.groupBox7.TabStop = false;
+            // 
+            // BtnQuitar
+            // 
+            this.BtnQuitar.Location = new System.Drawing.Point(7, 15);
+            this.BtnQuitar.Name = "BtnQuitar";
+            this.BtnQuitar.Size = new System.Drawing.Size(75, 23);
+            this.BtnQuitar.TabIndex = 0;
+            this.BtnQuitar.Text = "Quitar";
+            this.BtnQuitar.UseVisualStyleBackColor = true;
+            this.BtnQuitar.Click += new System.EventHandler(this.BtnQuitar_Click);
+            // 
             // FrmCadMovimentoEmprestimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(561, 605);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -513,6 +545,7 @@ namespace Gastos
             this.groupBox1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -547,15 +580,18 @@ namespace Gastos
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ComboBox CbxNome;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ContextMenuStrip CmsBtnExcluir;
+        private System.Windows.Forms.ToolStripMenuItem CmsExcluirTudo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmprestimosId;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataParcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn Parcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Integrado;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataPagamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
-        private System.Windows.Forms.ContextMenuStrip CmsBtnExcluir;
-        private System.Windows.Forms.ToolStripMenuItem CmsExcluirTudo;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button BtnQuitar;
     }
 }

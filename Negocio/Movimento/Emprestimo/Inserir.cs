@@ -16,8 +16,8 @@ namespace Negocio.Movimento.Emprestimo
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("INSERT INTO MovimentoEmprestimos( EmprestimosId, DataParcela, Parcela, Valor, Pago, Login, DataCadastro, DataPagamento) ");
-            SQL.Append("VALUES( @EmprestimosId, @DataParcela, @Parcela, @Valor, @Pago, @Login, @DataCadastro, @DataPagamento)");
+            SQL.Append("INSERT INTO MovimentoEmprestimos( EmprestimosId, DataParcela, Parcela, Valor, Pago, Integrado, Login, DataCadastro, DataPagamento) ");
+            SQL.Append("VALUES( @EmprestimosId, @DataParcela, @Parcela, @Valor, @Pago, @Integrado, @Login, @DataCadastro, @DataPagamento)");
 
             try
             {
@@ -27,6 +27,7 @@ namespace Negocio.Movimento.Emprestimo
                 crud.AdicionarParametro("Parcela", movimentoEmprestimo.Parcela);
                 crud.AdicionarParametro("Valor", movimentoEmprestimo.Valor);
                 crud.AdicionarParametro("Pago", movimentoEmprestimo.Pago);
+                crud.AdicionarParametro("Integrado", movimentoEmprestimo.Integrado);
                 crud.AdicionarParametro("Login", movimentoEmprestimo.Usuario.Login);
                 crud.AdicionarParametro("DataCadastro", movimentoEmprestimo.DataCadastro);
                 crud.AdicionarParametro("DataPagamento", movimentoEmprestimo.DataPagameno);

@@ -113,6 +113,7 @@ namespace Gastos
                 movimentoEmprestimo.Emprestimo.Id = idEmprestimo;
                 movimentoEmprestimo.Valor = decimal.Parse(TxtValorParcela.Text);
                 movimentoEmprestimo.Pago = "Não";
+                movimentoEmprestimo.Integrado = "Não";
                 movimentoEmprestimo.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoEmprestimo.Usuario.Login = strLogin;
                 movimentoEmprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));

@@ -76,6 +76,9 @@ namespace Gastos
             CadastroMovEmpDatPagamento cadastroMovEmpDatPagamento = new CadastroMovEmpDatPagamento();
             MovimentacaoObj movimentacao = new MovimentacaoObj();
             Inserir inserir = new Inserir();
+            Negocio.Movimento.Emprestimo.Alterar alterarMovimentoEmprestimo = new Negocio.Movimento.Emprestimo.Alterar();
+
+            int movimentoEmprestimoId = 0;
 
             movimentacao.TipoLancamento = "Saída";
             movimentacao.TipoPagoRecebido = "Pago";
@@ -89,14 +92,17 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            if (cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(+1)).Rows.Count > 0)
+            if (cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento, date.AddMonths(1)).Rows.Count > 0)
             {
-                foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento.AddMonths(1)).Rows)
+                foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento, date.AddMonths(1)).Rows)
                 {
+                    movimentoEmprestimoId = int.Parse(row["Id"].ToString());
                     movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
                     movimentacao.Descricao = row["Descricao"].ToString();
                     movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
                     inserir.Cadastro(movimentacao);
+                    alterarMovimentoEmprestimo.Integrado(movimentoEmprestimoId, "Sim");
+
                 }
             }
             else
@@ -123,9 +129,9 @@ namespace Gastos
             movimentacao.Cliente.Id = idCliente;
             movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
-            if (cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(+1)).Rows.Count > 0)
+            if (cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento, date.AddMonths(1)).Rows.Count > 0)
             {
-                foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento.AddMonths(1)).Rows)
+                foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento, date.AddMonths(1)).Rows)
                 {
                     movimentacao.DataMovimento = DateTime.Parse(row["DataRecebido"].ToString());
                     movimentacao.Descricao = row["Descricao"].ToString();
@@ -173,7 +179,6 @@ namespace Gastos
                 MessageBox.Show("Cliente não tem Fixos para Integrar!");
             }
         }
-
 
         private void InformacaoSaldoAnterior(int idCliente, int idCompetencia)
         {
@@ -232,6 +237,7 @@ namespace Gastos
         private void CadastrarMovimentacao(OpcaoCadastro opcaoCadastro)
         {
             MovimentacaoObj movimentacao = new MovimentacaoObj();
+            Negocio.Movimento.Emprestimo.Alterar alteraMovimentoEmprestimo = new Negocio.Movimento.Emprestimo.Alterar();
             Inserir inserir = new Inserir();
             Alterar alterar = new Alterar();
             Excluir excluir = new Excluir();

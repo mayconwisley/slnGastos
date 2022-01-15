@@ -5,6 +5,7 @@
         Salvar,
         Alterar,
         Excluir,
-        Consultar
+        Consultar,
+        Quitar
     }
 }

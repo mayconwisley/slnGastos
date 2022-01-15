@@ -18,7 +18,7 @@ namespace Negocio.Movimento.Emprestimo
 
             SQL.Append("UPDATE MovimentoEmprestimos ");
             SQL.Append("SET EmprestimosId = @EmprestimosId, DataParcela = @DataParcela, Parcela = @Parcela, Valor = @Valor, " +
-                       "Pago = @Pago, DataPagamento = @DataPagamento ");
+                       "Pago = @Pago, Integrado = @Integrado, DataPagamento = @DataPagamento ");
             SQL.Append("WHERE Id = @Id");
 
             try
@@ -30,6 +30,7 @@ namespace Negocio.Movimento.Emprestimo
                 crud.AdicionarParametro("Parcela", movimentoEmprestimo.Parcela);
                 crud.AdicionarParametro("Valor", movimentoEmprestimo.Valor);
                 crud.AdicionarParametro("Pago", movimentoEmprestimo.Pago);
+                crud.AdicionarParametro("Integrado", movimentoEmprestimo.Integrado);
                 crud.AdicionarParametro("DataPagamento", movimentoEmprestimo.DataPagameno);
                 crud.AdicionarParametro("Id", movimentoEmprestimo.Id);
                 crud.Executar(CommandType.Text, SQL.ToString());
@@ -40,5 +41,57 @@ namespace Negocio.Movimento.Emprestimo
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool Quitar(MovimentoEmprestimoObj movimentoEmprestimo)
+        {
+            crud = new Crud();
+            SQL = new StringBuilder();
+
+            SQL.Append("UPDATE MovimentoEmprestimos ");
+            SQL.Append("SET Pago = @Pago, DataPagamento = @DataPagamento, Integrado = 'Não' ");
+            SQL.Append("WHERE EmprestimosId = @EmprestimosId AND Pago = 'Não'");
+
+            try
+            {
+                crud.LimparParametro();
+                crud.AdicionarParametro("Pago", movimentoEmprestimo.Pago);
+                crud.AdicionarParametro("DataPagamento", movimentoEmprestimo.DataPagameno);
+                crud.AdicionarParametro("EmprestimosId", movimentoEmprestimo.Emprestimo.Id);
+                crud.Executar(CommandType.Text, SQL.ToString());
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
+        public bool Integrado(int movimentoEmprestimoId, string integrado)
+        {
+            crud = new Crud();
+            SQL = new StringBuilder();
+
+            SQL.Append("UPDATE MovimentoEmprestimos ");
+            SQL.Append("SET Integrado = @Integrado ");
+            SQL.Append("WHERE Id = @Id");
+
+            try
+            {
+                crud.LimparParametro();
+                crud.AdicionarParametro("Id", movimentoEmprestimoId);
+
+                crud.AdicionarParametro("Integrado", integrado);
+                crud.Executar(CommandType.Text, SQL.ToString());
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
     }
 }

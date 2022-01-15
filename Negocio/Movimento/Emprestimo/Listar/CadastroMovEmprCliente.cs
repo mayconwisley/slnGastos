@@ -16,7 +16,7 @@ namespace Negocio.Movimento.Emprestimo.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, EmprestimosId, DataParcela, Parcela, Valor, Pago, DataCadastro, DataPagamento ");
+            SQL.Append("SELECT Id, EmprestimosId, DataParcela, Parcela, Valor, Pago, Integrado, DataCadastro, DataPagamento ");
             SQL.Append("FROM MovimentoEmprestimos ");
             SQL.Append("WHERE EmprestimosId = @EmprestimosId");
 

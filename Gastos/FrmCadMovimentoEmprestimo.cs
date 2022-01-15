@@ -49,6 +49,7 @@ namespace Gastos
             Alterar alterar = new Alterar();
             Excluir excluir = new Excluir();
 
+
             try
             {
                 movimentoEmprestimo.Id = idMovimentoEmp;
@@ -59,10 +60,12 @@ namespace Gastos
                 movimentoEmprestimo.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoEmprestimo.Usuario.Login = strLogin;
                 movimentoEmprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-                DateTime dataParcela = DateTime.Parse(MktDataParcela.Text);
+                DateTime dataParcela;
+                bool sucessoDtParcela = DateTime.TryParse(MktDataParcela.Text, out dataParcela);
+
                 movimentoEmprestimo.Parcela = int.Parse(TxtParcela.Text);
                 movimentoEmprestimo.DataParcela = dataParcela;
-
+                movimentoEmprestimo.Integrado = "Sim";
                 DateTime dataPagamento;
                 bool sucesso = DateTime.TryParse(MktDataPagamento.Text, out dataPagamento);
 
@@ -82,6 +85,13 @@ namespace Gastos
                     case OpcaoCadastro.Excluir:
                         excluir.Cadastro(movimentoEmprestimo);
                         break;
+                    case OpcaoCadastro.Quitar:
+                        movimentoEmprestimo.Pago = "Sim";
+
+                        alterar.Quitar(movimentoEmprestimo);
+
+                        break;
+
                     default:
                         break;
                 }
@@ -152,6 +162,7 @@ namespace Gastos
             LblDataCadastro.Text = "Data Cadastro:" + DateTime.Now.ToString("dd/MM/yyyy");
             ListarCliente();
             CbxPago.SelectedIndex = 1;
+            MktDataPagamento.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void DgvListarMovimentoEmp_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -202,13 +213,13 @@ namespace Gastos
         {
             if (CbxPago.SelectedIndex == 0)
             {
-                MktDataPagamento.Enabled = true;
+
                 MktDataPagamento.Text = MktDataParcela.Text;
                 MktDataPagamento.Focus();
             }
             else
             {
-                MktDataPagamento.Enabled = false;
+
                 MktDataPagamento.Clear();
             }
         }
@@ -265,6 +276,11 @@ namespace Gastos
             BtnAlterar.Enabled = false;
             BtnExcluir.Enabled = false;
             BtnSalvar.Enabled = true;
+        }
+
+        private void BtnQuitar_Click(object sender, EventArgs e)
+        {
+            CadastroMovimento(OpcaoCadastro.Quitar);
         }
 
         private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
