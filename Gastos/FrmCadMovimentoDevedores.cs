@@ -15,9 +15,18 @@ namespace Gastos
         string strLogin;
         int idCliente, idDevedor, idMovimentoDev;
 
+        private FrmPrincipal frmForm;
+
         public FrmCadMovimentoDevedores(string login)
         {
             InitializeComponent();
+            strLogin = login;
+        }
+
+        public FrmCadMovimentoDevedores(FrmPrincipal form, string login)
+        {
+            InitializeComponent();
+            frmForm = form;
             strLogin = login;
         }
 
@@ -58,6 +67,7 @@ namespace Gastos
                 movimentoDevedores.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoDevedores.Usuario.Login = strLogin;
                 movimentoDevedores.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+                movimentoDevedores.Descricao = TxtDescricao.Text.Trim();
                 DateTime dataParcela = DateTime.Parse(MktDataParcela.Text);
                 movimentoDevedores.Parcela = int.Parse(TxtParcela.Text);
                 movimentoDevedores.DataParcela = dataParcela;
@@ -169,6 +179,7 @@ namespace Gastos
             {
                 MktDataRecebido.Clear();
             }
+            TxtDescricao.Text = DgvListarMovimentoDev.Rows[e.RowIndex].Cells["Descricao"].Value.ToString();
 
             BtnAlterar.Enabled = true;
             BtnExcluir.Enabled = true;
@@ -259,6 +270,11 @@ namespace Gastos
             {
                 TxtValor.Text = "";
             }
+        }
+
+        private void FrmCadMovimentoDevedores_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmForm.AtualizarFrmPrincipal();
         }
 
         private void CmsExcluirTudo_Click(object sender, EventArgs e)

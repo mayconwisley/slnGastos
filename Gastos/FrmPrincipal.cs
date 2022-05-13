@@ -3,6 +3,7 @@ using Negocio.Competencia.Listar;
 using Negocio.Devedores.Listar;
 using Negocio.Emprestimos.Listar;
 using Negocio.Fixo.Listar;
+using Negocio.Movimento.Devedor.Listar;
 using Negocio.Movimento.Geral.Listar;
 using System;
 using System.Data;
@@ -66,14 +67,14 @@ namespace Gastos
 
             CadastroFixosAtivoCliente cadastroFixosAtivoCliente = new CadastroFixosAtivoCliente();
             CadastroEmprestimoAtivoCliente cadastroEmprestimoAtivoCliente = new CadastroEmprestimoAtivoCliente();
-            CadastroDevedorAtivoCliente cadastroDevedorAtivoCliente = new CadastroDevedorAtivoCliente();
+            ConsultaMovDevClienteValorTotal consultaMovDevClienteValorTotal = new ConsultaMovDevClienteValorTotal();
             SaldoPagRecClienteComp saldoPagRecClienteComp = new SaldoPagRecClienteComp();
 
             try
             {
                 LblDespesaFixo.Text = "Despesa Fixas......: " + cadastroFixosAtivoCliente.ValorFixo(idCliente).ToString("#,##0.00");
                 LblDespesaEmprestimo.Text = "Despesa Empréstimos: " + cadastroEmprestimoAtivoCliente.ValorEmprestimo(idCliente).ToString("#,##0.00");
-                LblCreditoDevedores.Text = "Crédito Devedores..: " + cadastroDevedorAtivoCliente.ValorDevedor(idCliente).ToString("#,##0.00");
+                LblCreditoDevedores.Text = "Crédito Devedores..: " + consultaMovDevClienteValorTotal.ValorDevedor(idCliente).ToString("#,##0.00");
 
                 decimal saldo = saldoPagRecClienteComp.Saldo(idCliente, idCompetencia);
 
@@ -194,7 +195,7 @@ namespace Gastos
 
         private void SubMenuCadCompetencia_Click(object sender, EventArgs e)
         {
-            FrmCadCompetencia frmCadCompetencia = new FrmCadCompetencia();
+            FrmCadCompetencia frmCadCompetencia = new FrmCadCompetencia(this);
             frmCadCompetencia.ShowDialog();
         }
 
@@ -206,31 +207,31 @@ namespace Gastos
 
         private void SubMenuFixCadastro_Click(object sender, EventArgs e)
         {
-            FrmCadFixos frmCadFixos = new FrmCadFixos(strLogin);
+            FrmCadFixos frmCadFixos = new FrmCadFixos(this, strLogin);
             frmCadFixos.ShowDialog();
         }
 
         private void SubMenuEmpCadastro_Click(object sender, EventArgs e)
         {
-            FrmCadEmprestimo frmCadEmprestimo = new FrmCadEmprestimo(strLogin);
+            FrmCadEmprestimo frmCadEmprestimo = new FrmCadEmprestimo(this, strLogin);
             frmCadEmprestimo.ShowDialog();
         }
 
         private void SubMenuEmpMovimentacao_Click(object sender, EventArgs e)
         {
-            FrmCadMovimentoEmprestimo frmCadMovimentoEmprestimo = new FrmCadMovimentoEmprestimo(strLogin);
+            FrmCadMovimentoEmprestimo frmCadMovimentoEmprestimo = new FrmCadMovimentoEmprestimo(this, strLogin);
             frmCadMovimentoEmprestimo.ShowDialog();
         }
 
         private void SubMenuDevCadastro_Click(object sender, EventArgs e)
         {
-            FrmCadDevedores frmCadDevedores = new FrmCadDevedores(strLogin);
+            FrmCadDevedores frmCadDevedores = new FrmCadDevedores(this, strLogin);
             frmCadDevedores.ShowDialog();
         }
 
         private void SubMenuDevMovimentacao_Click(object sender, EventArgs e)
         {
-            FrmCadMovimentoDevedores frmCadMovimentoDevedores = new FrmCadMovimentoDevedores(strLogin);
+            FrmCadMovimentoDevedores frmCadMovimentoDevedores = new FrmCadMovimentoDevedores(this, strLogin);
             frmCadMovimentoDevedores.ShowDialog();
         }
 

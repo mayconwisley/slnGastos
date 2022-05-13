@@ -12,10 +12,17 @@ namespace Gastos
     public partial class FrmCadCompetencia : Form
     {
         int idCliente, idCompetencia;
+        FrmPrincipal frmForm;
 
         public FrmCadCompetencia()
         {
             InitializeComponent();
+        }
+
+        public FrmCadCompetencia(FrmPrincipal form)
+        {
+            InitializeComponent();
+            frmForm = form; 
         }
 
         private void ListarCliente()
@@ -115,6 +122,11 @@ namespace Gastos
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             Cadastro(OpcaoCadastro.Excluir);
+        }
+
+        private void FrmCadCompetencia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmForm.AtualizarFrmPrincipal();
         }
 
         private void DgvListaCompetencia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

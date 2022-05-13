@@ -43,5 +43,28 @@ namespace Negocio.Emprestimos
             }
 
         }
+        public bool Ativo(int idEmprestimo)
+        {
+            crud = new Crud();
+            SQL = new StringBuilder();
+
+            SQL.Append("UPDATE Emprestimos ");
+            SQL.Append("SET Ativo = 'Não' ");
+            SQL.Append("WHERE Id = @Id");
+
+            try
+            {
+                crud.LimparParametro();
+                crud.AdicionarParametro("Id", idEmprestimo);
+                crud.Executar(CommandType.Text, SQL.ToString());
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }

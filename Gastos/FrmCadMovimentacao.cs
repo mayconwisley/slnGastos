@@ -71,115 +71,6 @@ namespace Gastos
             }
         }
 
-        private void IntegrarEmprestimo(int idCliente, DateTime dataPagamento)
-        {
-            CadastroMovEmpDatPagamento cadastroMovEmpDatPagamento = new CadastroMovEmpDatPagamento();
-            MovimentacaoObj movimentacao = new MovimentacaoObj();
-            Inserir inserir = new Inserir();
-            Negocio.Movimento.Emprestimo.Alterar alterarMovimentoEmprestimo = new Negocio.Movimento.Emprestimo.Alterar();
-
-            int movimentoEmprestimoId = 0;
-
-            movimentacao.TipoLancamento = "Saída";
-            movimentacao.TipoPagoRecebido = "Pago";
-            movimentacao.TipoMonetario = "Dinheiro";
-            movimentacao.Integracao = "Integrado Emprestimos";
-            movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
-            movimentacao.Competencia.Id = idCompetencia;
-            movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
-            movimentacao.Usuario.Login = strLogin;
-            movimentacao.Cliente = new Objeto.Cliente.ClienteObj();
-            movimentacao.Cliente.Id = idCliente;
-            movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-
-            if (cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento, date.AddMonths(1)).Rows.Count > 0)
-            {
-                foreach (DataRow row in cadastroMovEmpDatPagamento.Consulta(idCliente, dataPagamento, date.AddMonths(1)).Rows)
-                {
-                    movimentoEmprestimoId = int.Parse(row["Id"].ToString());
-                    movimentacao.DataMovimento = DateTime.Parse(row["DataPagamento"].ToString());
-                    movimentacao.Descricao = row["Descricao"].ToString();
-                    movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
-                    inserir.Cadastro(movimentacao);
-                    alterarMovimentoEmprestimo.Integrado(movimentoEmprestimoId, "Sim");
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Cliente não tem Empréstimos para Integrar!");
-            }
-        }
-
-        private void IntegrarDevedores(int idCliente, DateTime dataRecebimento)
-        {
-            CadastroMovDevDatRecebido cadastroMovDevDatPagamento = new CadastroMovDevDatRecebido();
-            MovimentacaoObj movimentacao = new MovimentacaoObj();
-            Inserir inserir = new Inserir();
-
-            movimentacao.TipoLancamento = "Entrada";
-            movimentacao.TipoPagoRecebido = "Recebido";
-            movimentacao.TipoMonetario = "Dinheiro";
-            movimentacao.Integracao = "Integrado Devedores";
-            movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
-            movimentacao.Competencia.Id = idCompetencia;
-            movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
-            movimentacao.Usuario.Login = strLogin;
-            movimentacao.Cliente = new Objeto.Cliente.ClienteObj();
-            movimentacao.Cliente.Id = idCliente;
-            movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-
-            if (cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento, date.AddMonths(1)).Rows.Count > 0)
-            {
-                foreach (DataRow row in cadastroMovDevDatPagamento.Consulta(idCliente, dataRecebimento, date.AddMonths(1)).Rows)
-                {
-                    movimentacao.DataMovimento = DateTime.Parse(row["DataRecebido"].ToString());
-                    movimentacao.Descricao = row["Descricao"].ToString();
-                    movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
-                    inserir.Cadastro(movimentacao);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Cliente não tem Devedores para Integrar!");
-            }
-        }
-
-        private void IntegrarFixos(int idCliente)
-        {
-            CadastroFixoIntegrar cadastroFixoIntegrar = new CadastroFixoIntegrar();
-            MovimentacaoObj movimentacao = new MovimentacaoObj();
-            Inserir inserir = new Inserir();
-
-            movimentacao.DataMovimento = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-            movimentacao.TipoLancamento = "Saída";
-            movimentacao.TipoPagoRecebido = "Pago";
-            movimentacao.TipoMonetario = "Dinheiro";
-            movimentacao.Integracao = "Integrado Fixos";
-            movimentacao.Competencia = new Objeto.Competencia.CompetenciaObj();
-            movimentacao.Competencia.Id = idCompetencia;
-            movimentacao.Usuario = new Objeto.Usuario.UsuarioObj();
-            movimentacao.Usuario.Login = strLogin;
-            movimentacao.Cliente = new Objeto.Cliente.ClienteObj();
-            movimentacao.Cliente.Id = idCliente;
-            movimentacao.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-
-            if (cadastroFixoIntegrar.Consulta(idCliente).Rows.Count > 0)
-            {
-                foreach (DataRow row in cadastroFixoIntegrar.Consulta(idCliente).Rows)
-                {
-
-                    movimentacao.Descricao = row["Descricao"].ToString();
-                    movimentacao.Valor = decimal.Parse(row["Valor"].ToString());
-                    inserir.Cadastro(movimentacao);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Cliente não tem Fixos para Integrar!");
-            }
-        }
-
         private void InformacaoSaldoAnterior(int idCliente, int idCompetencia)
         {
             SaldoEntSaiClienteComp saldoEntSaiClienteComp = new SaldoEntSaiClienteComp();
@@ -438,31 +329,6 @@ namespace Gastos
                     iInteFixos++;
                 }
             }
-
-            if (iInteEmprestimo > 0)
-            {
-                BtnInteEmprestimo.Enabled = false;
-            }
-            else
-            {
-                BtnInteEmprestimo.Enabled = true;
-            }
-            if (iInteDevedores > 0)
-            {
-                BtnInteDevedores.Enabled = false;
-            }
-            else
-            {
-                BtnInteDevedores.Enabled = true;
-            }
-            if (iInteFixos > 0)
-            {
-                BtnInteFixos.Enabled = false;
-            }
-            else
-            {
-                BtnInteFixos.Enabled = true;
-            }
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -478,12 +344,6 @@ namespace Gastos
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             CadastrarMovimentacao(OpcaoCadastro.Excluir);
-        }
-
-        private void BtnInteDevedores_Click(object sender, EventArgs e)
-        {
-            IntegrarDevedores(idCliente, date);
-            ListarMovimentacao(idCliente, idCompetencia);
         }
 
         private void DgvListaMovimentacao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -530,18 +390,6 @@ namespace Gastos
             BtnAlterar.Enabled = true;
             BtnExcluir.Enabled = true;
             BtnSalvar.Enabled = false;
-        }
-
-        private void BtnInteEmprestimo_Click(object sender, EventArgs e)
-        {
-            IntegrarEmprestimo(idCliente, date);
-            ListarMovimentacao(idCliente, idCompetencia);
-        }
-
-        private void BtnInteFixos_Click(object sender, EventArgs e)
-        {
-            IntegrarFixos(idCliente);
-            ListarMovimentacao(idCliente, idCompetencia);
         }
 
         private void FrmCadMovimentacao_FormClosing(object sender, FormClosingEventArgs e)

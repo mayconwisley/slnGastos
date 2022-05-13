@@ -58,7 +58,6 @@
     <Compile Include="Devedores\Alterar.cs" />
     <Compile Include="Devedores\Excluir.cs" />
     <Compile Include="Devedores\Inserir.cs" />
-    <Compile Include="Devedores\Listar\CadastroDevedorAtivoCliente.cs" />
     <Compile Include="Devedores\Listar\CadastroDevedoresCliente.cs" />
     <Compile Include="Devedores\Listar\IdDescricaoDevedor.cs" />
     <Compile Include="Emprestimos\Alterar.cs" />
@@ -80,6 +79,8 @@
     <Compile Include="Movimento\Devedor\Inserir.cs" />
     <Compile Include="Movimento\Devedor\Listar\CadastroMovDevCliente.cs" />
     <Compile Include="Movimento\Devedor\Listar\CadastroMovDevDatRecebido.cs" />
+    <Compile Include="Movimento\Devedor\Listar\ConsultaMovDevCliente.cs" />
+    <Compile Include="Movimento\Devedor\Listar\ConsultaMovDevClienteValorTotal.cs" />
     <Compile Include="Movimento\Devedor\Listar\DevedoresIdMovimento.cs" />
     <Compile Include="Movimento\Emprestimo\Alterar.cs" />
     <Compile Include="Movimento\Emprestimo\Excluir.cs" />

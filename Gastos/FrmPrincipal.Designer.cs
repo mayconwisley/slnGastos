@@ -175,6 +175,7 @@ namespace Gastos
             // 
             this.SubMenuCadSeparador3.Name = "SubMenuCadSeparador3";
             this.SubMenuCadSeparador3.Size = new System.Drawing.Size(177, 6);
+            this.SubMenuCadSeparador3.Visible = false;
             // 
             // SubMenuCadRelatorio
             // 
@@ -212,6 +213,7 @@ namespace Gastos
             // 
             this.SubMenuFixSeparador1.Name = "SubMenuFixSeparador1";
             this.SubMenuFixSeparador1.Size = new System.Drawing.Size(177, 6);
+            this.SubMenuFixSeparador1.Visible = false;
             // 
             // SubMenuFixRelatorio
             // 
@@ -257,6 +259,7 @@ namespace Gastos
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Visible = false;
             // 
             // SubMenuEmpRelatorio
             // 
@@ -302,6 +305,7 @@ namespace Gastos
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Visible = false;
             // 
             // SubMenuDevRelatorio
             // 
@@ -339,6 +343,7 @@ namespace Gastos
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Visible = false;
             // 
             // SubMenuMovRelatorio
             // 

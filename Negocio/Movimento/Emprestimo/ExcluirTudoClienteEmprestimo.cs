@@ -13,7 +13,7 @@ namespace Negocio.Movimento.Emprestimo
         Crud crud;
         StringBuilder SQL = null;
 
-        /*Excluir toda a movimenta do devedor*/
+        /*Excluir toda a movimentação do devedor*/
         public bool Cadastro(int idEmprestimo)
         {
             crud = new Crud();

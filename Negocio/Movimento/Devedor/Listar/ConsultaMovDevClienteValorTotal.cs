@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio.Devedores.Listar
+namespace Negocio.Movimento.Devedor.Listar
 {
-    public class CadastroDevedorAtivoCliente
+    public class ConsultaMovDevClienteValorTotal
     {
         Crud crud;
         StringBuilder SQL = null;
@@ -18,9 +18,10 @@ namespace Negocio.Devedores.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT SUM(Valor) ");
-            SQL.Append("FROM Devedores ");
-            SQL.Append("WHERE ClienteId = @ClienteId AND Ativo = 'Sim' ");
+            SQL.Append("SELECT SUM(MovDev.Valor) AS Valor ");
+            SQL.Append("FROM MovimentoDevedores MovDev  ");
+            SQL.Append("INNER JOIN Devedores Dev ON Dev.Id = MovDev.DevedoresId ");
+            SQL.Append("WHERE ClienteId = @ClienteId AND Dev.Ativo = 'Sim' AND MovDev.Recebido = 'Não' ");
 
             try
             {

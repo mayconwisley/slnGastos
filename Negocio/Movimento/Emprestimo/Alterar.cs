@@ -66,32 +66,5 @@ namespace Negocio.Movimento.Emprestimo
             }
         }
 
-
-
-        public bool Integrado(int movimentoEmprestimoId, string integrado)
-        {
-            crud = new Crud();
-            SQL = new StringBuilder();
-
-            SQL.Append("UPDATE MovimentoEmprestimos ");
-            SQL.Append("SET Integrado = @Integrado ");
-            SQL.Append("WHERE Id = @Id");
-
-            try
-            {
-                crud.LimparParametro();
-                crud.AdicionarParametro("Id", movimentoEmprestimoId);
-
-                crud.AdicionarParametro("Integrado", integrado);
-                crud.Executar(CommandType.Text, SQL.ToString());
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-
     }
 }

@@ -16,7 +16,7 @@ namespace Negocio.Movimento.Devedor.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT MovDev.Valor, MovDev.DataRecebido, Dev.Nome || ' - ' || Dev.Descricao || ' - ' || MovDev.Parcela || 'ª Parcela' AS Descricao  ");
+            SQL.Append("SELECT MovDev.Valor, MovDev.DataRecebido, Dev.Nome || ' - ' || MovDev.Parcela || 'ª Parcela' AS Descricao  ");
             SQL.Append("FROM MovimentoDevedores MovDev ");
             SQL.Append("INNER JOIN Devedores Dev ON Dev.Id = MovDev.DevedoresId ");
             SQL.Append("WHERE STRFTIME('%Y-%m-01', MovDev.DataRecebido) = STRFTIME('%Y-%m-01', @DataRecebido) AND " +

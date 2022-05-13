@@ -29,8 +29,6 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LblTotalGeral = new System.Windows.Forms.Label();
@@ -38,21 +36,13 @@ namespace Gastos
             this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DgvListaDevedores = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CbxNome = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.DevedoresId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recebido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaDevedores)).BeginInit();
@@ -69,7 +59,7 @@ namespace Gastos
             this.groupBox5.Size = new System.Drawing.Size(241, 72);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Informações sobre a parcela";
+            this.groupBox5.Text = "Informações";
             // 
             // LblTotalGeral
             // 
@@ -87,9 +77,9 @@ namespace Gastos
             this.LblTotalNAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTotalNAtivo.Location = new System.Drawing.Point(6, 34);
             this.LblTotalNAtivo.Name = "LblTotalNAtivo";
-            this.LblTotalNAtivo.Size = new System.Drawing.Size(140, 14);
+            this.LblTotalNAtivo.Size = new System.Drawing.Size(161, 14);
             this.LblTotalNAtivo.TabIndex = 1;
-            this.LblTotalNAtivo.Text = "Total Ñ Ativo: 0,00";
+            this.LblTotalNAtivo.Text = "Total Ñ Recebido: 0,00";
             // 
             // LblTotalAtivo
             // 
@@ -97,9 +87,9 @@ namespace Gastos
             this.LblTotalAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTotalAtivo.Location = new System.Drawing.Point(6, 17);
             this.LblTotalAtivo.Name = "LblTotalAtivo";
-            this.LblTotalAtivo.Size = new System.Drawing.Size(140, 14);
+            this.LblTotalAtivo.Size = new System.Drawing.Size(161, 14);
             this.LblTotalAtivo.TabIndex = 0;
-            this.LblTotalAtivo.Text = "Total Ativo..: 0,00";
+            this.LblTotalAtivo.Text = "Total Recebido..: 0,00";
             // 
             // groupBox3
             // 
@@ -121,18 +111,10 @@ namespace Gastos
             this.DgvListaDevedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvListaDevedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaDevedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.DataInicio,
+            this.DevedoresId,
             this.Nome,
-            this.Descricao,
             this.Valor,
-            this.Parcelas,
-            this.ValorTotal,
-            this.Parcelado,
-            this.Ativo,
-            this.Login,
-            this.ClienteId,
-            this.DataCadastro});
+            this.Recebido});
             this.DgvListaDevedores.Location = new System.Drawing.Point(6, 19);
             this.DgvListaDevedores.MultiSelect = false;
             this.DgvListaDevedores.Name = "DgvListaDevedores";
@@ -140,114 +122,6 @@ namespace Gastos
             this.DgvListaDevedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaDevedores.Size = new System.Drawing.Size(562, 254);
             this.DgvListaDevedores.TabIndex = 0;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
-            // 
-            // DataInicio
-            // 
-            this.DataInicio.DataPropertyName = "DataInicio";
-            this.DataInicio.HeaderText = "Data Inicio";
-            this.DataInicio.Name = "DataInicio";
-            this.DataInicio.ReadOnly = true;
-            this.DataInicio.Width = 83;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 60;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            this.Descricao.Width = 80;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 56;
-            // 
-            // Parcelas
-            // 
-            this.Parcelas.DataPropertyName = "Parcelas";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Parcelas.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Parcelas.HeaderText = "Parcelas";
-            this.Parcelas.Name = "Parcelas";
-            this.Parcelas.ReadOnly = true;
-            this.Parcelas.Width = 73;
-            // 
-            // ValorTotal
-            // 
-            this.ValorTotal.DataPropertyName = "ValorTotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ValorTotal.HeaderText = "Valor Total";
-            this.ValorTotal.Name = "ValorTotal";
-            this.ValorTotal.ReadOnly = true;
-            this.ValorTotal.Width = 83;
-            // 
-            // Parcelado
-            // 
-            this.Parcelado.DataPropertyName = "Parcelado";
-            this.Parcelado.HeaderText = "Parcelado";
-            this.Parcelado.Name = "Parcelado";
-            this.Parcelado.ReadOnly = true;
-            this.Parcelado.Width = 80;
-            // 
-            // Ativo
-            // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            this.Login.Width = 58;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
-            this.ClienteId.Width = 73;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -279,6 +153,41 @@ namespace Gastos
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
+            // 
+            // DevedoresId
+            // 
+            this.DevedoresId.DataPropertyName = "DevedoresId";
+            this.DevedoresId.HeaderText = "Id";
+            this.DevedoresId.Name = "DevedoresId";
+            this.DevedoresId.ReadOnly = true;
+            this.DevedoresId.Width = 41;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 60;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 56;
+            // 
+            // Recebido
+            // 
+            this.Recebido.DataPropertyName = "Recebido";
+            this.Recebido.HeaderText = "Recebido";
+            this.Recebido.Name = "Recebido";
+            this.Recebido.ReadOnly = true;
+            this.Recebido.Width = 78;
             // 
             // FrmConDevedores
             // 
@@ -318,17 +227,9 @@ namespace Gastos
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox CbxNome;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DevedoresId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Parcelas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Parcelado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recebido;
     }
 }

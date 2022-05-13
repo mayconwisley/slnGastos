@@ -15,7 +15,7 @@ namespace Negocio.Devedores.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, Id || ' - ' || Nome  AS Nome ");
+            SQL.Append("SELECT Id, Id || ' - ' || Nome AS Nome ");
             SQL.Append("FROM Devedores ");
             SQL.Append("WHERE ClienteId = @ClienteId ");
             SQL.Append("ORDER BY UPPER(Nome) ASC");

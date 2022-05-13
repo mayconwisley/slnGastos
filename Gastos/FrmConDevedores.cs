@@ -1,5 +1,6 @@
 ﻿using Negocio.Cliente.Listar;
 using Negocio.Devedores.Listar;
+using Negocio.Movimento.Devedor.Listar;
 using System;
 using System.Windows.Forms;
 
@@ -19,8 +20,9 @@ namespace Gastos
         }
         private void ListaDevedores(int idCliente)
         {
-            CadastroDevedoresCliente cadastroDevedoresCliente = new CadastroDevedoresCliente();
-            DgvListaDevedores.DataSource = cadastroDevedoresCliente.Consulta(idCliente);
+            ConsultaMovDevCliente consultaMovDevCliente = new ConsultaMovDevCliente();
+            
+            DgvListaDevedores.DataSource = consultaMovDevCliente.Consulta(idCliente);
             Informacao();
 
         }
@@ -29,7 +31,7 @@ namespace Gastos
             decimal valTotalAtivo = 0, valTotalNAtivo = 0, valTotalGeral = 0;
             foreach (DataGridViewRow row in DgvListaDevedores.Rows)
             {
-                if (row.Cells["Ativo"].Value.ToString() == "Sim")
+                if (row.Cells["Recebido"].Value.ToString() == "Sim")
                 {
                     valTotalAtivo += decimal.Parse(row.Cells["Valor"].Value.ToString());
                 }
@@ -40,8 +42,8 @@ namespace Gastos
                 valTotalGeral += decimal.Parse(row.Cells["Valor"].Value.ToString());
             }
 
-            LblTotalAtivo.Text = "Total Ativo..: " + valTotalAtivo.ToString("#,##0.00");
-            LblTotalNAtivo.Text = "Total Ñ Ativo: " + valTotalNAtivo.ToString("#,##0.00");
+            LblTotalAtivo.Text = "Total Recebido..: " + valTotalAtivo.ToString("#,##0.00");
+            LblTotalNAtivo.Text = "Total Ñ Recebido: " + valTotalNAtivo.ToString("#,##0.00");
             LblTotalGeral.Text = "Total Geral..: " + valTotalGeral.ToString("#,##0.00");
         }
         private void FrmConDevedores_Load(object sender, EventArgs e)

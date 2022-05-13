@@ -16,9 +16,19 @@ namespace Gastos
         string strLogin;
         int idCliente, idEmprestimo, idMovimentoEmp;
 
+
+        private FrmPrincipal frmForm;
+
         public FrmCadMovimentoEmprestimo(string login)
         {
             InitializeComponent();
+            strLogin = login;
+        }
+
+        public FrmCadMovimentoEmprestimo(FrmPrincipal form, string login)
+        {
+            InitializeComponent();
+            frmForm = form;
             strLogin = login;
         }
 
@@ -45,6 +55,8 @@ namespace Gastos
         private void CadastroMovimento(OpcaoCadastro opcaoCadastro)
         {
             MovimentoEmprestimoObj movimentoEmprestimo = new MovimentoEmprestimoObj();
+            Negocio.Emprestimos.Alterar alterarEmprestimo = new Negocio.Emprestimos.Alterar();
+
             Inserir inserir = new Inserir();
             Alterar alterar = new Alterar();
             Excluir excluir = new Excluir();
@@ -89,7 +101,7 @@ namespace Gastos
                         movimentoEmprestimo.Pago = "Sim";
 
                         alterar.Quitar(movimentoEmprestimo);
-
+                        alterarEmprestimo.Ativo(idEmprestimo);
                         break;
 
                     default:
@@ -281,6 +293,13 @@ namespace Gastos
         private void BtnQuitar_Click(object sender, EventArgs e)
         {
             CadastroMovimento(OpcaoCadastro.Quitar);
+        }
+
+        private void FrmCadMovimentoEmprestimo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmForm.AtualizarFrmPrincipal();
+            frmForm.GraficoEntradaSaida();
+            frmForm.GraficoPagoRecebido();
         }
 
         private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)

@@ -36,9 +36,6 @@ namespace Gastos
             this.CbxNome = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnInteDevedores = new System.Windows.Forms.Button();
-            this.BtnInteFixos = new System.Windows.Forms.Button();
-            this.BtnInteEmprestimo = new System.Windows.Forms.Button();
             this.CbCheque = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -144,9 +141,6 @@ namespace Gastos
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.BtnInteDevedores);
-            this.groupBox2.Controls.Add(this.BtnInteFixos);
-            this.groupBox2.Controls.Add(this.BtnInteEmprestimo);
             this.groupBox2.Controls.Add(this.CbCheque);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label7);
@@ -160,45 +154,15 @@ namespace Gastos
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(11, 117);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(581, 97);
+            this.groupBox2.Size = new System.Drawing.Size(581, 82);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cadastro Movimentação";
             // 
-            // BtnInteDevedores
-            // 
-            this.BtnInteDevedores.Location = new System.Drawing.Point(236, 53);
-            this.BtnInteDevedores.Name = "BtnInteDevedores";
-            this.BtnInteDevedores.Size = new System.Drawing.Size(75, 39);
-            this.BtnInteDevedores.TabIndex = 8;
-            this.BtnInteDevedores.Text = "Integrar Devedores";
-            this.BtnInteDevedores.UseVisualStyleBackColor = true;
-            this.BtnInteDevedores.Click += new System.EventHandler(this.BtnInteDevedores_Click);
-            // 
-            // BtnInteFixos
-            // 
-            this.BtnInteFixos.Location = new System.Drawing.Point(86, 53);
-            this.BtnInteFixos.Name = "BtnInteFixos";
-            this.BtnInteFixos.Size = new System.Drawing.Size(75, 39);
-            this.BtnInteFixos.TabIndex = 6;
-            this.BtnInteFixos.Text = "Integrar Fixos";
-            this.BtnInteFixos.UseVisualStyleBackColor = true;
-            this.BtnInteFixos.Click += new System.EventHandler(this.BtnInteFixos_Click);
-            // 
-            // BtnInteEmprestimo
-            // 
-            this.BtnInteEmprestimo.Location = new System.Drawing.Point(161, 53);
-            this.BtnInteEmprestimo.Name = "BtnInteEmprestimo";
-            this.BtnInteEmprestimo.Size = new System.Drawing.Size(75, 39);
-            this.BtnInteEmprestimo.TabIndex = 7;
-            this.BtnInteEmprestimo.Text = "Integrar Empréstimo";
-            this.BtnInteEmprestimo.UseVisualStyleBackColor = true;
-            this.BtnInteEmprestimo.Click += new System.EventHandler(this.BtnInteEmprestimo_Click);
-            // 
             // CbCheque
             // 
             this.CbCheque.AutoSize = true;
-            this.CbCheque.Location = new System.Drawing.Point(9, 71);
+            this.CbCheque.Location = new System.Drawing.Point(6, 58);
             this.CbCheque.Name = "CbCheque";
             this.CbCheque.Size = new System.Drawing.Size(63, 17);
             this.CbCheque.TabIndex = 5;
@@ -352,7 +316,7 @@ namespace Gastos
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.DgvListaMovimentacao);
-            this.groupBox4.Location = new System.Drawing.Point(11, 220);
+            this.groupBox4.Location = new System.Drawing.Point(11, 205);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(581, 256);
             this.groupBox4.TabIndex = 3;
@@ -432,7 +396,7 @@ namespace Gastos
             this.TipoLancamento.HeaderText = "Tipo Lançamento";
             this.TipoLancamento.Name = "TipoLancamento";
             this.TipoLancamento.ReadOnly = true;
-            this.TipoLancamento.Width = 105;
+            this.TipoLancamento.Width = 106;
             // 
             // TipoMonetario
             // 
@@ -504,7 +468,7 @@ namespace Gastos
             this.groupBox5.Controls.Add(this.LblSaldo);
             this.groupBox5.Controls.Add(this.LblValorSaida);
             this.groupBox5.Controls.Add(this.LblValorEntrada);
-            this.groupBox5.Location = new System.Drawing.Point(11, 482);
+            this.groupBox5.Location = new System.Drawing.Point(11, 476);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(581, 122);
             this.groupBox5.TabIndex = 4;
@@ -718,9 +682,6 @@ namespace Gastos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblSalPend;
         private System.Windows.Forms.Label LblSalPR;
-        private System.Windows.Forms.Button BtnInteEmprestimo;
-        private System.Windows.Forms.Button BtnInteDevedores;
-        private System.Windows.Forms.Button BtnInteFixos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataMovimento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;

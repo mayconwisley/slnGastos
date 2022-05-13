@@ -14,10 +14,18 @@ namespace Gastos
         string strLogin;
         int idCliente, idFixos;
 
+        FrmPrincipal frmForm;
         public FrmCadFixos(string login)
         {
             InitializeComponent();
             strLogin = login;
+        }
+
+        public FrmCadFixos(FrmPrincipal form, string login)
+        {
+            InitializeComponent();
+            strLogin = login;
+            frmForm = form;
         }
 
         private void CadastroFixos(OpcaoCadastro opcaoCadastro)
@@ -189,6 +197,11 @@ namespace Gastos
             {
                 TxtValor.Text = "";
             }
+        }
+
+        private void FrmCadFixos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmForm.AtualizarFrmPrincipal();
         }
 
         private void DgvListarFixos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -16,5 +16,6 @@ namespace Objeto.MovimentoDevedores
         public UsuarioObj Usuario { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime DataRecebido { get; set; }
+        public string Descricao { get; set; }
     }
 }

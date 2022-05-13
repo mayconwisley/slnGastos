@@ -54,6 +54,8 @@ namespace Gastos
             this.BtnAlterar = new System.Windows.Forms.Button();
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TxtDescricao = new System.Windows.Forms.TextBox();
             this.LblDataCadastro = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.MktDataRecebido = new System.Windows.Forms.MaskedTextBox();
@@ -86,7 +88,7 @@ namespace Gastos
             this.groupBox5.Controls.Add(this.LblValorPagar);
             this.groupBox5.Controls.Add(this.LblValorPago);
             this.groupBox5.Controls.Add(this.LblValorTotal);
-            this.groupBox5.Location = new System.Drawing.Point(12, 503);
+            this.groupBox5.Location = new System.Drawing.Point(12, 570);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(541, 89);
             this.groupBox5.TabIndex = 15;
@@ -126,7 +128,7 @@ namespace Gastos
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.DgvListarMovimentoDev);
-            this.groupBox4.Location = new System.Drawing.Point(12, 241);
+            this.groupBox4.Location = new System.Drawing.Point(12, 308);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(541, 256);
             this.groupBox4.TabIndex = 4;
@@ -269,7 +271,7 @@ namespace Gastos
             this.CmsBtnExcluir.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmsExcluirTudo});
             this.CmsBtnExcluir.Name = "CmsBtnExcluir";
-            this.CmsBtnExcluir.Size = new System.Drawing.Size(229, 48);
+            this.CmsBtnExcluir.Size = new System.Drawing.Size(229, 26);
             // 
             // CmsExcluirTudo
             // 
@@ -301,6 +303,8 @@ namespace Gastos
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.TxtDescricao);
             this.groupBox2.Controls.Add(this.LblDataCadastro);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.MktDataRecebido);
@@ -314,10 +318,26 @@ namespace Gastos
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(12, 153);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(412, 82);
+            this.groupBox2.Size = new System.Drawing.Size(412, 140);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cadastro Movimentação";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Descricão";
+            // 
+            // TxtDescricao
+            // 
+            this.TxtDescricao.Location = new System.Drawing.Point(6, 104);
+            this.TxtDescricao.Name = "TxtDescricao";
+            this.TxtDescricao.Size = new System.Drawing.Size(397, 20);
+            this.TxtDescricao.TabIndex = 5;
             // 
             // LblDataCadastro
             // 
@@ -470,7 +490,7 @@ namespace Gastos
             this.groupBox1.Size = new System.Drawing.Size(343, 65);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Empréstimo";
+            this.groupBox1.Text = "Devedor";
             // 
             // CbxDescricao
             // 
@@ -496,7 +516,7 @@ namespace Gastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 600);
+            this.ClientSize = new System.Drawing.Size(563, 668);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -511,6 +531,7 @@ namespace Gastos
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Movimento Devedores";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadMovimentoDevedores_FormClosing);
             this.Load += new System.EventHandler(this.FrmCadMovimentoDevedores_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -569,5 +590,7 @@ namespace Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
         private System.Windows.Forms.ContextMenuStrip CmsBtnExcluir;
         private System.Windows.Forms.ToolStripMenuItem CmsExcluirTudo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TxtDescricao;
     }
 }

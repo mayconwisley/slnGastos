@@ -15,10 +15,20 @@ namespace Gastos
     {
         string strLogin;
         int idCliente, idEmprestimo, iParcelas = 0;
+
+        FrmPrincipal frmForm;
+        
         public FrmCadEmprestimo(string login)
         {
             InitializeComponent();
             strLogin = login;
+        }
+
+        public FrmCadEmprestimo(FrmPrincipal form, string login)
+        {
+            InitializeComponent();
+            strLogin = login;
+            frmForm = form;
         }
 
         private void ListaCliente()
@@ -291,6 +301,11 @@ namespace Gastos
         private void BtnGerar_Click(object sender, EventArgs e)
         {
             GerarMovimentacao(idEmprestimo);
+        }
+
+        private void FrmCadEmprestimo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmForm.AtualizarFrmPrincipal();
         }
 
         private void TxtValorParcela_Leave(object sender, EventArgs e)

@@ -325,7 +325,7 @@ namespace Gastos
             this.ValorEmprestado.HeaderText = "Valor Emprestado";
             this.ValorEmprestado.Name = "ValorEmprestado";
             this.ValorEmprestado.ReadOnly = true;
-            this.ValorEmprestado.Width = 105;
+            this.ValorEmprestado.Width = 106;
             // 
             // ValorParcela
             // 
@@ -336,7 +336,7 @@ namespace Gastos
             this.ValorParcela.HeaderText = "Valor Parcela";
             this.ValorParcela.Name = "ValorParcela";
             this.ValorParcela.ReadOnly = true;
-            this.ValorParcela.Width = 87;
+            this.ValorParcela.Width = 88;
             // 
             // Parcelas
             // 
@@ -520,6 +520,7 @@ namespace Gastos
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Empréstimo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadEmprestimo_FormClosing);
             this.Load += new System.EventHandler(this.FrmCadEmprestimo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
