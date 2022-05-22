@@ -25,7 +25,11 @@ namespace AcessarSistema.Login
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("Login", usuario.Login);
-                return senha = crud.Executar(CommandType.Text, SQL.ToString()).ToString();
+
+                var varNull = crud.Executar(CommandType.Text, SQL.ToString());
+
+                return senha = varNull != null ? varNull.ToString() : "";
+
             }
             catch (Exception ex)
             {

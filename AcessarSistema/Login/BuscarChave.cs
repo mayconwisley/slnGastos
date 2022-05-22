@@ -14,6 +14,7 @@ namespace AcessarSistema.Login
 
         public static string Chave(UsuarioObj usuario)
         {
+
             crud = new Crud();
             SQL = new StringBuilder();
 
@@ -25,7 +26,20 @@ namespace AcessarSistema.Login
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("Login", usuario.Login);
-                return chave = crud.Executar(CommandType.Text, SQL.ToString()).ToString();
+
+
+                var varNull = crud.Executar(CommandType.Text, SQL.ToString());
+
+                if (varNull != null)
+                {
+                    return chave = crud.Executar(CommandType.Text, SQL.ToString()).ToString();
+                }
+                else
+                {
+                    return "";
+                }
+
+
             }
             catch (Exception ex)
             {

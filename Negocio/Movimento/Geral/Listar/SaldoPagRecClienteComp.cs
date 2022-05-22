@@ -12,7 +12,7 @@ namespace Negocio.Movimento.Geral.Listar
         Crud crud;
         StringBuilder SQL = null;
 
-        private decimal ValorPago(int idCliente, int idCompetencia)
+        private decimal ValorPagoMovimentacao(int idCliente, int idCompetencia)
         {
             crud = new Crud();
             SQL = new StringBuilder();
@@ -44,7 +44,7 @@ namespace Negocio.Movimento.Geral.Listar
             }
         }
 
-        private decimal ValorRecebido(int idCliente, int idCompetencia)
+        private decimal ValorRecebidoMovimentacao(int idCliente, int idCompetencia)
         {
             crud = new Crud();
             SQL = new StringBuilder();
@@ -80,8 +80,8 @@ namespace Negocio.Movimento.Geral.Listar
         {
             decimal valPago = 0, valRecebido = 0;
 
-            valRecebido = ValorRecebido(idCliente, idCompetencia);
-            valPago = ValorPago(idCliente, idCompetencia);
+            valRecebido = ValorRecebidoMovimentacao(idCliente, idCompetencia);
+            valPago = ValorPagoMovimentacao(idCliente, idCompetencia);
             return valRecebido - valPago;
         }
     }
