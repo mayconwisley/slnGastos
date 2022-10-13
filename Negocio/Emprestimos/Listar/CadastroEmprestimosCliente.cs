@@ -16,7 +16,7 @@ namespace Negocio.Emprestimos.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT Id, DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas,  ValorParcela * Parcelas AS ValorAPagar, Ativo, Login, ClienteId, DataCadastro ");
+            SQL.Append("SELECT Id, DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas,  ValorParcela * Parcelas AS ValorAPagar, Ativo, Login, ClienteId, DataCadastro, ValorPago ");
             SQL.Append("FROM Emprestimos ");
             SQL.Append("WHERE ClienteId = @ClienteId ");
             SQL.Append("ORDER BY DataInicio DESC, UPPER(Descricao) ASC");

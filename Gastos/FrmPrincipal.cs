@@ -73,7 +73,7 @@ namespace Gastos
             try
             {
                 LblDespesaFixo.Text = "Despesa Fixas......: " + cadastroFixosAtivoCliente.ValorFixo(idCliente).ToString("#,##0.00");
-                LblDespesaEmprestimo.Text = "Despesa Empréstimos: " + cadastroEmprestimoAtivoCliente.ValorEmprestimo(idCliente).ToString("#,##0.00");
+                LblDespesaEmprestimo.Text = "Despesa Empréstimos: " + cadastroEmprestimoAtivoCliente.ValorGeralEmprestimo(idCliente).ToString("#,##0.00");
                 LblCreditoDevedores.Text = "Crédito Devedores..: " + consultaMovDevClienteValorTotal.ValorDevedor(idCliente).ToString("#,##0.00");
 
                 decimal saldo = saldoPagRecClienteComp.Saldo(idCliente, idCompetencia);

@@ -1,9 +1,11 @@
 ﻿using Negocio.Cliente.Listar;
+using Negocio.Competencia.Listar;
 using Negocio.Emprestimos.Listar;
 using Negocio.Movimento.Emprestimo;
 using Negocio.Movimento.Emprestimo.Listar;
 using Negocio.Utilitario;
 using Negocio.Validador;
+using Objeto.Competencia;
 using Objeto.Emprestimos;
 using Objeto.MovimentoEmprestimos;
 using System;
@@ -14,7 +16,8 @@ namespace Gastos
     public partial class FrmCadMovimentoEmprestimo : Form
     {
         string strLogin;
-        int idCliente, idEmprestimo, idMovimentoEmp;
+        int idCliente, idEmprestimo, idMovimentoEmp, idCompetencia;
+        DateTime date;
 
 
         private FrmPrincipal frmForm;
@@ -23,6 +26,29 @@ namespace Gastos
         {
             InitializeComponent();
             strLogin = login;
+        }
+
+        private void ListarCompetencia(int idCliente)
+        {
+            CompetenciaCliente competenciaCliente = new CompetenciaCliente();
+            CompetenciaIdCliente competenciaIdCliente = new CompetenciaIdCliente();
+            CompetenciaIdData competenciaIdData = new CompetenciaIdData();
+
+            try
+            {
+                idCompetencia = competenciaIdCliente.CompetenciaId(idCliente);
+                bool sucesso = DateTime.TryParse(competenciaCliente.CompetenciaAtiva(idCliente).ToString(), out date);
+
+                if (sucesso)
+                {
+                    this.Text = "Cadastro Movimentação Empréstimo | Competência: " + date.ToString("MM/yyyy");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Competência não cadastrada!! \n\n" + ex.Message);
+
+            }
         }
 
         public FrmCadMovimentoEmprestimo(FrmPrincipal form, string login)
@@ -72,12 +98,13 @@ namespace Gastos
                 movimentoEmprestimo.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoEmprestimo.Usuario.Login = strLogin;
                 movimentoEmprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+                movimentoEmprestimo.Competencia = new CompetenciaObj();
+                movimentoEmprestimo.Competencia.Id = idCompetencia;
                 DateTime dataParcela;
                 bool sucessoDtParcela = DateTime.TryParse(MktDataParcela.Text, out dataParcela);
 
                 movimentoEmprestimo.Parcela = int.Parse(TxtParcela.Text);
                 movimentoEmprestimo.DataParcela = dataParcela;
-                movimentoEmprestimo.Integrado = "Sim";
                 DateTime dataPagamento;
                 bool sucesso = DateTime.TryParse(MktDataPagamento.Text, out dataPagamento);
 
@@ -306,6 +333,7 @@ namespace Gastos
         {
             idCliente = int.Parse(CbxNome.SelectedValue.ToString());
             ListarEmprestimo(idCliente);
+            ListarCompetencia(idCliente);
         }
 
         private void CbxDescrocao_SelectedIndexChanged(object sender, EventArgs e)

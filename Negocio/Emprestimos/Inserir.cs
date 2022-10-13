@@ -17,8 +17,8 @@ namespace Negocio.Emprestimos
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("INSERT INTO Emprestimos(DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas, Ativo, Login, ClienteId, DataCadastro) ");
-            SQL.Append("VALUES(@DataInicio, @Descricao, @ValorEmprestado, @ValorParcela, @Parcelas, @Ativo, @Login, @ClienteId, @DataCadastro)");
+            SQL.Append("INSERT INTO Emprestimos(DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas, Ativo, Login, ClienteId, DataCadastro, ValorPago) ");
+            SQL.Append("VALUES(@DataInicio, @Descricao, @ValorEmprestado, @ValorParcela, @Parcelas, @Ativo, @Login, @ClienteId, @DataCadastro, @ValorPago)");
 
             try
             {
@@ -32,6 +32,7 @@ namespace Negocio.Emprestimos
                 crud.AdicionarParametro("Login", emprestimo.Usuario.Login);
                 crud.AdicionarParametro("ClienteId", emprestimo.Cliente.Id);
                 crud.AdicionarParametro("DataCadastro", emprestimo.DataCadastro);
+                crud.AdicionarParametro("ValorPago", emprestimo.ValorPago);
                 crud.Executar(CommandType.Text, SQL.ToString());
                 return true;
             }

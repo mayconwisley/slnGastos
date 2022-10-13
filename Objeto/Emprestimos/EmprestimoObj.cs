@@ -14,6 +14,7 @@ namespace Objeto.Emprestimos
         public int Parcelas { get; set; }
         public string Ativo { get; set; }
         public DateTime DataCadastro { get; set; }
+        public decimal ValorPago { get; set; }
         public UsuarioObj Usuario { get; set; }
         public ClienteObj Cliente { get; set; }
 

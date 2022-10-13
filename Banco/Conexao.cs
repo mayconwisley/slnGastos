@@ -7,14 +7,17 @@ namespace Banco
     public class Conexao
     {
         protected SQLiteConnection liteConnection;
+      
 
         protected bool Conectar()
         {
-            string strConexao = @"Data Source = |DataDirectory|Banco\gastos.db;";
+            string strConexao = @"Data Source = |DataDirectory|Banco\gastos.db; Version=3;foreign_keys=ON;";
 
             liteConnection = new SQLiteConnection(strConexao);
             try
             {
+                
+                
                 liteConnection.Open();
                 return true;
             }

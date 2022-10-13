@@ -18,7 +18,7 @@ namespace Negocio.Emprestimos
 
             SQL.Append("UPDATE Emprestimos ");
             SQL.Append("SET DataInicio = @DataInicio, Descricao = @Descricao, ValorEmprestado = @ValorEmprestado, ValorParcela = @ValorParcela, Parcelas = @Parcelas, " +
-                       "Ativo = @Ativo, Login = @Login, ClienteId = @ClienteId ");
+                       "Ativo = @Ativo, Login = @Login, ClienteId = @ClienteId, ValorPago = @ValorPago ");
             SQL.Append("WHERE Id = @Id");
 
             try
@@ -32,6 +32,7 @@ namespace Negocio.Emprestimos
                 crud.AdicionarParametro("Ativo", emprestimo.Ativo);
                 crud.AdicionarParametro("Login", emprestimo.Usuario.Login);
                 crud.AdicionarParametro("ClienteId", emprestimo.Cliente.Id);
+                crud.AdicionarParametro("ValorPago", emprestimo.ValorPago);
                 crud.AdicionarParametro("Id", emprestimo.Id);
                 crud.Executar(CommandType.Text, SQL.ToString());
                 return true;

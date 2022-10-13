@@ -1,9 +1,11 @@
 ﻿using Negocio.Cliente.Listar;
+using Negocio.Competencia.Listar;
 using Negocio.Emprestimos;
 using Negocio.Emprestimos.Listar;
 using Negocio.Movimento.Emprestimo.Listar;
 using Negocio.Utilitario;
 using Negocio.Validador;
+using Objeto.Competencia;
 using Objeto.Emprestimos;
 using Objeto.MovimentoEmprestimos;
 using System;
@@ -14,10 +16,11 @@ namespace Gastos
     public partial class FrmCadEmprestimo : Form
     {
         string strLogin;
-        int idCliente, idEmprestimo, iParcelas = 0;
+        int idCliente, idEmprestimo, iParcelas = 0, idCompetencia = 0;
+        DateTime date;
 
         FrmPrincipal frmForm;
-        
+
         public FrmCadEmprestimo(string login)
         {
             InitializeComponent();
@@ -29,6 +32,29 @@ namespace Gastos
             InitializeComponent();
             strLogin = login;
             frmForm = form;
+        }
+
+        private void ListarCompetencia(int idCliente)
+        {
+            CompetenciaCliente competenciaCliente = new CompetenciaCliente();
+            CompetenciaIdCliente competenciaIdCliente = new CompetenciaIdCliente();
+            CompetenciaIdData competenciaIdData = new CompetenciaIdData();
+
+            try
+            {
+                idCompetencia = competenciaIdCliente.CompetenciaId(idCliente);
+                bool sucesso = DateTime.TryParse(competenciaCliente.CompetenciaAtiva(idCliente).ToString(), out date);
+
+                if (sucesso)
+                {
+                    this.Text = "Cadastro Empréstimo | Competência: " + date.ToString("MM/yyyy");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Competência não cadastrada!! \n\n" + ex.Message);
+
+            }
         }
 
         private void ListaCliente()
@@ -74,6 +100,7 @@ namespace Gastos
                 emprestimo.Cliente = new Objeto.Cliente.ClienteObj();
                 emprestimo.Cliente.Id = idCliente;
                 emprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+                emprestimo.ValorPago = decimal.Parse(TxtValorPago.Text);
 
                 switch (opcaoCadastro)
                 {
@@ -123,10 +150,12 @@ namespace Gastos
                 movimentoEmprestimo.Emprestimo.Id = idEmprestimo;
                 movimentoEmprestimo.Valor = decimal.Parse(TxtValorParcela.Text);
                 movimentoEmprestimo.Pago = "Não";
-                movimentoEmprestimo.Integrado = "Não";
                 movimentoEmprestimo.Usuario = new Objeto.Usuario.UsuarioObj();
                 movimentoEmprestimo.Usuario.Login = strLogin;
                 movimentoEmprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+                movimentoEmprestimo.Competencia = new CompetenciaObj();
+                movimentoEmprestimo.Competencia.Id = idCompetencia;
+
                 DateTime dataParcela = DateTime.Parse(MktDataInicio.Text);
 
                 for (int i = 1; i <= iParcelas; i++)
@@ -200,6 +229,9 @@ namespace Gastos
             TxtValorEmprestado.Text = valorEmprestado.ToString("#,##0.00");
             decimal valorParcela = decimal.Parse(DgvListaEmprestimos.Rows[e.RowIndex].Cells["ValorParcela"].Value.ToString());
             TxtValorParcela.Text = valorParcela.ToString("#,##0.00");
+            decimal valorPago = decimal.Parse(DgvListaEmprestimos.Rows[e.RowIndex].Cells["ValorPago"].Value.ToString());
+            TxtValorPago.Text = valorPago.ToString("#,##0.00");
+
             MktDataInicio.Text = DgvListaEmprestimos.Rows[e.RowIndex].Cells["DataInicio"].Value.ToString();
             if (DgvListaEmprestimos.Rows[e.RowIndex].Cells["Ativo"].Value.ToString() == "Sim")
             {
@@ -209,7 +241,6 @@ namespace Gastos
             {
                 CbAtivo.Checked = false;
             }
-
             try
             {
                 if (emprestimoIdMovimento.QtdEmprestimoMovimento(idEmprestimo) > 0)
@@ -303,10 +334,34 @@ namespace Gastos
             GerarMovimentacao(idEmprestimo);
         }
 
+        private void TxtValorPago_Enter(object sender, EventArgs e)
+        {
+            if (TxtValorPago.Text == "0,00")
+            {
+                TxtValorPago.Text = "";
+            }
+        }
+
+        private void TxtValorPago_Leave(object sender, EventArgs e)
+        {
+            ValidarNumero validarNumero = new ValidarNumero();
+            TxtValorPago.Text = validarNumero.Zero(TxtValorPago.Text);
+            TxtValorPago.Text = validarNumero.Formatar(TxtValorPago.Text);
+        }
+
+        private void TxtValorPago_TextChanged(object sender, EventArgs e)
+        {
+            ValidarNumero validarNumero = new ValidarNumero();
+            TxtValorPago.Text = validarNumero.Validar(TxtValorPago.Text);
+            TxtValorPago.Select(TxtValorPago.Text.Length, 0);
+        }
+
         private void FrmCadEmprestimo_FormClosing(object sender, FormClosingEventArgs e)
         {
             frmForm.AtualizarFrmPrincipal();
         }
+
+
 
         private void TxtValorParcela_Leave(object sender, EventArgs e)
         {
@@ -319,6 +374,7 @@ namespace Gastos
         {
             idCliente = int.Parse(CbxNome.SelectedValue.ToString());
             ListaEmprestimos(idCliente);
+            ListarCompetencia(idCliente);
         }
     }
 }

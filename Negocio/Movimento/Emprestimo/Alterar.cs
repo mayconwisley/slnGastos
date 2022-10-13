@@ -18,7 +18,7 @@ namespace Negocio.Movimento.Emprestimo
 
             SQL.Append("UPDATE MovimentoEmprestimos ");
             SQL.Append("SET EmprestimosId = @EmprestimosId, DataParcela = @DataParcela, Parcela = @Parcela, Valor = @Valor, " +
-                       "Pago = @Pago, Integrado = @Integrado, DataPagamento = @DataPagamento ");
+                       "Pago = @Pago, DataPagamento = @DataPagamento ");
             SQL.Append("WHERE Id = @Id");
 
             try
@@ -30,7 +30,6 @@ namespace Negocio.Movimento.Emprestimo
                 crud.AdicionarParametro("Parcela", movimentoEmprestimo.Parcela);
                 crud.AdicionarParametro("Valor", movimentoEmprestimo.Valor);
                 crud.AdicionarParametro("Pago", movimentoEmprestimo.Pago);
-                crud.AdicionarParametro("Integrado", movimentoEmprestimo.Integrado);
                 crud.AdicionarParametro("DataPagamento", movimentoEmprestimo.DataPagameno);
                 crud.AdicionarParametro("Id", movimentoEmprestimo.Id);
                 crud.Executar(CommandType.Text, SQL.ToString());
@@ -48,7 +47,7 @@ namespace Negocio.Movimento.Emprestimo
             SQL = new StringBuilder();
 
             SQL.Append("UPDATE MovimentoEmprestimos ");
-            SQL.Append("SET Pago = @Pago, DataPagamento = @DataPagamento, Integrado = 'Não' ");
+            SQL.Append("SET Pago = @Pago, DataPagamento = @DataPagamento ");
             SQL.Append("WHERE EmprestimosId = @EmprestimosId AND Pago = 'Não'");
 
             try

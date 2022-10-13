@@ -8,6 +8,7 @@ namespace Banco
     {
         SQLiteParameterCollection liteParameterCollection = new SQLiteCommand().Parameters;
         SQLiteCommand liteCommand;
+    
 
         public void LimparParametro()
         {
@@ -24,7 +25,10 @@ namespace Banco
             {
                 try
                 {
+                    
+
                     liteCommand = liteConnection.CreateCommand();
+                    
                     liteCommand.CommandType = commandType;
                     liteCommand.CommandText = SQL;
                     liteCommand.CommandTimeout = 7200;
