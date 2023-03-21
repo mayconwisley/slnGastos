@@ -33,12 +33,16 @@ namespace Gastos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LblTotalGeral = new System.Windows.Forms.Label();
             this.LblTotalNAtivo = new System.Windows.Forms.Label();
             this.LblTotalAtivo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DgvListaEmprestimos = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CbxNome = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,13 +50,11 @@ namespace Gastos
             this.ValorParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmprestimos)).BeginInit();
@@ -128,6 +130,7 @@ namespace Gastos
             this.ValorParcela,
             this.Parcelas,
             this.ValorAPagar,
+            this.ValorPago,
             this.Ativo,
             this.Login,
             this.ClienteId,
@@ -139,6 +142,37 @@ namespace Gastos
             this.DgvListaEmprestimos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaEmprestimos.Size = new System.Drawing.Size(562, 262);
             this.DgvListaEmprestimos.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CbxNome);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 74);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cliente";
+            // 
+            // CbxNome
+            // 
+            this.CbxNome.DisplayMember = "Nome";
+            this.CbxNome.FormattingEnabled = true;
+            this.CbxNome.Location = new System.Drawing.Point(6, 32);
+            this.CbxNome.Name = "CbxNome";
+            this.CbxNome.Size = new System.Drawing.Size(316, 21);
+            this.CbxNome.TabIndex = 0;
+            this.CbxNome.ValueMember = "Id";
+            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome";
             // 
             // Id
             // 
@@ -155,7 +189,7 @@ namespace Gastos
             this.DataInicio.HeaderText = "Data Inicio";
             this.DataInicio.Name = "DataInicio";
             this.DataInicio.ReadOnly = true;
-            this.DataInicio.Width = 77;
+            this.DataInicio.Width = 83;
             // 
             // Descricao
             // 
@@ -174,7 +208,7 @@ namespace Gastos
             this.ValorEmprestado.HeaderText = "Valor Emprestado";
             this.ValorEmprestado.Name = "ValorEmprestado";
             this.ValorEmprestado.ReadOnly = true;
-            this.ValorEmprestado.Width = 105;
+            this.ValorEmprestado.Width = 106;
             // 
             // ValorParcela
             // 
@@ -185,7 +219,7 @@ namespace Gastos
             this.ValorParcela.HeaderText = "Valor Parcela";
             this.ValorParcela.Name = "ValorParcela";
             this.ValorParcela.ReadOnly = true;
-            this.ValorParcela.Width = 87;
+            this.ValorParcela.Width = 88;
             // 
             // Parcelas
             // 
@@ -209,6 +243,18 @@ namespace Gastos
             this.ValorAPagar.Name = "ValorAPagar";
             this.ValorAPagar.ReadOnly = true;
             this.ValorAPagar.Width = 88;
+            // 
+            // ValorPago
+            // 
+            this.ValorPago.DataPropertyName = "ValorPago";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ValorPago.HeaderText = "Valor Pago";
+            this.ValorPago.Name = "ValorPago";
+            this.ValorPago.ReadOnly = true;
+            this.ValorPago.Width = 78;
             // 
             // Ativo
             // 
@@ -244,37 +290,6 @@ namespace Gastos
             this.DataCadastro.ReadOnly = true;
             this.DataCadastro.Width = 92;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.CbxNome);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 74);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
-            // 
-            // CbxNome
-            // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(6, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(316, 21);
-            this.CbxNome.TabIndex = 0;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
-            // 
             // FrmConEmprestimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,6 +324,9 @@ namespace Gastos
         private System.Windows.Forms.Label LblTotalAtivo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView DgvListaEmprestimos;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox CbxNome;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
@@ -316,12 +334,10 @@ namespace Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorParcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn Parcelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorAPagar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox CbxNome;
-        private System.Windows.Forms.Label label1;
     }
 }
