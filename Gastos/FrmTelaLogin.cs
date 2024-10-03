@@ -54,8 +54,7 @@ namespace Gastos
 
                 if (Logar.Acessar(usuario))
                 {
-                    Properties.Settings.Default.UltimoUsuario = TxtLogin.Text.Trim();
-                    Properties.Settings.Default.Save();
+
                     DialogResult = DialogResult.OK;
 
                 }
@@ -103,7 +102,6 @@ namespace Gastos
                     frmCadUsuario.TopMost = true;
                     frmCadUsuario.ShowDialog();
                 }
-                TxtLogin.Text = Properties.Settings.Default.UltimoUsuario;
 
                 if (TxtLogin.Text == "")
                 {

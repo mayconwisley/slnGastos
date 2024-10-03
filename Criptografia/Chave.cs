@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using System;
+using System.Security.Cryptography;
 
 namespace Criptografia
 {
@@ -7,8 +7,11 @@ namespace Criptografia
     {
         public static string Gerar()
         {
-            DESCryptoServiceProvider desCrypto = (DESCryptoServiceProvider)DESCryptoServiceProvider.Create();
-            return ASCIIEncoding.ASCII.GetString(desCrypto.Key);
+            using (var aes = Aes.Create())
+            {
+                aes.GenerateKey();
+                return Convert.ToBase64String(aes.Key);
+            }
         }
     }
 }

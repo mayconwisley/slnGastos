@@ -6,20 +6,24 @@ namespace Criptografia
 {
     public static class Descriptografar
     {
-        static byte[] byteHash, byteTexto;
-
-        public static string DescriptografarSenha(string chave, string senha)
+        public static string DescriptografarSenha(string chave, string senhaCriptografada)
         {
-            TripleDESCryptoServiceProvider TDC = new TripleDESCryptoServiceProvider();
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            byteHash = md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(chave));
-            byteTexto = Convert.FromBase64String(senha);
-            md5.Clear();
+            using (var aes = Aes.Create())
+            using (var sha256 = SHA256.Create())
+            {
+                // Gerar hash da chave (usando SHA-256) para garantir uma chave de 256 bits
+                byte[] byteHash = sha256.ComputeHash(Encoding.UTF8.GetBytes(chave));
+                byte[] byteTexto = Convert.FromBase64String(senhaCriptografada);
 
-            TDC.Key = byteHash;
-            TDC.Mode = CipherMode.ECB;
+                aes.Key = byteHash;
+                aes.Mode = CipherMode.ECB;
+                aes.Padding = PaddingMode.PKCS7;
 
-            return ASCIIEncoding.ASCII.GetString(TDC.CreateDecryptor().TransformFinalBlock(byteTexto, 0, byteTexto.Length));
+                ICryptoTransform decryptor = aes.CreateDecryptor();
+                byte[] decryptedBytes = decryptor.TransformFinalBlock(byteTexto, 0, byteTexto.Length);
+
+                return Encoding.UTF8.GetString(decryptedBytes);
+            }
         }
     }
 }
