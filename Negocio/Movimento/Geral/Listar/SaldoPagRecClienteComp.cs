@@ -84,13 +84,13 @@ namespace Negocio.Movimento.Geral.Listar
             SQL.Append("SELECT SUM(Valor) ");
             SQL.Append("FROM MovimentoEmprestimos ME ");
             SQL.Append("INNER JOIN Emprestimos E ON E.Id = ME.EmprestimosId ");
-            SQL.Append("WHERE E.ClienteId = @ClienteId AND ME.CompetenciaId <= @CompetenciaId AND Pago = 'Sim'");
+            SQL.Append("WHERE E.ClienteId = @ClienteId AND Pago = 'Sim'");
 
             try
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("ClienteId", idCliente);
-                crud.AdicionarParametro("CompetenciaId", idCompetencia);
+
                 decimal valor;
                 bool sucesso = decimal.TryParse(crud.Executar(CommandType.Text, SQL.ToString()).ToString(), out valor);
 
@@ -152,7 +152,7 @@ namespace Negocio.Movimento.Geral.Listar
             valRecebido = ValorRecebidoMovimentacao(idCliente, idCompetencia);
             valPago = ValorPagoMovimentacao(idCliente, idCompetencia);
             valPagoEmprestimo = ValorRecebidoMovimentacaoEmprestimo(idCliente, idCompetencia);
-            valEmprestimoPago = ValorEmprestimoPago(idCliente);
+            // valEmprestimoPago = ValorEmprestimoPago(idCliente);
 
             return valRecebido - valPago - valPagoEmprestimo + valEmprestimoPago;
         }
