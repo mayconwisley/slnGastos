@@ -67,8 +67,6 @@ public class ConsultaMovDevClienteValorTotal
 
         try
         {
-            decimal valorMes = ValorDevedorPago(idCliente, dataParcela);
-
             crud.LimparParametro();
             crud.AdicionarParametro("ClienteId", idCliente);
             crud.AdicionarParametro("DataParcela", dataParcela);
