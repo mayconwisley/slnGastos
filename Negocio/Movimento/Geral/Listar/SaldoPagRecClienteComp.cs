@@ -76,7 +76,7 @@ namespace Negocio.Movimento.Geral.Listar
             }
         }
 
-        private decimal ValorRecebidoMovimentacaoEmprestimo(int idCliente, int idCompetencia)
+        private decimal ValorAPagarMovimentacaoEmprestimo(int idCliente, DateTime dataParcela)
         {
             crud = new Crud();
             SQL = new StringBuilder();
@@ -84,12 +84,15 @@ namespace Negocio.Movimento.Geral.Listar
             SQL.Append("SELECT SUM(Valor) ");
             SQL.Append("FROM MovimentoEmprestimos ME ");
             SQL.Append("INNER JOIN Emprestimos E ON E.Id = ME.EmprestimosId ");
-            SQL.Append("WHERE E.ClienteId = @ClienteId AND Pago = 'Sim'");
+            SQL.Append("WHERE E.ClienteId = @ClienteId ");
+            SQL.Append("AND Pago = 'Não'");
+            SQL.Append("AND STRFTIME('%Y-%m-01', ME.DataParcela) = STRFTIME('%Y-%m-01', @DataParcela)");
 
             try
             {
                 crud.LimparParametro();
                 crud.AdicionarParametro("ClienteId", idCliente);
+                crud.AdicionarParametro("DataParcela", dataParcela);
 
                 decimal valor;
                 bool sucesso = decimal.TryParse(crud.Executar(CommandType.Text, SQL.ToString()).ToString(), out valor);
@@ -109,14 +112,13 @@ namespace Negocio.Movimento.Geral.Listar
             }
         }
 
-
-        private decimal ValorEmprestimoPago(int idCliente)
+        private decimal ValorFixo(int idCliente)
         {
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT SUM(ValorPago) ");
-            SQL.Append("FROM Emprestimos ");
+            SQL.Append("SELECT SUM(Valor) ");
+            SQL.Append("FROM Fixos ");
             SQL.Append("WHERE ClienteId = @ClienteId AND Ativo = 'Sim' ");
 
             try
@@ -144,17 +146,16 @@ namespace Negocio.Movimento.Geral.Listar
             }
         }
 
-
-        public decimal Saldo(int idCliente, int idCompetencia)
+        public decimal Saldo(int idCliente, int idCompetencia, DateTime dataParcela)
         {
-            decimal valPago = 0, valRecebido = 0, valPagoEmprestimo = 0, valEmprestimoPago = 0;
+            decimal valPago = 0, valRecebido = 0, valAPagarEmprestimo = 0, valFixo = 0;
 
             valRecebido = ValorRecebidoMovimentacao(idCliente, idCompetencia);
             valPago = ValorPagoMovimentacao(idCliente, idCompetencia);
-            valPagoEmprestimo = ValorRecebidoMovimentacaoEmprestimo(idCliente, idCompetencia);
-            // valEmprestimoPago = ValorEmprestimoPago(idCliente);
+            valAPagarEmprestimo = ValorAPagarMovimentacaoEmprestimo(idCliente, dataParcela);
+            valFixo = ValorFixo(idCliente);
 
-            return valRecebido - valPago - valPagoEmprestimo + valEmprestimoPago;
+            return valRecebido - (valPago + valAPagarEmprestimo + valFixo);
         }
     }
 }

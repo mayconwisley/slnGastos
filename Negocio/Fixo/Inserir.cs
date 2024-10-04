@@ -16,8 +16,8 @@ namespace Negocio.Fixo
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("INSERT INTO Fixos(DataInicio, Descricao, Valor, DataFim, Ativo, Integrar, Login, ClienteId, DataCadastro) ");
-            SQL.Append("VALUES(@DataInicio, @Descricao, @Valor, @DataFim, @Ativo, @Integrar, @Login, @ClienteId, @DataCadastro)");
+            SQL.Append("INSERT INTO Fixos(DataInicio, Descricao, Valor, DataFim, Ativo, Login, ClienteId, DataCadastro) ");
+            SQL.Append("VALUES(@DataInicio, @Descricao, @Valor, @DataFim, @Ativo, @Login, @ClienteId, @DataCadastro)");
 
             try
             {
@@ -27,7 +27,6 @@ namespace Negocio.Fixo
                 crud.AdicionarParametro("Valor", fixo.Valor);
                 crud.AdicionarParametro("DataFim", fixo.DataFim);
                 crud.AdicionarParametro("Ativo", fixo.Ativo);
-                crud.AdicionarParametro("Integrar", fixo.Integrar);
                 crud.AdicionarParametro("Login", fixo.Usuario.Login);
                 crud.AdicionarParametro("ClienteId", fixo.Cliente.Id);
                 crud.AdicionarParametro("DataCadastro", fixo.DataCadastro);

@@ -33,546 +33,529 @@ namespace Gastos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.LblDataCadastro = new System.Windows.Forms.Label();
-            this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.CbAtivo = new System.Windows.Forms.CheckBox();
-            this.TxtParcela = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TxtValorPago = new System.Windows.Forms.TextBox();
-            this.TxtValorParcela = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.TxtValorEmprestado = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.TxtDescricao = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.MktDataInicio = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.DgvListaEmprestimos = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorEmprestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.BtnAlterar = new System.Windows.Forms.Button();
-            this.BtnSalvar = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.LblTotalGeral = new System.Windows.Forms.Label();
-            this.LblTotalNAtivo = new System.Windows.Forms.Label();
-            this.LblTotalAtivo = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.BtnGerar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmprestimos)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            LblDataCadastro = new System.Windows.Forms.Label();
+            CbxNome = new System.Windows.Forms.ComboBox();
+            label1 = new System.Windows.Forms.Label();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            CbAtivo = new System.Windows.Forms.CheckBox();
+            TxtParcela = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
+            TxtValorParcela = new System.Windows.Forms.TextBox();
+            TxtValorEmprestado = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            TxtDescricao = new System.Windows.Forms.TextBox();
+            label4 = new System.Windows.Forms.Label();
+            MktDataInicio = new System.Windows.Forms.MaskedTextBox();
+            label3 = new System.Windows.Forms.Label();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            DgvListaEmprestimos = new System.Windows.Forms.DataGridView();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            BtnExcluir = new System.Windows.Forms.Button();
+            BtnAlterar = new System.Windows.Forms.Button();
+            BtnSalvar = new System.Windows.Forms.Button();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            LblTotalGeral = new System.Windows.Forms.Label();
+            LblTotalNAtivo = new System.Windows.Forms.Label();
+            LblTotalAtivo = new System.Windows.Forms.Label();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            BtnGerar = new System.Windows.Forms.Button();
+            Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ValorEmprestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ValorParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ValorAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvListaEmprestimos).BeginInit();
+            groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.LblDataCadastro);
-            this.groupBox1.Controls.Add(this.CbxNome);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 92);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
+            groupBox1.Controls.Add(LblDataCadastro);
+            groupBox1.Controls.Add(CbxNome);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new System.Drawing.Point(14, 12);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Size = new System.Drawing.Size(383, 106);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Cliente";
             // 
             // LblDataCadastro
             // 
-            this.LblDataCadastro.AutoSize = true;
-            this.LblDataCadastro.Location = new System.Drawing.Point(3, 66);
-            this.LblDataCadastro.Name = "LblDataCadastro";
-            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
-            this.LblDataCadastro.TabIndex = 2;
-            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
+            LblDataCadastro.AutoSize = true;
+            LblDataCadastro.Location = new System.Drawing.Point(4, 76);
+            LblDataCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblDataCadastro.Name = "LblDataCadastro";
+            LblDataCadastro.Size = new System.Drawing.Size(145, 15);
+            LblDataCadastro.TabIndex = 2;
+            LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
             // 
             // CbxNome
             // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(6, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(316, 21);
-            this.CbxNome.TabIndex = 0;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            CbxNome.DisplayMember = "Nome";
+            CbxNome.FormattingEnabled = true;
+            CbxNome.Location = new System.Drawing.Point(7, 37);
+            CbxNome.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbxNome.Name = "CbxNome";
+            CbxNome.Size = new System.Drawing.Size(368, 23);
+            CbxNome.TabIndex = 0;
+            CbxNome.ValueMember = "Id";
+            CbxNome.SelectedIndexChanged += CbxNome_SelectedIndexChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(7, 18);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(40, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Nome";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.CbAtivo);
-            this.groupBox2.Controls.Add(this.TxtParcela);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.TxtValorPago);
-            this.groupBox2.Controls.Add(this.TxtValorParcela);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.TxtValorEmprestado);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.TxtDescricao);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.MktDataInicio);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 108);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(328, 154);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cadastro Empréstimo";
+            groupBox2.Controls.Add(CbAtivo);
+            groupBox2.Controls.Add(TxtParcela);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(TxtValorParcela);
+            groupBox2.Controls.Add(TxtValorEmprestado);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(TxtDescricao);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(MktDataInicio);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Location = new System.Drawing.Point(14, 125);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(383, 178);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Cadastro Empréstimo";
             // 
             // CbAtivo
             // 
-            this.CbAtivo.AutoSize = true;
-            this.CbAtivo.Checked = true;
-            this.CbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbAtivo.Location = new System.Drawing.Point(9, 101);
-            this.CbAtivo.Name = "CbAtivo";
-            this.CbAtivo.Size = new System.Drawing.Size(50, 17);
-            this.CbAtivo.TabIndex = 6;
-            this.CbAtivo.Text = "Ativo";
-            this.CbAtivo.UseVisualStyleBackColor = true;
+            CbAtivo.AutoSize = true;
+            CbAtivo.Checked = true;
+            CbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            CbAtivo.Location = new System.Drawing.Point(10, 117);
+            CbAtivo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbAtivo.Name = "CbAtivo";
+            CbAtivo.Size = new System.Drawing.Size(54, 19);
+            CbAtivo.TabIndex = 6;
+            CbAtivo.Text = "Ativo";
+            CbAtivo.UseVisualStyleBackColor = true;
             // 
             // TxtParcela
             // 
-            this.TxtParcela.Location = new System.Drawing.Point(172, 75);
-            this.TxtParcela.Name = "TxtParcela";
-            this.TxtParcela.Size = new System.Drawing.Size(51, 20);
-            this.TxtParcela.TabIndex = 4;
-            this.TxtParcela.Text = "1";
-            this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
-            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
+            TxtParcela.Location = new System.Drawing.Point(201, 87);
+            TxtParcela.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtParcela.Name = "TxtParcela";
+            TxtParcela.Size = new System.Drawing.Size(59, 23);
+            TxtParcela.TabIndex = 4;
+            TxtParcela.Text = "1";
+            TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            TxtParcela.TextChanged += TxtParcela_TextChanged;
+            TxtParcela.Leave += TxtParcela_Leave;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(175, 59);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Parcelas";
-            // 
-            // TxtValorPago
-            // 
-            this.TxtValorPago.Location = new System.Drawing.Point(235, 75);
-            this.TxtValorPago.Name = "TxtValorPago";
-            this.TxtValorPago.Size = new System.Drawing.Size(87, 20);
-            this.TxtValorPago.TabIndex = 5;
-            this.TxtValorPago.Text = "0,00";
-            this.TxtValorPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValorPago.TextChanged += new System.EventHandler(this.TxtValorPago_TextChanged);
-            this.TxtValorPago.Enter += new System.EventHandler(this.TxtValorPago_Enter);
-            this.TxtValorPago.Leave += new System.EventHandler(this.TxtValorPago_Leave);
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(204, 68);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(50, 15);
+            label6.TabIndex = 4;
+            label6.Text = "Parcelas";
             // 
             // TxtValorParcela
             // 
-            this.TxtValorParcela.Location = new System.Drawing.Point(93, 75);
-            this.TxtValorParcela.Name = "TxtValorParcela";
-            this.TxtValorParcela.Size = new System.Drawing.Size(73, 20);
-            this.TxtValorParcela.TabIndex = 3;
-            this.TxtValorParcela.Text = "0,00";
-            this.TxtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValorParcela.TextChanged += new System.EventHandler(this.TxtValorParcela_TextChanged);
-            this.TxtValorParcela.Enter += new System.EventHandler(this.TxtValorParcela_Enter);
-            this.TxtValorParcela.Leave += new System.EventHandler(this.TxtValorParcela_Leave);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(229, 59);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Valor Pago";
+            TxtValorParcela.Location = new System.Drawing.Point(108, 87);
+            TxtValorParcela.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtValorParcela.Name = "TxtValorParcela";
+            TxtValorParcela.Size = new System.Drawing.Size(84, 23);
+            TxtValorParcela.TabIndex = 3;
+            TxtValorParcela.Text = "0,00";
+            TxtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            TxtValorParcela.TextChanged += TxtValorParcela_TextChanged;
+            TxtValorParcela.Enter += TxtValorParcela_Enter;
+            TxtValorParcela.Leave += TxtValorParcela_Leave;
             // 
             // TxtValorEmprestado
             // 
-            this.TxtValorEmprestado.Location = new System.Drawing.Point(6, 75);
-            this.TxtValorEmprestado.Name = "TxtValorEmprestado";
-            this.TxtValorEmprestado.Size = new System.Drawing.Size(81, 20);
-            this.TxtValorEmprestado.TabIndex = 2;
-            this.TxtValorEmprestado.Text = "0,00";
-            this.TxtValorEmprestado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValorEmprestado.TextChanged += new System.EventHandler(this.TxtValorEmprestado_TextChanged);
-            this.TxtValorEmprestado.Enter += new System.EventHandler(this.TxtValorEmprestado_Enter);
-            this.TxtValorEmprestado.Leave += new System.EventHandler(this.TxtValorEmprestado_Leave);
+            TxtValorEmprestado.Location = new System.Drawing.Point(7, 87);
+            TxtValorEmprestado.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtValorEmprestado.Name = "TxtValorEmprestado";
+            TxtValorEmprestado.Size = new System.Drawing.Size(94, 23);
+            TxtValorEmprestado.TabIndex = 2;
+            TxtValorEmprestado.Text = "0,00";
+            TxtValorEmprestado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            TxtValorEmprestado.TextChanged += TxtValorEmprestado_TextChanged;
+            TxtValorEmprestado.Enter += TxtValorEmprestado_Enter;
+            TxtValorEmprestado.Leave += TxtValorEmprestado_Leave;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Valor Parcela";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(112, 68);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(74, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Valor Parcela";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Valor Emprest.";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(10, 68);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(82, 15);
+            label5.TabIndex = 4;
+            label5.Text = "Valor Emprest.";
             // 
             // TxtDescricao
             // 
-            this.TxtDescricao.Location = new System.Drawing.Point(93, 32);
-            this.TxtDescricao.MaxLength = 200;
-            this.TxtDescricao.Name = "TxtDescricao";
-            this.TxtDescricao.Size = new System.Drawing.Size(229, 20);
-            this.TxtDescricao.TabIndex = 1;
+            TxtDescricao.Location = new System.Drawing.Point(108, 37);
+            TxtDescricao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtDescricao.MaxLength = 200;
+            TxtDescricao.Name = "TxtDescricao";
+            TxtDescricao.Size = new System.Drawing.Size(266, 23);
+            TxtDescricao.TabIndex = 1;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Descrição";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(112, 18);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(58, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Descrição";
             // 
             // MktDataInicio
             // 
-            this.MktDataInicio.Location = new System.Drawing.Point(6, 32);
-            this.MktDataInicio.Mask = "00/00/0000";
-            this.MktDataInicio.Name = "MktDataInicio";
-            this.MktDataInicio.Size = new System.Drawing.Size(81, 20);
-            this.MktDataInicio.TabIndex = 0;
-            this.MktDataInicio.ValidatingType = typeof(System.DateTime);
+            MktDataInicio.Location = new System.Drawing.Point(7, 37);
+            MktDataInicio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MktDataInicio.Mask = "00/00/0000";
+            MktDataInicio.Name = "MktDataInicio";
+            MktDataInicio.Size = new System.Drawing.Size(94, 23);
+            MktDataInicio.TabIndex = 0;
+            MktDataInicio.ValidatingType = typeof(System.DateTime);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Data Inicio";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(7, 18);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(63, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Data Inicio";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.DgvListaEmprestimos);
-            this.groupBox3.Location = new System.Drawing.Point(12, 268);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(575, 210);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Empréstimos cadastrados";
+            groupBox3.Controls.Add(DgvListaEmprestimos);
+            groupBox3.Location = new System.Drawing.Point(14, 309);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Size = new System.Drawing.Size(671, 242);
+            groupBox3.TabIndex = 4;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Empréstimos cadastrados";
             // 
             // DgvListaEmprestimos
             // 
-            this.DgvListaEmprestimos.AllowUserToAddRows = false;
-            this.DgvListaEmprestimos.AllowUserToDeleteRows = false;
-            this.DgvListaEmprestimos.AllowUserToOrderColumns = true;
-            this.DgvListaEmprestimos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.DgvListaEmprestimos.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvListaEmprestimos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DgvListaEmprestimos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListaEmprestimos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.DataInicio,
-            this.Descricao,
-            this.ValorEmprestado,
-            this.ValorParcela,
-            this.Parcelas,
-            this.ValorAPagar,
-            this.ValorPago,
-            this.Ativo,
-            this.Login,
-            this.ClienteId,
-            this.DataCadastro});
-            this.DgvListaEmprestimos.Location = new System.Drawing.Point(6, 19);
-            this.DgvListaEmprestimos.MultiSelect = false;
-            this.DgvListaEmprestimos.Name = "DgvListaEmprestimos";
-            this.DgvListaEmprestimos.ReadOnly = true;
-            this.DgvListaEmprestimos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaEmprestimos.Size = new System.Drawing.Size(562, 185);
-            this.DgvListaEmprestimos.TabIndex = 0;
-            this.DgvListaEmprestimos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaEmprestimos_CellDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
-            // 
-            // DataInicio
-            // 
-            this.DataInicio.DataPropertyName = "DataInicio";
-            this.DataInicio.HeaderText = "Data Inicio";
-            this.DataInicio.Name = "DataInicio";
-            this.DataInicio.ReadOnly = true;
-            this.DataInicio.Width = 77;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            this.Descricao.Width = 80;
-            // 
-            // ValorEmprestado
-            // 
-            this.ValorEmprestado.DataPropertyName = "ValorEmprestado";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N2";
-            this.ValorEmprestado.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ValorEmprestado.HeaderText = "Valor Emprestado";
-            this.ValorEmprestado.Name = "ValorEmprestado";
-            this.ValorEmprestado.ReadOnly = true;
-            this.ValorEmprestado.Width = 106;
-            // 
-            // ValorParcela
-            // 
-            this.ValorParcela.DataPropertyName = "ValorParcela";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.ValorParcela.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ValorParcela.HeaderText = "Valor Parcela";
-            this.ValorParcela.Name = "ValorParcela";
-            this.ValorParcela.ReadOnly = true;
-            this.ValorParcela.Width = 88;
-            // 
-            // Parcelas
-            // 
-            this.Parcelas.DataPropertyName = "Parcelas";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Parcelas.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Parcelas.HeaderText = "Parcelas";
-            this.Parcelas.Name = "Parcelas";
-            this.Parcelas.ReadOnly = true;
-            this.Parcelas.Width = 73;
-            // 
-            // ValorAPagar
-            // 
-            this.ValorAPagar.DataPropertyName = "ValorAPagar";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            this.ValorAPagar.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ValorAPagar.HeaderText = "Valor a Pagar";
-            this.ValorAPagar.Name = "ValorAPagar";
-            this.ValorAPagar.ReadOnly = true;
-            this.ValorAPagar.Width = 88;
-            // 
-            // ValorPago
-            // 
-            this.ValorPago.DataPropertyName = "ValorPago";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ValorPago.HeaderText = "Valor Pago";
-            this.ValorPago.Name = "ValorPago";
-            this.ValorPago.ReadOnly = true;
-            this.ValorPago.Width = 78;
-            // 
-            // Ativo
-            // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            this.Login.Width = 58;
-            // 
-            // ClienteId
-            // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
-            this.ClienteId.Width = 73;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Width = 92;
+            DgvListaEmprestimos.AllowUserToAddRows = false;
+            DgvListaEmprestimos.AllowUserToDeleteRows = false;
+            DgvListaEmprestimos.AllowUserToOrderColumns = true;
+            DgvListaEmprestimos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            DgvListaEmprestimos.BackgroundColor = System.Drawing.SystemColors.Control;
+            DgvListaEmprestimos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            DgvListaEmprestimos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvListaEmprestimos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Id, DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas, ValorAPagar, Ativo, Login, ClienteId, DataCadastro });
+            DgvListaEmprestimos.Location = new System.Drawing.Point(7, 22);
+            DgvListaEmprestimos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DgvListaEmprestimos.MultiSelect = false;
+            DgvListaEmprestimos.Name = "DgvListaEmprestimos";
+            DgvListaEmprestimos.ReadOnly = true;
+            DgvListaEmprestimos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            DgvListaEmprestimos.Size = new System.Drawing.Size(656, 213);
+            DgvListaEmprestimos.TabIndex = 0;
+            DgvListaEmprestimos.CellDoubleClick += DgvListaEmprestimos_CellDoubleClick;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.BtnExcluir);
-            this.groupBox4.Controls.Add(this.BtnAlterar);
-            this.groupBox4.Controls.Add(this.BtnSalvar);
-            this.groupBox4.Location = new System.Drawing.Point(499, 10);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(88, 100);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
+            groupBox4.Controls.Add(BtnExcluir);
+            groupBox4.Controls.Add(BtnAlterar);
+            groupBox4.Controls.Add(BtnSalvar);
+            groupBox4.Location = new System.Drawing.Point(582, 12);
+            groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Size = new System.Drawing.Size(103, 115);
+            groupBox4.TabIndex = 2;
+            groupBox4.TabStop = false;
             // 
             // BtnExcluir
             // 
-            this.BtnExcluir.Enabled = false;
-            this.BtnExcluir.Location = new System.Drawing.Point(6, 69);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 2;
-            this.BtnExcluir.Text = "&Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            BtnExcluir.Enabled = false;
+            BtnExcluir.Location = new System.Drawing.Point(7, 80);
+            BtnExcluir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnExcluir.Name = "BtnExcluir";
+            BtnExcluir.Size = new System.Drawing.Size(88, 27);
+            BtnExcluir.TabIndex = 2;
+            BtnExcluir.Text = "&Excluir";
+            BtnExcluir.UseVisualStyleBackColor = true;
+            BtnExcluir.Click += BtnExcluir_Click;
             // 
             // BtnAlterar
             // 
-            this.BtnAlterar.Enabled = false;
-            this.BtnAlterar.Location = new System.Drawing.Point(6, 40);
-            this.BtnAlterar.Name = "BtnAlterar";
-            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAlterar.TabIndex = 1;
-            this.BtnAlterar.Text = "&Alterar";
-            this.BtnAlterar.UseVisualStyleBackColor = true;
-            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            BtnAlterar.Enabled = false;
+            BtnAlterar.Location = new System.Drawing.Point(7, 46);
+            BtnAlterar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnAlterar.Name = "BtnAlterar";
+            BtnAlterar.Size = new System.Drawing.Size(88, 27);
+            BtnAlterar.TabIndex = 1;
+            BtnAlterar.Text = "&Alterar";
+            BtnAlterar.UseVisualStyleBackColor = true;
+            BtnAlterar.Click += BtnAlterar_Click;
             // 
             // BtnSalvar
             // 
-            this.BtnSalvar.Location = new System.Drawing.Point(6, 11);
-            this.BtnSalvar.Name = "BtnSalvar";
-            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalvar.TabIndex = 0;
-            this.BtnSalvar.Text = "&Salvar";
-            this.BtnSalvar.UseVisualStyleBackColor = true;
-            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
+            BtnSalvar.Location = new System.Drawing.Point(7, 13);
+            BtnSalvar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnSalvar.Name = "BtnSalvar";
+            BtnSalvar.Size = new System.Drawing.Size(88, 27);
+            BtnSalvar.TabIndex = 0;
+            BtnSalvar.Text = "&Salvar";
+            BtnSalvar.UseVisualStyleBackColor = true;
+            BtnSalvar.Click += BtnSalvar_Click;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.LblTotalGeral);
-            this.groupBox5.Controls.Add(this.LblTotalNAtivo);
-            this.groupBox5.Controls.Add(this.LblTotalAtivo);
-            this.groupBox5.Location = new System.Drawing.Point(346, 162);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(241, 100);
-            this.groupBox5.TabIndex = 5;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Informações sobre a parcela";
+            groupBox5.Controls.Add(LblTotalGeral);
+            groupBox5.Controls.Add(LblTotalNAtivo);
+            groupBox5.Controls.Add(LblTotalAtivo);
+            groupBox5.Location = new System.Drawing.Point(404, 187);
+            groupBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Size = new System.Drawing.Size(281, 115);
+            groupBox5.TabIndex = 5;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Informações sobre a parcela";
             // 
             // LblTotalGeral
             // 
-            this.LblTotalGeral.AutoSize = true;
-            this.LblTotalGeral.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotalGeral.Location = new System.Drawing.Point(6, 61);
-            this.LblTotalGeral.Name = "LblTotalGeral";
-            this.LblTotalGeral.Size = new System.Drawing.Size(140, 14);
-            this.LblTotalGeral.TabIndex = 2;
-            this.LblTotalGeral.Text = "Total Geral..: 0,00";
+            LblTotalGeral.AutoSize = true;
+            LblTotalGeral.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            LblTotalGeral.Location = new System.Drawing.Point(7, 70);
+            LblTotalGeral.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblTotalGeral.Name = "LblTotalGeral";
+            LblTotalGeral.Size = new System.Drawing.Size(140, 14);
+            LblTotalGeral.TabIndex = 2;
+            LblTotalGeral.Text = "Total Geral..: 0,00";
             // 
             // LblTotalNAtivo
             // 
-            this.LblTotalNAtivo.AutoSize = true;
-            this.LblTotalNAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotalNAtivo.Location = new System.Drawing.Point(6, 43);
-            this.LblTotalNAtivo.Name = "LblTotalNAtivo";
-            this.LblTotalNAtivo.Size = new System.Drawing.Size(140, 14);
-            this.LblTotalNAtivo.TabIndex = 1;
-            this.LblTotalNAtivo.Text = "Total Ñ Ativo: 0,00";
+            LblTotalNAtivo.AutoSize = true;
+            LblTotalNAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            LblTotalNAtivo.Location = new System.Drawing.Point(7, 50);
+            LblTotalNAtivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblTotalNAtivo.Name = "LblTotalNAtivo";
+            LblTotalNAtivo.Size = new System.Drawing.Size(140, 14);
+            LblTotalNAtivo.TabIndex = 1;
+            LblTotalNAtivo.Text = "Total Ñ Ativo: 0,00";
             // 
             // LblTotalAtivo
             // 
-            this.LblTotalAtivo.AutoSize = true;
-            this.LblTotalAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotalAtivo.Location = new System.Drawing.Point(6, 24);
-            this.LblTotalAtivo.Name = "LblTotalAtivo";
-            this.LblTotalAtivo.Size = new System.Drawing.Size(140, 14);
-            this.LblTotalAtivo.TabIndex = 0;
-            this.LblTotalAtivo.Text = "Total Ativo..: 0,00";
+            LblTotalAtivo.AutoSize = true;
+            LblTotalAtivo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            LblTotalAtivo.Location = new System.Drawing.Point(7, 28);
+            LblTotalAtivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblTotalAtivo.Name = "LblTotalAtivo";
+            LblTotalAtivo.Size = new System.Drawing.Size(140, 14);
+            LblTotalAtivo.TabIndex = 0;
+            LblTotalAtivo.Text = "Total Ativo..: 0,00";
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.BtnGerar);
-            this.groupBox6.Location = new System.Drawing.Point(498, 116);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(89, 44);
-            this.groupBox6.TabIndex = 6;
-            this.groupBox6.TabStop = false;
+            groupBox6.Controls.Add(BtnGerar);
+            groupBox6.Location = new System.Drawing.Point(581, 134);
+            groupBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox6.Size = new System.Drawing.Size(104, 51);
+            groupBox6.TabIndex = 6;
+            groupBox6.TabStop = false;
             // 
             // BtnGerar
             // 
-            this.BtnGerar.Enabled = false;
-            this.BtnGerar.Location = new System.Drawing.Point(7, 15);
-            this.BtnGerar.Name = "BtnGerar";
-            this.BtnGerar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGerar.TabIndex = 0;
-            this.BtnGerar.Text = "Gerar Mov.";
-            this.BtnGerar.UseVisualStyleBackColor = true;
-            this.BtnGerar.Click += new System.EventHandler(this.BtnGerar_Click);
+            BtnGerar.Enabled = false;
+            BtnGerar.Location = new System.Drawing.Point(8, 17);
+            BtnGerar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnGerar.Name = "BtnGerar";
+            BtnGerar.Size = new System.Drawing.Size(88, 27);
+            BtnGerar.TabIndex = 0;
+            BtnGerar.Text = "Gerar Mov.";
+            BtnGerar.UseVisualStyleBackColor = true;
+            BtnGerar.Click += BtnGerar_Click;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            Id.Width = 42;
+            // 
+            // DataInicio
+            // 
+            DataInicio.DataPropertyName = "DataInicio";
+            DataInicio.HeaderText = "Data Inicio";
+            DataInicio.Name = "DataInicio";
+            DataInicio.ReadOnly = true;
+            DataInicio.Width = 88;
+            // 
+            // Descricao
+            // 
+            Descricao.DataPropertyName = "Descricao";
+            Descricao.HeaderText = "Descrição";
+            Descricao.Name = "Descricao";
+            Descricao.ReadOnly = true;
+            Descricao.Width = 83;
+            // 
+            // ValorEmprestado
+            // 
+            ValorEmprestado.DataPropertyName = "ValorEmprestado";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            ValorEmprestado.DefaultCellStyle = dataGridViewCellStyle1;
+            ValorEmprestado.HeaderText = "Valor Emprestado";
+            ValorEmprestado.Name = "ValorEmprestado";
+            ValorEmprestado.ReadOnly = true;
+            ValorEmprestado.Width = 114;
+            // 
+            // ValorParcela
+            // 
+            ValorParcela.DataPropertyName = "ValorParcela";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            ValorParcela.DefaultCellStyle = dataGridViewCellStyle2;
+            ValorParcela.HeaderText = "Valor Parcela";
+            ValorParcela.Name = "ValorParcela";
+            ValorParcela.ReadOnly = true;
+            ValorParcela.Width = 91;
+            // 
+            // Parcelas
+            // 
+            Parcelas.DataPropertyName = "Parcelas";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            Parcelas.DefaultCellStyle = dataGridViewCellStyle3;
+            Parcelas.HeaderText = "Parcelas";
+            Parcelas.Name = "Parcelas";
+            Parcelas.ReadOnly = true;
+            Parcelas.Width = 75;
+            // 
+            // ValorAPagar
+            // 
+            ValorAPagar.DataPropertyName = "ValorAPagar";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            ValorAPagar.DefaultCellStyle = dataGridViewCellStyle4;
+            ValorAPagar.HeaderText = "Valor a Pagar";
+            ValorAPagar.Name = "ValorAPagar";
+            ValorAPagar.ReadOnly = true;
+            ValorAPagar.Width = 92;
+            // 
+            // Ativo
+            // 
+            Ativo.DataPropertyName = "Ativo";
+            Ativo.HeaderText = "Ativo";
+            Ativo.Name = "Ativo";
+            Ativo.ReadOnly = true;
+            Ativo.Width = 60;
+            // 
+            // Login
+            // 
+            Login.DataPropertyName = "Login";
+            Login.HeaderText = "Login";
+            Login.Name = "Login";
+            Login.ReadOnly = true;
+            Login.Visible = false;
+            Login.Width = 62;
+            // 
+            // ClienteId
+            // 
+            ClienteId.DataPropertyName = "ClienteId";
+            ClienteId.HeaderText = "ClienteId";
+            ClienteId.Name = "ClienteId";
+            ClienteId.ReadOnly = true;
+            ClienteId.Visible = false;
+            ClienteId.Width = 79;
+            // 
+            // DataCadastro
+            // 
+            DataCadastro.DataPropertyName = "DataCadastro";
+            DataCadastro.HeaderText = "Data Cadastro";
+            DataCadastro.Name = "DataCadastro";
+            DataCadastro.ReadOnly = true;
+            DataCadastro.Width = 97;
             // 
             // FrmCadEmprestimo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 489);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmCadEmprestimo";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro Empréstimo";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadEmprestimo_FormClosing);
-            this.Load += new System.EventHandler(this.FrmCadEmprestimo_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmprestimos)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(699, 564);
+            Controls.Add(groupBox6);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FrmCadEmprestimo";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Cadastro Empréstimo";
+            FormClosing += FrmCadEmprestimo_FormClosing;
+            Load += FrmCadEmprestimo_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvListaEmprestimos).EndInit();
+            groupBox4.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -605,8 +588,6 @@ namespace Gastos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button BtnGerar;
-        private System.Windows.Forms.TextBox TxtValorPago;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
@@ -614,7 +595,6 @@ namespace Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorParcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn Parcelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorAPagar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;

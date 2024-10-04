@@ -29,546 +29,558 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.LblValorPagar = new System.Windows.Forms.Label();
-            this.LblValorPago = new System.Windows.Forms.Label();
-            this.LblValorTotal = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.DgvListarMovimentoEmp = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.CmsBtnExcluir = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CmsExcluirTudo = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnAlterar = new System.Windows.Forms.Button();
-            this.BtnSalvar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.LblDataCadastro = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.MktDataPagamento = new System.Windows.Forms.MaskedTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.CbxPago = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TxtValor = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.TxtParcela = new System.Windows.Forms.TextBox();
-            this.MktDataParcela = new System.Windows.Forms.MaskedTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxDescricao = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.BtnQuitar = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmprestimosId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Competencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataPagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoEmp)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.CmsBtnExcluir.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.SuspendLayout();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            LblValorPagar = new System.Windows.Forms.Label();
+            LblValorPago = new System.Windows.Forms.Label();
+            LblValorTotal = new System.Windows.Forms.Label();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            DgvListarMovimentoEmp = new System.Windows.Forms.DataGridView();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            BtnExcluir = new System.Windows.Forms.Button();
+            CmsBtnExcluir = new System.Windows.Forms.ContextMenuStrip(components);
+            CmsExcluirTudo = new System.Windows.Forms.ToolStripMenuItem();
+            BtnAlterar = new System.Windows.Forms.Button();
+            BtnSalvar = new System.Windows.Forms.Button();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            LblDataCadastro = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            MktDataPagamento = new System.Windows.Forms.MaskedTextBox();
+            label7 = new System.Windows.Forms.Label();
+            CbxPago = new System.Windows.Forms.ComboBox();
+            label6 = new System.Windows.Forms.Label();
+            TxtValor = new System.Windows.Forms.TextBox();
+            label5 = new System.Windows.Forms.Label();
+            TxtParcela = new System.Windows.Forms.TextBox();
+            MktDataParcela = new System.Windows.Forms.MaskedTextBox();
+            label2 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            CbxDescricao = new System.Windows.Forms.ComboBox();
+            label1 = new System.Windows.Forms.Label();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            CbxNome = new System.Windows.Forms.ComboBox();
+            label12 = new System.Windows.Forms.Label();
+            groupBox7 = new System.Windows.Forms.GroupBox();
+            BtnQuitar = new System.Windows.Forms.Button();
+            Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            EmprestimosId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataPagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            groupBox5.SuspendLayout();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvListarMovimentoEmp).BeginInit();
+            groupBox3.SuspendLayout();
+            CmsBtnExcluir.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.LblValorPagar);
-            this.groupBox5.Controls.Add(this.LblValorPago);
-            this.groupBox5.Controls.Add(this.LblValorTotal);
-            this.groupBox5.Location = new System.Drawing.Point(10, 503);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(541, 89);
-            this.groupBox5.TabIndex = 9;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Informações";
+            groupBox5.Controls.Add(LblValorPagar);
+            groupBox5.Controls.Add(LblValorPago);
+            groupBox5.Controls.Add(LblValorTotal);
+            groupBox5.Location = new System.Drawing.Point(12, 580);
+            groupBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Size = new System.Drawing.Size(631, 103);
+            groupBox5.TabIndex = 9;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Informações";
             // 
             // LblValorPagar
             // 
-            this.LblValorPagar.AutoSize = true;
-            this.LblValorPagar.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorPagar.Location = new System.Drawing.Point(6, 60);
-            this.LblValorPagar.Name = "LblValorPagar";
-            this.LblValorPagar.Size = new System.Drawing.Size(140, 14);
-            this.LblValorPagar.TabIndex = 2;
-            this.LblValorPagar.Text = "Valor a pagar: 0,00";
+            LblValorPagar.AutoSize = true;
+            LblValorPagar.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            LblValorPagar.Location = new System.Drawing.Point(7, 69);
+            LblValorPagar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblValorPagar.Name = "LblValorPagar";
+            LblValorPagar.Size = new System.Drawing.Size(140, 14);
+            LblValorPagar.TabIndex = 2;
+            LblValorPagar.Text = "Valor a pagar: 0,00";
             // 
             // LblValorPago
             // 
-            this.LblValorPago.AutoSize = true;
-            this.LblValorPago.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorPago.Location = new System.Drawing.Point(6, 38);
-            this.LblValorPago.Name = "LblValorPago";
-            this.LblValorPago.Size = new System.Drawing.Size(140, 14);
-            this.LblValorPago.TabIndex = 1;
-            this.LblValorPago.Text = "Valor Pago...: 0,00";
+            LblValorPago.AutoSize = true;
+            LblValorPago.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            LblValorPago.Location = new System.Drawing.Point(7, 44);
+            LblValorPago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblValorPago.Name = "LblValorPago";
+            LblValorPago.Size = new System.Drawing.Size(140, 14);
+            LblValorPago.TabIndex = 1;
+            LblValorPago.Text = "Valor Pago...: 0,00";
             // 
             // LblValorTotal
             // 
-            this.LblValorTotal.AutoSize = true;
-            this.LblValorTotal.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblValorTotal.Location = new System.Drawing.Point(6, 16);
-            this.LblValorTotal.Name = "LblValorTotal";
-            this.LblValorTotal.Size = new System.Drawing.Size(140, 14);
-            this.LblValorTotal.TabIndex = 0;
-            this.LblValorTotal.Text = "Valor Total..: 0,00";
+            LblValorTotal.AutoSize = true;
+            LblValorTotal.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            LblValorTotal.Location = new System.Drawing.Point(7, 18);
+            LblValorTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblValorTotal.Name = "LblValorTotal";
+            LblValorTotal.Size = new System.Drawing.Size(140, 14);
+            LblValorTotal.TabIndex = 0;
+            LblValorTotal.Text = "Valor Total..: 0,00";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.DgvListarMovimentoEmp);
-            this.groupBox4.Location = new System.Drawing.Point(10, 241);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(541, 256);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Movimentacões cadastradas";
+            groupBox4.Controls.Add(DgvListarMovimentoEmp);
+            groupBox4.Location = new System.Drawing.Point(12, 278);
+            groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Size = new System.Drawing.Size(631, 295);
+            groupBox4.TabIndex = 8;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Movimentacões cadastradas";
             // 
             // DgvListarMovimentoEmp
             // 
-            this.DgvListarMovimentoEmp.AllowUserToAddRows = false;
-            this.DgvListarMovimentoEmp.AllowUserToDeleteRows = false;
-            this.DgvListarMovimentoEmp.AllowUserToOrderColumns = true;
-            this.DgvListarMovimentoEmp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.DgvListarMovimentoEmp.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvListarMovimentoEmp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DgvListarMovimentoEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListarMovimentoEmp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.EmprestimosId,
-            this.DataParcela,
-            this.Parcela,
-            this.Valor,
-            this.Pago,
-            this.Competencia,
-            this.DataPagamento,
-            this.DataCadastro});
-            this.DgvListarMovimentoEmp.Location = new System.Drawing.Point(6, 19);
-            this.DgvListarMovimentoEmp.MultiSelect = false;
-            this.DgvListarMovimentoEmp.Name = "DgvListarMovimentoEmp";
-            this.DgvListarMovimentoEmp.ReadOnly = true;
-            this.DgvListarMovimentoEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListarMovimentoEmp.Size = new System.Drawing.Size(526, 231);
-            this.DgvListarMovimentoEmp.TabIndex = 0;
-            this.DgvListarMovimentoEmp.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListarMovimentoEmp_CellDoubleClick);
+            DgvListarMovimentoEmp.AllowUserToAddRows = false;
+            DgvListarMovimentoEmp.AllowUserToDeleteRows = false;
+            DgvListarMovimentoEmp.AllowUserToOrderColumns = true;
+            DgvListarMovimentoEmp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            DgvListarMovimentoEmp.BackgroundColor = System.Drawing.SystemColors.Control;
+            DgvListarMovimentoEmp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            DgvListarMovimentoEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvListarMovimentoEmp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Id, EmprestimosId, DataParcela, Parcela, Valor, Pago, DataPagamento, DataCadastro });
+            DgvListarMovimentoEmp.Location = new System.Drawing.Point(7, 22);
+            DgvListarMovimentoEmp.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DgvListarMovimentoEmp.MultiSelect = false;
+            DgvListarMovimentoEmp.Name = "DgvListarMovimentoEmp";
+            DgvListarMovimentoEmp.ReadOnly = true;
+            DgvListarMovimentoEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            DgvListarMovimentoEmp.Size = new System.Drawing.Size(614, 267);
+            DgvListarMovimentoEmp.TabIndex = 0;
+            DgvListarMovimentoEmp.CellDoubleClick += DgvListarMovimentoEmp_CellDoubleClick;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.BtnExcluir);
-            this.groupBox3.Controls.Add(this.BtnAlterar);
-            this.groupBox3.Controls.Add(this.BtnSalvar);
-            this.groupBox3.Location = new System.Drawing.Point(463, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(88, 100);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
+            groupBox3.Controls.Add(BtnExcluir);
+            groupBox3.Controls.Add(BtnAlterar);
+            groupBox3.Controls.Add(BtnSalvar);
+            groupBox3.Location = new System.Drawing.Point(540, 14);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Size = new System.Drawing.Size(103, 115);
+            groupBox3.TabIndex = 7;
+            groupBox3.TabStop = false;
             // 
             // BtnExcluir
             // 
-            this.BtnExcluir.ContextMenuStrip = this.CmsBtnExcluir;
-            this.BtnExcluir.Enabled = false;
-            this.BtnExcluir.Location = new System.Drawing.Point(6, 70);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 0;
-            this.BtnExcluir.Text = "&Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            BtnExcluir.ContextMenuStrip = CmsBtnExcluir;
+            BtnExcluir.Enabled = false;
+            BtnExcluir.Location = new System.Drawing.Point(7, 81);
+            BtnExcluir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnExcluir.Name = "BtnExcluir";
+            BtnExcluir.Size = new System.Drawing.Size(88, 27);
+            BtnExcluir.TabIndex = 0;
+            BtnExcluir.Text = "&Excluir";
+            BtnExcluir.UseVisualStyleBackColor = true;
+            BtnExcluir.Click += BtnExcluir_Click;
             // 
             // CmsBtnExcluir
             // 
-            this.CmsBtnExcluir.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsExcluirTudo});
-            this.CmsBtnExcluir.Name = "CmsBtnExcluir";
-            this.CmsBtnExcluir.Size = new System.Drawing.Size(229, 26);
+            CmsBtnExcluir.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { CmsExcluirTudo });
+            CmsBtnExcluir.Name = "CmsBtnExcluir";
+            CmsBtnExcluir.Size = new System.Drawing.Size(229, 26);
             // 
             // CmsExcluirTudo
             // 
-            this.CmsExcluirTudo.Name = "CmsExcluirTudo";
-            this.CmsExcluirTudo.Size = new System.Drawing.Size(228, 22);
-            this.CmsExcluirTudo.Text = "Excluir Todos os Movimentos";
-            this.CmsExcluirTudo.Click += new System.EventHandler(this.CmsExcluirTudo_Click);
+            CmsExcluirTudo.Name = "CmsExcluirTudo";
+            CmsExcluirTudo.Size = new System.Drawing.Size(228, 22);
+            CmsExcluirTudo.Text = "Excluir Todos os Movimentos";
+            CmsExcluirTudo.Click += CmsExcluirTudo_Click;
             // 
             // BtnAlterar
             // 
-            this.BtnAlterar.Enabled = false;
-            this.BtnAlterar.Location = new System.Drawing.Point(6, 41);
-            this.BtnAlterar.Name = "BtnAlterar";
-            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAlterar.TabIndex = 0;
-            this.BtnAlterar.Text = "&Alterar";
-            this.BtnAlterar.UseVisualStyleBackColor = true;
-            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            BtnAlterar.Enabled = false;
+            BtnAlterar.Location = new System.Drawing.Point(7, 47);
+            BtnAlterar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnAlterar.Name = "BtnAlterar";
+            BtnAlterar.Size = new System.Drawing.Size(88, 27);
+            BtnAlterar.TabIndex = 0;
+            BtnAlterar.Text = "&Alterar";
+            BtnAlterar.UseVisualStyleBackColor = true;
+            BtnAlterar.Click += BtnAlterar_Click;
             // 
             // BtnSalvar
             // 
-            this.BtnSalvar.Location = new System.Drawing.Point(6, 12);
-            this.BtnSalvar.Name = "BtnSalvar";
-            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalvar.TabIndex = 0;
-            this.BtnSalvar.Text = "&Salvar";
-            this.BtnSalvar.UseVisualStyleBackColor = true;
-            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
+            BtnSalvar.Location = new System.Drawing.Point(7, 14);
+            BtnSalvar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnSalvar.Name = "BtnSalvar";
+            BtnSalvar.Size = new System.Drawing.Size(88, 27);
+            BtnSalvar.TabIndex = 0;
+            BtnSalvar.Text = "&Salvar";
+            BtnSalvar.UseVisualStyleBackColor = true;
+            BtnSalvar.Click += BtnSalvar_Click;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.LblDataCadastro);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.MktDataPagamento);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.CbxPago);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.TxtValor);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.TxtParcela);
-            this.groupBox2.Controls.Add(this.MktDataParcela);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(10, 153);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(412, 82);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cadastro Movimentação";
+            groupBox2.Controls.Add(LblDataCadastro);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(MktDataPagamento);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(CbxPago);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(TxtValor);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(TxtParcela);
+            groupBox2.Controls.Add(MktDataParcela);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Location = new System.Drawing.Point(12, 177);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(481, 95);
+            groupBox2.TabIndex = 6;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Cadastro Movimentação";
             // 
             // LblDataCadastro
             // 
-            this.LblDataCadastro.AutoSize = true;
-            this.LblDataCadastro.Location = new System.Drawing.Point(5, 59);
-            this.LblDataCadastro.Name = "LblDataCadastro";
-            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
-            this.LblDataCadastro.TabIndex = 3;
-            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
+            LblDataCadastro.AutoSize = true;
+            LblDataCadastro.Location = new System.Drawing.Point(6, 68);
+            LblDataCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblDataCadastro.Name = "LblDataCadastro";
+            LblDataCadastro.Size = new System.Drawing.Size(145, 15);
+            LblDataCadastro.TabIndex = 3;
+            LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(307, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Data Pagamento";
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(358, 23);
+            label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(95, 15);
+            label11.TabIndex = 9;
+            label11.Text = "Data Pagamento";
             // 
             // MktDataPagamento
             // 
-            this.MktDataPagamento.Location = new System.Drawing.Point(304, 36);
-            this.MktDataPagamento.Mask = "00/00/0000";
-            this.MktDataPagamento.Name = "MktDataPagamento";
-            this.MktDataPagamento.Size = new System.Drawing.Size(100, 20);
-            this.MktDataPagamento.TabIndex = 8;
-            this.MktDataPagamento.ValidatingType = typeof(System.DateTime);
+            MktDataPagamento.Location = new System.Drawing.Point(355, 42);
+            MktDataPagamento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MktDataPagamento.Mask = "00/00/0000";
+            MktDataPagamento.Name = "MktDataPagamento";
+            MktDataPagamento.Size = new System.Drawing.Size(116, 23);
+            MktDataPagamento.TabIndex = 8;
+            MktDataPagamento.ValidatingType = typeof(System.DateTime);
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(229, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Pago";
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(267, 24);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(34, 15);
+            label7.TabIndex = 7;
+            label7.Text = "Pago";
             // 
             // CbxPago
             // 
-            this.CbxPago.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CbxPago.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CbxPago.FormattingEnabled = true;
-            this.CbxPago.Items.AddRange(new object[] {
-            "Sim",
-            "Não"});
-            this.CbxPago.Location = new System.Drawing.Point(226, 36);
-            this.CbxPago.Name = "CbxPago";
-            this.CbxPago.Size = new System.Drawing.Size(72, 21);
-            this.CbxPago.TabIndex = 6;
-            this.CbxPago.SelectedIndexChanged += new System.EventHandler(this.CbxPago_SelectedIndexChanged);
+            CbxPago.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            CbxPago.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            CbxPago.FormattingEnabled = true;
+            CbxPago.Items.AddRange(new object[] { "Sim", "Não" });
+            CbxPago.Location = new System.Drawing.Point(264, 42);
+            CbxPago.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbxPago.Name = "CbxPago";
+            CbxPago.Size = new System.Drawing.Size(83, 23);
+            CbxPago.TabIndex = 6;
+            CbxPago.SelectedIndexChanged += CbxPago_SelectedIndexChanged;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(161, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Valor";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(188, 25);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(33, 15);
+            label6.TabIndex = 5;
+            label6.Text = "Valor";
             // 
             // TxtValor
             // 
-            this.TxtValor.Location = new System.Drawing.Point(158, 36);
-            this.TxtValor.Name = "TxtValor";
-            this.TxtValor.Size = new System.Drawing.Size(62, 20);
-            this.TxtValor.TabIndex = 4;
-            this.TxtValor.Text = "0,00";
-            this.TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TxtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
-            this.TxtValor.Enter += new System.EventHandler(this.TxtValor_Enter);
-            this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
+            TxtValor.Location = new System.Drawing.Point(184, 42);
+            TxtValor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtValor.Name = "TxtValor";
+            TxtValor.Size = new System.Drawing.Size(72, 23);
+            TxtValor.TabIndex = 4;
+            TxtValor.Text = "0,00";
+            TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            TxtValor.TextChanged += TxtValor_TextChanged;
+            TxtValor.Enter += TxtValor_Enter;
+            TxtValor.Leave += TxtValor_Leave;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(89, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Parcela";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(104, 23);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(45, 15);
+            label5.TabIndex = 3;
+            label5.Text = "Parcela";
             // 
             // TxtParcela
             // 
-            this.TxtParcela.Location = new System.Drawing.Point(86, 36);
-            this.TxtParcela.Name = "TxtParcela";
-            this.TxtParcela.Size = new System.Drawing.Size(66, 20);
-            this.TxtParcela.TabIndex = 2;
-            this.TxtParcela.Text = "1";
-            this.TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtParcela.TextChanged += new System.EventHandler(this.TxtParcela_TextChanged);
-            this.TxtParcela.Enter += new System.EventHandler(this.TxtParcela_Enter);
-            this.TxtParcela.Leave += new System.EventHandler(this.TxtParcela_Leave);
+            TxtParcela.Location = new System.Drawing.Point(100, 42);
+            TxtParcela.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtParcela.Name = "TxtParcela";
+            TxtParcela.Size = new System.Drawing.Size(76, 23);
+            TxtParcela.TabIndex = 2;
+            TxtParcela.Text = "1";
+            TxtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            TxtParcela.TextChanged += TxtParcela_TextChanged;
+            TxtParcela.Enter += TxtParcela_Enter;
+            TxtParcela.Leave += TxtParcela_Leave;
             // 
             // MktDataParcela
             // 
-            this.MktDataParcela.Location = new System.Drawing.Point(6, 36);
-            this.MktDataParcela.Mask = "00/00/0000";
-            this.MktDataParcela.Name = "MktDataParcela";
-            this.MktDataParcela.Size = new System.Drawing.Size(74, 20);
-            this.MktDataParcela.TabIndex = 1;
-            this.MktDataParcela.ValidatingType = typeof(System.DateTime);
+            MktDataParcela.Location = new System.Drawing.Point(7, 42);
+            MktDataParcela.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MktDataParcela.Mask = "00/00/0000";
+            MktDataParcela.Name = "MktDataParcela";
+            MktDataParcela.Size = new System.Drawing.Size(86, 23);
+            MktDataParcela.TabIndex = 1;
+            MktDataParcela.ValidatingType = typeof(System.DateTime);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Data Parcela";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(9, 23);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(72, 15);
+            label2.TabIndex = 0;
+            label2.Text = "Data Parcela";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CbxDescricao);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(10, 82);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(343, 65);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Empréstimo";
+            groupBox1.Controls.Add(CbxDescricao);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new System.Drawing.Point(12, 95);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Size = new System.Drawing.Size(400, 75);
+            groupBox1.TabIndex = 5;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Empréstimo";
             // 
             // CbxDescricao
             // 
-            this.CbxDescricao.DisplayMember = "Nome";
-            this.CbxDescricao.FormattingEnabled = true;
-            this.CbxDescricao.Location = new System.Drawing.Point(8, 34);
-            this.CbxDescricao.Name = "CbxDescricao";
-            this.CbxDescricao.Size = new System.Drawing.Size(327, 21);
-            this.CbxDescricao.TabIndex = 1;
-            this.CbxDescricao.ValueMember = "Id";
-            this.CbxDescricao.SelectedIndexChanged += new System.EventHandler(this.CbxDescrocao_SelectedIndexChanged);
+            CbxDescricao.DisplayMember = "Nome";
+            CbxDescricao.FormattingEnabled = true;
+            CbxDescricao.Location = new System.Drawing.Point(9, 39);
+            CbxDescricao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbxDescricao.Name = "CbxDescricao";
+            CbxDescricao.Size = new System.Drawing.Size(381, 23);
+            CbxDescricao.TabIndex = 1;
+            CbxDescricao.ValueMember = "Id";
+            CbxDescricao.SelectedIndexChanged += CbxDescrocao_SelectedIndexChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Descrição";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(9, 18);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(58, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Descrição";
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.CbxNome);
-            this.groupBox6.Controls.Add(this.label12);
-            this.groupBox6.Location = new System.Drawing.Point(10, 12);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(343, 64);
-            this.groupBox6.TabIndex = 5;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Cliente";
+            groupBox6.Controls.Add(CbxNome);
+            groupBox6.Controls.Add(label12);
+            groupBox6.Location = new System.Drawing.Point(12, 14);
+            groupBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox6.Size = new System.Drawing.Size(400, 74);
+            groupBox6.TabIndex = 5;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Cliente";
             // 
             // CbxNome
             // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(8, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(327, 21);
-            this.CbxNome.TabIndex = 1;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            CbxNome.DisplayMember = "Nome";
+            CbxNome.FormattingEnabled = true;
+            CbxNome.Location = new System.Drawing.Point(9, 37);
+            CbxNome.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbxNome.Name = "CbxNome";
+            CbxNome.Size = new System.Drawing.Size(381, 23);
+            CbxNome.TabIndex = 1;
+            CbxNome.ValueMember = "Id";
+            CbxNome.SelectedIndexChanged += CbxNome_SelectedIndexChanged;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Nome";
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(9, 18);
+            label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(40, 15);
+            label12.TabIndex = 0;
+            label12.Text = "Nome";
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.BtnQuitar);
-            this.groupBox7.Location = new System.Drawing.Point(463, 116);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(88, 52);
-            this.groupBox7.TabIndex = 10;
-            this.groupBox7.TabStop = false;
+            groupBox7.Controls.Add(BtnQuitar);
+            groupBox7.Location = new System.Drawing.Point(540, 134);
+            groupBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox7.Size = new System.Drawing.Size(103, 60);
+            groupBox7.TabIndex = 10;
+            groupBox7.TabStop = false;
             // 
             // BtnQuitar
             // 
-            this.BtnQuitar.Location = new System.Drawing.Point(7, 15);
-            this.BtnQuitar.Name = "BtnQuitar";
-            this.BtnQuitar.Size = new System.Drawing.Size(75, 23);
-            this.BtnQuitar.TabIndex = 0;
-            this.BtnQuitar.Text = "Quitar";
-            this.BtnQuitar.UseVisualStyleBackColor = true;
-            this.BtnQuitar.Click += new System.EventHandler(this.BtnQuitar_Click);
+            BtnQuitar.Location = new System.Drawing.Point(8, 17);
+            BtnQuitar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnQuitar.Name = "BtnQuitar";
+            BtnQuitar.Size = new System.Drawing.Size(88, 27);
+            BtnQuitar.TabIndex = 0;
+            BtnQuitar.Text = "Quitar";
+            BtnQuitar.UseVisualStyleBackColor = true;
+            BtnQuitar.Click += BtnQuitar_Click;
             // 
             // Id
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 41;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            Id.Width = 42;
             // 
             // EmprestimosId
             // 
-            this.EmprestimosId.DataPropertyName = "EmprestimosId";
-            this.EmprestimosId.HeaderText = "EmprestimosId";
-            this.EmprestimosId.Name = "EmprestimosId";
-            this.EmprestimosId.ReadOnly = true;
-            this.EmprestimosId.Visible = false;
+            EmprestimosId.DataPropertyName = "EmprestimosId";
+            EmprestimosId.HeaderText = "EmprestimosId";
+            EmprestimosId.Name = "EmprestimosId";
+            EmprestimosId.ReadOnly = true;
+            EmprestimosId.Visible = false;
+            EmprestimosId.Width = 111;
             // 
             // DataParcela
             // 
-            this.DataParcela.DataPropertyName = "DataParcela";
+            DataParcela.DataPropertyName = "DataParcela";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle1.Format = "d";
             dataGridViewCellStyle1.NullValue = null;
-            this.DataParcela.DefaultCellStyle = dataGridViewCellStyle1;
-            this.DataParcela.HeaderText = "Data Parcela";
-            this.DataParcela.Name = "DataParcela";
-            this.DataParcela.ReadOnly = true;
-            this.DataParcela.Width = 94;
+            DataParcela.DefaultCellStyle = dataGridViewCellStyle1;
+            DataParcela.HeaderText = "Data Parcela";
+            DataParcela.Name = "DataParcela";
+            DataParcela.ReadOnly = true;
+            DataParcela.Width = 97;
             // 
             // Parcela
             // 
-            this.Parcela.DataPropertyName = "Parcela";
+            Parcela.DataPropertyName = "Parcela";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.Format = "N0";
-            this.Parcela.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Parcela.HeaderText = "Parcela";
-            this.Parcela.Name = "Parcela";
-            this.Parcela.ReadOnly = true;
-            this.Parcela.Width = 68;
+            Parcela.DefaultCellStyle = dataGridViewCellStyle2;
+            Parcela.HeaderText = "Parcela";
+            Parcela.Name = "Parcela";
+            Parcela.ReadOnly = true;
+            Parcela.Width = 70;
             // 
             // Valor
             // 
-            this.Valor.DataPropertyName = "Valor";
+            Valor.DataPropertyName = "Valor";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 56;
+            Valor.DefaultCellStyle = dataGridViewCellStyle3;
+            Valor.HeaderText = "Valor";
+            Valor.Name = "Valor";
+            Valor.ReadOnly = true;
+            Valor.Width = 58;
             // 
             // Pago
             // 
-            this.Pago.DataPropertyName = "Pago";
-            this.Pago.HeaderText = "Pago";
-            this.Pago.Name = "Pago";
-            this.Pago.ReadOnly = true;
-            this.Pago.Width = 57;
-            // 
-            // Competencia
-            // 
-            this.Competencia.DataPropertyName = "Competencia";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "MM/yyyy";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Competencia.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Competencia.HeaderText = "Competência";
-            this.Competencia.Name = "Competencia";
-            this.Competencia.ReadOnly = true;
-            this.Competencia.Width = 94;
+            Pago.DataPropertyName = "Pago";
+            Pago.HeaderText = "Pago";
+            Pago.Name = "Pago";
+            Pago.ReadOnly = true;
+            Pago.Width = 59;
             // 
             // DataPagamento
             // 
-            this.DataPagamento.DataPropertyName = "DataPagamento";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.DataPagamento.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DataPagamento.HeaderText = "Data Pagamento";
-            this.DataPagamento.Name = "DataPagamento";
-            this.DataPagamento.ReadOnly = true;
-            this.DataPagamento.Width = 103;
+            DataPagamento.DataPropertyName = "DataPagamento";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            DataPagamento.DefaultCellStyle = dataGridViewCellStyle4;
+            DataPagamento.HeaderText = "Data Pagamento";
+            DataPagamento.Name = "DataPagamento";
+            DataPagamento.ReadOnly = true;
+            DataPagamento.Width = 110;
             // 
             // DataCadastro
             // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.DataCadastro.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Width = 92;
+            DataCadastro.DataPropertyName = "DataCadastro";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            DataCadastro.DefaultCellStyle = dataGridViewCellStyle5;
+            DataCadastro.HeaderText = "Data Cadastro";
+            DataCadastro.Name = "DataCadastro";
+            DataCadastro.ReadOnly = true;
+            DataCadastro.Width = 97;
             // 
             // FrmCadMovimentoEmprestimo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 605);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmCadMovimentoEmprestimo";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro Movimentação Empréstimo";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadMovimentoEmprestimo_FormClosing);
-            this.Load += new System.EventHandler(this.FrmCadMovimentoEmprestimo_Load);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListarMovimentoEmp)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.CmsBtnExcluir.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(654, 698);
+            Controls.Add(groupBox7);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox6);
+            Controls.Add(groupBox1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FrmCadMovimentoEmprestimo";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Cadastro Movimentação Empréstimo";
+            FormClosing += FrmCadMovimentoEmprestimo_FormClosing;
+            Load += FrmCadMovimentoEmprestimo_Load;
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvListarMovimentoEmp).EndInit();
+            groupBox3.ResumeLayout(false);
+            CmsBtnExcluir.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -611,7 +623,6 @@ namespace Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn Parcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Competencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataPagamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
     }

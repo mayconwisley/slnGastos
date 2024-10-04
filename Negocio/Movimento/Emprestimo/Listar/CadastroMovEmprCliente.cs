@@ -16,9 +16,8 @@ namespace Negocio.Movimento.Emprestimo.Listar
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("SELECT ME.Id, ME.EmprestimosId, ME.DataParcela, ME.Parcela, ME.Valor, ME.Pago, ME.DataCadastro, ME.DataPagamento, C.Data AS Competencia ");
+            SQL.Append("SELECT ME.Id, ME.EmprestimosId, ME.DataParcela, ME.Parcela, ME.Valor, ME.Pago, ME.DataCadastro, ME.DataPagamento ");
             SQL.Append("FROM MovimentoEmprestimos ME ");
-            SQL.Append("INNER JOIN Competencia C ON C.Id = ME.CompetenciaId ");
             SQL.Append("WHERE EmprestimosId = @EmprestimosId");
 
             try

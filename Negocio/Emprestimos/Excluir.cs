@@ -4,34 +4,33 @@ using System;
 using System.Data;
 using System.Text;
 
-namespace Negocio.Emprestimos
+namespace Negocio.Emprestimos;
+
+public class Excluir
 {
-    public class Excluir
+    Crud crud;
+    StringBuilder SQL = null;
+
+    public bool Cadastro(EmprestimoObj emprestimo)
     {
-        Crud crud;
-        StringBuilder SQL = null;
+        crud = new Crud();
+        SQL = new StringBuilder();
 
-        public bool Cadastro(EmprestimoObj emprestimo)
+        SQL.Append("DELETE FROM Emprestimos ");
+        SQL.Append("WHERE Id = @Id");
+
+        try
         {
-            crud = new Crud();
-            SQL = new StringBuilder();
-
-            SQL.Append("DELETE FROM Emprestimos ");
-            SQL.Append("WHERE Id = @Id");
-
-            try
-            {
-                crud.LimparParametro();
-                crud.AdicionarParametro("Id", emprestimo.Id);
-                crud.Executar(CommandType.Text, SQL.ToString());
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-
+            crud.LimparParametro();
+            crud.AdicionarParametro("Id", emprestimo.Id);
+            crud.Executar(CommandType.Text, SQL.ToString());
+            return true;
         }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
+
     }
 }

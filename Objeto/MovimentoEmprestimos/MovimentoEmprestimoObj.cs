@@ -1,5 +1,4 @@
-﻿using Objeto.Competencia;
-using Objeto.Emprestimos;
+﻿using Objeto.Emprestimos;
 using Objeto.Usuario;
 using System;
 
@@ -14,7 +13,6 @@ namespace Objeto.MovimentoEmprestimos
         public decimal Valor { get; set; }
         public string Pago { get; set; }
         public UsuarioObj Usuario { get; set; }
-        public CompetenciaObj Competencia { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime DataPagameno { get; set; }
 

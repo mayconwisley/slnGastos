@@ -4,44 +4,39 @@ using System;
 using System.Data;
 using System.Text;
 
-namespace Negocio.Emprestimos
+namespace Negocio.Emprestimos;
+
+public class Inserir
 {
-    public class Inserir
+    Crud crud;
+    StringBuilder SQL = null;
+
+    public bool Cadastro(EmprestimoObj emprestimo)
     {
-        Crud crud;
-        StringBuilder SQL = null;
+        crud = new Crud();
+        SQL = new StringBuilder();
 
-        public bool Cadastro(EmprestimoObj emprestimo)
+        SQL.Append("INSERT INTO Emprestimos(DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas, Ativo, Login, ClienteId, DataCadastro) ");
+        SQL.Append("VALUES(@DataInicio, @Descricao, @ValorEmprestado, @ValorParcela, @Parcelas, @Ativo, @Login, @ClienteId, @DataCadastro)");
+
+        try
         {
-
-            crud = new Crud();
-            SQL = new StringBuilder();
-
-            SQL.Append("INSERT INTO Emprestimos(DataInicio, Descricao, ValorEmprestado, ValorParcela, Parcelas, Ativo, Login, ClienteId, DataCadastro, ValorPago) ");
-            SQL.Append("VALUES(@DataInicio, @Descricao, @ValorEmprestado, @ValorParcela, @Parcelas, @Ativo, @Login, @ClienteId, @DataCadastro, @ValorPago)");
-
-            try
-            {
-                crud.LimparParametro();
-                crud.AdicionarParametro("DataInicio", emprestimo.DataInicio);
-                crud.AdicionarParametro("Descricao", emprestimo.Descricao);
-                crud.AdicionarParametro("ValorEmprestado", emprestimo.ValorEmprestado);
-                crud.AdicionarParametro("ValorParcela", emprestimo.ValorParcela);
-                crud.AdicionarParametro("Parcelas", emprestimo.Parcelas);
-                crud.AdicionarParametro("Ativo", emprestimo.Ativo);
-                crud.AdicionarParametro("Login", emprestimo.Usuario.Login);
-                crud.AdicionarParametro("ClienteId", emprestimo.Cliente.Id);
-                crud.AdicionarParametro("DataCadastro", emprestimo.DataCadastro);
-                crud.AdicionarParametro("ValorPago", emprestimo.ValorPago);
-                crud.Executar(CommandType.Text, SQL.ToString());
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-
+            crud.LimparParametro();
+            crud.AdicionarParametro("DataInicio", emprestimo.DataInicio);
+            crud.AdicionarParametro("Descricao", emprestimo.Descricao);
+            crud.AdicionarParametro("ValorEmprestado", emprestimo.ValorEmprestado);
+            crud.AdicionarParametro("ValorParcela", emprestimo.ValorParcela);
+            crud.AdicionarParametro("Parcelas", emprestimo.Parcelas);
+            crud.AdicionarParametro("Ativo", emprestimo.Ativo);
+            crud.AdicionarParametro("Login", emprestimo.Usuario.Login);
+            crud.AdicionarParametro("ClienteId", emprestimo.Cliente.Id);
+            crud.AdicionarParametro("DataCadastro", emprestimo.DataCadastro);
+            crud.Executar(CommandType.Text, SQL.ToString());
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
         }
     }
 }

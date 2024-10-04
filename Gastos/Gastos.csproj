@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
@@ -17,6 +17,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Ximian_openofficecalc_Ximian_9948.ico</ApplicationIcon>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcessarSistema\AcessarSistema.csproj" />
@@ -48,5 +49,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="Windows" />
   </ItemGroup>
 </Project>

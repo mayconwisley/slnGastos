@@ -4,125 +4,124 @@ using Objeto.Usuario;
 using System;
 using System.Windows.Forms;
 
-namespace Gastos
+namespace Gastos;
+
+public partial class FrmTelaLogin : Form
 {
-    public partial class FrmTelaLogin : Form
+    public string Login { get; set; }
+
+    public FrmTelaLogin()
     {
-        public string Login { get; set; }
+        InitializeComponent();
+    }
 
-        public FrmTelaLogin()
+    private void LembrarSenha(string login)
+    {
+        UsuarioObj usuario = new UsuarioObj();
+        LembreSenha lembrarSenha = new LembreSenha();
+        try
         {
-            InitializeComponent();
+            usuario.Login = login;
+
+            if (TxtLogin.Text == "")
+            {
+                MessageBox.Show("Digite um usuário para pesquisar o lembrete de Senha!");
+                return;
+            }
+
+            string strLembrarSenha = lembrarSenha.LembreteSenha(usuario);
+
+            MessageBox.Show("Seu lembrete de Senha é: " + strLembrarSenha);
+
         }
-
-        private void LembrarSenha(string login)
+        catch (Exception ex)
         {
-            UsuarioObj usuario = new UsuarioObj();
-            LembreSenha lembrarSenha = new LembreSenha();
-            try
-            {
-                usuario.Login = login;
-
-                if (TxtLogin.Text == "")
-                {
-                    MessageBox.Show("Digite um usuário para pesquisar o lembrete de Senha!");
-                    return;
-                }
-
-                string strLembrarSenha = lembrarSenha.LembreteSenha(usuario);
-
-                MessageBox.Show("Seu lembrete de Senha é: " + strLembrarSenha);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Usuário não cadastro no sistema!\n\n" + ex.Message);
-            }
+            MessageBox.Show("Usuário não cadastro no sistema!\n\n" + ex.Message);
         }
+    }
 
 
-        private void BtnAcessar_Click(object sender, EventArgs e)
+    private void BtnAcessar_Click(object sender, EventArgs e)
+    {
+        UsuarioObj usuario = new UsuarioObj();
+
+
+        try
         {
-            UsuarioObj usuario = new UsuarioObj();
+            usuario.Login = TxtLogin.Text.Trim();
+            usuario.Senha = TxtSenha.Text.Trim();
+            Login = TxtLogin.Text.Trim();
 
-
-            try
+            if (Logar.Acessar(usuario))
             {
-                usuario.Login = TxtLogin.Text.Trim();
-                usuario.Senha = TxtSenha.Text.Trim();
-                Login = TxtLogin.Text.Trim();
 
-                if (Logar.Acessar(usuario))
-                {
-
-                    DialogResult = DialogResult.OK;
-
-                }
-                else
-                {
-                    MessageBox.Show("Usuário e/ou Senha estão incorretos!!!");
-                }
+                DialogResult = DialogResult.OK;
 
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Usuário não cadastro no sistema!\n\n" + ex.Message);
+                MessageBox.Show("Usuário e/ou Senha estão incorretos!!!");
             }
 
         }
-
-        private void FrmTelaLogin_KeyPress(object sender, KeyPressEventArgs e)
+        catch (Exception ex)
         {
-            if (e.KeyChar == 13)
-            {
-                this.ProcessTabKey(true);
-                e.Handled = true;
-            }
+            MessageBox.Show("Usuário não cadastro no sistema!\n\n" + ex.Message);
         }
 
-        private void TxtSenha_KeyDown(object sender, KeyEventArgs e)
+    }
+
+    private void FrmTelaLogin_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (e.KeyChar == 13)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BtnAcessar_Click(e, e);
-            }
+            this.ProcessTabKey(true);
+            e.Handled = true;
         }
+    }
 
-        private void FrmTelaLogin_Load(object sender, EventArgs e)
+    private void TxtSenha_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
         {
-            QuantidadeUsuario quantidadeUsuario = new QuantidadeUsuario();
+            BtnAcessar_Click(e, e);
+        }
+    }
 
-            try
-            {
-                int qtdUsuario = quantidadeUsuario.QtdUsuario();
-                if (qtdUsuario <= 0)
-                {
-                    FrmCadUsuario frmCadUsuario = new FrmCadUsuario();
-                    frmCadUsuario.MinimizeBox = false;
-                    frmCadUsuario.TopMost = true;
-                    frmCadUsuario.ShowDialog();
-                }
+    private void FrmTelaLogin_Load(object sender, EventArgs e)
+    {
+        QuantidadeUsuario quantidadeUsuario = new QuantidadeUsuario();
 
-                if (TxtLogin.Text == "")
-                {
-                    TxtLogin.Focus();
-                }
-            }
-            catch (Exception ex)
+        try
+        {
+            int qtdUsuario = quantidadeUsuario.QtdUsuario();
+            if (qtdUsuario <= 0)
             {
-                MessageBox.Show(ex.Message);
+                FrmCadUsuario frmCadUsuario = new FrmCadUsuario();
+                frmCadUsuario.MinimizeBox = false;
+                frmCadUsuario.TopMost = true;
+                frmCadUsuario.ShowDialog();
             }
 
+            if (TxtLogin.Text == "")
+            {
+                TxtLogin.Focus();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
         }
 
-        private void LkLblLembreSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LembrarSenha(TxtLogin.Text.Trim());
-        }
+    }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+    private void LkLblLembreSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        LembrarSenha(TxtLogin.Text.Trim());
+    }
+
+    private void BtnCancelar_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
     }
 }
