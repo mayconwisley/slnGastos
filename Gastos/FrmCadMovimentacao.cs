@@ -391,8 +391,6 @@ public partial class FrmCadMovimentacao : Form
     private void FrmCadMovimentacao_FormClosing(object sender, FormClosingEventArgs e)
     {
         frmForm.AtualizarFrmPrincipal();
-        frmForm.GraficoEntradaSaida();
-        frmForm.GraficoPagoRecebido();
     }
 
     private void TxtValor_TextChanged(object sender, EventArgs e)

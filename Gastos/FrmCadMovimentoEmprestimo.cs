@@ -324,8 +324,6 @@ public partial class FrmCadMovimentoEmprestimo : Form
     private void FrmCadMovimentoEmprestimo_FormClosing(object sender, FormClosingEventArgs e)
     {
         frmForm.AtualizarFrmPrincipal();
-        frmForm.GraficoEntradaSaida();
-        frmForm.GraficoPagoRecebido();
     }
 
     private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)

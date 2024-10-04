@@ -16,8 +16,8 @@ namespace Negocio.Movimento.Devedor
             crud = new Crud();
             SQL = new StringBuilder();
 
-            SQL.Append("INSERT INTO MovimentoDevedores( DevedoresId, DataParcela, Parcela, Valor, Recebido, Login, DataCadastro, DataRecebido, Descricao) ");
-            SQL.Append("VALUES( @DevedoresId, @DataParcela, @Parcela, @Valor, @Recebido, @Login, @DataCadastro, @DataRecebido, @Descricao)");
+            SQL.Append("INSERT INTO MovimentoDevedores( DevedoresId, DataParcela, Parcela, Valor, Recebido, Login, DataCadastro, DataRecebido) ");
+            SQL.Append("VALUES( @DevedoresId, @DataParcela, @Parcela, @Valor, @Recebido, @Login, @DataCadastro, @DataRecebido)");
 
             try
             {
@@ -30,7 +30,6 @@ namespace Negocio.Movimento.Devedor
                 crud.AdicionarParametro("Login", movimentoDevedores.Usuario.Login);
                 crud.AdicionarParametro("DataCadastro", movimentoDevedores.DataCadastro);
                 crud.AdicionarParametro("DataRecebido", movimentoDevedores.DataRecebido);
-                crud.AdicionarParametro("Descricao", movimentoDevedores.Descricao);
                 crud.Executar(CommandType.Text, SQL.ToString());
                 return true;
             }

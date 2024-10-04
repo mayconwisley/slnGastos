@@ -11,7 +11,6 @@ namespace Objeto.Devedores
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
-        public string Parcelado { get; set; }
         public int Parcelas { get; set; }
         public string Ativo { get; set; }
         public DateTime DataCadastro { get; set; }

@@ -29,270 +29,449 @@ namespace Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.BtnAlterar = new System.Windows.Forms.Button();
-            this.BtnSalvar = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.DgvListaDevedores = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.CbAtivo = new System.Windows.Forms.CheckBox();
-            this.TxtNome = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.LblDataCadastro = new System.Windows.Forms.Label();
-            this.CbxNome = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaDevedores)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            BtnExcluir = new System.Windows.Forms.Button();
+            BtnAlterar = new System.Windows.Forms.Button();
+            BtnSalvar = new System.Windows.Forms.Button();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            DgvListaDevedores = new System.Windows.Forms.DataGridView();
+            Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ClienteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            label6 = new System.Windows.Forms.Label();
+            MktDataInicio = new System.Windows.Forms.MaskedTextBox();
+            label5 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            TxtParcelas = new System.Windows.Forms.TextBox();
+            TxtValor = new System.Windows.Forms.TextBox();
+            CbAtivo = new System.Windows.Forms.CheckBox();
+            TxtDescricao = new System.Windows.Forms.TextBox();
+            TxtNome = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            LblDataCadastro = new System.Windows.Forms.Label();
+            CbxNome = new System.Windows.Forms.ComboBox();
+            label1 = new System.Windows.Forms.Label();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            BtnGerar = new System.Windows.Forms.Button();
+            groupBox4.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvListaDevedores).BeginInit();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
+            groupBox5.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.BtnExcluir);
-            this.groupBox4.Controls.Add(this.BtnAlterar);
-            this.groupBox4.Controls.Add(this.BtnSalvar);
-            this.groupBox4.Location = new System.Drawing.Point(413, 9);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(88, 100);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
+            groupBox4.Controls.Add(BtnExcluir);
+            groupBox4.Controls.Add(BtnAlterar);
+            groupBox4.Controls.Add(BtnSalvar);
+            groupBox4.Location = new System.Drawing.Point(482, 10);
+            groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Size = new System.Drawing.Size(103, 115);
+            groupBox4.TabIndex = 2;
+            groupBox4.TabStop = false;
             // 
             // BtnExcluir
             // 
-            this.BtnExcluir.Enabled = false;
-            this.BtnExcluir.Location = new System.Drawing.Point(6, 69);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 2;
-            this.BtnExcluir.Text = "&Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            BtnExcluir.Enabled = false;
+            BtnExcluir.Location = new System.Drawing.Point(7, 80);
+            BtnExcluir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnExcluir.Name = "BtnExcluir";
+            BtnExcluir.Size = new System.Drawing.Size(88, 27);
+            BtnExcluir.TabIndex = 2;
+            BtnExcluir.Text = "&Excluir";
+            BtnExcluir.UseVisualStyleBackColor = true;
+            BtnExcluir.Click += BtnExcluir_Click;
             // 
             // BtnAlterar
             // 
-            this.BtnAlterar.Enabled = false;
-            this.BtnAlterar.Location = new System.Drawing.Point(6, 40);
-            this.BtnAlterar.Name = "BtnAlterar";
-            this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAlterar.TabIndex = 1;
-            this.BtnAlterar.Text = "&Alterar";
-            this.BtnAlterar.UseVisualStyleBackColor = true;
-            this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            BtnAlterar.Enabled = false;
+            BtnAlterar.Location = new System.Drawing.Point(7, 46);
+            BtnAlterar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnAlterar.Name = "BtnAlterar";
+            BtnAlterar.Size = new System.Drawing.Size(88, 27);
+            BtnAlterar.TabIndex = 1;
+            BtnAlterar.Text = "&Alterar";
+            BtnAlterar.UseVisualStyleBackColor = true;
+            BtnAlterar.Click += BtnAlterar_Click;
             // 
             // BtnSalvar
             // 
-            this.BtnSalvar.Location = new System.Drawing.Point(6, 11);
-            this.BtnSalvar.Name = "BtnSalvar";
-            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalvar.TabIndex = 0;
-            this.BtnSalvar.Text = "&Salvar";
-            this.BtnSalvar.UseVisualStyleBackColor = true;
-            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
+            BtnSalvar.Location = new System.Drawing.Point(7, 13);
+            BtnSalvar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnSalvar.Name = "BtnSalvar";
+            BtnSalvar.Size = new System.Drawing.Size(88, 27);
+            BtnSalvar.TabIndex = 0;
+            BtnSalvar.Text = "&Salvar";
+            BtnSalvar.UseVisualStyleBackColor = true;
+            BtnSalvar.Click += BtnSalvar_Click;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.DgvListaDevedores);
-            this.groupBox3.Location = new System.Drawing.Point(10, 203);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(491, 210);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Devedores cadastrados";
+            groupBox3.Controls.Add(DgvListaDevedores);
+            groupBox3.Location = new System.Drawing.Point(12, 252);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Size = new System.Drawing.Size(573, 307);
+            groupBox3.TabIndex = 4;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Devedores cadastrados";
             // 
             // DgvListaDevedores
             // 
-            this.DgvListaDevedores.AllowUserToAddRows = false;
-            this.DgvListaDevedores.AllowUserToDeleteRows = false;
-            this.DgvListaDevedores.AllowUserToOrderColumns = true;
-            this.DgvListaDevedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.DgvListaDevedores.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvListaDevedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DgvListaDevedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListaDevedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Nome,
-            this.Ativo,
-            this.Login,
-            this.ClienteId,
-            this.DataCadastro});
-            this.DgvListaDevedores.Location = new System.Drawing.Point(6, 19);
-            this.DgvListaDevedores.MultiSelect = false;
-            this.DgvListaDevedores.Name = "DgvListaDevedores";
-            this.DgvListaDevedores.ReadOnly = true;
-            this.DgvListaDevedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaDevedores.Size = new System.Drawing.Size(480, 185);
-            this.DgvListaDevedores.TabIndex = 0;
-            this.DgvListaDevedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaDevedores_CellDoubleClick);
+            DgvListaDevedores.AllowUserToAddRows = false;
+            DgvListaDevedores.AllowUserToDeleteRows = false;
+            DgvListaDevedores.AllowUserToOrderColumns = true;
+            DgvListaDevedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            DgvListaDevedores.BackgroundColor = System.Drawing.SystemColors.Control;
+            DgvListaDevedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            DgvListaDevedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvListaDevedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Id, DataInicio, Nome, Descricao, Valor, Parcelas, Ativo, Login, ClienteId, DataCadastro });
+            DgvListaDevedores.Location = new System.Drawing.Point(7, 22);
+            DgvListaDevedores.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DgvListaDevedores.MultiSelect = false;
+            DgvListaDevedores.Name = "DgvListaDevedores";
+            DgvListaDevedores.ReadOnly = true;
+            DgvListaDevedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            DgvListaDevedores.Size = new System.Drawing.Size(560, 279);
+            DgvListaDevedores.TabIndex = 0;
+            DgvListaDevedores.CellDoubleClick += DgvListaDevedores_CellDoubleClick;
             // 
             // Id
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 41;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 42;
+            // 
+            // DataInicio
+            // 
+            DataInicio.DataPropertyName = "DataInicio";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            DataInicio.DefaultCellStyle = dataGridViewCellStyle1;
+            DataInicio.HeaderText = "Data Início";
+            DataInicio.Name = "DataInicio";
+            DataInicio.ReadOnly = true;
+            DataInicio.Width = 88;
             // 
             // Nome
             // 
-            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            Nome.Width = 65;
+            // 
+            // Descricao
+            // 
+            Descricao.DataPropertyName = "Descricao";
+            Descricao.HeaderText = "Descrição";
+            Descricao.Name = "Descricao";
+            Descricao.ReadOnly = true;
+            Descricao.Width = 83;
+            // 
+            // Valor
+            // 
+            Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            Valor.DefaultCellStyle = dataGridViewCellStyle2;
+            Valor.HeaderText = "Valor";
+            Valor.Name = "Valor";
+            Valor.ReadOnly = true;
+            Valor.Width = 58;
+            // 
+            // Parcelas
+            // 
+            Parcelas.DataPropertyName = "Parcelas";
+            Parcelas.HeaderText = "Parcelas";
+            Parcelas.Name = "Parcelas";
+            Parcelas.ReadOnly = true;
+            Parcelas.Width = 75;
             // 
             // Ativo
             // 
-            this.Ativo.DataPropertyName = "Ativo";
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
-            this.Ativo.Width = 56;
+            Ativo.DataPropertyName = "Ativo";
+            Ativo.HeaderText = "Ativo";
+            Ativo.Name = "Ativo";
+            Ativo.ReadOnly = true;
+            Ativo.Width = 60;
             // 
             // Login
             // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Login";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Visible = false;
-            this.Login.Width = 58;
+            Login.DataPropertyName = "Login";
+            Login.HeaderText = "Login";
+            Login.Name = "Login";
+            Login.ReadOnly = true;
+            Login.Visible = false;
+            Login.Width = 62;
             // 
             // ClienteId
             // 
-            this.ClienteId.DataPropertyName = "ClienteId";
-            this.ClienteId.HeaderText = "ClienteId";
-            this.ClienteId.Name = "ClienteId";
-            this.ClienteId.ReadOnly = true;
-            this.ClienteId.Visible = false;
-            this.ClienteId.Width = 73;
+            ClienteId.DataPropertyName = "ClienteId";
+            ClienteId.HeaderText = "ClienteId";
+            ClienteId.Name = "ClienteId";
+            ClienteId.ReadOnly = true;
+            ClienteId.Visible = false;
+            ClienteId.Width = 79;
             // 
             // DataCadastro
             // 
-            this.DataCadastro.DataPropertyName = "DataCadastro";
-            this.DataCadastro.HeaderText = "Data Cadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
+            DataCadastro.DataPropertyName = "DataCadastro";
+            DataCadastro.HeaderText = "Data Cadastro";
+            DataCadastro.Name = "DataCadastro";
+            DataCadastro.ReadOnly = true;
+            DataCadastro.Width = 106;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.CbAtivo);
-            this.groupBox2.Controls.Add(this.TxtNome);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(10, 107);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(328, 90);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Devedor";
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(MktDataInicio);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(TxtParcelas);
+            groupBox2.Controls.Add(TxtValor);
+            groupBox2.Controls.Add(CbAtivo);
+            groupBox2.Controls.Add(TxtDescricao);
+            groupBox2.Controls.Add(TxtNome);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Location = new System.Drawing.Point(12, 123);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(462, 123);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Devedor";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(7, 68);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(31, 15);
+            label6.TabIndex = 7;
+            label6.Text = "Data";
+            // 
+            // MktDataInicio
+            // 
+            MktDataInicio.Location = new System.Drawing.Point(7, 86);
+            MktDataInicio.Mask = "00/00/0000";
+            MktDataInicio.Name = "MktDataInicio";
+            MktDataInicio.Size = new System.Drawing.Size(100, 23);
+            MktDataInicio.TabIndex = 6;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(342, 19);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(50, 15);
+            label5.TabIndex = 5;
+            label5.Text = "Parcelas";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(279, 19);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(33, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Valor";
+            // 
+            // TxtParcelas
+            // 
+            TxtParcelas.Location = new System.Drawing.Point(342, 37);
+            TxtParcelas.Name = "TxtParcelas";
+            TxtParcelas.Size = new System.Drawing.Size(50, 23);
+            TxtParcelas.TabIndex = 4;
+            TxtParcelas.Text = "1";
+            TxtParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            TxtParcelas.TextChanged += TxtParcelas_TextChanged;
+            TxtParcelas.Enter += TxtParcelas_Enter;
+            TxtParcelas.Leave += TxtParcelas_Leave;
+            // 
+            // TxtValor
+            // 
+            TxtValor.Location = new System.Drawing.Point(279, 37);
+            TxtValor.Name = "TxtValor";
+            TxtValor.Size = new System.Drawing.Size(57, 23);
+            TxtValor.TabIndex = 4;
+            TxtValor.Text = "0,00";
+            TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            TxtValor.TextChanged += TxtValor_TextChanged;
+            TxtValor.Enter += TxtValor_Enter;
+            TxtValor.Leave += TxtValor_Leave;
             // 
             // CbAtivo
             // 
-            this.CbAtivo.AutoSize = true;
-            this.CbAtivo.Checked = true;
-            this.CbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbAtivo.Location = new System.Drawing.Point(6, 58);
-            this.CbAtivo.Name = "CbAtivo";
-            this.CbAtivo.Size = new System.Drawing.Size(50, 17);
-            this.CbAtivo.TabIndex = 3;
-            this.CbAtivo.Text = "Ativo";
-            this.CbAtivo.UseVisualStyleBackColor = true;
+            CbAtivo.AutoSize = true;
+            CbAtivo.Checked = true;
+            CbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            CbAtivo.Location = new System.Drawing.Point(399, 39);
+            CbAtivo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbAtivo.Name = "CbAtivo";
+            CbAtivo.Size = new System.Drawing.Size(54, 19);
+            CbAtivo.TabIndex = 3;
+            CbAtivo.Text = "Ativo";
+            CbAtivo.UseVisualStyleBackColor = true;
+            // 
+            // TxtDescricao
+            // 
+            TxtDescricao.Location = new System.Drawing.Point(118, 86);
+            TxtDescricao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtDescricao.MaxLength = 200;
+            TxtDescricao.Name = "TxtDescricao";
+            TxtDescricao.Size = new System.Drawing.Size(335, 23);
+            TxtDescricao.TabIndex = 1;
             // 
             // TxtNome
             // 
-            this.TxtNome.Location = new System.Drawing.Point(6, 32);
-            this.TxtNome.MaxLength = 200;
-            this.TxtNome.Name = "TxtNome";
-            this.TxtNome.Size = new System.Drawing.Size(316, 20);
-            this.TxtNome.TabIndex = 1;
+            TxtNome.Location = new System.Drawing.Point(7, 37);
+            TxtNome.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtNome.MaxLength = 200;
+            TxtNome.Name = "TxtNome";
+            TxtNome.Size = new System.Drawing.Size(265, 23);
+            TxtNome.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(118, 67);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(58, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Descrição";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Nome";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(7, 18);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(40, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Nome";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.LblDataCadastro);
-            this.groupBox1.Controls.Add(this.CbxNome);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(10, 9);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 92);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
+            groupBox1.Controls.Add(LblDataCadastro);
+            groupBox1.Controls.Add(CbxNome);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new System.Drawing.Point(12, 10);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Size = new System.Drawing.Size(462, 106);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Cliente";
             // 
             // LblDataCadastro
             // 
-            this.LblDataCadastro.AutoSize = true;
-            this.LblDataCadastro.Location = new System.Drawing.Point(3, 66);
-            this.LblDataCadastro.Name = "LblDataCadastro";
-            this.LblDataCadastro.Size = new System.Drawing.Size(139, 13);
-            this.LblDataCadastro.TabIndex = 2;
-            this.LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
+            LblDataCadastro.AutoSize = true;
+            LblDataCadastro.Location = new System.Drawing.Point(4, 76);
+            LblDataCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblDataCadastro.Name = "LblDataCadastro";
+            LblDataCadastro.Size = new System.Drawing.Size(145, 15);
+            LblDataCadastro.TabIndex = 2;
+            LblDataCadastro.Text = "Data Cadastro: 00/00/0000";
             // 
             // CbxNome
             // 
-            this.CbxNome.DisplayMember = "Nome";
-            this.CbxNome.FormattingEnabled = true;
-            this.CbxNome.Location = new System.Drawing.Point(6, 32);
-            this.CbxNome.Name = "CbxNome";
-            this.CbxNome.Size = new System.Drawing.Size(316, 21);
-            this.CbxNome.TabIndex = 0;
-            this.CbxNome.ValueMember = "Id";
-            this.CbxNome.SelectedIndexChanged += new System.EventHandler(this.CbxNome_SelectedIndexChanged);
+            CbxNome.DisplayMember = "Nome";
+            CbxNome.FormattingEnabled = true;
+            CbxNome.Location = new System.Drawing.Point(7, 37);
+            CbxNome.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            CbxNome.Name = "CbxNome";
+            CbxNome.Size = new System.Drawing.Size(446, 23);
+            CbxNome.TabIndex = 0;
+            CbxNome.ValueMember = "Id";
+            CbxNome.SelectedIndexChanged += CbxNome_SelectedIndexChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(7, 18);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(40, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Nome";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(BtnGerar);
+            groupBox5.Location = new System.Drawing.Point(482, 131);
+            groupBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Size = new System.Drawing.Size(103, 48);
+            groupBox5.TabIndex = 2;
+            groupBox5.TabStop = false;
+            // 
+            // BtnGerar
+            // 
+            BtnGerar.Enabled = false;
+            BtnGerar.Location = new System.Drawing.Point(7, 13);
+            BtnGerar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnGerar.Name = "BtnGerar";
+            BtnGerar.Size = new System.Drawing.Size(88, 27);
+            BtnGerar.TabIndex = 0;
+            BtnGerar.Text = "&Gerar";
+            BtnGerar.UseVisualStyleBackColor = true;
+            BtnGerar.Click += BtnGerar_Click;
             // 
             // FrmCadDevedores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 425);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmCadDevedores";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro Devedores";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadDevedores_FormClosing);
-            this.Load += new System.EventHandler(this.FrmCadDevedores_Load);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaDevedores)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(596, 571);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FrmCadDevedores";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Cadastro Devedores";
+            FormClosing += FrmCadDevedores_FormClosing;
+            Load += FrmCadDevedores_Load;
+            groupBox4.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvListaDevedores).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -310,11 +489,25 @@ namespace Gastos
         private System.Windows.Forms.ComboBox CbxNome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox CbAtivo;
+        private System.Windows.Forms.TextBox TxtDescricao;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TxtValor;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TxtParcelas;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox MktDataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Parcelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClienteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button BtnGerar;
     }
 }

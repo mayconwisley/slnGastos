@@ -73,7 +73,8 @@ public partial class FrmPrincipal : Form
         {
             LblDespesaFixo.Text = "Despesa Fixas......: " + cadastroFixosAtivoCliente.ValorFixo(idCliente).ToString("#,##0.00");
             LblDespesaEmprestimo.Text = "Despesa Empréstimos: " + cadastroEmprestimoAtivoCliente.ValorEmprestimoAPagar(idCliente, competencia).ToString("#,##0.00");
-            LblCreditoDevedores.Text = "Crédito Devedores..: " + consultaMovDevClienteValorTotal.ValorDevedor(idCliente).ToString("#,##0.00");
+            LblDebitoDevedores.Text = "Débito Devedores...: " + consultaMovDevClienteValorTotal.ValorDevedorMes(idCliente, competencia).ToString("#,##0.00");
+            LblCreditoDevedores.Text = "Crédito Devedores..: " + consultaMovDevClienteValorTotal.ValorDevedorPago(idCliente, competencia).ToString("#,##0.00");
 
             decimal saldo = saldoPagRecClienteComp.Saldo(idCliente, idCompetencia, competencia);
 
@@ -98,85 +99,6 @@ public partial class FrmPrincipal : Form
             MessageBox.Show(ex.Message);
         }
 
-    }
-
-    public void GraficoEntradaSaida()
-    {
-        SaldoSaidaPorComp saldoSaidaPorComp = new SaldoSaidaPorComp();
-        SaldoEntradaPorComp saldoEntradaPorComp = new SaldoEntradaPorComp();
-
-        try
-        {
-            GraEntradaSaida.Series[0].Points.Clear();
-            GraEntradaSaida.Series[1].Points.Clear();
-
-            //Entrada
-
-            foreach (DataRow item in saldoEntradaPorComp.ValorEntrada(idCliente, idCompetencia).Rows)
-            {
-                GraEntradaSaida.Series[0].Points.AddXY(item["Data"], item["Entrada"]);
-            }
-            if (GraEntradaSaida.Series[0].Points.Count > 5)
-            {
-                GraEntradaSaida.Series[0].Points.RemoveAt(0);
-                GraEntradaSaida.Update();
-            }
-            //Saida
-
-            foreach (DataRow item in saldoSaidaPorComp.ValorSaida(idCliente, idCompetencia).Rows)
-            {
-                GraEntradaSaida.Series[1].Points.AddXY(item["Data"], item["Saida"]);
-            }
-            if (GraEntradaSaida.Series[1].Points.Count > 5)
-            {
-                GraEntradaSaida.Series[1].Points.RemoveAt(0);
-                GraEntradaSaida.Update();
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-        }
-    }
-
-    public void GraficoPagoRecebido()
-    {
-        SaldoRecebidoPorComp saldoRecebidoPorComp = new SaldoRecebidoPorComp();
-        SaldoPagoPorComp saldoPagoPorComp = new SaldoPagoPorComp();
-        GraRecebidoPago.Series[0].Points.Clear();
-        GraRecebidoPago.Series[1].Points.Clear();
-        try
-        {
-
-            //Entrada
-            foreach (DataRow item in saldoRecebidoPorComp.ValorRecebido(idCliente, idCompetencia).Rows)
-            {
-                GraRecebidoPago.Series[0].Points.AddXY(item["Data"], item["Recebido"]);
-            }
-
-            if (GraRecebidoPago.Series[0].Points.Count > 5)
-            {
-                GraRecebidoPago.Series[0].Points.RemoveAt(0);
-                GraRecebidoPago.Update();
-            }
-            //Saida
-
-
-            foreach (DataRow item in saldoPagoPorComp.ValorPago(idCliente, idCompetencia).Rows)
-            {
-                GraRecebidoPago.Series[1].Points.AddXY(item["Data"], item["Pago"]);
-            }
-
-            if (GraRecebidoPago.Series[1].Points.Count > 5)
-            {
-                GraRecebidoPago.Series[1].Points.RemoveAt(0);
-                GraRecebidoPago.Update();
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-        }
     }
 
     public void AtualizarFrmPrincipal()
@@ -247,7 +169,7 @@ public partial class FrmPrincipal : Form
 
     private void TimeAtual_Tick(object sender, EventArgs e)
     {
-        TsLblDataHora.Text = "Data: " + DateTime.Now.ToString("dd/mm/yyyy") + " Hora: " + DateTime.Now.ToString("HH:mm");
+        TsLblDataHora.Text = "Data: " + DateTime.Now.ToString("dd/MM/yyyy") + " Hora: " + DateTime.Now.ToString("HH:mm");
         TsLblUsuario.Text = "Usuário: " + strLogin;
     }
 
@@ -278,17 +200,26 @@ public partial class FrmPrincipal : Form
     private void CbxCliente_SelectedIndexChanged(object sender, EventArgs e)
     {
         idCliente = int.Parse(CbxCliente.SelectedValue.ToString());
-        CompetenciaAtivaCliente(idCliente);
+        competencia = DateTime.Parse(MktCompetencia.Text);
+        CompetenciaIdData competenciaId = new();
+
+        idCompetencia = competenciaId.CompetenciaId(idCliente, competencia);
+
         Informacao(idCliente, idCompetencia);
-        GraficoEntradaSaida();
-        GraficoPagoRecebido();
     }
 
     private void FrmPrincipal_Load(object sender, EventArgs e)
     {
         MktCompetencia.Text = DateTime.Now.ToString("MM/yyyy");
         ListarCliente();
-        GraficoEntradaSaida();
-        GraficoPagoRecebido();
+    }
+
+    private void MktCompetencia_Leave(object sender, EventArgs e)
+    {
+        CompetenciaIdData competenciaId = new();
+        competencia = DateTime.Parse(MktCompetencia.Text);
+        idCompetencia = competenciaId.CompetenciaId(idCliente, competencia);
+
+        Informacao(idCliente, idCompetencia);
     }
 }

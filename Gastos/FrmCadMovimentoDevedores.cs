@@ -67,7 +67,6 @@ public partial class FrmCadMovimentoDevedores : Form
             movimentoDevedores.Usuario = new Objeto.Usuario.UsuarioObj();
             movimentoDevedores.Usuario.Login = strLogin;
             movimentoDevedores.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-            movimentoDevedores.Descricao = TxtDescricao.Text.Trim();
             DateTime dataParcela = DateTime.Parse(MktDataParcela.Text);
             movimentoDevedores.Parcela = int.Parse(TxtParcela.Text);
             movimentoDevedores.DataParcela = dataParcela;
@@ -175,11 +174,10 @@ public partial class FrmCadMovimentoDevedores : Form
         }
 
         MktDataRecebido.Text = DgvListarMovimentoDev.Rows[e.RowIndex].Cells["DataRecebido"].Value.ToString();
-        if (MktDataRecebido.Text == "01/01/0001")
+        if (!MktDataRecebido.MaskCompleted)
         {
             MktDataRecebido.Clear();
         }
-        TxtDescricao.Text = DgvListarMovimentoDev.Rows[e.RowIndex].Cells["Descricao"].Value.ToString();
 
         BtnAlterar.Enabled = true;
         BtnExcluir.Enabled = true;
@@ -289,7 +287,7 @@ public partial class FrmCadMovimentoDevedores : Form
 
     private void FrmCadMovimentoDevedores_Load(object sender, EventArgs e)
     {
-        LblDataCadastro.Text = "Data Cadastro:" + DateTime.Now.ToString("dd/MM/yyyy");
+        LblDataCadastro.Text = "Data Cadastro: " + DateTime.Now.ToString("dd/MM/yyyy");
         ListarCliente();
         CbxRecebido.SelectedIndex = 1;
     }
