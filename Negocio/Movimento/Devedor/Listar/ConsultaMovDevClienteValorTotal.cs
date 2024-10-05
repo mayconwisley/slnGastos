@@ -57,7 +57,7 @@ public class ConsultaMovDevClienteValorTotal
         SQL.Append("INNER JOIN Devedores d ON d.Id  = md.DevedoresId ");
         SQL.Append("WHERE d.ClienteId = @ClienteId) - ");
 
-        SQL.Append("(SELECT SUM(md.Valor) ");
+        SQL.Append("(SELECT IFNULL(SUM(md.Valor), 0) ");
         SQL.Append("FROM MovimentoDevedores md ");
         SQL.Append("INNER JOIN Devedores d ON ");
         SQL.Append("d.Id  = md.DevedoresId ");

@@ -1,4 +1,5 @@
 ﻿using Banco;
+using Negocio.Movimento.Devedor.Listar;
 using System;
 using System.Data;
 using System.Text;
@@ -148,14 +149,18 @@ namespace Negocio.Movimento.Geral.Listar
 
         public decimal Saldo(int idCliente, int idCompetencia, DateTime dataParcela)
         {
-            decimal valPago = 0, valRecebido = 0, valAPagarEmprestimo = 0, valFixo = 0;
+
+            ConsultaMovDevClienteValorTotal consultaMovDevClienteValorTotal = new();
+
+            decimal valPago = 0, valRecebido = 0, valAPagarEmprestimo = 0, valFixo = 0, valDebDevedores = 0;
 
             valRecebido = ValorRecebidoMovimentacao(idCliente, idCompetencia);
             valPago = ValorPagoMovimentacao(idCliente, idCompetencia);
             valAPagarEmprestimo = ValorAPagarMovimentacaoEmprestimo(idCliente, dataParcela);
             valFixo = ValorFixo(idCliente);
+            valDebDevedores = consultaMovDevClienteValorTotal.ValorDevedorMes(idCliente, dataParcela);
 
-            return valRecebido - (valPago + valAPagarEmprestimo + valFixo);
+            return (valRecebido) - (valPago + valAPagarEmprestimo + valFixo + valDebDevedores);
         }
     }
 }
