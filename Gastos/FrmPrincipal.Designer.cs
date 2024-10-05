@@ -100,7 +100,7 @@ namespace Gastos
             MenuPrincipal.Location = new System.Drawing.Point(0, 0);
             MenuPrincipal.Name = "MenuPrincipal";
             MenuPrincipal.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            MenuPrincipal.Size = new System.Drawing.Size(622, 24);
+            MenuPrincipal.Size = new System.Drawing.Size(903, 24);
             MenuPrincipal.TabIndex = 0;
             MenuPrincipal.Text = "menuStrip1";
             // 
@@ -315,10 +315,10 @@ namespace Gastos
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1, TsLblDataHora, TsLblUsuario });
-            statusStrip1.Location = new System.Drawing.Point(0, 476);
+            statusStrip1.Location = new System.Drawing.Point(0, 569);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            statusStrip1.Size = new System.Drawing.Size(622, 22);
+            statusStrip1.Size = new System.Drawing.Size(903, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -464,7 +464,7 @@ namespace Gastos
             // 
             PnlSaldoMes.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             PnlSaldoMes.Controls.Add(LblSaldo);
-            PnlSaldoMes.Location = new System.Drawing.Point(13, 306);
+            PnlSaldoMes.Location = new System.Drawing.Point(13, 399);
             PnlSaldoMes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             PnlSaldoMes.Name = "PnlSaldoMes";
             PnlSaldoMes.Size = new System.Drawing.Size(593, 167);
@@ -506,7 +506,7 @@ namespace Gastos
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(622, 498);
+            ClientSize = new System.Drawing.Size(903, 591);
             Controls.Add(PnlSaldoMes);
             Controls.Add(panel3);
             Controls.Add(PnlDevedores);

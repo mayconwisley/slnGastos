@@ -5,7 +5,6 @@ using Negocio.Fixo.Listar;
 using Negocio.Movimento.Devedor.Listar;
 using Negocio.Movimento.Geral.Listar;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
