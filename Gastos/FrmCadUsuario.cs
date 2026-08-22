@@ -1,206 +1,148 @@
-﻿using Criptografia;
-using Negocio.Usuario;
-using Negocio.Usuario.Listar;
-using Negocio.Utilitario;
-using Objeto.Usuario;
+using Gastos.Application.Usuarios;
+using Gastos.Domain.Common;
 using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace Gastos;
 
 public partial class FrmCadUsuario : Form
 {
+    private readonly CadastrarUsuarioHandler cadastrarHandler;
+    private readonly AtualizarUsuarioHandler atualizarHandler;
+    private readonly ExcluirUsuarioHandler excluirHandler;
+    private readonly ListarUsuariosHandler listarHandler;
+    private string loginSelecionado = string.Empty;
+
     public FrmCadUsuario()
     {
         InitializeComponent();
     }
 
-    #region Objetos
-
-    #endregion
-
-    #region Variaveis
-    string strSenhaCrip, strChave, strSenhaDescrip;
-    #endregion
-
-    private void BtnSalvar_Click(object sender, EventArgs e)
+    public FrmCadUsuario(CadastrarUsuarioHandler cadastrarHandler, AtualizarUsuarioHandler atualizarHandler, ExcluirUsuarioHandler excluirHandler, ListarUsuariosHandler listarHandler)
     {
-        Cadastro(OpcaoCadastro.Salvar);
+        InitializeComponent();
+        this.cadastrarHandler = cadastrarHandler;
+        this.atualizarHandler = atualizarHandler;
+        this.excluirHandler = excluirHandler;
+        this.listarHandler = listarHandler;
     }
 
-    #region Funções
-    /*Cadastrar, Alterar e Excluir um usuário*/
-    private void Cadastro(OpcaoCadastro opcaoCadastro)
+    private async Task CarregarUsuariosAsync()
     {
-        UsuarioObj usuario = new UsuarioObj();
-        Inserir inserir = new Inserir();
-        Alterar alterar = new Alterar();
-        Excluir excluir = new Excluir();
+        dgvListaUsuario.DataSource = await GetListarHandler().HandleAsync(CancellationToken.None);
+    }
+
+    private async Task ExecutarAsync(Operacao operacao)
+    {
+        if (!ValidarSenha(operacao)) return;
 
         try
         {
-            strChave = Chave.Gerar();
-            strSenhaCrip = Criptografar.CriptografarSenha(strChave, TxtSenha.Text.Trim());
+            Result resultado = operacao switch
+            {
+                Operacao.Cadastrar => await GetCadastrarHandler().HandleAsync(
+                    new CadastrarUsuarioCommand(TxtLogin.Text.Trim(), TxtNome.Text.Trim(), TxtSenha.Text, TxtLembSenha.Text.Trim(), CbAtivo.Checked),
+                    CancellationToken.None),
+                Operacao.Atualizar => await GetAtualizarHandler().HandleAsync(
+                    new AtualizarUsuarioCommand(loginSelecionado, TxtNome.Text.Trim(), string.IsNullOrWhiteSpace(TxtSenha.Text) ? null : TxtSenha.Text, TxtLembSenha.Text.Trim(), CbAtivo.Checked),
+                    CancellationToken.None),
+                Operacao.Excluir => await GetExcluirHandler().HandleAsync(new ExcluirUsuarioCommand(loginSelecionado), CancellationToken.None),
+                _ => throw new ArgumentOutOfRangeException(nameof(operacao))
+            };
 
-            usuario.Login = TxtLogin.Text.Trim();
-            usuario.Nome = TxtNome.Text.Trim();
-            usuario.Chave = strChave;
-            usuario.Senha = strSenhaCrip;
-            usuario.Lembrete = TxtLembSenha.Text.Trim();
-            usuario.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-
-            if (CbAtivo.Checked)
+            if (!resultado.IsSuccess)
             {
-                usuario.Ativo = "Sim";
-            }
-            else
-            {
-                usuario.Ativo = "Não";
-            }
-
-            if (TxtSenha.Text == TxtConfSenha.Text)
-            {
-                switch (opcaoCadastro)
-                {
-                    case OpcaoCadastro.Salvar:
-                        if (VerificarCampos() == false)
-                        {
-                            inserir.Cadastro(usuario);
-                        }
-                        break;
-                    case OpcaoCadastro.Alterar:
-                        if (VerificarCampos() == false)
-                        {
-                            alterar.Cadastro(usuario);
-                        }
-                        break;
-                    case OpcaoCadastro.Excluir:
-                        excluir.Cadastro(usuario);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Senha não confere, ajuste e tente novamente!");
+                MessageBox.Show(string.Join(Environment.NewLine, resultado.Errors.Select(error => error.Description)));
                 return;
             }
 
-            ListarUsuario();
             LimparCampos();
-
-            BtnAlterar.Enabled = false;
-            BtnExcluir.Enabled = false;
-            BtnSalvar.Enabled = true;
-            TxtLogin.Enabled = true;
-
+            await CarregarUsuariosAsync();
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Não foi possível concluir a operação: {ex.Message}");
         }
     }
 
-    private bool VerificarCampos()
+    private bool ValidarSenha(Operacao operacao)
     {
-        if (TxtNome.Text == "" || TxtLogin.Text == "" || TxtSenha.Text == "")
+        if (operacao == Operacao.Excluir) return !string.IsNullOrWhiteSpace(loginSelecionado);
+        if (string.IsNullOrWhiteSpace(TxtNome.Text) || string.IsNullOrWhiteSpace(TxtLogin.Text))
         {
-            MessageBox.Show("Campos: Nome, Login ou Senha estão em branco");
-            return true;
-        }
-        else
-        {
+            MessageBox.Show("Informe nome e login.");
             return false;
         }
 
-    }
-    /*Listar os cadastro do usuário*/
-    private void ListarUsuario()
-    {
-        CadastroUsuario cadastroUsuario = new CadastroUsuario();
-        try
+        if (operacao == Operacao.Cadastrar && string.IsNullOrWhiteSpace(TxtSenha.Text))
         {
-            dgvListaUsuario.DataSource = cadastroUsuario.Consulta();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
+            MessageBox.Show("Informe uma senha.");
+            return false;
         }
 
+        if (!string.IsNullOrWhiteSpace(TxtSenha.Text) && TxtSenha.Text != TxtConfSenha.Text)
+        {
+            MessageBox.Show("Senha não confere, ajuste e tente novamente.");
+            return false;
+        }
 
+        return true;
     }
-    /*Limpar campos após uma ação de Cadastrar, alterar ou excluir*/
+
     private void LimparCampos()
     {
+        loginSelecionado = string.Empty;
         TxtConfSenha.Clear();
         TxtLembSenha.Clear();
         TxtLogin.Clear();
         TxtNome.Clear();
         TxtSenha.Clear();
+        CbAtivo.Checked = true;
+        BtnAlterar.Enabled = false;
+        BtnExcluir.Enabled = false;
+        BtnSalvar.Enabled = true;
+        TxtLogin.Enabled = true;
     }
-    #endregion
-
 
     private void CbMostrarSenha_CheckedChanged(object sender, EventArgs e)
     {
-        if (CbMostrarSenha.Checked)
-        {
-            TxtSenha.UseSystemPasswordChar = false;
-            TxtConfSenha.UseSystemPasswordChar = false;
-        }
-        else
-        {
-            TxtSenha.UseSystemPasswordChar = true;
-            TxtConfSenha.UseSystemPasswordChar = true;
-        }
+        TxtSenha.UseSystemPasswordChar = !CbMostrarSenha.Checked;
+        TxtConfSenha.UseSystemPasswordChar = !CbMostrarSenha.Checked;
     }
 
-    private void BtnAlterar_Click(object sender, EventArgs e)
-    {
-        Cadastro(OpcaoCadastro.Alterar);
-    }
-
-    private void BtnExcluir_Click(object sender, EventArgs e)
-    {
-        Cadastro(OpcaoCadastro.Excluir);
-    }
+    private async void BtnSalvar_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Cadastrar);
+    private async void BtnAlterar_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Atualizar);
+    private async void BtnExcluir_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Excluir);
 
     private void dgvListaUsuario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        TxtNome.Text = dgvListaUsuario.Rows[e.RowIndex].Cells["Nome"].Value.ToString();
-        TxtLogin.Text = dgvListaUsuario.Rows[e.RowIndex].Cells["Login"].Value.ToString();
-
-        strChave = dgvListaUsuario.Rows[e.RowIndex].Cells["Chaves"].Value.ToString();
-        strSenhaCrip = dgvListaUsuario.Rows[e.RowIndex].Cells["Senha"].Value.ToString();
-
-        strSenhaDescrip = Descriptografar.DescriptografarSenha(strChave, strSenhaCrip);
-
-        TxtSenha.Text = strSenhaDescrip;
-        TxtConfSenha.Text = strSenhaDescrip;
-
-        TxtLembSenha.Text = dgvListaUsuario.Rows[e.RowIndex].Cells["Lembrete"].Value.ToString();
-
-
-        if (dgvListaUsuario.Rows[e.RowIndex].Cells["Ativo"].Value.ToString() == "Sim")
-        {
-            CbAtivo.Checked = true;
-        }
-        else
-        {
-            CbAtivo.Checked = false;
-        }
-
+        if (e.RowIndex < 0 || dgvListaUsuario.Rows[e.RowIndex].DataBoundItem is not UsuarioDto usuario) return;
+        loginSelecionado = usuario.Login;
+        TxtNome.Text = usuario.Nome;
+        TxtLogin.Text = usuario.Login;
+        TxtLembSenha.Text = usuario.Lembrete;
+        TxtSenha.Clear();
+        TxtConfSenha.Clear();
+        CbAtivo.Checked = usuario.EstaAtivo;
         TxtLogin.Enabled = false;
         BtnSalvar.Enabled = false;
         BtnAlterar.Enabled = true;
         BtnExcluir.Enabled = true;
     }
 
-    private void FrmCadUsuario_Load(object sender, EventArgs e)
+    private async void FrmCadUsuario_Load(object sender, EventArgs e)
     {
-        LblDataAtual.Text = "Data Cadastro: " + DateTime.Now.ToString("dd/MM/yyyy");
-        ListarUsuario();
+        LblDataAtual.Text = $"Data Cadastro: {DateTime.Now:dd/MM/yyyy}";
+        try { await CarregarUsuariosAsync(); } catch (Exception ex) { MessageBox.Show(ex.Message); }
     }
+
+    private CadastrarUsuarioHandler GetCadastrarHandler() => cadastrarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private AtualizarUsuarioHandler GetAtualizarHandler() => atualizarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ExcluirUsuarioHandler GetExcluirHandler() => excluirHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarUsuariosHandler GetListarHandler() => listarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+
+    private enum Operacao { Cadastrar, Atualizar, Excluir }
 }

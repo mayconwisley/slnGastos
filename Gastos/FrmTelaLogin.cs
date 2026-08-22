@@ -1,127 +1,139 @@
-﻿using AcessarSistema.Login;
-using Negocio.Usuario.Listar;
-using Objeto.Usuario;
+using Gastos.Application.Usuarios;
 using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos;
 
 public partial class FrmTelaLogin : Form
 {
-    public string Login { get; set; }
+    private readonly QuantidadeUsuariosHandler quantidadeUsuariosHandler;
+    private readonly AutenticarUsuarioHandler autenticarUsuarioHandler;
+    private readonly ObterLembreteSenhaHandler obterLembreteSenhaHandler;
+    private readonly CadastrarUsuarioHandler cadastrarUsuarioHandler;
+    private readonly AtualizarUsuarioHandler atualizarUsuarioHandler;
+    private readonly ExcluirUsuarioHandler excluirUsuarioHandler;
+    private readonly ListarUsuariosHandler listarUsuariosHandler;
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public string Login { get; private set; } = string.Empty;
 
     public FrmTelaLogin()
     {
         InitializeComponent();
     }
 
-    private void LembrarSenha(string login)
+    public FrmTelaLogin(
+        QuantidadeUsuariosHandler quantidadeUsuariosHandler,
+        AutenticarUsuarioHandler autenticarUsuarioHandler,
+        ObterLembreteSenhaHandler obterLembreteSenhaHandler,
+        CadastrarUsuarioHandler cadastrarUsuarioHandler,
+        AtualizarUsuarioHandler atualizarUsuarioHandler,
+        ExcluirUsuarioHandler excluirUsuarioHandler,
+        ListarUsuariosHandler listarUsuariosHandler)
     {
-        UsuarioObj usuario = new UsuarioObj();
-        LembreSenha lembrarSenha = new LembreSenha();
+        InitializeComponent();
+        this.quantidadeUsuariosHandler = quantidadeUsuariosHandler;
+        this.autenticarUsuarioHandler = autenticarUsuarioHandler;
+        this.obterLembreteSenhaHandler = obterLembreteSenhaHandler;
+        this.cadastrarUsuarioHandler = cadastrarUsuarioHandler;
+        this.atualizarUsuarioHandler = atualizarUsuarioHandler;
+        this.excluirUsuarioHandler = excluirUsuarioHandler;
+        this.listarUsuariosHandler = listarUsuariosHandler;
+    }
+
+    private async Task LembrarSenhaAsync()
+    {
+        if (string.IsNullOrWhiteSpace(TxtLogin.Text))
+        {
+            MessageBox.Show("Digite um usuário para pesquisar o lembrete de senha.");
+            return;
+        }
+
         try
         {
-            usuario.Login = login;
-
-            if (TxtLogin.Text == "")
-            {
-                MessageBox.Show("Digite um usuário para pesquisar o lembrete de Senha!");
-                return;
-            }
-
-            string strLembrarSenha = lembrarSenha.LembreteSenha(usuario);
-
-            MessageBox.Show("Seu lembrete de Senha é: " + strLembrarSenha);
-
+            var resultado = await GetObterLembreteSenhaHandler().HandleAsync(new ObterLembreteSenhaQuery(TxtLogin.Text.Trim()), CancellationToken.None);
+            MessageBox.Show(resultado.IsSuccess
+                ? $"Seu lembrete de senha é: {resultado.Value}"
+                : string.Join(Environment.NewLine, resultado.Errors.Select(error => error.Description)));
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Usuário não cadastro no sistema!\n\n" + ex.Message);
+            MessageBox.Show(ex.Message);
         }
     }
 
-
-    private void BtnAcessar_Click(object sender, EventArgs e)
+    private async Task AcessarAsync()
     {
-        UsuarioObj usuario = new UsuarioObj();
-
-
         try
         {
-            usuario.Login = TxtLogin.Text.Trim();
-            usuario.Senha = TxtSenha.Text.Trim();
-            Login = TxtLogin.Text.Trim();
-
-            if (Logar.Acessar(usuario))
+            var login = TxtLogin.Text.Trim();
+            var resultado = await GetAutenticarUsuarioHandler().HandleAsync(new AutenticarUsuarioCommand(login, TxtSenha.Text), CancellationToken.None);
+            if (!resultado.IsSuccess)
             {
-
-                DialogResult = DialogResult.OK;
-
-            }
-            else
-            {
-                MessageBox.Show("Usuário e/ou Senha estão incorretos!!!");
+                MessageBox.Show(string.Join(Environment.NewLine, resultado.Errors.Select(error => error.Description)));
+                return;
             }
 
+            Login = login;
+            DialogResult = DialogResult.OK;
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Usuário não cadastro no sistema!\n\n" + ex.Message);
+            MessageBox.Show(ex.Message);
         }
-
     }
 
     private void FrmTelaLogin_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (e.KeyChar == 13)
         {
-            this.ProcessTabKey(true);
+            ProcessTabKey(true);
             e.Handled = true;
         }
     }
 
-    private void TxtSenha_KeyDown(object sender, KeyEventArgs e)
+    private async void TxtSenha_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.KeyCode == Keys.Enter)
-        {
-            BtnAcessar_Click(e, e);
-        }
+        if (e.KeyCode == Keys.Enter) await AcessarAsync();
     }
 
-    private void FrmTelaLogin_Load(object sender, EventArgs e)
+    private async void FrmTelaLogin_Load(object sender, EventArgs e)
     {
-        QuantidadeUsuario quantidadeUsuario = new QuantidadeUsuario();
-
         try
         {
-            int qtdUsuario = quantidadeUsuario.QtdUsuario();
-            if (qtdUsuario <= 0)
+            if (await GetQuantidadeUsuariosHandler().HandleAsync(CancellationToken.None) == 0)
             {
-                FrmCadUsuario frmCadUsuario = new FrmCadUsuario();
-                frmCadUsuario.MinimizeBox = false;
-                frmCadUsuario.TopMost = true;
-                frmCadUsuario.ShowDialog();
+                using var cadastro = new FrmCadUsuario(
+                    GetCadastrarUsuarioHandler(),
+                    GetAtualizarUsuarioHandler(),
+                    GetExcluirUsuarioHandler(),
+                    GetListarUsuariosHandler());
+                cadastro.MinimizeBox = false;
+                cadastro.TopMost = true;
+                cadastro.ShowDialog();
             }
 
-            if (TxtLogin.Text == "")
-            {
-                TxtLogin.Focus();
-            }
+            TxtLogin.Focus();
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
-
     }
 
-    private void LkLblLembreSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-    {
-        LembrarSenha(TxtLogin.Text.Trim());
-    }
+    private async void LkLblLembreSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => await LembrarSenhaAsync();
+    private async void BtnAcessar_Click(object sender, EventArgs e) => await AcessarAsync();
+    private void BtnCancelar_Click(object sender, EventArgs e) => System.Windows.Forms.Application.Exit();
 
-    private void BtnCancelar_Click(object sender, EventArgs e)
-    {
-        Application.Exit();
-    }
+    private QuantidadeUsuariosHandler GetQuantidadeUsuariosHandler() => quantidadeUsuariosHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private AutenticarUsuarioHandler GetAutenticarUsuarioHandler() => autenticarUsuarioHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ObterLembreteSenhaHandler GetObterLembreteSenhaHandler() => obterLembreteSenhaHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private CadastrarUsuarioHandler GetCadastrarUsuarioHandler() => cadastrarUsuarioHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private AtualizarUsuarioHandler GetAtualizarUsuarioHandler() => atualizarUsuarioHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ExcluirUsuarioHandler GetExcluirUsuarioHandler() => excluirUsuarioHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarUsuariosHandler GetListarUsuariosHandler() => listarUsuariosHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 }

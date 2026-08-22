@@ -1,230 +1,138 @@
-﻿using Negocio.Cliente.Listar;
-using Negocio.Competencia.Listar;
-using Negocio.Movimento.Geral.Listar;
+using Gastos.Application.Clientes;
+using Gastos.Application.Competencias;
+using Gastos.Application.Movimentacoes;
+using Gastos.Domain.Movimentacoes;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using TipoLancamentoDominio = Gastos.Domain.Movimentacoes.TipoLancamento;
 
 namespace Gastos;
 
 public partial class FrmConMovimentacao : Form
 {
-    int idCliente, idCompetencia, idComeptenciaAnterior;
-    decimal valSalEntSaiAnt = 0, valSalPagRecAnt = 0, valSalPendAnte = 0;
-    DateTime data;
+    private readonly ListarClientesHandler listarClientesHandler;
+    private readonly ListarCompetenciasPorClienteHandler listarCompetenciasHandler;
+    private readonly ListarMovimentacoesPorCompetenciaHandler listarMovimentacoesHandler;
+    private int clienteId;
+    private bool carregandoClientes;
+
     public FrmConMovimentacao()
     {
         InitializeComponent();
     }
 
-    private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
-
+    public FrmConMovimentacao(ListarClientesHandler listarClientesHandler, ListarCompetenciasPorClienteHandler listarCompetenciasHandler, ListarMovimentacoesPorCompetenciaHandler listarMovimentacoesHandler)
     {
-        idCliente = int.Parse(CbxNome.SelectedValue.ToString());
-
-       
-        bool sucesso = DateTime.TryParse(MktCompetencia.Text.Trim(), out data);
-        if (sucesso)
-        {
-            ListarIdCompetencia(idCliente, data);
-        }
-        InformacaoSaldoAnterior(idCliente, idComeptenciaAnterior);
-        ListarMovimentacao(idCliente, idCompetencia);
+        InitializeComponent();
+        this.listarClientesHandler = listarClientesHandler;
+        this.listarCompetenciasHandler = listarCompetenciasHandler;
+        this.listarMovimentacoesHandler = listarMovimentacoesHandler;
     }
 
-    private void ListarIdCompetencia(int idCliente, DateTime data)
+    private async Task CarregarClientesAsync()
     {
-        CompetenciaIdData competenciaIdData = new CompetenciaIdData();
-        idCompetencia = competenciaIdData.CompetenciaId(idCliente, data);
-        idComeptenciaAnterior = competenciaIdData.CompetenciaId(idCliente, data.AddMonths(-1));
+        carregandoClientes = true;
+        try
+        {
+            CbxNome.DisplayMember = nameof(ClienteDto.Nome);
+            CbxNome.ValueMember = nameof(ClienteDto.Id);
+            CbxNome.DataSource = await GetListarClientesHandler().HandleAsync(new ListarClientesQuery(), CancellationToken.None);
+        }
+        finally { carregandoClientes = false; }
     }
 
-    private void ListarCliente()
+    private async Task CarregarMovimentacoesAsync()
     {
-        IdNomeCliente idNomeCliente = new IdNomeCliente();
-        CbxNome.DataSource = idNomeCliente.Consulta();
+        if (clienteId <= 0 || !DateTime.TryParseExact(MktCompetencia.Text.Trim(), "MM/yyyy", CultureInfo.GetCultureInfo("pt-BR"), DateTimeStyles.None, out var data)) return;
+        var mes = DateOnly.FromDateTime(data);
+        var competencias = await GetListarCompetenciasHandler().HandleAsync(new ListarCompetenciasPorClienteQuery(clienteId), CancellationToken.None);
+        var competenciaAtual = competencias.SingleOrDefault(item => item.MesReferencia == mes);
+        if (competenciaAtual is null)
+        {
+            DgvListaMovimentacao.DataSource = null;
+            AtualizarResumo([], []);
+            return;
+        }
+
+        var atuais = await GetListarMovimentacoesHandler().HandleAsync(new ListarMovimentacoesPorCompetenciaQuery(clienteId, competenciaAtual.Id), CancellationToken.None);
+        var consultasAnteriores = competencias
+            .Where(item => item.MesReferencia < mes)
+            .Select(item => GetListarMovimentacoesHandler().HandleAsync(new ListarMovimentacoesPorCompetenciaQuery(clienteId, item.Id), CancellationToken.None));
+        var anteriores = (await Task.WhenAll(consultasAnteriores)).SelectMany(item => item).ToArray();
+        DgvListaMovimentacao.DataSource = atuais;
+        AtualizarResumo(atuais, anteriores);
     }
 
-    private void MktCompetencia_KeyDown(object sender, KeyEventArgs e)
+    private void AtualizarResumo(IReadOnlyList<MovimentacaoDto> atuais, IReadOnlyList<MovimentacaoDto> anteriores)
     {
-        if (e.KeyCode == Keys.Enter)
-        {
-            CbxNome_SelectedIndexChanged(e, e);
-        }
+        var atual = Resumo.Calcular(atuais);
+        var anterior = Resumo.Calcular(anteriores);
+        AtualizarSaldo(LblSalES, "Sal. E. S.", anterior.SaldoLancamentos);
+        AtualizarSaldo(LblSalPR, "Sal. P. R.", anterior.SaldoLiquidado);
+        AtualizarSaldo(LblSalPend, "Sal. Pend.", anterior.SaldoPendente);
+        AtualizarSaldo(LblSaldo, "Valor Saldo..", atual.SaldoLancamentos + anterior.SaldoLancamentos);
+        AtualizarSaldo(LblSaldo0, "Valor Saldo...", atual.SaldoLiquidado + anterior.SaldoLiquidado);
+        AtualizarSaldo(LblSalPen, "Valor Saldo...........", atual.SaldoPendente + anterior.SaldoPendente);
+        LblValorEntrada.Text = $"Valor Entrada: {atual.Entradas:#,##0.00}";
+        LblValorSaida.Text = $"Valor Saída..: {atual.Saidas:#,##0.00}";
+        LblValorPago.Text = $"Valor Pago....: {atual.Pagos:#,##0.00}";
+        LblValorRecebido.Text = $"Valor Recebido: {atual.Recebidos:#,##0.00}";
+        LblValPenEnt.Text = $"Valor Pendente Entrada: {atual.PendentesEntrada:#,##0.00}";
+        LblValPenSai.Text = $"Valor Pendente Saída..: {atual.PendentesSaida:#,##0.00}";
     }
 
-    private void MktCompetencia_Leave(object sender, EventArgs e)
+    private static void AtualizarSaldo(Label label, string titulo, decimal valor)
     {
-        CbxNome_SelectedIndexChanged(e, e);
+        label.ForeColor = valor switch { > 0 => Color.Green, < 0 => Color.Red, _ => Color.Black };
+        label.Text = $"{titulo}: {valor:#,##0.00}";
     }
 
-    private void ListarMovimentacao(int idCliente, int idCompetencia)
+    private async void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
     {
-        CadastroMovGeralCliente cadastroMovGeralCliente = new CadastroMovGeralCliente();
-        DgvListaMovimentacao.DataSource = cadastroMovGeralCliente.Consulta(idCliente, idCompetencia);
-        Informacoes();
-    }
-    private void InformacaoSaldoAnterior(int idCliente, int idCompetencia)
-    {
-        SaldoEntSaiClienteComp saldoEntSaiClienteComp = new SaldoEntSaiClienteComp();
-        SaldoPagRecClienteComp saldoPagRecClienteComp = new SaldoPagRecClienteComp();
-        SaldoPendClienteComp saldoPendClienteComp = new SaldoPendClienteComp();
-
-        valSalEntSaiAnt = saldoEntSaiClienteComp.Saldo(idCliente, idCompetencia);
-        valSalPagRecAnt = saldoPagRecClienteComp.Saldo(idCliente, idCompetencia, data);
-        valSalPendAnte = saldoPendClienteComp.Saldo(idCliente, idCompetencia);
-
-        if (valSalEntSaiAnt == 0)
-        {
-            LblSalES.ForeColor = Color.Black;
-        }
-        else if (valSalEntSaiAnt < 0)
-        {
-            LblSalES.ForeColor = Color.Red;
-        }
-        else
-        {
-            LblSalES.ForeColor = Color.Green;
-        }
-
-        if (valSalPagRecAnt == 0)
-        {
-            LblSalPR.ForeColor = Color.Black;
-        }
-        else if (valSalPagRecAnt < 0)
-        {
-            LblSalPR.ForeColor = Color.Red;
-        }
-        else
-        {
-            LblSalPR.ForeColor = Color.Green;
-        }
-
-        if (valSalPendAnte == 0)
-        {
-            LblSalPend.ForeColor = Color.Black;
-        }
-        else if (valSalPendAnte < 0)
-        {
-            LblSalPend.ForeColor = Color.Red;
-        }
-        else
-        {
-            LblSalPend.ForeColor = Color.Green;
-        }
-
-        LblSalES.Text = "Sal. E. S.: " + valSalEntSaiAnt.ToString("#,##0.00");
-        LblSalPR.Text = "Sal. P. R.: " + valSalPagRecAnt.ToString("#,##0.00");
-        LblSalPend.Text = "Sal. Pend.: " + valSalPendAnte.ToString("#,##0.00");
+        if (carregandoClientes || CbxNome.SelectedValue is not int id) return;
+        clienteId = id;
+        try { await CarregarMovimentacoesAsync(); } catch (Exception ex) { MessageBox.Show(ex.Message); }
     }
 
-    private void Informacoes()
+    private async void MktCompetencia_KeyDown(object sender, KeyEventArgs e)
     {
-        decimal valEntrda = 0, valSaida = 0, valSaldo = 0, valPago = 0, valRecebido = 0, valSaldo0 = 0;
-        decimal valPendenciaEntrada = 0, valPendenciaSaida = 0, valPendenciaSaldo = 0;
-        string strTipoLancamento, strTipoPagoRecebido;
-
-        foreach (DataGridViewRow row in DgvListaMovimentacao.Rows)
-        {
-            strTipoLancamento = row.Cells["TipoLancamento"].Value.ToString();
-            strTipoPagoRecebido = row.Cells["TipoPagoRecebido"].Value.ToString();
-
-            if (strTipoLancamento == "Entrada")
-            {
-                valEntrda += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-            else
-            {
-                valSaida += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-
-            valSaldo = valEntrda - valSaida;
-
-            if (strTipoPagoRecebido == "Pago")
-            {
-                valPago += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-            else if (strTipoPagoRecebido == "Recebido")
-            {
-                valRecebido += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-
-            valSaldo0 = valRecebido - valPago;
-
-            if (strTipoLancamento == "Entrada" && strTipoPagoRecebido == "Pendente")
-            {
-                valPendenciaEntrada += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-            else if (strTipoLancamento == "Saída" && strTipoPagoRecebido == "Pendente")
-            {
-                valPendenciaSaida += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-            valPendenciaSaldo = valPendenciaEntrada - valPendenciaSaida;
-        }
-
-        valSaldo += valSalEntSaiAnt;
-        valSaldo0 += valSalPagRecAnt;
-        valPendenciaSaldo += valSalPendAnte;
-
-        #region Mudar cor do saldo
-
-        if (valSaldo == 0)
-        {
-            LblSaldo.ForeColor = Color.Black;
-        }
-        else if (valSaldo < 0)
-        {
-            LblSaldo.ForeColor = Color.Red;
-        }
-        else
-        {
-            LblSaldo.ForeColor = Color.Green;
-        }
-
-        if (valSaldo0 == 0)
-        {
-            LblSaldo0.ForeColor = Color.Black;
-        }
-        else if (valSaldo0 < 0)
-        {
-            LblSaldo0.ForeColor = Color.Red;
-        }
-        else
-        {
-            LblSaldo0.ForeColor = Color.Green;
-        }
-
-        if (valPendenciaSaldo == 0)
-        {
-            LblSalPen.ForeColor = Color.Black;
-        }
-        else if (valPendenciaSaldo < 0)
-        {
-            LblSalPen.ForeColor = Color.Red;
-        }
-        else
-        {
-            LblSalPen.ForeColor = Color.Green;
-        }
-        #endregion
-
-        LblValorEntrada.Text = "Valor Entrada: " + valEntrda.ToString("#,##0.00");
-        LblValorSaida.Text = "Valor Saída..: " + valSaida.ToString("#,##0.00");
-        LblSaldo.Text = "Valor Saldo..: " + valSaldo.ToString("#,##0.00");
-
-        LblValorPago.Text = "Valor Pago....: " + valPago.ToString("#,##0.00");
-        LblValorRecebido.Text = "Valor Recebido: " + valRecebido.ToString("#,##0.00");
-        LblSaldo0.Text = "Valor Saldo...: " + valSaldo0.ToString("#,##0.00");
-
-        LblValPenEnt.Text = "Valor Pendente Entrada: " + valPendenciaEntrada.ToString("#,##0.00");
-        LblValPenSai.Text = "Valor Pendente Saída..: " + valPendenciaSaida.ToString("#,##0.00");
-        LblSalPen.Text = "Valor Saldo...........: " + valPendenciaSaldo.ToString("#,##0.00");
+        if (e.KeyCode == Keys.Enter) await AtualizarConsultaAsync();
     }
 
-    private void FrmConMovimentacao_Load(object sender, EventArgs e)
+    private async void MktCompetencia_Leave(object sender, EventArgs e) => await AtualizarConsultaAsync();
+    private async Task AtualizarConsultaAsync()
+    {
+        try { await CarregarMovimentacoesAsync(); } catch (Exception ex) { MessageBox.Show(ex.Message); }
+    }
+
+    private async void FrmConMovimentacao_Load(object sender, EventArgs e)
     {
         MktCompetencia.Text = DateTime.Now.ToString("MM/yyyy");
-        ListarCliente();
-        Informacoes();
+        try { await CarregarClientesAsync(); } catch (Exception ex) { MessageBox.Show(ex.Message); }
+    }
+
+    private ListarClientesHandler GetListarClientesHandler() => listarClientesHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarCompetenciasPorClienteHandler GetListarCompetenciasHandler() => listarCompetenciasHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarMovimentacoesPorCompetenciaHandler GetListarMovimentacoesHandler() => listarMovimentacoesHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+
+    private readonly record struct Resumo(decimal Entradas, decimal Saidas, decimal Pagos, decimal Recebidos, decimal PendentesEntrada, decimal PendentesSaida)
+    {
+        public decimal SaldoLancamentos => Entradas - Saidas;
+        public decimal SaldoLiquidado => Recebidos - Pagos;
+        public decimal SaldoPendente => PendentesEntrada - PendentesSaida;
+
+        public static Resumo Calcular(IEnumerable<MovimentacaoDto> itens) => new(
+            itens.Where(item => item.TipoLancamento == TipoLancamentoDominio.Entrada).Sum(item => item.Valor),
+            itens.Where(item => item.TipoLancamento == TipoLancamentoDominio.Saida).Sum(item => item.Valor),
+            itens.Where(item => item.Situacao == SituacaoFinanceira.Pago).Sum(item => item.Valor),
+            itens.Where(item => item.Situacao == SituacaoFinanceira.Recebido).Sum(item => item.Valor),
+            itens.Where(item => item.TipoLancamento == TipoLancamentoDominio.Entrada && item.Situacao == SituacaoFinanceira.Pendente).Sum(item => item.Valor),
+            itens.Where(item => item.TipoLancamento == TipoLancamentoDominio.Saida && item.Situacao == SituacaoFinanceira.Pendente).Sum(item => item.Valor));
     }
 }

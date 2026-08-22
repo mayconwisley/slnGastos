@@ -1,265 +1,306 @@
-﻿using Negocio.Cliente.Listar;
-using Negocio.Devedores;
-using Negocio.Devedores.Listar;
-using Negocio.Movimento.Devedor.Listar;
-using Negocio.Utilitario;
-using Negocio.Validador;
-using Objeto.Devedores;
-using Objeto.MovimentoDevedores;
+using Gastos.Application.Clientes;
+using Gastos.Application.Devedores;
+using Gastos.Domain.Common;
 using System;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos;
 
 public partial class FrmCadDevedores : Form
 {
-    string strLogin;
-    int idCliente, idDevedores, iParcelas = 0;
-    FrmPrincipal frmForm;
-    public FrmCadDevedores(string login)
+    private readonly FrmPrincipal frmPrincipal;
+    private readonly string login = string.Empty;
+    private readonly ListarClientesHandler listarClientesHandler;
+    private readonly CadastrarDevedorHandler cadastrarHandler;
+    private readonly AtualizarDevedorHandler atualizarHandler;
+    private readonly ExcluirDevedorHandler excluirHandler;
+    private readonly GerarParcelasDevedorHandler gerarParcelasHandler;
+    private readonly ListarDevedoresPorClienteHandler listarHandler;
+    private int clienteId;
+    private int devedorId;
+    private bool carregandoClientes;
+
+    public FrmCadDevedores()
     {
         InitializeComponent();
-        strLogin = login;
     }
 
-    public FrmCadDevedores(FrmPrincipal form, string login)
+    public FrmCadDevedores(
+        FrmPrincipal frmPrincipal,
+        string login,
+        ListarClientesHandler listarClientesHandler,
+        CadastrarDevedorHandler cadastrarHandler,
+        AtualizarDevedorHandler atualizarHandler,
+        ExcluirDevedorHandler excluirHandler,
+        GerarParcelasDevedorHandler gerarParcelasHandler,
+        ListarDevedoresPorClienteHandler listarHandler)
     {
         InitializeComponent();
-        strLogin = login;
-        frmForm = form;
-    }
-    private void ListaCliente()
-    {
-        IdNomeCliente idNomeCliente = new IdNomeCliente();
-        CbxNome.DataSource = idNomeCliente.Consulta();
-    }
-
-    private void ListaDevedores(int idCliente)
-    {
-        CadastroDevedoresCliente cadastroDevedoresCliente = new CadastroDevedoresCliente();
-        DgvListaDevedores.DataSource = cadastroDevedoresCliente.Consulta(idCliente);
+        this.frmPrincipal = frmPrincipal;
+        this.login = login;
+        this.listarClientesHandler = listarClientesHandler;
+        this.cadastrarHandler = cadastrarHandler;
+        this.atualizarHandler = atualizarHandler;
+        this.excluirHandler = excluirHandler;
+        this.gerarParcelasHandler = gerarParcelasHandler;
+        this.listarHandler = listarHandler;
     }
 
-    private void CadastroDevedores(OpcaoCadastro opcaoCadastro)
+    private async Task CarregarClientesAsync()
     {
-        DevedoresObj devedores = new DevedoresObj();
-        Inserir inserir = new Inserir();
-        Alterar alterar = new Alterar();
-        Excluir excluir = new Excluir();
-
+        carregandoClientes = true;
         try
         {
-            devedores.Id = idDevedores;
-            devedores.Nome = TxtNome.Text.Trim();
-            devedores.Descricao = TxtDescricao.Text.Trim();
-            devedores.Valor = decimal.Parse(TxtValor.Text.Trim());
-            devedores.Parcelas = int.Parse(TxtParcelas.Text.Trim());
-            devedores.DataInicio = DateTime.Parse(MktDataInicio.Text);
-            if (CbAtivo.Checked)
-            {
-                devedores.Ativo = "Sim";
-            }
-            else
-            {
-                devedores.Ativo = "Não";
-            }
-
-            devedores.Usuario = new Objeto.Usuario.UsuarioObj();
-            devedores.Usuario.Login = strLogin;
-            devedores.Cliente = new Objeto.Cliente.ClienteObj();
-            devedores.Cliente.Id = idCliente;
-            devedores.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-
-            switch (opcaoCadastro)
-            {
-                case OpcaoCadastro.Salvar:
-                    inserir.Cadastro(devedores);
-                    break;
-                case OpcaoCadastro.Alterar:
-                    alterar.Cadastro(devedores);
-                    break;
-                case OpcaoCadastro.Excluir:
-                    excluir.Cadastro(devedores);
-                    break;
-                default:
-                    break;
-            }
-
-            ListaDevedores(idCliente);
-            LimparCampo();
-            BtnAlterar.Enabled = false;
-            BtnExcluir.Enabled = false;
-            BtnSalvar.Enabled = true;
-
+            CbxNome.DisplayMember = nameof(ClienteDto.Nome);
+            CbxNome.ValueMember = nameof(ClienteDto.Id);
+            CbxNome.DataSource = await GetListarClientesHandler()
+                .HandleAsync(new ListarClientesQuery(), CancellationToken.None);
         }
-        catch (Exception ex)
+        finally
         {
-            MessageBox.Show(ex.Message);
+            carregandoClientes = false;
         }
     }
 
-
-    private void LimparCampo()
+    private async Task CarregarDevedoresAsync()
     {
-        TxtNome.Clear();
+        DgvListaDevedores.DataSource = clienteId <= 0
+            ? null
+            : await GetListarHandler().HandleAsync(
+                new ListarDevedoresPorClienteQuery(clienteId),
+                CancellationToken.None);
     }
 
-    private void GerarMovimentacao(int idDevedor)
+    private async Task ExecutarAsync(Operacao operacao)
     {
-        MovimentoDevedoresObj movimentoDevedores = new();
-        DevedoresIdMovimento devedoresIdMovimento = new();
-
-        Negocio.Movimento.Devedor.Inserir inserir = new();
-
         try
         {
-
-            if (devedoresIdMovimento.QtdDevedoresMovimento(idDevedor) > 0)
+            Result resultado = operacao switch
             {
-                MessageBox.Show("Devedor já foi gerado!");
+                Operacao.Cadastrar => await CadastrarAsync(),
+                Operacao.Atualizar => await AtualizarAsync(),
+                Operacao.Excluir => await GetExcluirHandler().HandleAsync(new ExcluirDevedorCommand(devedorId), CancellationToken.None),
+                _ => throw new ArgumentOutOfRangeException(nameof(operacao))
+            };
+
+            if (!resultado.IsSuccess)
+            {
+                ExibirErros(resultado);
                 return;
             }
 
-            movimentoDevedores.Devedores = new();
-            movimentoDevedores.Devedores.Id = idDevedor;
-            movimentoDevedores.Valor = decimal.Parse(TxtValor.Text);
-            movimentoDevedores.Recebido = "Não";
-            movimentoDevedores.Usuario = new Objeto.Usuario.UsuarioObj();
-            movimentoDevedores.Usuario.Login = strLogin;
-            movimentoDevedores.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+            LimparCampos();
+            await CarregarDevedoresAsync();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Não foi possível concluir a operação: {ex.Message}");
+        }
+    }
 
+    private async Task<Result> CadastrarAsync()
+    {
+        if (!TryObterDados(out var dados))
+        {
+            return Result.Failure(new Error("devedor.entrada.invalida", "Corrija os dados informados."));
+        }
 
-            DateTime dataParcela = DateTime.Parse(MktDataInicio.Text);
-            
-            for (int i = 1; i <= iParcelas; i++)
+        var resultado = await GetCadastrarHandler().HandleAsync(
+            new CadastrarDevedorCommand(dados.Nome, dados.Descricao, dados.Valor, dados.Parcelas, dados.DataInicio, dados.Ativo, login, clienteId),
+            CancellationToken.None);
+
+        return resultado.IsSuccess ? Result.Success() : Result.Failure(resultado.Errors.ToArray());
+    }
+
+    private async Task<Result> AtualizarAsync()
+    {
+        if (!TryObterDados(out var dados))
+        {
+            return Result.Failure(new Error("devedor.entrada.invalida", "Corrija os dados informados."));
+        }
+
+        return await GetAtualizarHandler().HandleAsync(
+            new AtualizarDevedorCommand(devedorId, dados.Nome, dados.Descricao, dados.Valor, dados.Parcelas, dados.DataInicio, dados.Ativo),
+            CancellationToken.None);
+    }
+
+    private bool TryObterDados(out DadosDevedor dados)
+    {
+        dados = default;
+        var cultura = CultureInfo.GetCultureInfo("pt-BR");
+
+        if (clienteId <= 0)
+        {
+            MessageBox.Show("Selecione um cliente.");
+            return false;
+        }
+
+        if (!DateTime.TryParseExact(MktDataInicio.Text.Trim(), "dd/MM/yyyy", cultura, DateTimeStyles.None, out var dataInicio))
+        {
+            MessageBox.Show("Informe uma data inicial válida.");
+            return false;
+        }
+
+        if (!decimal.TryParse(TxtValor.Text, NumberStyles.Number, cultura, out var valor) ||
+            !int.TryParse(TxtParcelas.Text, NumberStyles.Integer, cultura, out var parcelas))
+        {
+            MessageBox.Show("Informe um valor e uma quantidade de parcelas válidos.");
+            return false;
+        }
+
+        dados = new DadosDevedor(TxtNome.Text.Trim(), TxtDescricao.Text.Trim(), valor, parcelas, DateOnly.FromDateTime(dataInicio), CbAtivo.Checked);
+        return true;
+    }
+
+    private void LimparCampos()
+    {
+        devedorId = 0;
+        TxtNome.Clear();
+        TxtDescricao.Clear();
+        TxtValor.Text = "0,00";
+        TxtParcelas.Text = "1";
+        MktDataInicio.Clear();
+        CbAtivo.Checked = true;
+        BtnAlterar.Enabled = false;
+        BtnExcluir.Enabled = false;
+        BtnGerar.Enabled = false;
+        BtnSalvar.Enabled = true;
+        TxtNome.Focus();
+    }
+
+    private async Task GerarParcelasAsync()
+    {
+        if (devedorId <= 0)
+        {
+            return;
+        }
+
+        try
+        {
+            var resultado = await GetGerarParcelasHandler().HandleAsync(
+                new GerarParcelasDevedorCommand(devedorId),
+                CancellationToken.None);
+            if (!resultado.IsSuccess)
             {
-                movimentoDevedores.Parcela = i;
-                movimentoDevedores.DataParcela = dataParcela.AddMonths(i - 1);
-                inserir.Cadastro(movimentoDevedores);
+                ExibirErros(resultado);
+                return;
             }
 
-            MessageBox.Show("Devedores Gerado com Sucesso!");
+            MessageBox.Show("Parcelas geradas com sucesso.");
+            LimparCampos();
+            await CarregarDevedoresAsync();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Não foi possível gerar as parcelas: {ex.Message}");
+        }
+    }
 
-            LimparCampo();
-            BtnAlterar.Enabled = false;
-            BtnExcluir.Enabled = false;
-            BtnGerar.Enabled = false;
-            BtnSalvar.Enabled = true;
+    private static void ExibirErros(Result resultado) =>
+        MessageBox.Show(string.Join(Environment.NewLine, resultado.Errors.Select(error => error.Description)));
+
+    private async void FrmCadDevedores_Load(object sender, EventArgs e)
+    {
+        LblDataCadastro.Text = $"Data Cadastro: {DateTime.Now:dd/MM/yyyy}";
+        try
+        {
+            await CarregarClientesAsync();
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
+    }
 
+    private async void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (carregandoClientes || CbxNome.SelectedValue is not int id)
+        {
+            return;
+        }
 
+        clienteId = id;
+        LimparCampos();
+        await CarregarDevedoresAsync();
     }
 
     private void DgvListaDevedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        DevedoresIdMovimento devedoresIdMovimento = new DevedoresIdMovimento();
-
-        idDevedores = int.Parse(DgvListaDevedores.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-        iParcelas = int.Parse(DgvListaDevedores.Rows[e.RowIndex].Cells["Parcelas"].Value.ToString());
-        TxtNome.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["Nome"].Value.ToString();
-        TxtDescricao.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["Descricao"].Value.ToString();
-        TxtValor.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["Valor"].Value.ToString();
-        TxtParcelas.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["Parcelas"].Value.ToString();
-        MktDataInicio.Text = DgvListaDevedores.Rows[e.RowIndex].Cells["DataInicio"].Value.ToString();
-
-
-        if (DgvListaDevedores.Rows[e.RowIndex].Cells["Ativo"].Value.ToString() == "Sim")
+        if (e.RowIndex < 0 || DgvListaDevedores.Rows[e.RowIndex].DataBoundItem is not DevedorDto devedor)
         {
-            CbAtivo.Checked = true;
-        }
-        else
-        {
-            CbAtivo.Checked = false;
+            return;
         }
 
-        BtnAlterar.Enabled = true;
-        BtnExcluir.Enabled = true;
-        BtnGerar.Enabled = true;
+        devedorId = devedor.Id;
+        TxtNome.Text = devedor.Nome;
+        TxtDescricao.Text = devedor.Descricao;
+        TxtValor.Text = devedor.Valor.ToString("#,##0.00");
+        TxtParcelas.Text = devedor.Parcelas.ToString(CultureInfo.InvariantCulture);
+        MktDataInicio.Text = devedor.DataInicio.ToString("dd/MM/yyyy");
+        CbAtivo.Checked = devedor.Ativo;
+        BtnAlterar.Enabled = !devedor.ParcelasGeradas;
+        BtnExcluir.Enabled = !devedor.ParcelasGeradas;
+        BtnGerar.Enabled = !devedor.ParcelasGeradas;
         BtnSalvar.Enabled = false;
     }
 
-    private void BtnSalvar_Click(object sender, EventArgs e)
+    private async void BtnSalvar_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Cadastrar);
+    private async void BtnAlterar_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Atualizar);
+    private async void BtnExcluir_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Excluir);
+    private async void BtnGerar_Click(object sender, EventArgs e) => await GerarParcelasAsync();
+    private async void FrmCadDevedores_FormClosing(object sender, FormClosingEventArgs e)
     {
-        CadastroDevedores(OpcaoCadastro.Salvar);
+        if (frmPrincipal is not null)
+        {
+            await frmPrincipal.AtualizarDadosAsync();
+        }
     }
 
-    private void BtnAlterar_Click(object sender, EventArgs e)
-    {
-        CadastroDevedores(OpcaoCadastro.Alterar);
-    }
+    private void TxtValor_TextChanged(object sender, EventArgs e) => ValidarValor();
+    private void TxtValor_Leave(object sender, EventArgs e) => FormatarValor();
+    private void TxtValor_Enter(object sender, EventArgs e) { if (TxtValor.Text == "0,00") TxtValor.Text = string.Empty; }
+    private void TxtParcelas_TextChanged(object sender, EventArgs e) => ValidarParcelas();
+    private void TxtParcelas_Leave(object sender, EventArgs e) => FormatarParcelas();
+    private void TxtParcelas_Enter(object sender, EventArgs e) { if (TxtParcelas.Text == "0") TxtParcelas.Text = "1"; }
 
-    private void BtnExcluir_Click(object sender, EventArgs e)
+    private void ValidarValor()
     {
-        CadastroDevedores(OpcaoCadastro.Excluir);
-    }
-    private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        idCliente = int.Parse(CbxNome.SelectedValue.ToString());
-        ListaDevedores(idCliente);
-    }
-
-    private void FrmCadDevedores_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        frmForm.AtualizarFrmPrincipal();
-        MktDataInicio.Text = DateTime.Now.ToString("dd/MM/yyyy");
-    }
-
-    private void FrmCadDevedores_Load(object sender, EventArgs e)
-    {
-        LblDataCadastro.Text = "Data Cadastro: " + DateTime.Now.ToString("dd/MM/yyyy");
-        ListaCliente();
-    }
-
-    private void TxtValor_TextChanged(object sender, EventArgs e)
-    {
-        ValidarNumero validarNumero = new();
-        TxtValor.Text = validarNumero.Validar(TxtValor.Text);
+        var validador = new ValidarNumero();
+        TxtValor.Text = validador.Validar(TxtValor.Text);
         TxtValor.Select(TxtValor.Text.Length, 0);
     }
 
-    private void TxtValor_Leave(object sender, EventArgs e)
+    private void FormatarValor()
     {
-        ValidarNumero validarNumero = new();
-        TxtValor.Text = validarNumero.Zero(TxtValor.Text);
-        TxtValor.Text = validarNumero.Formatar(TxtValor.Text);
+        var validador = new ValidarNumero();
+        TxtValor.Text = validador.Formatar(validador.Zero(TxtValor.Text));
     }
 
-    private void TxtValor_Enter(object sender, EventArgs e)
+    private void ValidarParcelas()
     {
-        if (TxtValor.Text == "0,00")
-        {
-            TxtValor.Text = "";
-        }
-    }
-
-    private void TxtParcelas_TextChanged(object sender, EventArgs e)
-    {
-        ValidarNumero validarNumero = new();
-        TxtParcelas.Text = validarNumero.ValidarNumeroInteiro(TxtParcelas.Text);
+        var validador = new ValidarNumero();
+        TxtParcelas.Text = validador.ValidarNumeroInteiro(TxtParcelas.Text);
         TxtParcelas.Select(TxtParcelas.Text.Length, 0);
     }
 
-    private void TxtParcelas_Leave(object sender, EventArgs e)
+    private void FormatarParcelas()
     {
-        ValidarNumero validarNumero = new();
-        TxtParcelas.Text = validarNumero.ZeroInteiro(TxtParcelas.Text);
-        TxtParcelas.Text = validarNumero.FormatarInteiro(TxtParcelas.Text);
+        var validador = new ValidarNumero();
+        TxtParcelas.Text = validador.FormatarInteiro(validador.ZeroInteiro(TxtParcelas.Text));
     }
 
-    private void TxtParcelas_Enter(object sender, EventArgs e)
-    {
-        if (TxtParcelas.Text == "0")
-        {
-            TxtParcelas.Text = "1";
-        }
-    }
+    private ListarClientesHandler GetListarClientesHandler() => listarClientesHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private CadastrarDevedorHandler GetCadastrarHandler() => cadastrarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private AtualizarDevedorHandler GetAtualizarHandler() => atualizarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ExcluirDevedorHandler GetExcluirHandler() => excluirHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private GerarParcelasDevedorHandler GetGerarParcelasHandler() => gerarParcelasHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarDevedoresPorClienteHandler GetListarHandler() => listarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-    private void BtnGerar_Click(object sender, EventArgs e)
-    {
-        GerarMovimentacao(idDevedores);
-    }
+    private readonly record struct DadosDevedor(string Nome, string Descricao, decimal Valor, int Parcelas, DateOnly DataInicio, bool Ativo);
+
+    private enum Operacao { Cadastrar, Atualizar, Excluir }
 }

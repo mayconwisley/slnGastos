@@ -1,60 +1,71 @@
-﻿using Negocio.Cliente.Listar;
-using Negocio.Emprestimos.Listar;
+using Gastos.Application.Clientes;
+using Gastos.Application.Emprestimos;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos;
 
 public partial class FrmConEmprestimo : Form
 {
-    int idCliente;
+    private readonly ListarClientesHandler listarClientesHandler;
+    private readonly ListarEmprestimosPorClienteHandler listarEmprestimosHandler;
+    private bool carregandoClientes;
 
     public FrmConEmprestimo()
     {
         InitializeComponent();
     }
-    private void ListaCliente()
-    {
-        IdNomeCliente idNomeCliente = new IdNomeCliente();
-        CbxNome.DataSource = idNomeCliente.Consulta();
-    }
-    private void ListaEmprestimos(int idCliente)
-    {
-        CadastroEmprestimosCliente cadastroEmprestimosCliente = new CadastroEmprestimosCliente();
-        DgvListaEmprestimos.DataSource = cadastroEmprestimosCliente.Consulta(idCliente);
-        Informacao();
 
+    public FrmConEmprestimo(ListarClientesHandler listarClientesHandler, ListarEmprestimosPorClienteHandler listarEmprestimosHandler)
+    {
+        InitializeComponent();
+        this.listarClientesHandler = listarClientesHandler;
+        this.listarEmprestimosHandler = listarEmprestimosHandler;
     }
 
-    private void Informacao()
+    private async Task CarregarClientesAsync()
     {
-        decimal valTotalAtivo = 0, valTotalNAtivo = 0, valTotalGeral = 0;
-        foreach (DataGridViewRow row in DgvListaEmprestimos.Rows)
+        carregandoClientes = true;
+        try
         {
-            if (row.Cells["Ativo"].Value.ToString() == "Sim")
-            {
-                valTotalAtivo += decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
-            }
-            else
-            {
-                valTotalNAtivo += decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
-            }
-            valTotalGeral += decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
+            CbxNome.DisplayMember = nameof(ClienteDto.Nome);
+            CbxNome.ValueMember = nameof(ClienteDto.Id);
+            CbxNome.DataSource = await GetListarClientesHandler().HandleAsync(new ListarClientesQuery(), CancellationToken.None);
         }
-
-        LblTotalAtivo.Text = "Total Ativo..: " + valTotalAtivo.ToString("#,##0.00");
-        LblTotalNAtivo.Text = "Total Ñ Ativo: " + valTotalNAtivo.ToString("#,##0.00");
-        LblTotalGeral.Text = "Total Geral..: " + valTotalGeral.ToString("#,##0.00");
+        finally { carregandoClientes = false; }
     }
 
-    private void FrmConEmprestimo_Load(object sender, EventArgs e)
+    private async Task CarregarEmprestimosAsync(int clienteId)
     {
-        ListaCliente();
+        var emprestimos = await GetListarEmprestimosHandler().HandleAsync(new ListarEmprestimosPorClienteQuery(clienteId), CancellationToken.None);
+        DgvListaEmprestimos.DataSource = emprestimos;
+        AtualizarTotais(emprestimos);
     }
 
-    private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    private void AtualizarTotais(IReadOnlyList<EmprestimoDto> emprestimos)
     {
-        idCliente = int.Parse(CbxNome.SelectedValue.ToString());
-        ListaEmprestimos(idCliente);
+        var ativos = emprestimos.Where(item => item.Ativo).Sum(item => item.ValorParcela);
+        var inativos = emprestimos.Where(item => !item.Ativo).Sum(item => item.ValorParcela);
+        LblTotalAtivo.Text = $"Total Ativo..: {ativos:#,##0.00}";
+        LblTotalNAtivo.Text = $"Total Ñ Ativo: {inativos:#,##0.00}";
+        LblTotalGeral.Text = $"Total Geral..: {(ativos + inativos):#,##0.00}";
     }
+
+    private async void FrmConEmprestimo_Load(object sender, EventArgs e)
+    {
+        try { await CarregarClientesAsync(); } catch (Exception ex) { MessageBox.Show(ex.Message); }
+    }
+
+    private async void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (carregandoClientes || CbxNome.SelectedValue is not int clienteId) return;
+        try { await CarregarEmprestimosAsync(clienteId); } catch (Exception ex) { MessageBox.Show(ex.Message); }
+    }
+
+    private ListarClientesHandler GetListarClientesHandler() => listarClientesHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarEmprestimosPorClienteHandler GetListarEmprestimosHandler() => listarEmprestimosHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 }

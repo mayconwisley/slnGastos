@@ -1,58 +1,71 @@
-﻿using Negocio.Cliente.Listar;
-using Negocio.Movimento.Devedor.Listar;
+using Gastos.Application.Clientes;
+using Gastos.Application.Devedores;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos;
 
 public partial class FrmConDevedores : Form
 {
-    int idCliente;
+    private readonly ListarClientesHandler listarClientesHandler;
+    private readonly ListarResumoDevedoresPorClienteHandler listarResumoHandler;
+    private bool carregandoClientes;
+
     public FrmConDevedores()
     {
         InitializeComponent();
     }
-    private void ListaCliente()
-    {
-        IdNomeCliente idNomeCliente = new IdNomeCliente();
-        CbxNome.DataSource = idNomeCliente.Consulta();
-    }
-    private void ListaDevedores(int idCliente)
-    {
-        ConsultaMovDevCliente consultaMovDevCliente = new ConsultaMovDevCliente();
 
-        DgvListaDevedores.DataSource = consultaMovDevCliente.Consulta(idCliente);
-        Informacao();
-
-    }
-    private void Informacao()
+    public FrmConDevedores(ListarClientesHandler listarClientesHandler, ListarResumoDevedoresPorClienteHandler listarResumoHandler)
     {
-        decimal valTotalAtivo = 0, valTotalNAtivo = 0, valTotalGeral = 0;
-        foreach (DataGridViewRow row in DgvListaDevedores.Rows)
+        InitializeComponent();
+        this.listarClientesHandler = listarClientesHandler;
+        this.listarResumoHandler = listarResumoHandler;
+    }
+
+    private async Task CarregarClientesAsync()
+    {
+        carregandoClientes = true;
+        try
         {
-            if (row.Cells["Recebido"].Value.ToString() == "Sim")
-            {
-                valTotalAtivo += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-            else
-            {
-                valTotalNAtivo += decimal.Parse(row.Cells["Valor"].Value.ToString());
-            }
-            valTotalGeral += decimal.Parse(row.Cells["Valor"].Value.ToString());
+            CbxNome.DisplayMember = nameof(ClienteDto.Nome);
+            CbxNome.ValueMember = nameof(ClienteDto.Id);
+            CbxNome.DataSource = await GetListarClientesHandler().HandleAsync(new ListarClientesQuery(), CancellationToken.None);
         }
-
-        LblTotalAtivo.Text = "Total Recebido..: " + valTotalAtivo.ToString("#,##0.00");
-        LblTotalNAtivo.Text = "Total Ñ Recebido: " + valTotalNAtivo.ToString("#,##0.00");
-        LblTotalGeral.Text = "Total Geral..: " + valTotalGeral.ToString("#,##0.00");
-    }
-    private void FrmConDevedores_Load(object sender, EventArgs e)
-    {
-        ListaCliente();
+        finally { carregandoClientes = false; }
     }
 
-    private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    private async Task CarregarResumoAsync(int clienteId)
     {
-        idCliente = int.Parse(CbxNome.SelectedValue.ToString());
-        ListaDevedores(idCliente);
+        var resumo = await GetListarResumoHandler().HandleAsync(new ListarResumoDevedoresPorClienteQuery(clienteId), CancellationToken.None);
+        DgvListaDevedores.DataSource = resumo;
+        AtualizarTotais(resumo);
     }
+
+    private void AtualizarTotais(IReadOnlyList<ResumoDevedorDto> itens)
+    {
+        var recebidos = itens.Where(item => item.EstaRecebido).Sum(item => item.Valor);
+        var pendentes = itens.Where(item => !item.EstaRecebido).Sum(item => item.Valor);
+        LblTotalAtivo.Text = $"Total Recebido..: {recebidos:#,##0.00}";
+        LblTotalNAtivo.Text = $"Total Ñ Recebido: {pendentes:#,##0.00}";
+        LblTotalGeral.Text = $"Total Geral..: {(recebidos + pendentes):#,##0.00}";
+    }
+
+    private async void FrmConDevedores_Load(object sender, EventArgs e)
+    {
+        try { await CarregarClientesAsync(); } catch (Exception ex) { MessageBox.Show(ex.Message); }
+    }
+
+    private async void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (carregandoClientes || CbxNome.SelectedValue is not int clienteId) return;
+        try { await CarregarResumoAsync(clienteId); } catch (Exception ex) { MessageBox.Show(ex.Message); }
+    }
+
+    private ListarClientesHandler GetListarClientesHandler() => listarClientesHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
+    private ListarResumoDevedoresPorClienteHandler GetListarResumoHandler() => listarResumoHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 }

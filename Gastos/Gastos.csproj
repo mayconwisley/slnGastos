@@ -20,21 +20,15 @@
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AcessarSistema\AcessarSistema.csproj" />
-    <ProjectReference Include="..\Criptografia\Criptografia.csproj" />
-    <ProjectReference Include="..\Negocio\Negocio.csproj" />
-    <ProjectReference Include="..\Objeto\Objeto.csproj" />
+    <ProjectReference Include="..\Application\Gastos.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Gastos.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ximian_openofficecalc_Ximian_9948.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="HIC.System.Windows.Forms.DataVisualization" Version="1.0.1" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
-    <PackageReference Include="System.Data.SQLite" Version="2.0.4" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
-    <PackageReference Include="System.Data.SQLite.EF6" Version="2.0.3" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.11" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">

@@ -1,351 +1,380 @@
-﻿using Negocio.Cliente.Listar;
-using Negocio.Competencia.Listar;
-using Negocio.Emprestimos;
-using Negocio.Emprestimos.Listar;
-using Negocio.Movimento.Emprestimo.Listar;
-using Negocio.Utilitario;
-using Negocio.Validador;
-using Objeto.Competencia;
-using Objeto.Emprestimos;
-using Objeto.MovimentoEmprestimos;
+using Gastos.Application.Clientes;
+using Gastos.Application.Emprestimos;
+using Gastos.Domain.Common;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gastos;
 
 public partial class FrmCadEmprestimo : Form
 {
-    string strLogin;
-    int idCliente, idEmprestimo, iParcelas = 0, idCompetencia = 0;
-    DateTime date;
+    private readonly FrmPrincipal frmPrincipal;
+    private readonly string login = string.Empty;
+    private readonly ListarClientesHandler listarClientesHandler;
+    private readonly CadastrarEmprestimoHandler cadastrarHandler;
+    private readonly AtualizarEmprestimoHandler atualizarHandler;
+    private readonly ExcluirEmprestimoHandler excluirHandler;
+    private readonly GerarParcelasEmprestimoHandler gerarParcelasHandler;
+    private readonly ListarEmprestimosPorClienteHandler listarHandler;
+    private int clienteId;
+    private int emprestimoId;
+    private bool carregandoClientes;
 
-    FrmPrincipal frmForm;
-
-    public FrmCadEmprestimo(string login)
+    public FrmCadEmprestimo()
     {
         InitializeComponent();
-        strLogin = login;
     }
 
-    public FrmCadEmprestimo(FrmPrincipal form, string login)
+    public FrmCadEmprestimo(
+        FrmPrincipal frmPrincipal,
+        string login,
+        ListarClientesHandler listarClientesHandler,
+        CadastrarEmprestimoHandler cadastrarHandler,
+        AtualizarEmprestimoHandler atualizarHandler,
+        ExcluirEmprestimoHandler excluirHandler,
+        GerarParcelasEmprestimoHandler gerarParcelasHandler,
+        ListarEmprestimosPorClienteHandler listarHandler)
     {
         InitializeComponent();
-        strLogin = login;
-        frmForm = form;
+        this.frmPrincipal = frmPrincipal;
+        this.login = login;
+        this.listarClientesHandler = listarClientesHandler;
+        this.cadastrarHandler = cadastrarHandler;
+        this.atualizarHandler = atualizarHandler;
+        this.excluirHandler = excluirHandler;
+        this.gerarParcelasHandler = gerarParcelasHandler;
+        this.listarHandler = listarHandler;
     }
 
-    private void ListarCompetencia(int idCliente)
+    private async Task CarregarClientesAsync()
     {
-        CompetenciaCliente competenciaCliente = new CompetenciaCliente();
-        CompetenciaIdCliente competenciaIdCliente = new CompetenciaIdCliente();
-        CompetenciaIdData competenciaIdData = new CompetenciaIdData();
-
+        carregandoClientes = true;
         try
         {
-            idCompetencia = competenciaIdCliente.CompetenciaId(idCliente);
-            bool sucesso = DateTime.TryParse(competenciaCliente.CompetenciaAtiva(idCliente).ToString(), out date);
-
-            if (sucesso)
-            {
-                this.Text = "Cadastro Empréstimo | Competência: " + date.ToString("MM/yyyy");
-            }
+            CbxNome.DisplayMember = nameof(ClienteDto.Nome);
+            CbxNome.ValueMember = nameof(ClienteDto.Id);
+            CbxNome.DataSource = await GetListarClientesHandler()
+                .HandleAsync(new ListarClientesQuery(), CancellationToken.None);
         }
-        catch (Exception ex)
+        finally
         {
-            MessageBox.Show("Competência não cadastrada!! \n\n" + ex.Message);
-
+            carregandoClientes = false;
         }
     }
 
-    private void ListaCliente()
+    private async Task CarregarEmprestimosAsync()
     {
-        IdNomeCliente idNomeCliente = new IdNomeCliente();
-        CbxNome.DataSource = idNomeCliente.Consulta();
+        DgvListaEmprestimos.DataSource = clienteId <= 0
+            ? null
+            : await GetListarHandler().HandleAsync(
+                new ListarEmprestimosPorClienteQuery(clienteId),
+                CancellationToken.None);
+
+        AtualizarTotais();
     }
 
-    private void ListaEmprestimos(int idCliente)
+    private async Task ExecutarAsync(Operacao operacao)
     {
-        CadastroEmprestimosCliente cadastroEmprestimosCliente = new CadastroEmprestimosCliente();
-        DgvListaEmprestimos.DataSource = cadastroEmprestimosCliente.Consulta(idCliente);
-        Informacao();
-        MktDataInicio.Focus();
-    }
-
-    private void CadastroEmprestimos(OpcaoCadastro opcaoCadastro)
-    {
-        EmprestimoObj emprestimo = new EmprestimoObj();
-        Inserir inserir = new Inserir();
-        Alterar alterar = new Alterar();
-        Excluir excluir = new Excluir();
-
         try
         {
-            emprestimo.Id = idEmprestimo;
-            emprestimo.DataInicio = DateTime.Parse(MktDataInicio.Text.Trim());
-            emprestimo.Descricao = TxtDescricao.Text.Trim();
-            emprestimo.ValorEmprestado = decimal.Parse(TxtValorEmprestado.Text);
-            emprestimo.ValorParcela = decimal.Parse(TxtValorParcela.Text);
-            emprestimo.Parcelas = int.Parse(TxtParcela.Text);
-            if (CbAtivo.Checked)
+            Result resultado = operacao switch
             {
-                emprestimo.Ativo = "Sim";
-            }
-            else
+                Operacao.Cadastrar => await CadastrarAsync(),
+                Operacao.Atualizar => await AtualizarAsync(),
+                Operacao.Excluir => await GetExcluirHandler().HandleAsync(
+                    new ExcluirEmprestimoCommand(emprestimoId),
+                    CancellationToken.None),
+                _ => throw new ArgumentOutOfRangeException(nameof(operacao))
+            };
+
+            ExibirErros(resultado);
+            if (!resultado.IsSuccess)
             {
-                emprestimo.Ativo = "Não";
-            }
-
-            emprestimo.Usuario = new Objeto.Usuario.UsuarioObj();
-            emprestimo.Usuario.Login = strLogin;
-            emprestimo.Cliente = new Objeto.Cliente.ClienteObj();
-            emprestimo.Cliente.Id = idCliente;
-            emprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-
-            switch (opcaoCadastro)
-            {
-                case OpcaoCadastro.Salvar:
-                    inserir.Cadastro(emprestimo);
-                    break;
-                case OpcaoCadastro.Alterar:
-                    alterar.Cadastro(emprestimo);
-                    break;
-                case OpcaoCadastro.Excluir:
-                    excluir.Cadastro(emprestimo);
-                    break;
-                default:
-                    break;
-            }
-
-            ListaEmprestimos(idCliente);
-            LimparCampo();
-            BtnAlterar.Enabled = false;
-            BtnExcluir.Enabled = false;
-            BtnGerar.Enabled = false;
-            BtnSalvar.Enabled = true;
-
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-        }
-    }
-
-    private void GerarMovimentacao(int idEmprestimo)
-    {
-        MovimentoEmprestimoObj movimentoEmprestimo = new MovimentoEmprestimoObj();
-        EmprestimoIdMovimento emprestimoIdMovimento = new EmprestimoIdMovimento();
-        Negocio.Movimento.Emprestimo.Inserir inserir = new Negocio.Movimento.Emprestimo.Inserir();
-
-        try
-        {
-
-            if (emprestimoIdMovimento.QtdEmprestimoMovimento(idEmprestimo) > 0)
-            {
-                MessageBox.Show("Empréstimos já foi gerado!");
                 return;
             }
 
-            movimentoEmprestimo.Emprestimo = new EmprestimoObj();
-            movimentoEmprestimo.Emprestimo.Id = idEmprestimo;
-            movimentoEmprestimo.Valor = decimal.Parse(TxtValorParcela.Text);
-            movimentoEmprestimo.Pago = "Não";
-            movimentoEmprestimo.Usuario = new Objeto.Usuario.UsuarioObj();
-            movimentoEmprestimo.Usuario.Login = strLogin;
-            movimentoEmprestimo.DataCadastro = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
-            
-
-            DateTime dataParcela = DateTime.Parse(MktDataInicio.Text);
-
-            for (int i = 1; i <= iParcelas; i++)
-            {
-                movimentoEmprestimo.Parcela = i;
-                movimentoEmprestimo.DataParcela = dataParcela.AddMonths(i - 1);
-                inserir.Cadastro(movimentoEmprestimo);
-            }
-
-            MessageBox.Show("Movimentação Gerada com Sucesso!");
-
-            LimparCampo();
-            BtnAlterar.Enabled = false;
-            BtnExcluir.Enabled = false;
-            BtnGerar.Enabled = false;
-            BtnSalvar.Enabled = true;
+            LimparCampos();
+            await CarregarEmprestimosAsync();
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            MessageBox.Show($"Não foi possível concluir a operação: {ex.Message}");
         }
-
-
     }
 
-    private void LimparCampo()
+    private async Task<Result> CadastrarAsync()
     {
+        if (!TryObterDados(out var dados))
+        {
+            return Result.Failure(new Error("emprestimo.entrada.invalida", "Corrija os dados informados."));
+        }
+
+        var resultado = await GetCadastrarHandler().HandleAsync(
+            new CadastrarEmprestimoCommand(
+                dados.DataInicio,
+                dados.Descricao,
+                dados.ValorEmprestado,
+                dados.ValorParcela,
+                dados.Parcelas,
+                dados.Ativo,
+                login,
+                clienteId),
+            CancellationToken.None);
+
+        return resultado.IsSuccess
+            ? Result.Success()
+            : Result.Failure(resultado.Errors.ToArray());
+    }
+
+    private async Task<Result> AtualizarAsync()
+    {
+        if (!TryObterDados(out var dados))
+        {
+            return Result.Failure(new Error("emprestimo.entrada.invalida", "Corrija os dados informados."));
+        }
+
+        return await GetAtualizarHandler().HandleAsync(
+            new AtualizarEmprestimoCommand(
+                emprestimoId,
+                dados.DataInicio,
+                dados.Descricao,
+                dados.ValorEmprestado,
+                dados.ValorParcela,
+                dados.Parcelas,
+                dados.Ativo),
+            CancellationToken.None);
+    }
+
+    private bool TryObterDados(out DadosEmprestimo dados)
+    {
+        dados = default;
+        var cultura = CultureInfo.GetCultureInfo("pt-BR");
+
+        if (clienteId <= 0)
+        {
+            MessageBox.Show("Selecione um cliente.");
+            return false;
+        }
+
+        if (!DateTime.TryParseExact(MktDataInicio.Text.Trim(), "dd/MM/yyyy", cultura, DateTimeStyles.None, out var dataInicio))
+        {
+            MessageBox.Show("Informe uma data inicial válida.");
+            return false;
+        }
+
+        if (!decimal.TryParse(TxtValorEmprestado.Text, NumberStyles.Number, cultura, out var valorEmprestado) ||
+            !decimal.TryParse(TxtValorParcela.Text, NumberStyles.Number, cultura, out var valorParcela) ||
+            !int.TryParse(TxtParcela.Text, NumberStyles.Integer, cultura, out var parcelas))
+        {
+            MessageBox.Show("Informe valores e quantidade de parcelas válidos.");
+            return false;
+        }
+
+        dados = new DadosEmprestimo(
+            DateOnly.FromDateTime(dataInicio),
+            TxtDescricao.Text.Trim(),
+            valorEmprestado,
+            valorParcela,
+            parcelas,
+            CbAtivo.Checked);
+        return true;
+    }
+
+    private void LimparCampos()
+    {
+        emprestimoId = 0;
         TxtDescricao.Clear();
         TxtValorParcela.Text = "0,00";
         TxtParcela.Text = "1";
         TxtValorEmprestado.Text = "0,00";
         MktDataInicio.Clear();
+        CbAtivo.Checked = true;
+        BtnAlterar.Enabled = false;
+        BtnExcluir.Enabled = false;
+        BtnGerar.Enabled = false;
+        BtnSalvar.Enabled = true;
+        MktDataInicio.Focus();
     }
 
-    private void Informacao()
+    private void AtualizarTotais()
     {
-        decimal valTotalAtivo = 0, valTotalNAtivo = 0, valTotalGeral = 0;
-        foreach (DataGridViewRow row in DgvListaEmprestimos.Rows)
-        {
-            if (row.Cells["Ativo"].Value.ToString() == "Sim")
-            {
-                valTotalAtivo += decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
-            }
-            else
-            {
-                valTotalNAtivo += decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
-            }
-            valTotalGeral += decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
-        }
-
-        LblTotalAtivo.Text = "Total Ativo..: " + valTotalAtivo.ToString("#,##0.00");
-        LblTotalNAtivo.Text = "Total Ñ Ativo: " + valTotalNAtivo.ToString("#,##0.00");
-        LblTotalGeral.Text = "Total Geral..: " + valTotalGeral.ToString("#,##0.00");
+        var emprestimos = DgvListaEmprestimos.DataSource as IReadOnlyList<EmprestimoDto> ?? [];
+        var ativos = emprestimos.Where(item => item.Ativo).Sum(item => item.ValorParcela);
+        var inativos = emprestimos.Where(item => !item.Ativo).Sum(item => item.ValorParcela);
+        LblTotalAtivo.Text = $"Total Ativo..: {ativos:#,##0.00}";
+        LblTotalNAtivo.Text = $"Total Ñ Ativo: {inativos:#,##0.00}";
+        LblTotalGeral.Text = $"Total Geral..: {(ativos + inativos):#,##0.00}";
     }
 
-    private void FrmCadEmprestimo_Load(object sender, EventArgs e)
+    private async Task GerarParcelasAsync()
     {
-        LblDataCadastro.Text = "Data Cadastro: " + DateTime.Now.ToString("dd/MM/yyyy");
-        ListaCliente();
-    }
-
-    private void DgvListaEmprestimos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-    {
-        EmprestimoIdMovimento emprestimoIdMovimento = new EmprestimoIdMovimento();
-
-        idEmprestimo = int.Parse(DgvListaEmprestimos.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-        TxtDescricao.Text = DgvListaEmprestimos.Rows[e.RowIndex].Cells["Descricao"].Value.ToString();
-        iParcelas = int.Parse(DgvListaEmprestimos.Rows[e.RowIndex].Cells["Parcelas"].Value.ToString());
-        TxtParcela.Text = iParcelas.ToString();
-        decimal valorEmprestado = decimal.Parse(DgvListaEmprestimos.Rows[e.RowIndex].Cells["ValorEmprestado"].Value.ToString());
-        TxtValorEmprestado.Text = valorEmprestado.ToString("#,##0.00");
-        decimal valorParcela = decimal.Parse(DgvListaEmprestimos.Rows[e.RowIndex].Cells["ValorParcela"].Value.ToString());
-        TxtValorParcela.Text = valorParcela.ToString("#,##0.00");
-        
-        MktDataInicio.Text = DgvListaEmprestimos.Rows[e.RowIndex].Cells["DataInicio"].Value.ToString();
-        if (DgvListaEmprestimos.Rows[e.RowIndex].Cells["Ativo"].Value.ToString() == "Sim")
+        if (emprestimoId <= 0)
         {
-            CbAtivo.Checked = true;
+            return;
         }
-        else
-        {
-            CbAtivo.Checked = false;
-        }
+
         try
         {
-            if (emprestimoIdMovimento.QtdEmprestimoMovimento(idEmprestimo) > 0)
+            var resultado = await GetGerarParcelasHandler().HandleAsync(
+                new GerarParcelasEmprestimoCommand(emprestimoId),
+                CancellationToken.None);
+            ExibirErros(resultado);
+            if (!resultado.IsSuccess)
             {
-                BtnGerar.Enabled = false;
+                return;
             }
-            else
-            {
-                BtnGerar.Enabled = true;
-            }
+
+            MessageBox.Show("Parcelas geradas com sucesso.");
+            LimparCampos();
+            await CarregarEmprestimosAsync();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Não foi possível gerar as parcelas: {ex.Message}");
+        }
+    }
+
+    private static void ExibirErros(Result resultado)
+    {
+        if (!resultado.IsSuccess)
+        {
+            MessageBox.Show(string.Join(Environment.NewLine, resultado.Errors.Select(error => error.Description)));
+        }
+    }
+
+    private async void FrmCadEmprestimo_Load(object sender, EventArgs e)
+    {
+        LblDataCadastro.Text = $"Data Cadastro: {DateTime.Now:dd/MM/yyyy}";
+        try
+        {
+            await CarregarClientesAsync();
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
+    }
 
-        BtnAlterar.Enabled = true;
-        BtnExcluir.Enabled = true;
+    private async void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (carregandoClientes || CbxNome.SelectedValue is not int id)
+        {
+            return;
+        }
+
+        clienteId = id;
+        LimparCampos();
+        await CarregarEmprestimosAsync();
+    }
+
+    private void DgvListaEmprestimos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex < 0 || DgvListaEmprestimos.Rows[e.RowIndex].DataBoundItem is not EmprestimoDto emprestimo)
+        {
+            return;
+        }
+
+        emprestimoId = emprestimo.Id;
+        TxtDescricao.Text = emprestimo.Descricao;
+        TxtParcela.Text = emprestimo.Parcelas.ToString(CultureInfo.InvariantCulture);
+        TxtValorEmprestado.Text = emprestimo.ValorEmprestado.ToString("#,##0.00");
+        TxtValorParcela.Text = emprestimo.ValorParcela.ToString("#,##0.00");
+        MktDataInicio.Text = emprestimo.DataInicio.ToString("dd/MM/yyyy");
+        CbAtivo.Checked = emprestimo.Ativo;
+        BtnGerar.Enabled = !emprestimo.ParcelasGeradas;
+        BtnAlterar.Enabled = !emprestimo.ParcelasGeradas;
+        BtnExcluir.Enabled = !emprestimo.ParcelasGeradas;
         BtnSalvar.Enabled = false;
     }
 
-    private void BtnSalvar_Click(object sender, EventArgs e)
+    private async void BtnSalvar_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Cadastrar);
+    private async void BtnAlterar_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Atualizar);
+    private async void BtnExcluir_Click(object sender, EventArgs e) => await ExecutarAsync(Operacao.Excluir);
+    private async void BtnGerar_Click(object sender, EventArgs e) => await GerarParcelasAsync();
+    private async void FrmCadEmprestimo_FormClosing(object sender, FormClosingEventArgs e)
     {
-        CadastroEmprestimos(OpcaoCadastro.Salvar);
+        if (frmPrincipal is not null)
+        {
+            await frmPrincipal.AtualizarDadosAsync();
+        }
     }
 
-    private void BtnAlterar_Click(object sender, EventArgs e)
-    {
-        CadastroEmprestimos(OpcaoCadastro.Alterar);
-    }
-
-    private void BtnExcluir_Click(object sender, EventArgs e)
-    {
-        CadastroEmprestimos(OpcaoCadastro.Excluir);
-    }
-
-    private void TxtValorEmprestado_TextChanged(object sender, EventArgs e)
-    {
-        ValidarNumero validarNumero = new ValidarNumero();
-        TxtValorEmprestado.Text = validarNumero.Validar(TxtValorEmprestado.Text);
-        TxtValorEmprestado.Select(TxtValorEmprestado.Text.Length, 0);
-    }
-
-    private void TxtValorEmprestado_Leave(object sender, EventArgs e)
-    {
-        ValidarNumero validarNumero = new ValidarNumero();
-        TxtValorEmprestado.Text = validarNumero.Zero(TxtValorEmprestado.Text);
-        TxtValorEmprestado.Text = validarNumero.Formatar(TxtValorEmprestado.Text);
-    }
+    private void TxtValorEmprestado_TextChanged(object sender, EventArgs e) => ValidarValor(TxtValorEmprestado);
+    private void TxtValorParcela_TextChanged(object sender, EventArgs e) => ValidarValor(TxtValorParcela);
+    private void TxtValorEmprestado_Leave(object sender, EventArgs e) => FormatarValor(TxtValorEmprestado);
+    private void TxtValorParcela_Leave(object sender, EventArgs e) => FormatarValor(TxtValorParcela);
+    private void TxtValorEmprestado_Enter(object sender, EventArgs e) => LimparZero(TxtValorEmprestado);
+    private void TxtValorParcela_Enter(object sender, EventArgs e) => LimparZero(TxtValorParcela);
 
     private void TxtParcela_TextChanged(object sender, EventArgs e)
     {
-        ValidarNumero validarNumero = new ValidarNumero();
-        TxtParcela.Text = validarNumero.ValidarNumeroInteiro(TxtParcela.Text);
+        var validador = new ValidarNumero();
+        TxtParcela.Text = validador.ValidarNumeroInteiro(TxtParcela.Text);
         TxtParcela.Select(TxtParcela.Text.Length, 0);
     }
 
     private void TxtParcela_Leave(object sender, EventArgs e)
     {
-        ValidarNumero validarNumero = new ValidarNumero();
-        TxtParcela.Text = validarNumero.ZeroInteiro(TxtParcela.Text);
-        TxtParcela.Text = validarNumero.FormatarInteiro(TxtParcela.Text);
+        var validador = new ValidarNumero();
+        TxtParcela.Text = validador.FormatarInteiro(validador.ZeroInteiro(TxtParcela.Text));
     }
 
-    private void TxtValorEmprestado_Enter(object sender, EventArgs e)
+    private static void ValidarValor(TextBox campo)
     {
-        if (TxtValorEmprestado.Text == "0,00")
+        var validador = new ValidarNumero();
+        campo.Text = validador.Validar(campo.Text);
+        campo.Select(campo.Text.Length, 0);
+    }
+
+    private static void FormatarValor(TextBox campo)
+    {
+        var validador = new ValidarNumero();
+        campo.Text = validador.Formatar(validador.Zero(campo.Text));
+    }
+
+    private static void LimparZero(TextBox campo)
+    {
+        if (campo.Text == "0,00")
         {
-            TxtValorEmprestado.Text = "";
+            campo.Text = string.Empty;
         }
     }
 
-    private void TxtValorParcela_Enter(object sender, EventArgs e)
-    {
-        if (TxtValorParcela.Text == "0,00")
-        {
+    private ListarClientesHandler GetListarClientesHandler() =>
+        listarClientesHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-            TxtValorParcela.Text = "";
-        }
-    }
+    private CadastrarEmprestimoHandler GetCadastrarHandler() =>
+        cadastrarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-    private void TxtValorParcela_TextChanged(object sender, EventArgs e)
-    {
-        ValidarNumero validarNumero = new ValidarNumero();
-        TxtValorParcela.Text = validarNumero.Validar(TxtValorParcela.Text);
-        TxtValorParcela.Select(TxtValorParcela.Text.Length, 0);
-    }
+    private AtualizarEmprestimoHandler GetAtualizarHandler() =>
+        atualizarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-    private void BtnGerar_Click(object sender, EventArgs e)
-    {
-        GerarMovimentacao(idEmprestimo);
-    }
+    private ExcluirEmprestimoHandler GetExcluirHandler() =>
+        excluirHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-    private void FrmCadEmprestimo_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        frmForm.AtualizarFrmPrincipal();
-    }
+    private GerarParcelasEmprestimoHandler GetGerarParcelasHandler() =>
+        gerarParcelasHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-    private void TxtValorParcela_Leave(object sender, EventArgs e)
-    {
-        ValidarNumero validarNumero = new ValidarNumero();
-        TxtValorParcela.Text = validarNumero.Zero(TxtValorParcela.Text);
-        TxtValorParcela.Text = validarNumero.Formatar(TxtValorParcela.Text);
-    }
+    private ListarEmprestimosPorClienteHandler GetListarHandler() =>
+        listarHandler ?? throw new InvalidOperationException("O formulário deve ser criado pelo contêiner de DI.");
 
-    private void CbxNome_SelectedIndexChanged(object sender, EventArgs e)
+    private readonly record struct DadosEmprestimo(
+        DateOnly DataInicio,
+        string Descricao,
+        decimal ValorEmprestado,
+        decimal ValorParcela,
+        int Parcelas,
+        bool Ativo);
+
+    private enum Operacao
     {
-        idCliente = int.Parse(CbxNome.SelectedValue.ToString());
-        ListaEmprestimos(idCliente);
-        ListarCompetencia(idCliente);
+        Cadastrar,
+        Atualizar,
+        Excluir
     }
 }
