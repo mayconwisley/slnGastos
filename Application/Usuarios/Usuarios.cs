@@ -13,21 +13,6 @@ public sealed record UsuarioDto(string Login, string Nome, string Lembrete, bool
     public string Senha => string.Empty;
 }
 
-public interface IUsuarioRepository
-{
-    Task AdicionarAsync(Usuario usuario, CancellationToken ct);
-    Task<Usuario?> ObterPorLoginAsync(string login, CancellationToken ct);
-    Task AtualizarAsync(Usuario usuario, CancellationToken ct);
-    Task RemoverAsync(Usuario usuario, CancellationToken ct);
-    Task<IReadOnlyList<UsuarioDto>> ListarAsync(CancellationToken ct);
-    Task<int> ContarAsync(CancellationToken ct);
-}
-
-public interface IPasswordCompatibilityVerifier
-{
-    bool Verificar(string senha, string senhaCriptografada, string chave);
-}
-
 public sealed record CadastrarUsuarioCommand(string Login, string Nome, string Senha, string Lembrete, bool Ativo);
 public sealed class CadastrarUsuarioHandler(IUsuarioRepository repository, IPasswordHasher passwordHasher, IClock clock)
 {

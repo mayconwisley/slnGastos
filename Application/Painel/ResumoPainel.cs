@@ -11,11 +11,6 @@ public sealed record ResumoPainelDto(
     decimal CreditosDevedores,
     decimal Saldo);
 
-public interface IResumoPainelReadRepository
-{
-    Task<ResumoPainelDto?> ObterAsync(int clienteId, DateOnly mesReferencia, CancellationToken ct);
-}
-
 public sealed record ObterResumoPainelQuery(int ClienteId, DateOnly MesReferencia);
 
 public sealed class ObterResumoPainelHandler(IResumoPainelReadRepository repository)

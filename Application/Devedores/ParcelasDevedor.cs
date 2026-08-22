@@ -10,16 +10,6 @@ public sealed record ParcelaDevedorDto(int Id, int DevedoresId, DateOnly DataPar
     public DateTime DataCadastro => DataCadastroUtc;
 }
 
-public interface IParcelaDevedorRepository
-{
-    Task AdicionarAsync(ParcelaDevedor parcela, CancellationToken ct);
-    Task<ParcelaDevedor?> ObterPorIdAsync(int id, CancellationToken ct);
-    Task AtualizarAsync(ParcelaDevedor parcela, CancellationToken ct);
-    Task RemoverAsync(ParcelaDevedor parcela, CancellationToken ct);
-    Task RemoverPorDevedorAsync(int devedorId, CancellationToken ct);
-    Task<IReadOnlyList<ParcelaDevedorDto>> ListarPorDevedorAsync(int devedorId, CancellationToken ct);
-}
-
 public sealed record CadastrarParcelaDevedorCommand(int DevedorId, DateOnly DataParcela, int Parcela, decimal Valor, string Login);
 public sealed class CadastrarParcelaDevedorHandler(IParcelaDevedorRepository repository, IClock clock)
 {

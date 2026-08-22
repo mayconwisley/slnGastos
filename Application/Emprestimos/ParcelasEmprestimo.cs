@@ -10,17 +10,6 @@ public sealed record ParcelaEmprestimoDto(int Id, int EmprestimosId, DateOnly Da
     public DateTime? DataCadastro => DataCadastroUtc;
 }
 
-public interface IParcelaEmprestimoRepository
-{
-    Task AdicionarAsync(ParcelaEmprestimo parcela, CancellationToken ct);
-    Task<ParcelaEmprestimo?> ObterPorIdAsync(int id, CancellationToken ct);
-    Task AtualizarAsync(ParcelaEmprestimo parcela, CancellationToken ct);
-    Task RemoverAsync(ParcelaEmprestimo parcela, CancellationToken ct);
-    Task RemoverPorEmprestimoAsync(int emprestimoId, CancellationToken ct);
-    Task<IReadOnlyList<ParcelaEmprestimoDto>> ListarPorEmprestimoAsync(int emprestimoId, CancellationToken ct);
-    Task QuitarTodasAsync(int emprestimoId, DateOnly dataPagamento, CancellationToken ct);
-}
-
 public sealed record CadastrarParcelaEmprestimoCommand(int EmprestimoId, DateOnly DataParcela, int Parcela, decimal Valor, string Login);
 public sealed class CadastrarParcelaEmprestimoHandler(IParcelaEmprestimoRepository repository, IClock clock)
 {

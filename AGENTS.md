@@ -22,6 +22,14 @@ Entidades encapsulam invariantes e expõem métodos de intenção, como `cliente
 
 Cada classe tem uma única responsabilidade. Use nomes de domínio claros em português e PascalCase para tipos, métodos e propriedades. Use `async`, `CancellationToken` e logging estruturado em I/O. Não engula exceções nem faça `throw new Exception(ex.Message)`.
 
+## Convenções de Código e Contratos
+
+- Use 4 espaços para indentação; tabs são proibidos. Mantenha chaves de abertura em linha própria e remova espaços em branco ao fim das linhas.
+- Siga o arquivo `.editorconfig` da raiz. Antes de entregar alterações C#, execute a formatação aplicável sem modificar arquivos `*.Designer.cs`.
+- Cada interface da Application deve ficar em `Application/<Feature>/Interfaces`, em arquivo próprio com o mesmo nome do contrato, por exemplo `Application/Clientes/Interfaces/IClienteRepository.cs`.
+- Não declare interfaces em arquivos de DTOs, Commands, Queries, handlers ou entidades. Preserve o namespace da feature ao mover um contrato; a pasta organiza o código sem criar novo acoplamento de namespace.
+- Repositórios de escrita e leitura permanecem em contratos distintos quando têm responsabilidades distintas. Não introduza repositórios genéricos.
+
 ## Result Pattern e CQRS
 
 Casos de uso retornam `Result`/`Result<T>` para validação, ausência de dados e conflitos esperados; exceções são para falhas inesperadas. Um Command grava uma operação; uma Query usa `AsNoTracking`, projeta para DTO e não chama `SaveChanges`.
