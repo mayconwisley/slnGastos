@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Threading;
 using Gastos.Application;
 using Gastos.Application.Usuarios;
 using Gastos.Infrastructure;
@@ -18,16 +19,33 @@ public partial class App : System.Windows.Application
     {
         base.OnStartup(e);
         ShutdownMode = ShutdownMode.OnExplicitShutdown;
+        SplashWindow? splashWindow = null;
 
         try
         {
+            splashWindow = new SplashWindow();
+            splashWindow.Show();
+            await Dispatcher.Yield(DispatcherPriority.Render);
+
+            splashWindow.AtualizarStatus("Preparando armazenamento local...");
             string databasePath = LocalDatabase.EnsureCreated();
+
+            splashWindow.AtualizarStatus("Configurando serviços da aplicação...");
             serviceProvider = ConfigurarServicos(databasePath);
+
+            splashWindow.AtualizarStatus("Aplicando preferências de interface...");
             serviceProvider.GetRequiredService<ServicoTema>().Inicializar();
+
+            splashWindow.AtualizarStatus("Verificando atualizações do banco de dados...");
             await serviceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync(CancellationToken.None);
 
+            splashWindow.AtualizarStatus("Validando acesso ao sistema...");
             var quantidadeUsuariosHandler = serviceProvider.GetRequiredService<QuantidadeUsuariosHandler>();
-            if (await quantidadeUsuariosHandler.HandleAsync(CancellationToken.None) == 0)
+            int quantidadeUsuarios = await quantidadeUsuariosHandler.HandleAsync(CancellationToken.None);
+
+            FecharSplash(splashWindow);
+
+            if (quantidadeUsuarios == 0)
             {
                 var cadastroInicialWindow = serviceProvider.GetRequiredService<CadastroInicialUsuarioWindow>();
                 if (cadastroInicialWindow.ShowDialog() != true)
@@ -53,6 +71,7 @@ public partial class App : System.Windows.Application
         }
         catch (Exception exception)
         {
+            FecharSplash(splashWindow);
             MessageBox.Show(
                 $"Não foi possível iniciar a aplicação. {exception.Message}",
                 "Finora — Controle de Gastos",
@@ -75,5 +94,13 @@ public partial class App : System.Windows.Application
             .AddInfrastructure($"Data Source={databasePath};Foreign Keys=True")
             .AddPresentation()
             .BuildServiceProvider(validateScopes: true);
+    }
+
+    private static void FecharSplash(SplashWindow? splashWindow)
+    {
+        if (splashWindow?.IsVisible == true)
+        {
+            splashWindow.Close();
+        }
     }
 }
