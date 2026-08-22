@@ -55,7 +55,7 @@ public partial class App : System.Windows.Application
         {
             MessageBox.Show(
                 $"Não foi possível iniciar a aplicação. {exception.Message}",
-                "Controle de Gastos",
+                "Finora — Controle de Gastos",
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
             Shutdown(-1);

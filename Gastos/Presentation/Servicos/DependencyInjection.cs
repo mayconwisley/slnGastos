@@ -19,9 +19,13 @@ public static class DependencyInjection
         services.AddTransient<CompetenciasViewModel>();
         services.AddTransient<UsuariosViewModel>();
         services.AddTransient<DespesasFixasViewModel>();
+        services.AddTransient<ConsultaDespesasFixasViewModel>();
         services.AddTransient<MovimentacoesViewModel>();
+        services.AddTransient<ConsultaMovimentacoesViewModel>();
         services.AddTransient<EmprestimosViewModel>();
+        services.AddTransient<ConsultaEmprestimosViewModel>();
         services.AddTransient<DevedoresViewModel>();
+        services.AddTransient<ConsultaDevedoresViewModel>();
         services.AddTransient<ParcelasEmprestimoViewModel>();
         services.AddTransient<ParcelasDevedorViewModel>();
         services.AddTransient<LoginWindow>();

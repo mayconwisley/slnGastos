@@ -1,0 +1,54 @@
+<UserControl x:Class="Gastos.Presentation.Controles.MarcaFinora"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinWidth="170"
+             MinHeight="42">
+    <Viewbox Stretch="Uniform">
+        <Grid Width="320" Height="72">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="64" />
+                <ColumnDefinition Width="18" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Width="64"
+                    Height="64"
+                    Background="{DynamicResource PrimaryBrush}"
+                    CornerRadius="18"
+                    VerticalAlignment="Center">
+                <Grid>
+                    <Path Data="M 15,29 H 49 V 46 C 49,48.761 46.761,51 44,51 H 20 C 17.239,51 15,48.761 15,46 Z"
+                          Fill="White" />
+                    <Path Data="M 15,29 V 22 C 15,19.239 17.239,17 20,17 H 44 C 46.761,17 49,19.239 49,22 V 29"
+                          Fill="{x:Null}"
+                          Stroke="White"
+                          StrokeThickness="4"
+                          StrokeStartLineCap="Round"
+                          StrokeEndLineCap="Round" />
+                    <Path Data="M 21,42 L 28,35 L 33,40 L 43,30 M 38,30 H 43 V 35"
+                          Fill="{x:Null}"
+                          Stroke="#3730A3"
+                          StrokeThickness="4"
+                          StrokeStartLineCap="Round"
+                          StrokeEndLineCap="Round"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="finora"
+                           FontFamily="Segoe UI"
+                           FontSize="34"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource NavigationForegroundBrush}"
+                           LineHeight="36" />
+                <TextBlock Text="CONTROLE DE GASTOS"
+                           Margin="2,1,0,0"
+                           FontFamily="Segoe UI"
+                           FontSize="10"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource MutedForegroundBrush}" />
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</UserControl>

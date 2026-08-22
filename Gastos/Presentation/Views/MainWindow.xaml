@@ -1,10 +1,11 @@
 <Window x:Class="Gastos.Presentation.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controles="clr-namespace:Gastos.Presentation.Controles"
         xmlns:servicos="clr-namespace:Gastos.Presentation.Servicos"
         xmlns:vm="clr-namespace:Gastos.Presentation.ViewModels"
         xmlns:views="clr-namespace:Gastos.Presentation.Views"
-        Title="Controle de Gastos"
+        Title="Finora — Controle de Gastos"
         Height="820"
         Width="1400"
         MinHeight="660"
@@ -16,9 +17,13 @@
         <DataTemplate DataType="{x:Type vm:CompetenciasViewModel}"><views:CompetenciasPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:UsuariosViewModel}"><views:UsuariosPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:DespesasFixasViewModel}"><views:DespesasFixasPage /></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ConsultaDespesasFixasViewModel}"><views:ConsultaDespesasFixasPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:MovimentacoesViewModel}"><views:MovimentacoesPage /></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ConsultaMovimentacoesViewModel}"><views:ConsultaMovimentacoesPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:EmprestimosViewModel}"><views:EmprestimosPage /></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ConsultaEmprestimosViewModel}"><views:ConsultaEmprestimosPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:DevedoresViewModel}"><views:DevedoresPage /></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ConsultaDevedoresViewModel}"><views:ConsultaDevedoresPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:ParcelasEmprestimoViewModel}"><views:ParcelasEmprestimoPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:ParcelasDevedorViewModel}"><views:ParcelasDevedorPage /></DataTemplate>
     </Window.Resources>
@@ -30,15 +35,7 @@
         <Border Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,1,0">
             <DockPanel>
                 <StackPanel DockPanel.Dock="Top" Margin="24,28,24,20">
-                    <StackPanel Orientation="Horizontal">
-                        <Border Width="38" Height="38" Background="{DynamicResource PrimaryBrush}" CornerRadius="12">
-                            <TextBlock Text="R$" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
-                        </Border>
-                        <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
-                            <TextBlock Text="CONTROLE" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource NavigationForegroundBrush}" />
-                            <TextBlock Text="DE GASTOS" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource NavigationForegroundBrush}" Opacity="0.7" />
-                        </StackPanel>
-                    </StackPanel>
+                    <controles:MarcaFinora Height="46" HorizontalAlignment="Left" />
                     <Border Height="1" Margin="0,24,0,0" Background="{DynamicResource BorderBrush}" />
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Margin="20,0,20,20">
