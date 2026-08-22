@@ -21,6 +21,7 @@ public static class DependencyInjection
         services.AddTransient<CadastrarCompetenciaHandler>();
         services.AddTransient<AtualizarCompetenciaHandler>();
         services.AddTransient<ExcluirCompetenciaHandler>();
+        services.AddTransient<ListarCompetenciasAtivasHandler>();
         services.AddTransient<ListarCompetenciasPorClienteHandler>();
         services.AddTransient<CadastrarDespesaFixaHandler>();
         services.AddTransient<AtualizarDespesaFixaHandler>();

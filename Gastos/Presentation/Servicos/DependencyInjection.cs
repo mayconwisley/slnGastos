@@ -9,6 +9,7 @@ public static class DependencyInjection
     public static IServiceCollection AddPresentation(this IServiceCollection services)
     {
         services.AddSingleton<ContextoSessao>();
+        services.AddSingleton<ContextoCompetencias>();
         services.AddSingleton<ServicoTema>();
         services.AddSingleton<FabricaPagina>();
         services.AddSingleton<ShellViewModel>();

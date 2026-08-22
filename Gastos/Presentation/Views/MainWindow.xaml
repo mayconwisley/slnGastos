@@ -114,9 +114,22 @@
                         <TextBlock Text="VISÃO GERAL" Foreground="{DynamicResource MutedForegroundBrush}" FontSize="11" FontWeight="SemiBold" />
                         <TextBlock Text="{Binding TituloPagina}" FontSize="24" FontWeight="SemiBold" Margin="0,3,0,0" />
                     </StackPanel>
-                    <Border Grid.Column="1" Background="{DynamicResource AlternateSurfaceBrush}" CornerRadius="18" Padding="12,7" VerticalAlignment="Center">
-                        <TextBlock Text="{Binding Usuario, StringFormat=Usuário: {0}}" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold" />
-                    </Border>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Background="{DynamicResource AlternateSurfaceBrush}" CornerRadius="18" Padding="12,7" Margin="0,0,10,0">
+                            <StackPanel>
+                                <TextBlock Text="COMPETÊNCIAS ATIVAS" Foreground="{DynamicResource MutedForegroundBrush}" FontSize="10" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding ContextoCompetencias.Descricao}"
+                                           ToolTip="{Binding ContextoCompetencias.Descricao}"
+                                           Foreground="{DynamicResource PrimaryBrush}"
+                                           FontWeight="SemiBold"
+                                           MaxWidth="430"
+                                           TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{DynamicResource AlternateSurfaceBrush}" CornerRadius="18" Padding="12,7">
+                            <TextBlock Text="{Binding Usuario, StringFormat=Usuário: {0}}" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold" />
+                        </Border>
+                    </StackPanel>
                 </Grid>
             </Border>
             <ContentControl Grid.Row="1" Content="{Binding PaginaAtual}" Margin="38,30" />

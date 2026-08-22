@@ -7,13 +7,19 @@ public sealed class ShellViewModel : ObservableObject
 {
     private readonly FabricaPagina fabricaPagina;
     private readonly ServicoTema servicoTema;
+    private readonly ContextoCompetencias contextoCompetencias;
     private ObservableObject? paginaAtual;
     private string tituloPagina = "Painel";
 
-    public ShellViewModel(FabricaPagina fabricaPagina, ServicoTema servicoTema, ContextoSessao contextoSessao)
+    public ShellViewModel(
+        FabricaPagina fabricaPagina,
+        ServicoTema servicoTema,
+        ContextoSessao contextoSessao,
+        ContextoCompetencias contextoCompetencias)
     {
         this.fabricaPagina = fabricaPagina;
         this.servicoTema = servicoTema;
+        this.contextoCompetencias = contextoCompetencias;
         Usuario = contextoSessao.Login;
         OpcoesTema =
         [
@@ -33,6 +39,8 @@ public sealed class ShellViewModel : ObservableObject
     }
 
     public string Usuario { get; }
+
+    public ContextoCompetencias ContextoCompetencias => contextoCompetencias;
 
     public ObservableObject? PaginaAtual
     {
@@ -59,7 +67,20 @@ public sealed class ShellViewModel : ObservableObject
 
     public async Task InicializarAsync()
     {
+        await AtualizarCompetenciasAtivasAsync();
         await NavegarAsync(RotaPagina.Painel);
+    }
+
+    private async Task AtualizarCompetenciasAtivasAsync()
+    {
+        try
+        {
+            await contextoCompetencias.AtualizarAsync(CancellationToken.None);
+        }
+        catch (Exception)
+        {
+            contextoCompetencias.IndicarFalha();
+        }
     }
 
     private async Task NavegarAsync(RotaPagina rota)

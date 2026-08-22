@@ -2,6 +2,8 @@ namespace Gastos.Application.Competencias;
 
 public interface ICompetenciaReadRepository
 {
+    Task<IReadOnlyList<CompetenciaAtivaDto>> ListarAtivasAsync(CancellationToken cancellationToken);
+
     Task<IReadOnlyList<CompetenciaDto>> ListarPorClienteAsync(
         int clienteId,
         CancellationToken cancellationToken);

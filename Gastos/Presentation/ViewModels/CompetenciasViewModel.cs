@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Gastos.Application.Clientes;
 using Gastos.Application.Competencias;
 using Gastos.Domain.Common;
+using Gastos.Presentation.Servicos;
 
 namespace Gastos.Presentation.ViewModels;
 
@@ -14,19 +15,27 @@ public sealed class CompetenciasViewModel : ObservableObject, IAtivavel
     private readonly AtualizarCompetenciaHandler atualizarHandler;
     private readonly ExcluirCompetenciaHandler excluirHandler;
     private readonly ListarCompetenciasPorClienteHandler listarHandler;
+    private readonly ContextoCompetencias contextoCompetencias;
     private ClienteDto? clienteSelecionado;
     private CompetenciaDto? competenciaSelecionada;
     private string mesReferencia = DateTime.Today.ToString("MM/yyyy", CultureInfo.GetCultureInfo("pt-BR"));
     private bool ativa = true;
     private string status = string.Empty;
 
-    public CompetenciasViewModel(ListarClientesHandler listarClientesHandler, CadastrarCompetenciaHandler cadastrarHandler, AtualizarCompetenciaHandler atualizarHandler, ExcluirCompetenciaHandler excluirHandler, ListarCompetenciasPorClienteHandler listarHandler)
+    public CompetenciasViewModel(
+        ListarClientesHandler listarClientesHandler,
+        CadastrarCompetenciaHandler cadastrarHandler,
+        AtualizarCompetenciaHandler atualizarHandler,
+        ExcluirCompetenciaHandler excluirHandler,
+        ListarCompetenciasPorClienteHandler listarHandler,
+        ContextoCompetencias contextoCompetencias)
     {
         this.listarClientesHandler = listarClientesHandler;
         this.cadastrarHandler = cadastrarHandler;
         this.atualizarHandler = atualizarHandler;
         this.excluirHandler = excluirHandler;
         this.listarHandler = listarHandler;
+        this.contextoCompetencias = contextoCompetencias;
         SalvarCommand = new AsyncRelayCommand(SalvarAsync);
         ExcluirCommand = new AsyncRelayCommand(ExcluirAsync);
         LimparCommand = new RelayCommand(_ => Limpar());
@@ -119,6 +128,7 @@ public sealed class CompetenciasViewModel : ObservableObject, IAtivavel
         {
             Limpar();
             await CarregarCompetenciasAsync();
+            await AtualizarContextoCompetenciasAsync();
         }
     }
 
@@ -135,6 +145,7 @@ public sealed class CompetenciasViewModel : ObservableObject, IAtivavel
         {
             Limpar();
             await CarregarCompetenciasAsync();
+            await AtualizarContextoCompetenciasAsync();
         }
     }
 
@@ -164,6 +175,18 @@ public sealed class CompetenciasViewModel : ObservableObject, IAtivavel
     {
         Status = resultado.IsSuccess ? "Operação concluída com sucesso." : string.Join(" ", resultado.Errors.Select(error => error.Description));
         return resultado.IsSuccess;
+    }
+
+    private async Task AtualizarContextoCompetenciasAsync()
+    {
+        try
+        {
+            await contextoCompetencias.AtualizarAsync(CancellationToken.None);
+        }
+        catch (Exception exception)
+        {
+            Status = $"A competência foi salva, mas não foi possível atualizar o cabeçalho: {exception.Message}";
+        }
     }
 
     private void Limpar()
