@@ -1,0 +1,32 @@
+<UserControl x:Class="Gastos.Presentation.Views.ParcelasDevedorPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+        <Border Style="{StaticResource Card}">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="210" /><ColumnDefinition Width="*" /><ColumnDefinition Width="130" /><ColumnDefinition Width="120" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <StackPanel><TextBlock Text="Cliente" /><ComboBox ItemsSource="{Binding Clientes}" SelectedItem="{Binding ClienteSelecionado}" DisplayMemberPath="Nome" Margin="0,6,12,0" /></StackPanel>
+                <StackPanel Grid.Column="1"><TextBlock Text="Devedor" /><ComboBox ItemsSource="{Binding Devedores}" SelectedItem="{Binding DevedorSelecionado}" DisplayMemberPath="Descricao" Margin="0,6,12,0" /></StackPanel>
+                <StackPanel Grid.Column="2"><TextBlock Text="Vencimento" /><TextBox Text="{Binding DataParcela, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,12,0" /></StackPanel>
+                <StackPanel Grid.Column="3"><TextBlock Text="Nº parcela" /><TextBox Text="{Binding NumeroParcela, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,12,0" /></StackPanel>
+                <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Bottom"><Button Content="Novo" Command="{Binding LimparCommand}" Style="{StaticResource SecondaryButton}" Margin="0,0,8,0" /><Button Content="Salvar" Command="{Binding SalvarCommand}" Margin="0,0,8,0" /><Button Content="Excluir" Command="{Binding ExcluirCommand}" Background="{DynamicResource NegativeBrush}" /></StackPanel>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Style="{StaticResource Card}">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="130" /><ColumnDefinition Width="160" /><ColumnDefinition Width="145" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <StackPanel><TextBlock Text="Valor" /><TextBox Text="{Binding Valor, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,12,0" /></StackPanel>
+                <CheckBox Grid.Column="1" Content="Parcela recebida" IsChecked="{Binding Recebido}" VerticalAlignment="Bottom" />
+                <StackPanel Grid.Column="2"><TextBlock Text="Data de recebimento" /><TextBox Text="{Binding DataRecebido, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,12,0" /></StackPanel>
+                <TextBlock Grid.Column="3" Text="{Binding Status}" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryBrush}" TextWrapping="Wrap" />
+                <Button Grid.Column="4" Content="Excluir todas" Command="{Binding ExcluirTodasCommand}" Background="{DynamicResource NegativeBrush}" VerticalAlignment="Bottom" />
+            </Grid>
+        </Border>
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+            <UniformGrid Columns="3"><Border Style="{StaticResource Card}" Margin="0,0,8,0"><StackPanel><TextBlock Text="Total" /><TextBlock Text="{Binding Total, StringFormat={}{0:C2}}" FontSize="19" FontWeight="SemiBold" /></StackPanel></Border><Border Style="{StaticResource Card}" Margin="4,0"><StackPanel><TextBlock Text="Recebido" /><TextBlock Text="{Binding TotalRecebido, StringFormat={}{0:C2}}" FontSize="19" FontWeight="SemiBold" /></StackPanel></Border><Border Style="{StaticResource Card}" Margin="8,0,0,0"><StackPanel><TextBlock Text="Em aberto" /><TextBlock Text="{Binding TotalAberto, StringFormat={}{0:C2}}" FontSize="19" FontWeight="SemiBold" /></StackPanel></Border></UniformGrid>
+            <Border Grid.Row="2" Style="{StaticResource Card}" Padding="0"><DataGrid ItemsSource="{Binding Parcelas}" SelectedItem="{Binding ParcelaSelecionada}" SelectionMode="Single"><DataGrid.Columns><DataGridTextColumn Header="Vencimento" Binding="{Binding DataParcela, StringFormat={}{0:dd/MM/yyyy}}" Width="120" /><DataGridTextColumn Header="Parcela" Binding="{Binding Parcela}" Width="80" /><DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat={}{0:C2}}" Width="120" /><DataGridCheckBoxColumn Header="Recebida" Binding="{Binding Recebido}" Width="90" /><DataGridTextColumn Header="Recebimento" Binding="{Binding DataRecebido, StringFormat={}{0:dd/MM/yyyy}}" Width="120" /></DataGrid.Columns></DataGrid></Border>
+        </Grid>
+    </Grid>
+</UserControl>

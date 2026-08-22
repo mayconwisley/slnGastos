@@ -3,8 +3,9 @@
     <TargetFramework>net10.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -17,18 +18,26 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Ximian_openofficecalc_Ximian_9948.ico</ApplicationIcon>
-    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Gastos.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Gastos.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ximian_openofficecalc_Ximian_9948.ico" />
+    <Resource Include="Ximian_openofficecalc_Ximian_9948.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Frm*.cs" />
+    <Compile Remove="Program.cs" />
+    <Compile Remove="ValidarNumero.cs" />
+    <EmbeddedResource Remove="Frm*.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="Windows" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
@@ -42,8 +51,5 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <SupportedPlatform Include="Windows" />
   </ItemGroup>
 </Project>

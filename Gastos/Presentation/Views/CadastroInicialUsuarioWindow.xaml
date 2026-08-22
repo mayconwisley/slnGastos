@@ -1,0 +1,23 @@
+<Window x:Class="Gastos.Presentation.Views.CadastroInicialUsuarioWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Primeiro usuário · Controle de Gastos" Width="480" Height="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="42">
+        <StackPanel>
+            <TextBlock Text="Crie o primeiro usuário" FontSize="26" FontWeight="SemiBold" Foreground="{DynamicResource PrimaryBrush}" />
+            <TextBlock Text="Este acesso administrará os cadastros da aplicação." Margin="0,6,0,24" Opacity="0.75" TextWrapping="Wrap" />
+            <TextBlock Text="Login" />
+            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,0,12" />
+            <TextBlock Text="Nome" />
+            <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,0,12" />
+            <TextBlock Text="Senha" />
+            <PasswordBox PasswordChanged="SenhaAlterada" Margin="0,6,0,12" />
+            <TextBlock Text="Confirme a senha" />
+            <PasswordBox PasswordChanged="ConfirmacaoSenhaAlterada" Margin="0,6,0,12" />
+            <TextBlock Text="Lembrete de senha" />
+            <TextBox Text="{Binding Lembrete, UpdateSourceTrigger=PropertyChanged}" Margin="0,6,0,18" />
+            <Button Content="Criar usuário" Command="{Binding CriarUsuarioCommand}" />
+            <TextBlock Text="{Binding Status}" Margin="0,16,0,0" TextWrapping="Wrap" Foreground="{DynamicResource PrimaryBrush}" />
+        </StackPanel>
+    </Grid>
+</Window>

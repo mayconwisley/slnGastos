@@ -3,11 +3,11 @@
 ## Dependências permitidas
 
 ```text
-Gastos (WinForms) ─┬─> Application ─> Domain
+Gastos (WPF/MVVM) ─┬─> Application ─> Domain
                    └─> Infrastructure ─> Application/Domain
 ```
 
-`Domain` não referencia EF Core, SQLite, WinForms ou classes legadas. A interface usa DTOs e handlers; não acessa `DbContext`, `Crud` ou SQL.
+`Domain` não referencia EF Core, SQLite, WPF ou classes legadas. A interface usa DTOs e handlers; não acessa `DbContext`, `Crud` ou SQL.
 
 ## Convenções
 
@@ -21,7 +21,7 @@ Gastos (WinForms) ─┬─> Application ─> Domain
 
 ## Estado da migração
 
-| Módulo | Domain/Application/Infrastructure | WinForms |
+| Módulo | Domain/Application/Infrastructure | WPF/MVVM |
 |---|---|---|
 | Clientes | concluído | concluído |
 | Competências | concluído | concluído |
@@ -35,6 +35,8 @@ Gastos (WinForms) ─┬─> Application ─> Domain
 
 Os projetos da arquitetura anterior foram removidos do repositório. A compatibilidade de dados existentes está encapsulada na Infrastructure e não introduz dependências entre as camadas atuais.
 
-## Compatibilidade visual
+## Presentation WPF
 
-O `FrmPrincipal.Designer.cs` preserva dois campos de gráfico gerados pelo Designer. A aplicação utiliza `WinForms.DataVisualization`, compatível com .NET 10 e sem dependências transitivas, para manter essa compatibilidade sem editar manualmente arquivos `*.Designer.cs`.
+`Gastos` usa WPF e MVVM sem bibliotecas adicionais: ViewModels expõem estado e comandos, Views contêm apenas XAML e interação inevitável de `PasswordBox`, e `FabricaPagina` centraliza a composição das páginas. O tema é aplicado por `ResourceDictionary` e pode ser alternado entre claro e escuro, ambos com a paleta azul.
+
+Os formulários WinForms permanecem somente como fonte histórica no repositório e foram excluídos da compilação. Novas telas não devem reutilizá-los nem adicionar referências a `System.Windows.Forms`.
