@@ -23,6 +23,7 @@ public partial class App : System.Windows.Application
         {
             string databasePath = LocalDatabase.EnsureCreated();
             serviceProvider = ConfigurarServicos(databasePath);
+            serviceProvider.GetRequiredService<ServicoTema>().Inicializar();
             await serviceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync(CancellationToken.None);
 
             var quantidadeUsuariosHandler = serviceProvider.GetRequiredService<QuantidadeUsuariosHandler>();

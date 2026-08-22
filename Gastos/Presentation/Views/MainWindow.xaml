@@ -4,7 +4,11 @@
         xmlns:servicos="clr-namespace:Gastos.Presentation.Servicos"
         xmlns:vm="clr-namespace:Gastos.Presentation.ViewModels"
         xmlns:views="clr-namespace:Gastos.Presentation.Views"
-        Title="Controle de Gastos" Height="760" Width="1280" MinHeight="600" MinWidth="1024"
+        Title="Controle de Gastos"
+        Height="820"
+        Width="1400"
+        MinHeight="660"
+        MinWidth="1100"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:PainelViewModel}"><views:PainelPage /></DataTemplate>
@@ -18,78 +22,107 @@
         <DataTemplate DataType="{x:Type vm:ParcelasEmprestimoViewModel}"><views:ParcelasEmprestimoPage /></DataTemplate>
         <DataTemplate DataType="{x:Type vm:ParcelasDevedorViewModel}"><views:ParcelasDevedorPage /></DataTemplate>
     </Window.Resources>
-    <Window.DataContext>
-        <Binding />
-    </Window.DataContext>
-    <Grid>
+    <Grid Background="{DynamicResource BackgroundBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="284" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Border Background="{DynamicResource SidebarBrush}">
-            <DockPanel LastChildFill="True">
-                <StackPanel DockPanel.Dock="Top" Margin="20,24,20,18">
-                    <TextBlock Text="CONTROLE" FontSize="20" FontWeight="SemiBold" Foreground="{DynamicResource NavigationForegroundBrush}" />
-                    <TextBlock Text="DE GASTOS" FontSize="20" FontWeight="SemiBold" Foreground="{DynamicResource NavigationForegroundBrush}" />
-                    <Border Height="1" Margin="0,18,0,0" Background="#5A9ED1" Opacity="0.45" />
+        <Border Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,1,0">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="24,28,24,20">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="38" Height="38" Background="{DynamicResource PrimaryBrush}" CornerRadius="12">
+                            <TextBlock Text="R$" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
+                        </Border>
+                        <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="CONTROLE" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource NavigationForegroundBrush}" />
+                            <TextBlock Text="DE GASTOS" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource NavigationForegroundBrush}" Opacity="0.7" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Border Height="1" Margin="0,24,0,0" Background="{DynamicResource BorderBrush}" />
                 </StackPanel>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="8,0,8,12">
-                        <Button Style="{StaticResource NavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Painel}">⌂  Painel</Button>
-                        <Expander Header="Cadastros" IsExpanded="True">
+                <StackPanel DockPanel.Dock="Bottom" Margin="20,0,20,20">
+                    <Border Height="1" Margin="0,0,0,18" Background="{DynamicResource BorderBrush}" />
+                    <TextBlock Text="PREFERÊNCIA" Foreground="{DynamicResource NavigationForegroundBrush}" Opacity="0.58" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <TextBlock Text="Tema da interface" Foreground="{DynamicResource NavigationForegroundBrush}" Opacity="0.86" Margin="0,0,0,7" />
+                    <ComboBox Style="{StaticResource ThemeSelector}"
+                              ItemsSource="{Binding OpcoesTema}"
+                              DisplayMemberPath="Descricao"
+                              SelectedValuePath="Valor"
+                              SelectedValue="{Binding PreferenciaTema, Mode=TwoWay}" />
+                    <Button Style="{StaticResource NavigationButton}" Command="{Binding SairCommand}">
+                        <StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 8 3 L 3 3 L 3 15 L 8 15 M 10 6 L 14 9 L 10 12 M 14 9 L 6 9" /><TextBlock Text="Sair da aplicação" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel>
+                    </Button>
+                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="12,0,12,16">
+                        <TextBlock Text="NAVEGAÇÃO" Foreground="{DynamicResource NavigationForegroundBrush}" Opacity="0.58" FontSize="11" FontWeight="SemiBold" Margin="12,0,0,8" />
+                        <Button Style="{StaticResource NavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Painel}">
+                            <StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 2 2 L 7.5 2 L 7.5 7.5 L 2 7.5 Z M 10.5 2 L 16 2 L 16 7.5 L 10.5 7.5 Z M 2 10.5 L 7.5 10.5 L 7.5 16 L 2 16 Z M 10.5 10.5 L 16 10.5 L 16 16 L 10.5 16 Z" /><TextBlock Text="Painel" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel>
+                        </Button>
+                        <Expander IsExpanded="True">
+                            <Expander.Header><StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 9 2 A 3 3 0 1 1 8.99 2 M 3 16 C 3 12.5 15 12.5 15 16" /><TextBlock Text="Cadastros" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Expander.Header>
                             <StackPanel>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Clientes}">Clientes</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Competencias}">Competências</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Usuarios}">Usuários</Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Clientes}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 6.5 1 A 2.5 2.5 0 1 1 6.49 1 M 1.5 12 C 1.5 8.7 11.5 8.7 11.5 12" /><TextBlock Text="Clientes" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Competencias}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 2 L 11 2 L 11 12 L 2 12 Z M 4 1 L 4 4 M 9 1 L 9 4 M 2 5 L 11 5" /><TextBlock Text="Competências" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.Usuarios}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 4 2 A 2 2 0 1 1 3.99 2 M 9 3 A 1.5 1.5 0 1 1 8.99 3 M 1 11 C 1 8.2 7 8.2 7 11 M 7 11 C 7 8.8 12 8.8 12 11" /><TextBlock Text="Usuários" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Despesas fixas">
+                        <Expander>
+                            <Expander.Header><StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 2 5 L 16 5 L 16 15 L 2 15 Z M 2 8 L 16 8 M 12 11 L 14 11" /><TextBlock Text="Despesas fixas" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Expander.Header>
                             <StackPanel>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DespesasFixasCadastro}">Cadastro</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DespesasFixasConsulta}">Consulta</Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DespesasFixasCadastro}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 2 L 9 2 L 11 4 L 11 12 L 2 12 Z M 6.5 5 L 6.5 10 M 4 7.5 L 9 7.5" /><TextBlock Text="Cadastro" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DespesasFixasConsulta}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 5.5 2 A 3.5 3.5 0 1 1 5.49 2 M 8 8 L 11 11" /><TextBlock Text="Consulta" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Empréstimos">
+                        <Expander>
+                            <Expander.Header><StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 2 8 L 16 8 M 4 8 L 4 15 M 14 8 L 14 15 M 2 15 L 16 15 M 3 6 L 9 2 L 15 6" /><TextBlock Text="Empréstimos" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Expander.Header>
                             <StackPanel>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.EmprestimosCadastro}">Cadastro</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.EmprestimosMovimentacao}">Movimentação</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.EmprestimosConsulta}">Consulta</Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.EmprestimosCadastro}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 2 L 9 2 L 11 4 L 11 12 L 2 12 Z M 6.5 5 L 6.5 10 M 4 7.5 L 9 7.5" /><TextBlock Text="Cadastro" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.EmprestimosMovimentacao}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 4 L 11 4 M 8 1 L 11 4 L 8 7 M 11 10 L 2 10 M 5 7 L 2 10 L 5 13" /><TextBlock Text="Movimentação" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.EmprestimosConsulta}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 5.5 2 A 3.5 3.5 0 1 1 5.49 2 M 8 8 L 11 11" /><TextBlock Text="Consulta" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Devedores">
+                        <Expander>
+                            <Expander.Header><StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 2 3 L 16 3 L 16 15 L 2 15 Z M 6 6 A 2 2 0 1 1 5.99 6 M 3.5 13 C 3.5 10.5 8.5 10.5 8.5 13 M 10 7 L 14 7 M 10 11 L 14 11" /><TextBlock Text="Devedores" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Expander.Header>
                             <StackPanel>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DevedoresCadastro}">Cadastro</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DevedoresMovimentacao}">Movimentação</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DevedoresConsulta}">Consulta</Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DevedoresCadastro}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 2 L 9 2 L 11 4 L 11 12 L 2 12 Z M 6.5 5 L 6.5 10 M 4 7.5 L 9 7.5" /><TextBlock Text="Cadastro" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DevedoresMovimentacao}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 4 L 11 4 M 8 1 L 11 4 L 8 7 M 11 10 L 2 10 M 5 7 L 2 10 L 5 13" /><TextBlock Text="Movimentação" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.DevedoresConsulta}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 5.5 2 A 3.5 3.5 0 1 1 5.49 2 M 8 8 L 11 11" /><TextBlock Text="Consulta" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Movimentações">
+                        <Expander>
+                            <Expander.Header><StackPanel Orientation="Horizontal"><Path Style="{StaticResource NavigationIcon}" Data="M 4 5 L 15 5 M 12 2 L 15 5 L 12 8 M 15 13 L 4 13 M 7 10 L 4 13 L 7 16" /><TextBlock Text="Movimentações" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Expander.Header>
                             <StackPanel>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.MovimentacoesCadastro}">Cadastro</Button>
-                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.MovimentacoesConsulta}">Consulta</Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.MovimentacoesCadastro}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 2 2 L 9 2 L 11 4 L 11 12 L 2 12 Z M 6.5 5 L 6.5 10 M 4 7.5 L 9 7.5" /><TextBlock Text="Cadastro" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
+                                <Button Style="{StaticResource SubNavigationButton}" Command="{Binding NavegarCommand}" CommandParameter="{x:Static servicos:RotaPagina.MovimentacoesConsulta}"><StackPanel Orientation="Horizontal"><Path Style="{StaticResource SubNavigationIcon}" Data="M 5.5 2 A 3.5 3.5 0 1 1 5.49 2 M 8 8 L 11 11" /><TextBlock Text="Consulta" Foreground="{DynamicResource NavigationForegroundBrush}" /></StackPanel></Button>
                             </StackPanel>
                         </Expander>
                     </StackPanel>
                 </ScrollViewer>
-                <StackPanel DockPanel.Dock="Bottom" Margin="8,0,8,16">
-                    <Button Style="{StaticResource NavigationButton}" Command="{Binding AlternarTemaCommand}">
-                        <TextBlock><Run Text="◐  " /><Run Text="{Binding TextoTema, Mode=OneWay}" /></TextBlock>
-                    </Button>
-                    <Button Style="{StaticResource NavigationButton}" Command="{Binding SairCommand}">↪  Sair</Button>
-                </StackPanel>
             </DockPanel>
         </Border>
         <Grid Grid.Column="1">
-            <Grid.RowDefinitions><RowDefinition Height="76" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-            <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" Padding="32,0">
-                <DockPanel VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="88" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" Padding="38,0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <StackPanel>
-                        <TextBlock Text="{Binding TituloPagina}" FontSize="22" FontWeight="SemiBold" />
+                        <TextBlock Text="VISÃO GERAL" Foreground="{DynamicResource MutedForegroundBrush}" FontSize="11" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding TituloPagina}" FontSize="24" FontWeight="SemiBold" Margin="0,3,0,0" />
                     </StackPanel>
-                    <TextBlock DockPanel.Dock="Right" Text="{Binding Usuario, StringFormat=Usuário: {0}}" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryBrush}" />
-                </DockPanel>
+                    <Border Grid.Column="1" Background="{DynamicResource AlternateSurfaceBrush}" CornerRadius="18" Padding="12,7" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Usuario, StringFormat=Usuário: {0}}" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold" />
+                    </Border>
+                </Grid>
             </Border>
-            <ContentControl Grid.Row="1" Content="{Binding PaginaAtual}" Margin="32,26" />
+            <ContentControl Grid.Row="1" Content="{Binding PaginaAtual}" Margin="38,30" />
         </Grid>
     </Grid>
 </Window>

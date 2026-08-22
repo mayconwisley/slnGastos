@@ -1,15 +1,21 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="PrimaryColor">#4EA3E3</Color>
+    <Color x:Key="PrimaryColor">#5CC8FF</Color>
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
-    <SolidColorBrush x:Key="BackgroundBrush" Color="#101A24" />
-    <SolidColorBrush x:Key="SurfaceBrush" Color="#172737" />
-    <SolidColorBrush x:Key="AlternateSurfaceBrush" Color="#1D3347" />
-    <SolidColorBrush x:Key="ForegroundBrush" Color="#E7F1FA" />
-    <SolidColorBrush x:Key="NavigationForegroundBrush" Color="#EAF4FF" />
-    <SolidColorBrush x:Key="SidebarBrush" Color="#09263F" />
-    <SolidColorBrush x:Key="BorderBrush" Color="#2B4D67" />
-    <SolidColorBrush x:Key="SecondaryButtonBrush" Color="#24435C" />
-    <SolidColorBrush x:Key="PositiveBrush" Color="#4DD18B" />
-    <SolidColorBrush x:Key="NegativeBrush" Color="#FF7D71" />
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#0A1020" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#111B2E" />
+    <SolidColorBrush x:Key="ElevatedSurfaceBrush" Color="#17243A" />
+    <SolidColorBrush x:Key="AlternateSurfaceBrush" Color="#1B2A43" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#0D1728" />
+    <SolidColorBrush x:Key="ForegroundBrush" Color="#F8FAFC" />
+    <SolidColorBrush x:Key="MutedForegroundBrush" Color="#9BAEC8" />
+    <SolidColorBrush x:Key="NavigationForegroundBrush" Color="#DCE8F7" />
+    <SolidColorBrush x:Key="SidebarBrush" Color="#0D1728" />
+    <SolidColorBrush x:Key="BorderBrush" Color="#293B59" />
+    <SolidColorBrush x:Key="FocusBrush" Color="#5CC8FF" />
+    <SolidColorBrush x:Key="ButtonHoverBrush" Color="#33B9F8" />
+    <SolidColorBrush x:Key="SecondaryButtonBrush" Color="#223452" />
+    <SolidColorBrush x:Key="SecondaryButtonHoverBrush" Color="#2A4265" />
+    <SolidColorBrush x:Key="PositiveBrush" Color="#2DD4A4" />
+    <SolidColorBrush x:Key="NegativeBrush" Color="#FB7185" />
 </ResourceDictionary>

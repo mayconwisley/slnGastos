@@ -4,12 +4,18 @@
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
     <SolidColorBrush x:Key="BackgroundBrush" Color="#F4F8FC" />
     <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="ElevatedSurfaceBrush" Color="#FFFFFF" />
     <SolidColorBrush x:Key="AlternateSurfaceBrush" Color="#EAF2FA" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#FFFFFF" />
     <SolidColorBrush x:Key="ForegroundBrush" Color="#183044" />
-    <SolidColorBrush x:Key="NavigationForegroundBrush" Color="#EAF4FF" />
-    <SolidColorBrush x:Key="SidebarBrush" Color="#0B365A" />
+    <SolidColorBrush x:Key="MutedForegroundBrush" Color="#5D7182" />
+    <SolidColorBrush x:Key="NavigationForegroundBrush" Color="#183044" />
+    <SolidColorBrush x:Key="SidebarBrush" Color="#E7F1FA" />
     <SolidColorBrush x:Key="BorderBrush" Color="#C9DBEA" />
+    <SolidColorBrush x:Key="FocusBrush" Color="#1769AA" />
+    <SolidColorBrush x:Key="ButtonHoverBrush" Color="#0F5D99" />
     <SolidColorBrush x:Key="SecondaryButtonBrush" Color="#E0EDF8" />
+    <SolidColorBrush x:Key="SecondaryButtonHoverBrush" Color="#D0E3F3" />
     <SolidColorBrush x:Key="PositiveBrush" Color="#16794B" />
     <SolidColorBrush x:Key="NegativeBrush" Color="#C0392B" />
 </ResourceDictionary>

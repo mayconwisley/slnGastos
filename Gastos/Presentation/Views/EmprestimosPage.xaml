@@ -1,6 +1,7 @@
 <UserControl x:Class="Gastos.Presentation.Views.EmprestimosPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controles="clr-namespace:Gastos.Presentation.Controles">
     <Grid>
         <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="*" /></Grid.RowDefinitions>
         <Border Style="{StaticResource Card}">
@@ -24,7 +25,7 @@
             </Grid>
         </Border>
         <Border Grid.Row="4" Style="{StaticResource Card}" Padding="0">
-            <DataGrid ItemsSource="{Binding Emprestimos}" SelectedItem="{Binding EmprestimoSelecionado}" SelectionMode="Single">
+            <controles:DataGridArredondado ItemsSource="{Binding Emprestimos}" SelectedItem="{Binding EmprestimoSelecionado}" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}" Width="*" />
                     <DataGridTextColumn Header="Emprestado" Binding="{Binding ValorEmprestado, StringFormat={}{0:C2}}" Width="120" />
@@ -34,7 +35,7 @@
                     <DataGridTextColumn Header="Em aberto" Binding="{Binding ValorAPagar, StringFormat={}{0:C2}}" Width="120" />
                     <DataGridCheckBoxColumn Header="Parcelas geradas" Binding="{Binding ParcelasGeradas}" Width="125" />
                 </DataGrid.Columns>
-            </DataGrid>
+            </controles:DataGridArredondado>
         </Border>
     </Grid>
 </UserControl>

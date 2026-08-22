@@ -1,6 +1,7 @@
 <UserControl x:Class="Gastos.Presentation.Views.ParcelasDevedorPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controles="clr-namespace:Gastos.Presentation.Controles">
     <Grid>
         <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="*" /></Grid.RowDefinitions>
         <Border Style="{StaticResource Card}">
@@ -26,7 +27,7 @@
         <Grid Grid.Row="4">
             <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="*" /></Grid.RowDefinitions>
             <UniformGrid Columns="3"><Border Style="{StaticResource Card}" Margin="0,0,8,0"><StackPanel><TextBlock Text="Total" /><TextBlock Text="{Binding Total, StringFormat={}{0:C2}}" FontSize="19" FontWeight="SemiBold" /></StackPanel></Border><Border Style="{StaticResource Card}" Margin="4,0"><StackPanel><TextBlock Text="Recebido" /><TextBlock Text="{Binding TotalRecebido, StringFormat={}{0:C2}}" FontSize="19" FontWeight="SemiBold" /></StackPanel></Border><Border Style="{StaticResource Card}" Margin="8,0,0,0"><StackPanel><TextBlock Text="Em aberto" /><TextBlock Text="{Binding TotalAberto, StringFormat={}{0:C2}}" FontSize="19" FontWeight="SemiBold" /></StackPanel></Border></UniformGrid>
-            <Border Grid.Row="2" Style="{StaticResource Card}" Padding="0"><DataGrid ItemsSource="{Binding Parcelas}" SelectedItem="{Binding ParcelaSelecionada}" SelectionMode="Single"><DataGrid.Columns><DataGridTextColumn Header="Vencimento" Binding="{Binding DataParcela, StringFormat={}{0:dd/MM/yyyy}}" Width="120" /><DataGridTextColumn Header="Parcela" Binding="{Binding Parcela}" Width="80" /><DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat={}{0:C2}}" Width="120" /><DataGridCheckBoxColumn Header="Recebida" Binding="{Binding Recebido}" Width="90" /><DataGridTextColumn Header="Recebimento" Binding="{Binding DataRecebido, StringFormat={}{0:dd/MM/yyyy}}" Width="120" /></DataGrid.Columns></DataGrid></Border>
+            <Border Grid.Row="2" Style="{StaticResource Card}" Padding="0"><controles:DataGridArredondado ItemsSource="{Binding Parcelas}" SelectedItem="{Binding ParcelaSelecionada}" SelectionMode="Single"><DataGrid.Columns><DataGridTextColumn Header="Vencimento" Binding="{Binding DataParcela, StringFormat={}{0:dd/MM/yyyy}}" Width="120" /><DataGridTextColumn Header="Parcela" Binding="{Binding Parcela}" Width="80" /><DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat={}{0:C2}}" Width="120" /><DataGridCheckBoxColumn Header="Recebida" Binding="{Binding Recebido}" Width="90" /><DataGridTextColumn Header="Recebimento" Binding="{Binding DataRecebido, StringFormat={}{0:dd/MM/yyyy}}" Width="120" /></DataGrid.Columns></controles:DataGridArredondado></Border>
         </Grid>
     </Grid>
 </UserControl>

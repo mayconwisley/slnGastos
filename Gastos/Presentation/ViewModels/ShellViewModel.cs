@@ -15,6 +15,13 @@ public sealed class ShellViewModel : ObservableObject
         this.fabricaPagina = fabricaPagina;
         this.servicoTema = servicoTema;
         Usuario = contextoSessao.Login;
+        OpcoesTema =
+        [
+            new OpcaoTema(PreferenciaTema.Automatico, "Automático (Windows)"),
+            new OpcaoTema(PreferenciaTema.Claro, "Claro"),
+            new OpcaoTema(PreferenciaTema.Escuro, "Escuro")
+        ];
+        this.servicoTema.TemaAlterado += AoAlterarTema;
         NavegarCommand = new RelayCommand(parameter =>
         {
             if (parameter is RotaPagina rota)
@@ -22,7 +29,6 @@ public sealed class ShellViewModel : ObservableObject
                 _ = NavegarAsync(rota);
             }
         });
-        AlternarTemaCommand = new RelayCommand(_ => AlternarTema());
         SairCommand = new RelayCommand(_ => System.Windows.Application.Current.Shutdown());
     }
 
@@ -40,10 +46,15 @@ public sealed class ShellViewModel : ObservableObject
         private set => SetProperty(ref tituloPagina, value);
     }
 
-    public string TextoTema => servicoTema.EstaEscuro ? "Usar tema claro" : "Usar tema escuro";
+    public IReadOnlyList<OpcaoTema> OpcoesTema { get; }
+
+    public PreferenciaTema PreferenciaTema
+    {
+        get => servicoTema.Preferencia;
+        set => servicoTema.DefinirPreferencia(value);
+    }
 
     public ICommand NavegarCommand { get; }
-    public ICommand AlternarTemaCommand { get; }
     public ICommand SairCommand { get; }
 
     public async Task InicializarAsync()
@@ -63,10 +74,9 @@ public sealed class ShellViewModel : ObservableObject
         }
     }
 
-    private void AlternarTema()
+    private void AoAlterarTema(object? sender, EventArgs e)
     {
-        servicoTema.Alternar();
-        OnPropertyChanged(nameof(TextoTema));
+        OnPropertyChanged(nameof(PreferenciaTema));
     }
 
     private static string ObterTitulo(RotaPagina rota)
